@@ -10,7 +10,7 @@ __license__ = "MIT"
 # configfile: "config.yaml"
 
 
-include: "rules/igsr/reference.smk"
+include: "rules/igsr/ref.smk"
 include: "rules/igsr/align.smk"
 
 

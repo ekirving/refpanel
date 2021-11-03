@@ -11,7 +11,7 @@ from snakemake.io import expand, protected, temp
 global workflow
 
 """
-Rules to implement the International Genome Sample Resource (IGSR) alignment pipeline.
+Rules to implement the International Genome Sample Resource (IGSR) alignment pipeline
 
 http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
@@ -29,7 +29,7 @@ rule bwa_mem_pe:
     output:
         bam=temp("data/samples/bam/{sample}.{lane}.bam"),
     log:
-        log="data/samples/bam/{sample}.{lane}.bam.log",
+        log="data/samples/bam/{sample}.{lane}.log",
     params:
         rg="TODO",
     threads: workflow.cores / 4
@@ -54,7 +54,7 @@ rule picard_fix_mate_info:
     output:
         bam=temp("data/samples/bam/{sample}.{lane}_fixedmate.bam"),
     log:
-        log="data/samples/bam/{sample}.{lane}_fixedmate.bam.log",
+        log="data/samples/bam/{sample}.{lane}_fixedmate.log",
     shell:
         "picard"
         " FixMateInformation"
@@ -75,7 +75,7 @@ rule picard_merge_sam_files:
     output:
         bam=temp("data/samples/bam/{sample}_merged.bam"),
     log:
-        log="data/samples/bam/{sample}_merged.bam.log",
+        log="data/samples/bam/{sample}_merged.log",
     params:
         bams=lambda wildcards, input: [f"INPUT={bam}" for bam in input],
     shell:
@@ -98,7 +98,7 @@ rule picard_sort_sam:
     output:
         bam=temp("data/samples/bam/{sample}_merged_sorted.bam"),
     log:
-        log="data/samples/bam/{sample}_merged_sorted.bam.log",
+        log="data/samples/bam/{sample}_merged_sorted.log",
     shell:
         "picard"
         " SortSam"
@@ -118,19 +118,20 @@ rule picard_mark_duplicates:
         bam="data/samples/bam/{sample}_merged_sorted.bam",
     output:
         bam=temp("data/samples/bam/{sample}_merged_sorted_dedup.bam"),
+        log="data/samples/bam/{sample}_merged_sorted_dedup.metrics"
     log:
-        log="data/samples/bam/{sample}_merged_sorted_dedup.bam.log",
+        log="data/samples/bam/{sample}_merged_sorted_dedup.log",
     shell:
         "picard"
         " MarkDuplicates"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
-        " M=$dedup_metrics"
+        " M={output.log}"
         " I={input.bam}"
         " O={output.bam} 2> {log}"
 
 
-rule gatk_base_recalibrator:
+rule gatk3_base_recalibrator:
     """
     Generate the base recalibration table
     """
@@ -142,9 +143,9 @@ rule gatk_base_recalibrator:
         indels="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
     output:
-        tbl=temp("data/samples/bam/{sample}_merged_sorted_dedup.table"),
+        tbl=temp("data/samples/bam/{sample}_merged_sorted_dedup_recal.table"),
     log:
-        log="data/samples/bam/{sample}_merged_sorted_dedup.table.log",
+        log="data/samples/bam/{sample}_merged_sorted_dedup_recal_table.log",
     shell:
         "gatk3"
         " -T BaseRecalibrator"
@@ -160,18 +161,18 @@ rule gatk_base_recalibrator:
         " -knownSites {input.mills} 2> {log}"
 
 
-rule gatk_print_reads:
+rule gatk3_print_reads:
     """
     Recalibrate base quality scores using known SNPs
     """
     input:
         bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        tbl="data/samples/bam/{sample}_merged_sorted_dedup.table",
+        tbl="data/samples/bam/{sample}_merged_sorted_dedup_recal.table",
     output:
         bam=temp("data/samples/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
-        log="data/samples/bam/{sample}_merged_sorted_dedup_recal.bam.log",
+        log="data/samples/bam/{sample}_merged_sorted_dedup_recal.log",
     shell:
         "gatk3"
         " -T PrintReads"
@@ -185,7 +186,7 @@ rule gatk_print_reads:
         " -R {input.ref}"
         " -o {output.bam}"
         " -I {input.bam}"
-        " -BQSR {input.tbl}"
+        " -BQSR {input.tbl} 2> {log}"
 
 
 rule samtools_cram:
@@ -200,5 +201,6 @@ rule samtools_cram:
     log:
         log="data/samples/bam/{sample}.cram.log",
     shell:
-        "samtools view -C -T {input.ref} -o {output.cram} {input.bam} 2> {log} && "
-        "samtools index {output.cram}"
+        "( samtools view -C -T {input.ref} -o {output.cram} {input.bam} && "
+        "  samtools index {output.cram} "
+        ") 2> {log}"
