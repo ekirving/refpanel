@@ -52,3 +52,27 @@ rule reference_grch38_autosomes:
         list="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla_autosomes.interval_list",
     shell:
         "grep -P '@HD|SN:chr\d+\b' {input.dict} > {output.list}"
+
+
+rule reference_grch38_hapmap:
+    """Download HapMap 3.3"""
+    output:
+        "data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
+    shell:
+        "wget --quiet -O {output} https://storage.cloud.google.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz"
+
+
+rule reference_grch38_1000G_omni:
+    """Download 1000G Omni 2.5"""
+    output:
+        "data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
+    shell:
+        "wget --quiet -O {output} https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz"
+
+
+rule reference_grch38_1000G_snps:
+    """Download 1000G Phase 1 high confidence SNPs"""
+    output:
+        "data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
+    shell:
+        "wget --quiet -O {output} https://storage.cloud.google.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz"

@@ -12,6 +12,7 @@ __license__ = "MIT"
 
 include: "rules/igsr/ref.smk"
 include: "rules/igsr/align.smk"
+include: "rules/igsr/call.smk"
 
 
 rule all:

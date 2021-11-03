@@ -118,7 +118,7 @@ rule picard_mark_duplicates:
         bam="data/samples/bam/{sample}_merged_sorted.bam",
     output:
         bam=temp("data/samples/bam/{sample}_merged_sorted_dedup.bam"),
-        log="data/samples/bam/{sample}_merged_sorted_dedup.metrics"
+        met="data/samples/bam/{sample}_merged_sorted_dedup.metrics",
     log:
         log="data/samples/bam/{sample}_merged_sorted_dedup.log",
     shell:
@@ -126,7 +126,7 @@ rule picard_mark_duplicates:
         " MarkDuplicates"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
-        " M={output.log}"
+        " M={output.met}"
         " I={input.bam}"
         " O={output.bam} 2> {log}"
 
