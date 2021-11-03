@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import expand
+from snakemake.io import expand, protected, temp
 
 global workflow
 
@@ -27,7 +27,7 @@ rule bwa_mem_pe:
         fastq_r1="data/samples/fastq/{sample}.{lane}_r1.fa.gz",
         fastq_r2="data/samples/fastq/{sample}.{lane}_r2.fa.gz",
     output:
-        bam="data/samples/bam/{sample}.{lane}.bam",
+        bam=temp("data/samples/bam/{sample}.{lane}.bam"),
     log:
         log="data/samples/bam/{sample}.{lane}.bam.log",
     params:
@@ -52,7 +52,7 @@ rule picard_fix_mate_info:
     input:
         bam="data/samples/bam/{sample}.{lane}.bam",
     output:
-        bam="data/samples/bam/{sample}.{lane}_fixedmate.bam",
+        bam=temp("data/samples/bam/{sample}.{lane}_fixedmate.bam"),
     log:
         log="data/samples/bam/{sample}.{lane}_fixedmate.bam.log",
     shell:
@@ -73,7 +73,7 @@ rule picard_merge_sam_files:
     input:
         expand("data/samples/bam/{sample}.{lane}_fixedmate.bam", lane=[], allow_missing=True),
     output:
-        bam="data/samples/bam/{sample}_merged.bam",
+        bam=temp("data/samples/bam/{sample}_merged.bam"),
     log:
         log="data/samples/bam/{sample}_merged.bam.log",
     params:
@@ -96,9 +96,9 @@ rule picard_sort_sam:
     input:
         bam="data/samples/bam/{sample}_merged.bam",
     output:
-        bam="data/samples/bam/{sample}_sorted.bam",
+        bam=temp("data/samples/bam/{sample}_merged_sorted.bam"),
     log:
-        log="data/samples/bam/{sample}_sorted.bam.log",
+        log="data/samples/bam/{sample}_merged_sorted.bam.log",
     shell:
         "picard"
         " SortSam"
@@ -115,11 +115,11 @@ rule picard_mark_duplicates:
     Mark duplicates
     """
     input:
-        bam="data/samples/bam/{sample}_sorted.bam",
+        bam="data/samples/bam/{sample}_merged_sorted.bam",
     output:
-        bam="data/samples/bam/{sample}_dedup.bam",
+        bam=temp("data/samples/bam/{sample}_merged_sorted_dedup.bam"),
     log:
-        log="data/samples/bam/{sample}_dedup.bam.log",
+        log="data/samples/bam/{sample}_merged_sorted_dedup.bam.log",
     shell:
         "picard"
         " MarkDuplicates"
@@ -135,16 +135,16 @@ rule gatk_base_recalibrator:
     Generate the base recalibration table
     """
     input:
-        bam="data/samples/bam/{sample}_dedup.bam",
+        bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         list="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla_autosomes.interval_list",
         snps="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
         indels="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
     output:
-        tbl="data/samples/bam/{sample}_dedup.table",
+        tbl=temp("data/samples/bam/{sample}_merged_sorted_dedup.table"),
     log:
-        log="data/samples/bam/{sample}_dedup.table.log",
+        log="data/samples/bam/{sample}_merged_sorted_dedup.table.log",
     shell:
         "gatk3"
         " -T BaseRecalibrator"
@@ -165,13 +165,13 @@ rule gatk_print_reads:
     Recalibrate base quality scores using known SNPs
     """
     input:
-        bam="data/samples/bam/{sample}_dedup.bam",
+        bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        tbl="data/samples/bam/{sample}_dedup.table",
+        tbl="data/samples/bam/{sample}_merged_sorted_dedup.table",
     output:
-        bam="data/samples/bam/{sample}_recalibrated.bam",
+        bam=temp("data/samples/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
-        log="data/samples/bam/{sample}_recalibrated.bam.log",
+        log="data/samples/bam/{sample}_merged_sorted_dedup_recal.bam.log",
     shell:
         "gatk3"
         " -T PrintReads"
@@ -193,12 +193,12 @@ rule samtools_cram:
     Creating CRAM files
     """
     input:
-        bam="data/samples/bam/{sample}_recalibrated.bam",
+        bam="data/samples/bam/{sample}_merged_sorted_dedup_recal.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
     output:
-        cram="data/samples/bam/{sample}_recalibrated.cram",
+        cram=protected("data/samples/bam/{sample}.cram"),
     log:
-        log="data/samples/bam/{sample}_recalibrated.cram.log",
+        log="data/samples/bam/{sample}.cram.log",
     shell:
         "samtools view -C -T {input.ref} -o {output.cram} {input.bam} 2> {log} && "
         "samtools index {output.cram}"
