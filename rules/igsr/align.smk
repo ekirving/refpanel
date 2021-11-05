@@ -13,13 +13,15 @@ global workflow
 """
 Rules to implement the International Genome Sample Resource (IGSR) alignment pipeline
 
-http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
+https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
 
 rule bwa_mem_pe:
     """
     Alignment at lane level
+
+    https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#alignment
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
@@ -38,7 +40,7 @@ rule bwa_mem_pe:
         "   -K 100000000 "
         "   -t {threads} "
         "   -R {params.rg} "
-        "   {ref} "
+        "   {input.ref} "
         "   {input.fastq_r1} "
         "   {input.fastq_r1} | "
         "  samtools view -Shb -o {output.bam} -"
@@ -113,6 +115,8 @@ rule picard_sort_sam:
 rule picard_mark_duplicates:
     """
     Mark duplicates
+
+    https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#duplicate-marking
     """
     input:
         bam="data/samples/bam/{sample}_merged_sorted.bam",
@@ -134,6 +138,8 @@ rule picard_mark_duplicates:
 rule gatk3_base_recalibrator:
     """
     Generate the base recalibration table
+
+    https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#base-quality-score-recalibration
     """
     input:
         bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",

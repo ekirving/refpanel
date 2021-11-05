@@ -13,13 +13,15 @@ global workflow
 """
 Rules to implement the International Genome Sample Resource (IGSR) genotype calling pipeline
 
-http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
+https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
 
 rule gatk3_haplotype_caller:
     """
     Raw variant calls using HaplotypeCaller on single sample
+
+    https://htmlpreview.github.io/?https://raw.githubusercontent.com/broadinstitute/gatk-docs/master/gatk3-tooldocs/3.5-0/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.html
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
