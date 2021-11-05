@@ -13,8 +13,19 @@ __license__ = "MIT"
 include: "rules/igsr/ref.smk"
 include: "rules/igsr/align.smk"
 include: "rules/igsr/call.smk"
+include: "rules/igsr/download.smk"
+
+
+def download_1000g_nygc(_):
+    files = []
+    with open("data/1000G_samples.txt ") as fin:
+        for sample in fin:
+            population, sample = sample.split()
+            files.append(f"data/1000G_NYGC/gVCF/{population}/{sample}.g.vcf.gz")
+
+    return files
 
 
 rule all:
     input:
-        "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        download_1000g_nygc,
