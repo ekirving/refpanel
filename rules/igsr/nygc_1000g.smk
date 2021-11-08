@@ -10,13 +10,12 @@ import pandas as pd
 from snakemake.io import touch
 
 """
-Rules to download data files from the International Genome Sample Resource (IGSR)
+Rules to download data files from the New York Genome Center (NYGC) high-coverage 1000 Genomes Project datset
 
-https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/ 
+https://www.internationalgenome.org/data-portal/data-collection/30x-grch38
 """
 
-FTP_1000G_RAW_CALLS = "http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/"
-
+FTP_NYGC_1000G = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated"
 
 wildcard_constraints:
     ext="([a-z]+\.)*[a-z]+",
@@ -48,7 +47,7 @@ rule nygc_1000g_download_gvcf:
     resources:
         ebi_ftp=1,
     shell:
-        "wget --quiet -O {output.vcf} {FTP_1000G_RAW_CALLS}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
+        "wget --quiet -O {output.vcf} {FTP_NYGC_1000G}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
         "md5sum --status --check {input.md5}"
 
 

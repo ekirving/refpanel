@@ -27,7 +27,7 @@ echo "REFPANEL: ${refpanel}" >>$logfile
 eval "$(conda shell.bash hook)"
 conda activate refpanel
 
-MAX_EBI_FTP=15
+MAX_FTP=15
 
 if ! command -v free &> /dev/null; then
   # MacOS does not have the free command
@@ -46,7 +46,7 @@ flags+="--show-failed-logs "
 flags+="--rerun-incomplete "
 flags+="--reason "
 flags+="--restart-times 1 "
-flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_EBI_FTP} "
+flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} sanger_ftp=${MAX_FTP} "
 
 #for chr in $(seq ${start} ${stop}); do
 #  echo "Starting chr${chr}..." >>$logfile
