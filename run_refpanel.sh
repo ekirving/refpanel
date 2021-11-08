@@ -14,14 +14,14 @@ datetime=$(date +%Y-%m-%d-%H%M)
 logfile="nohup-${datetime}.out"
 
 refpanel=${args[0]:='default'}
-start=${args[1]:=1}
-stop=${args[2]:=22}
+#start=${args[1]:=1}
+#stop=${args[2]:=22}
 
 # print the server name and start time to the log file
 echo "SERVER: $HOSTNAME" >>${logfile}
 echo "DATE: ${datetime}" >>${logfile}
 echo "REFPANEL: ${refpanel}" >>$logfile
-echo "CHROMS: chr${start} - chr${stop}" >>$logfile
+#echo "CHROMS: chr${start} - chr${stop}" >>$logfile
 
 # load the conda environment
 eval "$(conda shell.bash hook)"
@@ -48,12 +48,12 @@ flags+="--reason "
 flags+="--restart-times 1 "
 flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_EBI_FTP} "
 
-for chr in $(seq ${start} ${stop}); do
-  echo "Starting chr${chr}..." >>$logfile
-  (
-    set -x
-    snakemake ${flags} --config refpanel=${refpanel} chr=${chr}
-  ) &>>${logfile}
-done
+#for chr in $(seq ${start} ${stop}); do
+#  echo "Starting chr${chr}..." >>$logfile
+#  (
+set -x
+snakemake ${flags} --config refpanel=${refpanel} chr=${chr}
+#  ) &>>${logfile}
+#done
 
 echo "DONE!" >>${logfile}
