@@ -26,6 +26,8 @@ rule download_1000g_nygc_gvcf:
     output:
         vcf="data/1000G_NYGC/gVCF/{population}/{sample}.g.vcf.gz",
         tbi="data/1000G_NYGC/gVCF/{population}/{sample}.g.vcf.gz.tbi",
+    resources:
+        ebi_ftp=1,
     shell:
         "wget --quiet -O {output.vcf} {FTP_1000G_RAW_CALLS}/{wildcards.population}/Sample_{wildcards.sample}/analysis/{wildcards.sample}.haplotypeCalls.er.raw.vcf.gz && "
         "wget --quiet -O {output.tbi} {FTP_1000G_RAW_CALLS}/{wildcards.population}/Sample_{wildcards.sample}/analysis/{wildcards.sample}.haplotypeCalls.er.raw.vcf.gz.tbi"
