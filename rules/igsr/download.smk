@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import touch
+from snakemake.io import ancient, touch
 
 """
 Rules to download data files from the International Genome Sample Resource (IGSR)
@@ -41,7 +41,7 @@ rule download_1000g_nygc_gvcf:
     Download GATK HaplotypeCaller gVCFs for each high-coverage NYGC 1000G sample
     """
     input:
-        md5="data/1000G_NYGC/gVCF/{population}/{sample}.g.{ext}.md5",
+        md5=ancient("data/1000G_NYGC/gVCF/{population}/{sample}.g.{ext}.md5"),
     output:
         vcf="data/1000G_NYGC/gVCF/{population}/{sample}.g.{ext}",
     resources:
