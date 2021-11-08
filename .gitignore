@@ -1,3 +1,5 @@
 *-commands.sh
+.snakemake
 data/1000G_NYGC/gVCF
 data/reference/GRCh38/
+nohup*
