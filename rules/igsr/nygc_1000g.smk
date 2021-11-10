@@ -17,6 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/30x-grch38
 
 FTP_NYGC_1000G = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated"
 
+
 wildcard_constraints:
     ext="([a-z]+\.)*[a-z]+",
 

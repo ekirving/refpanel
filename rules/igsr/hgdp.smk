@@ -8,6 +8,7 @@ __license__ = "MIT"
 
 import pandas as pd
 from snakemake.io import touch
+
 """
 Rules to download data files for the Human Genome Diversity Project (HGDP)
 
@@ -16,6 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/hgdp
 
 
 FTP_HGDP = "ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs"
+
 
 wildcard_constraints:
     ext="([a-z]+\.)*[a-z]+",
@@ -37,8 +39,7 @@ def hgdp_list_all_gvcf():
     samples = pd.read_table("data/HGDP/hgdp_wgs.20190516.metadata.txt")
 
     files = [
-        [f"data/HGDP/gVCF/{sample}.g.vcf.gz", f"data/HGDP/gVCF/{sample}.g.vcf.gz.tbi"]
-        for sample in samples["Sample name"]
+        [f"data/HGDP/gVCF/{sample}.g.vcf.gz", f"data/HGDP/gVCF/{sample}.g.vcf.gz.tbi"] for sample in samples["sample"]
     ]
 
     return files
