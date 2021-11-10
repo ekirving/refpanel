@@ -12,9 +12,11 @@ include: "rules/igsr/align.smk"
 include: "rules/igsr/call.smk"
 include: "rules/igsr/nygc_1000g.smk"
 include: "rules/igsr/hgdp.smk"
+include: "rules/igsr/sgdp.smk"
 
 
 rule all:
     input:
         "data/1000G_NYGC/gVCF/download.done",
         "data/HGDP/gVCF/download.done",
+        "data/SGDP/gVCF/download.done",

@@ -17,7 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/sgdp
 
 
 wildcard_constraints:
-    ext="([a-z]+\.)*[a-z]+",
+    ext="cram(.crai)?",
 
 
 rule sgdp_md5:
@@ -25,43 +25,45 @@ rule sgdp_md5:
     Make an md5 checksum file for validating the SGDP data
     """
     input:
-        man="data/SGDP/simons_diversity_data.GRCh38DH.alignment.index",
+        man="data/SGDP/simons_diversity_data.GRCh38DH.alignment.tsv",
     output:
         md5="data/SGDP/cram/{sample}.{ext}.md5",
     params:
-        file="data/SGDP/gVCF/{sample}.g.{ext}",
+        file="data/SGDP/cram/{sample}.{ext}",
+        col=lambda wildcards: 4 if "crai" in wildcards.ext else 2,
     shell:
-        """grep -P '/{wildcards.sample}/' {input.man} | awk '{{ print $3" {params.file}" }}' > {output.md5}"""
+        r"""grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col}" {params.file}" }}' > {output.md5}"""
 
 
-rule sgdp_download_gvcf:
+rule sgdp_download_cram:
     """
-    Download GATK HaplotypeCaller gVCFs for each high-coverage NYGC 1000G sample
+    Download bwa-mem CRAM files for each fully-public SGDP sample
     """
     input:
-        md5="data/SGDP/gVCF/{sample}.g.{ext}.md5",
+        man="data/SGDP/simons_diversity_data.GRCh38DH.alignment.tsv",
+        md5="data/SGDP/cram/{sample}.{ext}.md5",
     output:
-        vcf="data/SGDP/gVCF/{sample}.g.{ext}",
+        cram="data/SGDP/cram/{sample}.{ext}",
+    params:
+        col=lambda wildcards: 3 if "crai" in wildcards.ext else 1,
     resources:
         ebi_ftp=1,
     shell:
-        "wget --quiet -O {output.vcf} {FTP_sgdp}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
-        "md5sum --status --check {input.md5}"
+        r"grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col} }}' | "
+        r"xargs wget --quiet -O {output.cram} && "
+        r"md5sum --status --check {input.md5}"
 
 
-def sgdp_list_all_gvcf():
-    samples = pd.read_table("data/SGDP/igsr-1000_genomes_30x_on_grch38.tsv")
+def sgdp_list_all_cram():
+    samples = pd.read_table("data/SGDP/simons_diversity_data.GRCh38DH.alignment.tsv")
 
-    files = [
-        [f"data/SGDP/gVCF/{sample}.g.vcf.gz", f"data/SGDP/gVCF/{sample}.g.vcf.gz.tbi"]
-        for sample in samples["Sample name"]
-    ]
+    files = [[f"data/SGDP/cram/{sample}.cram", f"data/SGDP/cram/{sample}.cram.crai"] for sample in samples["Sample"]]
 
     return files
 
 
-rule sgdp_download_all_gvcf:
+rule sgdp_download_all_cram:
     input:
-        sgdp_list_all_gvcf(),
+        sgdp_list_all_cram(),
     output:
         touch("data/SGDP/gVCF/download.done"),
