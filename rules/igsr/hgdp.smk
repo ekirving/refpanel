@@ -19,20 +19,19 @@ https://www.internationalgenome.org/data-portal/data-collection/hgdp
 FTP_HGDP = "ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs"
 
 
-wildcard_constraints:
-    ext="([a-z]+\.)*[a-z]+",
-
-
 rule hgdp_download_gvcf:
     """
     Download GATK HaplotypeCaller gVCFs for each HGDP sample
     """
     output:
-        vcf="data/HGDP/gVCF/{sample}.g.{ext}",
+        vcf="data/HGDP/gVCF/{sample}.g.vcf.gz",
+        tbi="data/HGDP/gVCF/{sample}.g.vcf.gz.tbi",
     resources:
         sanger_ftp=1,
     shell:
-        "wget --quiet -O {output.vcf} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.{wildcards.ext}"
+        "wget --quiet -O {output.vcf} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz && "
+        "wget --quiet -O {output.tbi} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz.tbi && "
+        "gunzip --test {output.vcf}"
 
 
 def hgdp_list_all_gvcf():

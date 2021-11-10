@@ -19,7 +19,7 @@ FTP_NYGC_1000G = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000
 
 
 wildcard_constraints:
-    ext="([a-z]+\.)*[a-z]+",
+    ext="vcf.gz(.tbi)?",
 
 
 rule nygc_1000g_md5:
