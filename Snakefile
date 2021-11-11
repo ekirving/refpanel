@@ -7,6 +7,9 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 
+configfile: "config.yaml"
+
+
 # rules to download the data sources
 include: "rules/data/1000g.smk"
 include: "rules/data/hgdp.smk"
@@ -20,7 +23,7 @@ include: "rules/03-call.smk"
 include: "rules/04-joint-call.smk"
 
 
-# prefer download options, when they are available
+# preference download rules, when they are available
 ruleorder: sgdp_download_cram > ggvp_download_cram > samtools_cram
 ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_haplotype_caller
 

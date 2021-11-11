@@ -1,0 +1,10 @@
+source:
+  example:
+    accessions: example/example-accessions.tsv
+    readgroup:
+      ID: accession
+      SM: sample
+      CN: center
+      PL: platform
+      LB: library
+      DS: description

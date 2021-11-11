@@ -16,31 +16,32 @@ Rules to perform short-read alignment for the IGSR pipeline
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
+from scripts.accessions import fastq_path, read_group, list_accessions
+
 
 rule bwa_mem_pe:
     """
-    Alignment at lane level
+    Alignment at accession level
 
     https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#alignment
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         bwt="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa.bwt",
-        # TODO these should be read from the sample metadata sheet
-        fastq_r1="data/source/{source}/fastq/{sample}.{lane}_r1.fa.gz",
-        fastq_r2="data/source/{source}/fastq/{sample}.{lane}_r2.fa.gz",
+        fastq_r1=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r1"),
+        fastq_r2=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r2"),
     output:
-        bam=temp("data/source/{source}/bam/{sample}.{lane}.bam"),
+        bam=temp("data/source/{source}/bam/{accession}.bam"),
     log:
-        log="data/source/{source}/bam/{sample}.{lane}.log",
+        log="data/source/{source}/bam/{accession}.log",
     params:
-        rg="",  # TODO add a read group header (check the SGDP CRAMs for guidance) - add RG field mapping to config.yaml
+        rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: workflow.cores / 4
     shell:
         "( bwa mem -Y "
         "   -K 100000000 "
         "   -t {threads} "
-        "   -R {params.rg} "
+        "   -R '{params.rg}' "
         "   {input.ref} "
         "   {input.fastq_r1} "
         "   {input.fastq_r1} | "
@@ -53,11 +54,11 @@ rule picard_fix_mate_info:
     Fix mate information in the BAM
     """
     input:
-        bam="data/source/{source}/bam/{sample}.{lane}.bam",
+        bam="data/source/{source}/bam/{accession}.bam",
     output:
-        bam=temp("data/source/{source}/bam/{sample}.{lane}_fixedmate.bam"),
+        bam=temp("data/source/{source}/bam/{accession}_fixedmate.bam"),
     log:
-        log="data/source/{source}/bam/{sample}.{lane}_fixedmate.log",
+        log="data/source/{source}/bam/{accession}_fixedmate.log",
     shell:
         "picard"
         " FixMateInformation"
@@ -69,13 +70,20 @@ rule picard_fix_mate_info:
         " O={output.bam} 2> {log}"
 
 
-rule picard_merge_sam_files:
+def picard_merge_bam_files_input(wildcards):
+    return expand(
+        "data/source/{source}/bam/{accession}_fixedmate.bam",
+        source=wildcards.source,
+        accession=list_accessions(config, wildcards.source, wildcards.sample),
+    )
+
+
+rule picard_merge_bam_files:
     """
     Merging lane level bam files to Sample level bam files
     """
     input:
-        # TODO add a sample metadata sheet for this to use
-        expand("data/source/{source}/bam/{sample}.{lane}_fixedmate.bam", lane=[], allow_missing=True),
+        picard_merge_bam_files_input,
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged.bam"),
     log:
@@ -93,7 +101,7 @@ rule picard_merge_sam_files:
         " OUTPUT={output.bam} 2> {log}"
 
 
-rule picard_sort_sam:
+rule picard_sort_bam:
     """
     Coordinate sort BAM
     """
