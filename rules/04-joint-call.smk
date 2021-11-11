@@ -24,11 +24,11 @@ rule gatk3_genotype_gvcf:
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         # TODO add a sample metadata sheet for this to use
-        gvcfs=expand("panel/{panel}/vcf/{sample}.g.vcf", sample=[]),
+        gvcfs=expand("data/panel/{panel}/vcf/{sample}.g.vcf", sample=[]),
     output:
-        vcf=protected("panel/{panel}/vcf/{panel}.vcf"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}.vcf"),
     log:
-        log="panel/{panel}/vcf/{panel}.log",
+        log="data/panel/{panel}/vcf/{panel}.log",
     shell:
         "gatk3"
         " -T GenotypeGVCFs"
@@ -45,17 +45,17 @@ rule gatk3_variant_recalibrator_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="panel/{panel}/vcf/{panel}.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="panel/{panel}/vcf/{panel}_vqsr_snp.recal",
-        tranche="panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
-        plot="panel/{panel}/vcf/{panel}_vqsr_snp_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_vqsr_snp.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_vqsr_snp_plots.R",
     log:
-        log="panel/{panel}/vcf/{panel}.log",
+        log="data/panel/{panel}/vcf/{panel}.log",
     shell:
         "gatk3"
         " -T VariantRecalibrator"
@@ -93,15 +93,15 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="panel/{panel}/vcf/{panel}.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="panel/{panel}/vcf/{panel}_vqsr_indel.recal",
-        tranche="panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
-        plot="panel/{panel}/vcf/{panel}_vqsr_indel_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_vqsr_indel.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_vqsr_indel_plots.R",
     log:
-        log="panel/{panel}/vcf/{panel}.log",
+        log="data/panel/{panel}/vcf/{panel}.log",
     shell:
         "gatk3"
         " -T VariantRecalibrator"
@@ -134,13 +134,13 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="panel/{panel}/vcf/{panel}.vcf",
-        recal="panel/{panel}/vcf/{panel}_vqsr_snp.recal",
-        tranche="panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf",
+        recal="data/panel/{panel}/vcf/{panel}_vqsr_snp.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
     output:
-        vcf="panel/{panel}/vcf/{panel}_vqsr_snp.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}_vqsr_snp.vcf",
     log:
-        log="panel/{panel}/vcf/{panel}_vqsr_snp.log",
+        log="data/panel/{panel}/vcf/{panel}_vqsr_snp.log",
     shell:
         "gatk3"
         " -T ApplyRecalibration"
@@ -160,13 +160,13 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="panel/{panel}/vcf/{panel}.vcf",
-        recal="panel/{panel}/vcf/{panel}_vqsr_indel.recal",
-        tranche="panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf",
+        recal="data/panel/{panel}/vcf/{panel}_vqsr_indel.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
     output:
-        vcf="panel/{panel}/vcf/{panel}_vqsr_indel.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}_vqsr_indel.vcf",
     log:
-        log="panel/{panel}/vcf/{panel}_vqsr_indel.log",
+        log="data/panel/{panel}/vcf/{panel}_vqsr_indel.log",
     shell:
         "gatk3"
         " -T ApplyRecalibration"

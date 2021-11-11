@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 
-include: "rules/01-ref.smk"
+include: "rules/01-reference.smk"
 include: "rules/02-align.smk"
 include: "rules/03-call.smk"
 include: "rules/download/hgdp.smk"

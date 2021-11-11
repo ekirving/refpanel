@@ -25,11 +25,11 @@ rule gatk3_haplotype_caller:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        cram="data/{collection}/bam/{sample}.cram",
+        cram="data/source/{source}/bam/{sample}.cram",
     output:
-        gvcf=protected("data/{collection}/vcf/{sample}.g.vcf"),
+        gvcf=protected("data/source/{source}/vcf/{sample}.g.vcf"),
     log:
-        log="data/{collection}/vcf/{sample}.log",
+        log="data/source/{source}/vcf/{sample}.log",
     shell:
         "gatk3"
         " -T HaplotypeCaller"
