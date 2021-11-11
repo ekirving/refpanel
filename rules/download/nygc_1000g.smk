@@ -53,7 +53,7 @@ rule nygc_1000g_download_gvcf:
 
 
 def nygc_1000g_list_all_gvcf():
-    samples = pd.read_table("data/1000G_NYGC/igsr-1000_genomes_30x_on_grch38.tsv")
+    samples = pd.read_table("data/1000G_NYGC/download-1000_genomes_30x_on_grch38.tsv")
 
     files = [
         [f"data/1000G_NYGC/gVCF/{sample}.g.vcf.gz", f"data/1000G_NYGC/gVCF/{sample}.g.vcf.gz.tbi"]

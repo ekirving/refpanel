@@ -203,9 +203,10 @@ rule samtools_cram:
         bam="data/samples/bam/{sample}_merged_sorted_dedup_recal.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
     output:
-        cram=protected("data/samples/bam/{sample}.cram"),
+        cram=protected("data/{collection}/cram/{sample}.cram"),
+        crai=protected("data/{collection}/cram/{sample}.cram.crai"),
     log:
-        log="data/samples/bam/{sample}.cram.log",
+        log="data/{collection}/cram/{sample}.cram.log",
     shell:
         "( samtools view -C -T {input.ref} -o {output.cram} {input.bam} && "
         "  samtools index {output.cram} "
