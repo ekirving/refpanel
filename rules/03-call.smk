@@ -58,4 +58,3 @@ rule gatk3_haplotype_caller:
         " -nct 1"
         " -I {input.cram}"
         " -o {output.gvcf}"
-
