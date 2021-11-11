@@ -7,14 +7,16 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 
-# include: "rules/01-reference.smk"
-# include: "rules/02-align.smk"
-# include: "rules/03-call.smk"
-# include: "rules/04-joint-call.smk"
+# rules to download the data sources
 include: "rules/data/1000g.smk"
 include: "rules/data/hgdp.smk"
 include: "rules/data/sgdp.smk"
 include: "rules/data/ggvp.smk"
+# rules to apply the IGSR genotyping pipeline
+# include: "rules/01-reference.smk"
+# include: "rules/02-align.smk"
+# include: "rules/03-call.smk"
+# include: "rules/04-joint-call.smk"
 
 
 rule all:

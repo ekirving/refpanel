@@ -11,7 +11,7 @@ from snakemake.io import expand, protected
 global workflow
 
 """
-Rules to perform joint genotype calling for the IGSR alignment pipeline
+Rules to perform joint genotype calling for the IGSR pipeline
 
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
