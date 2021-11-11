@@ -33,7 +33,7 @@ rule bwa_mem_pe:
     log:
         log="data/samples/bam/{sample}.{lane}.log",
     params:
-        rg="TODO",
+        rg="",  # TODO add a read group header (check the SGDP CRAMs for guidance)
     threads: workflow.cores / 4
     shell:
         "( bwa mem -Y "
@@ -73,6 +73,7 @@ rule picard_merge_sam_files:
     Merging lane level bam files to Sample level bam files
     """
     input:
+        # TODO add a sample metadata sheet for this to use
         expand("data/samples/bam/{sample}.{lane}_fixedmate.bam", lane=[], allow_missing=True),
     output:
         bam=temp("data/samples/bam/{sample}_merged.bam"),
@@ -144,6 +145,7 @@ rule gatk3_base_recalibrator:
     input:
         bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        # TODO refactor this to include X and Y calling
         list="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla_autosomes.interval_list",
         snps="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
         indels="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",

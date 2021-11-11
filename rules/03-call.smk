@@ -66,7 +66,8 @@ rule gatk3_genotype_gvcf:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        gvcfs=expand("data/samples/vcf/{sample}.g.vcf", sample=["TODO"]),
+        # TODO add a sample metadata sheet for this to use
+        gvcfs=expand("data/samples/vcf/{sample}.g.vcf", sample=[]),
     output:
         vcf=protected("data/samples/vcf/{panel}.vcf"),
     log:
