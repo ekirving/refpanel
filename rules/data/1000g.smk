@@ -48,7 +48,7 @@ rule tgp_nygc_download_gvcf:
     resources:
         ebi_ftp=1,
     shell:
-        "wget --quiet -O {output.vcf} {FTP_TGP_NYGC}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
+        "wget --quiet -O {output.vcf} -o /dev/null {FTP_TGP_NYGC}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
         "md5sum --status --check {input.md5}"
 
 

@@ -50,7 +50,7 @@ rule ggvp_download_cram:
         ebi_ftp=1,
     shell:
         r"grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col} }}' | "
-        r"xargs wget --quiet -O {output.cram} && "
+        r"xargs wget --quiet -O {output.cram} -o /dev/null && "
         r"md5sum --status --check {input.md5}"
 
 

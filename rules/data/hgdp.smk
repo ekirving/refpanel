@@ -26,11 +26,13 @@ rule hgdp_download_gvcf:
     output:
         vcf="data/source/hgdp/gVCF/{sample}.g.vcf.gz",
         tbi="data/source/hgdp/gVCF/{sample}.g.vcf.gz.tbi",
+    log:
+        log="data/source/hgdp/gVCF/{sample}.g.vcf.log",
     resources:
         sanger_ftp=1,
     shell:
-        "wget --quiet -O {output.vcf} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz && "
-        "wget --quiet -O {output.tbi} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz.tbi && "
+        "wget --no-verbose -O {output.vcf} -o {log} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz && "
+        "wget --quiet -O {output.tbi} -o /dev/null {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz.tbi && "
         "gunzip --test {output.vcf}"
 
 
