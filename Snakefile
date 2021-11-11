@@ -12,13 +12,14 @@ __license__ = "MIT"
 # include: "rules/03-call.smk"
 # include: "rules/04-joint-call.smk"
 include: "rules/data/1000g.smk"
-include: "rules/data/sgdp.smk"
 include: "rules/data/hgdp.smk"
+include: "rules/data/sgdp.smk"
+include: "rules/data/ggvp.smk"
 
 
 rule all:
     input:
         "data/source/1000g/gVCF/download.done",
-        "data/source/sgdp/cram/download.done",
         "data/source/hgdp/gVCF/download.done",
-
+        "data/source/sgdp/cram/download.done",
+        "data/source/ggvp/cram/download.done",
