@@ -11,7 +11,7 @@ from snakemake.io import expand, protected, temp
 global workflow
 
 """
-Rules to implement the International Genome Sample Resource (IGSR) alignment pipeline
+Rules to perform short-read alignment for the IGSR alignment pipeline
 
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
@@ -26,14 +26,15 @@ rule bwa_mem_pe:
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         bwt="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa.bwt",
-        fastq_r1="data/samples/fastq/{sample}.{lane}_r1.fa.gz",
-        fastq_r2="data/samples/fastq/{sample}.{lane}_r2.fa.gz",
+        # TODO these should be read from the sample metadata sheet
+        fastq_r1="data/{collection}/fastq/{sample}.{lane}_r1.fa.gz",
+        fastq_r2="data/{collection}/fastq/{sample}.{lane}_r2.fa.gz",
     output:
-        bam=temp("data/samples/bam/{sample}.{lane}.bam"),
+        bam=temp("data/{collection}/bam/{sample}.{lane}.bam"),
     log:
-        log="data/samples/bam/{sample}.{lane}.log",
+        log="data/{collection}/bam/{sample}.{lane}.log",
     params:
-        rg="",  # TODO add a read group header (check the SGDP CRAMs for guidance)
+        rg="",  # TODO add a read group header (check the SGDP CRAMs for guidance) - add RG field mapping to config.yaml
     threads: workflow.cores / 4
     shell:
         "( bwa mem -Y "
@@ -52,11 +53,11 @@ rule picard_fix_mate_info:
     Fix mate information in the BAM
     """
     input:
-        bam="data/samples/bam/{sample}.{lane}.bam",
+        bam="data/{collection}/bam/{sample}.{lane}.bam",
     output:
-        bam=temp("data/samples/bam/{sample}.{lane}_fixedmate.bam"),
+        bam=temp("data/{collection}/bam/{sample}.{lane}_fixedmate.bam"),
     log:
-        log="data/samples/bam/{sample}.{lane}_fixedmate.log",
+        log="data/{collection}/bam/{sample}.{lane}_fixedmate.log",
     shell:
         "picard"
         " FixMateInformation"
@@ -74,11 +75,11 @@ rule picard_merge_sam_files:
     """
     input:
         # TODO add a sample metadata sheet for this to use
-        expand("data/samples/bam/{sample}.{lane}_fixedmate.bam", lane=[], allow_missing=True),
+        expand("data/{collection}/bam/{sample}.{lane}_fixedmate.bam", lane=[], allow_missing=True),
     output:
-        bam=temp("data/samples/bam/{sample}_merged.bam"),
+        bam=temp("data/{collection}/bam/{sample}_merged.bam"),
     log:
-        log="data/samples/bam/{sample}_merged.log",
+        log="data/{collection}/bam/{sample}_merged.log",
     params:
         bams=lambda wildcards, input: [f"INPUT={bam}" for bam in input],
     shell:
@@ -97,11 +98,11 @@ rule picard_sort_sam:
     Coordinate sort BAM
     """
     input:
-        bam="data/samples/bam/{sample}_merged.bam",
+        bam="data/{collection}/bam/{sample}_merged.bam",
     output:
-        bam=temp("data/samples/bam/{sample}_merged_sorted.bam"),
+        bam=temp("data/{collection}/bam/{sample}_merged_sorted.bam"),
     log:
-        log="data/samples/bam/{sample}_merged_sorted.log",
+        log="data/{collection}/bam/{sample}_merged_sorted.log",
     shell:
         "picard"
         " SortSam"
@@ -120,12 +121,12 @@ rule picard_mark_duplicates:
     https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#duplicate-marking
     """
     input:
-        bam="data/samples/bam/{sample}_merged_sorted.bam",
+        bam="data/{collection}/bam/{sample}_merged_sorted.bam",
     output:
-        bam=temp("data/samples/bam/{sample}_merged_sorted_dedup.bam"),
-        met="data/samples/bam/{sample}_merged_sorted_dedup.metrics",
+        bam=temp("data/{collection}/bam/{sample}_merged_sorted_dedup.bam"),
+        met="data/{collection}/bam/{sample}_merged_sorted_dedup.metrics",
     log:
-        log="data/samples/bam/{sample}_merged_sorted_dedup.log",
+        log="data/{collection}/bam/{sample}_merged_sorted_dedup.log",
     shell:
         "picard"
         " MarkDuplicates"
@@ -143,7 +144,7 @@ rule gatk3_base_recalibrator:
     https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#base-quality-score-recalibration
     """
     input:
-        bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",
+        bam="data/{collection}/bam/{sample}_merged_sorted_dedup.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         # TODO refactor this to include X and Y calling
         list="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla_autosomes.interval_list",
@@ -151,9 +152,9 @@ rule gatk3_base_recalibrator:
         indels="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
     output:
-        tbl=temp("data/samples/bam/{sample}_merged_sorted_dedup_recal.table"),
+        tbl=temp("data/{collection}/bam/{sample}_merged_sorted_dedup_recal.table"),
     log:
-        log="data/samples/bam/{sample}_merged_sorted_dedup_recal_table.log",
+        log="data/{collection}/bam/{sample}_merged_sorted_dedup_recal_table.log",
     shell:
         "gatk3"
         " -T BaseRecalibrator"
@@ -174,13 +175,13 @@ rule gatk3_print_reads:
     Recalibrate base quality scores using known SNPs
     """
     input:
-        bam="data/samples/bam/{sample}_merged_sorted_dedup.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        tbl="data/samples/bam/{sample}_merged_sorted_dedup_recal.table",
+        bam="data/{collection}/bam/{sample}_merged_sorted_dedup.bam",
+        tbl="data/{collection}/bam/{sample}_merged_sorted_dedup_recal.table",
     output:
-        bam=temp("data/samples/bam/{sample}_merged_sorted_dedup_recal.bam"),
+        bam=temp("data/{collection}/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
-        log="data/samples/bam/{sample}_merged_sorted_dedup_recal.log",
+        log="data/{collection}/bam/{sample}_merged_sorted_dedup_recal.log",
     shell:
         "gatk3"
         " -T PrintReads"
@@ -202,8 +203,8 @@ rule samtools_cram:
     Creating CRAM files
     """
     input:
-        bam="data/samples/bam/{sample}_merged_sorted_dedup_recal.bam",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        bam="data/{collection}/bam/{sample}_merged_sorted_dedup_recal.bam",
     output:
         cram=protected("data/{collection}/cram/{sample}.cram"),
         crai=protected("data/{collection}/cram/{sample}.cram.crai"),
