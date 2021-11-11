@@ -25,9 +25,10 @@ rule gatk3_haplotype_caller:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        cram="data/source/{source}/bam/{sample}.cram",
+        cram="data/source/{source}/cram/{sample}.cram",
     output:
-        gvcf=protected("data/source/{source}/vcf/{sample}.g.vcf"),
+        vcf=protected("data/source/{source}/gVCF/{sample}.g.vcf.gz"),
+        tbi=protected("data/source/{source}/gVCF/{sample}.g.vcf.gz.tbi"),
     log:
         log="data/source/{source}/vcf/{sample}.log",
     shell:
@@ -57,4 +58,4 @@ rule gatk3_haplotype_caller:
         " -R {input.ref}"
         " -nct 1"
         " -I {input.cram}"
-        " -o {output.gvcf}"
+        " -o {output.vcf}"

@@ -12,11 +12,17 @@ include: "rules/data/1000g.smk"
 include: "rules/data/hgdp.smk"
 include: "rules/data/sgdp.smk"
 include: "rules/data/ggvp.smk"
+#
 # rules to apply the IGSR genotyping pipeline
-# include: "rules/01-reference.smk"
-# include: "rules/02-align.smk"
-# include: "rules/03-call.smk"
-# include: "rules/04-joint-call.smk"
+include: "rules/01-reference.smk"
+include: "rules/02-align.smk"
+include: "rules/03-call.smk"
+include: "rules/04-joint-call.smk"
+
+
+# prefer download options, when they are available
+ruleorder: sgdp_download_cram > ggvp_download_cram > samtools_cram
+ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_haplotype_caller
 
 
 rule all:
