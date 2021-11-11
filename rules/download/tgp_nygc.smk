@@ -22,29 +22,29 @@ wildcard_constraints:
     ext="vcf.gz(.tbi)?",
 
 
-rule tpg_nygc_md5:
+rule tgp_nygc_md5:
     """
     Make an md5 checksum file for validating the 1000G data
     """
     input:
-        man="data/tpg_nygc/20211105_NYGC_GATK_raw_calls_updated_manifest.txt",
+        man="data/source/tgp_nygc/20211105_NYGC_GATK_raw_calls_updated_manifest.txt",
     output:
-        md5="data/tpg_nygc/gVCF/{sample}.g.{ext}.md5",
+        md5="data/source/tgp_nygc/gVCF/{sample}.g.{ext}.md5",
     params:
         rgx=r"{sample}.haplotypeCalls.er.raw.{ext}\s",
-        file="data/tpg_nygc/gVCF/{sample}.g.{ext}",
+        file="data/source/tgp_nygc/gVCF/{sample}.g.{ext}",
     shell:
         """grep -P '{params.rgx}' {input.man} | awk '{{ print $3" {params.file}" }}' > {output.md5}"""
 
 
-rule tpg_nygc_download_gvcf:
+rule tgp_nygc_download_gvcf:
     """
     Download GATK HaplotypeCaller gVCFs for each high-coverage NYGC 1000G sample
     """
     input:
-        md5="data/tpg_nygc/gVCF/{sample}.g.{ext}.md5",
+        md5="data/source/tgp_nygc/gVCF/{sample}.g.{ext}.md5",
     output:
-        vcf="data/tpg_nygc/gVCF/{sample}.g.{ext}",
+        vcf="data/source/tgp_nygc/gVCF/{sample}.g.{ext}",
     resources:
         ebi_ftp=1,
     shell:
@@ -52,19 +52,19 @@ rule tpg_nygc_download_gvcf:
         "md5sum --status --check {input.md5}"
 
 
-def tpg_nygc_list_all_gvcf():
-    samples = pd.read_table("data/tpg_nygc/download-1000_genomes_30x_on_grch38.tsv")
+def tgp_nygc_list_all_gvcf():
+    samples = pd.read_table("data/source/tgp_nygc/igsr-1000_genomes_30x_on_grch38.tsv")
 
     files = [
-        [f"data/tpg_nygc/gVCF/{sample}.g.vcf.gz", f"data/tpg_nygc/gVCF/{sample}.g.vcf.gz.tbi"]
+        [f"data/source/tgp_nygc/gVCF/{sample}.g.vcf.gz", f"data/source/tgp_nygc/gVCF/{sample}.g.vcf.gz.tbi"]
         for sample in samples["Sample name"]
     ]
 
     return files
 
 
-rule tpg_nygc_download_all_gvcf:
+rule tgp_nygc_download_all_gvcf:
     input:
-        tpg_nygc_list_all_gvcf(),
+        tgp_nygc_list_all_gvcf(),
     output:
-        touch("data/tpg_nygc/gVCF/download.done"),
+        touch("data/source/tgp_nygc/gVCF/download.done"),

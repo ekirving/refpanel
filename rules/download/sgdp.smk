@@ -25,11 +25,11 @@ rule sgdp_md5:
     Make an md5 checksum file for validating the SGDP data
     """
     input:
-        man="data/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv",
+        man="data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv",
     output:
-        md5="data/sgdp/cram/{sample}.{ext}.md5",
+        md5="data/source/sgdp/cram/{sample}.{ext}.md5",
     params:
-        file="data/sgdp/cram/{sample}.{ext}",
+        file="data/source/sgdp/cram/{sample}.{ext}",
         col=lambda wildcards: 4 if "crai" in wildcards.ext else 2,
     shell:
         r"""grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col}" {params.file}" }}' > {output.md5}"""
@@ -40,10 +40,10 @@ rule sgdp_download_cram:
     Download bwa-mem CRAM files for each fully-public SGDP sample
     """
     input:
-        man="data/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv",
-        md5="data/sgdp/cram/{sample}.{ext}.md5",
+        man="data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv",
+        md5="data/source/sgdp/cram/{sample}.{ext}.md5",
     output:
-        cram="data/sgdp/cram/{sample}.{ext}",
+        cram="data/source/sgdp/cram/{sample}.{ext}",
     params:
         col=lambda wildcards: 3 if "crai" in wildcards.ext else 1,
     resources:
@@ -55,9 +55,12 @@ rule sgdp_download_cram:
 
 
 def sgdp_list_all_cram():
-    samples = pd.read_table("data/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv")
+    samples = pd.read_table("data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv")
 
-    files = [[f"data/sgdp/cram/{sample}.cram", f"data/sgdp/cram/{sample}.cram.crai"] for sample in samples["Sample"]]
+    files = [
+        [f"data/source/sgdp/cram/{sample}.cram", f"data/source/sgdp/cram/{sample}.cram.crai"]
+        for sample in samples["Sample"]
+    ]
 
     return files
 
@@ -66,4 +69,4 @@ rule sgdp_download_all_cram:
     input:
         sgdp_list_all_cram(),
     output:
-        touch("data/sgdp/cram/download.done"),
+        touch("data/source/sgdp/cram/download.done"),

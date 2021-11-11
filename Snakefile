@@ -17,6 +17,6 @@ include: "rules/download/tgp_nygc.smk"
 
 rule all:
     input:
-        "data/hgdp/gVCF/download.done",
-        "data/sgdp/cram/download.done",
-        "data/tpg_nygc/gVCF/download.done",
+        "data/source/hgdp/gVCF/download.done",
+        "data/source/sgdp/cram/download.done",
+        "data/source/tgp_nygc/gVCF/download.done",
