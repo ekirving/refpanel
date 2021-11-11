@@ -11,10 +11,9 @@ __license__ = "MIT"
 # include: "rules/02-align.smk"
 # include: "rules/03-call.smk"
 # include: "rules/04-joint-call.smk"
-include: "rules/download/1000g.smk"
-include: "rules/download/sgdp.smk"
-include: "rules/download/hgdp.smk"
-include: "rules/download/ggvp.smk"
+include: "rules/data/1000g.smk"
+include: "rules/data/sgdp.smk"
+include: "rules/data/hgdp.smk"
 
 
 rule all:
