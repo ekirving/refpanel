@@ -1,5 +1,8 @@
 *-commands.sh
 .snakemake
-data/1000G_NYGC/gVCF
+data/*/bam/
+data/*/cram/
+data/*/fastq/
+data/*/gVCF/
 data/reference/GRCh38/
 nohup*

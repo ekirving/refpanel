@@ -7,16 +7,16 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 
-include: "rules/igsr/ref.smk"
-include: "rules/igsr/align.smk"
-include: "rules/igsr/call.smk"
-include: "rules/igsr/nygc_1000g.smk"
-include: "rules/igsr/hgdp.smk"
-include: "rules/igsr/sgdp.smk"
+include: "rules/01-ref.smk"
+include: "rules/02-align.smk"
+include: "rules/03-call.smk"
+include: "rules/download/hgdp.smk"
+include: "rules/download/nygc_1000g.smk"
+include: "rules/download/sgdp.smk"
 
 
 rule all:
     input:
-        "data/1000G_NYGC/gVCF/download.done",
-        "data/HGDP/gVCF/download.done",
-        "data/SGDP/gVCF/download.done",
+        "data/1000g_nygc/gVCF/download.done",
+        "data/hgdp/gVCF/download.done",
+        "data/sgdp/cram/download.done",

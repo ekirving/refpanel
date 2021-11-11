@@ -24,8 +24,8 @@ rule hgdp_download_gvcf:
     Download GATK HaplotypeCaller gVCFs for each HGDP sample
     """
     output:
-        vcf="data/HGDP/gVCF/{sample}.g.vcf.gz",
-        tbi="data/HGDP/gVCF/{sample}.g.vcf.gz.tbi",
+        vcf="data/hgdp/gVCF/{sample}.g.vcf.gz",
+        tbi="data/hgdp/gVCF/{sample}.g.vcf.gz.tbi",
     resources:
         sanger_ftp=1,
     shell:
@@ -35,10 +35,10 @@ rule hgdp_download_gvcf:
 
 
 def hgdp_list_all_gvcf():
-    samples = pd.read_table("data/HGDP/hgdp_wgs.20190516.metadata.txt")
+    samples = pd.read_table("data/hgdp/hgdp_wgs.20190516.metadata.txt")
 
     files = [
-        [f"data/HGDP/gVCF/{sample}.g.vcf.gz", f"data/HGDP/gVCF/{sample}.g.vcf.gz.tbi"] for sample in samples["sample"]
+        [f"data/hgdp/gVCF/{sample}.g.vcf.gz", f"data/hgdp/gVCF/{sample}.g.vcf.gz.tbi"] for sample in samples["sample"]
     ]
 
     return files
@@ -48,4 +48,4 @@ rule hgdp_download_all_gvcf:
     input:
         hgdp_list_all_gvcf(),
     output:
-        touch("data/HGDP/gVCF/download.done"),
+        touch("data/hgdp/gVCF/download.done"),

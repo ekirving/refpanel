@@ -27,12 +27,12 @@ rule nygc_1000g_md5:
     Make an md5 checksum file for validating the 1000G data
     """
     input:
-        man="data/1000G_NYGC/20211105_NYGC_GATK_raw_calls_updated_manifest.txt",
+        man="data/1000g_nygc/20211105_NYGC_GATK_raw_calls_updated_manifest.txt",
     output:
-        md5="data/1000G_NYGC/gVCF/{sample}.g.{ext}.md5",
+        md5="data/1000g_nygc/gVCF/{sample}.g.{ext}.md5",
     params:
         rgx=r"{sample}.haplotypeCalls.er.raw.{ext}\s",
-        file="data/1000G_NYGC/gVCF/{sample}.g.{ext}",
+        file="data/1000g_nygc/gVCF/{sample}.g.{ext}",
     shell:
         """grep -P '{params.rgx}' {input.man} | awk '{{ print $3" {params.file}" }}' > {output.md5}"""
 
@@ -42,9 +42,9 @@ rule nygc_1000g_download_gvcf:
     Download GATK HaplotypeCaller gVCFs for each high-coverage NYGC 1000G sample
     """
     input:
-        md5="data/1000G_NYGC/gVCF/{sample}.g.{ext}.md5",
+        md5="data/1000g_nygc/gVCF/{sample}.g.{ext}.md5",
     output:
-        vcf="data/1000G_NYGC/gVCF/{sample}.g.{ext}",
+        vcf="data/1000g_nygc/gVCF/{sample}.g.{ext}",
     resources:
         ebi_ftp=1,
     shell:
@@ -53,10 +53,10 @@ rule nygc_1000g_download_gvcf:
 
 
 def nygc_1000g_list_all_gvcf():
-    samples = pd.read_table("data/1000G_NYGC/download-1000_genomes_30x_on_grch38.tsv")
+    samples = pd.read_table("data/1000g_nygc/download-1000_genomes_30x_on_grch38.tsv")
 
     files = [
-        [f"data/1000G_NYGC/gVCF/{sample}.g.vcf.gz", f"data/1000G_NYGC/gVCF/{sample}.g.vcf.gz.tbi"]
+        [f"data/1000g_nygc/gVCF/{sample}.g.vcf.gz", f"data/1000g_nygc/gVCF/{sample}.g.vcf.gz.tbi"]
         for sample in samples["Sample name"]
     ]
 
@@ -67,4 +67,4 @@ rule nygc_1000g_download_all_gvcf:
     input:
         nygc_1000g_list_all_gvcf(),
     output:
-        touch("data/1000G_NYGC/gVCF/download.done"),
+        touch("data/1000g_nygc/gVCF/download.done"),
