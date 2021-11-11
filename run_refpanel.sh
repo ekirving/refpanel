@@ -50,10 +50,10 @@ flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} sanger_ftp=${MAX_FTP} "
 
 #for chr in $(seq ${start} ${stop}); do
 #  echo "Starting chr${chr}..." >>$logfile
-#  (
-set -x
-snakemake ${flags} --config refpanel=${refpanel}  # chr=${chr}
-#  ) &>>${logfile}
+(
+  set -x
+  snakemake ${flags} --config refpanel=${refpanel}  # chr=${chr}
+) &>>${logfile}
 #done
 
 echo "DONE!" >>${logfile}
