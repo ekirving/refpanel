@@ -156,11 +156,10 @@ rule gatk3_base_recalibrator:
     """
     input:
         bam="data/source/{source}/bam/{sample}_merged_sorted_dedup.bam",
+        bai="data/source/{source}/bam/{sample}_merged_sorted_dedup.bam.bai",
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        # TODO refactor this to include X and Y calling
-        list="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla_autosomes.interval_list",
         snps="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
-        indels="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",
+        indels="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
     output:
         tbl=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table"),
@@ -172,7 +171,6 @@ rule gatk3_base_recalibrator:
         " --downsample_to_fraction 0.1"
         " -nct 4"
         " --preserve_qscores_less_than 6"
-        " -L {input.list}"
         " -R {input.ref}"
         " -o {output.tbl}"
         " -I {input.bam}"
