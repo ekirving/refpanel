@@ -3,6 +3,9 @@
 source:
 
   example:
+    # metadata sheet containing the list of samples and populations
+    samples: example/example-samples.tsv
+
     # metadata sheet containing the list of accessions and fastq files
     accessions: example/example-accessions.tsv
 
@@ -19,5 +22,5 @@ source:
 panel:
 
   example-panel:
-    # metadata sheet containing the list of samples and populations
+    # metadata sheet containing the list of samples and populations for this reference panel
     samples: example/example-samples.tsv

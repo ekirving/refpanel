@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+from snakemake.io import temp
+
 """
 The human reference genome used by the International Genome Sample Resource (IGSR)
 
@@ -81,3 +83,56 @@ rule reference_ncbi_remapper_fix_errors:
         " sed '/^#/!s/ /_/g' | "
         " bgzip > {output.vcf} && "
         "bcftools index --tbi {output.vcf}"
+
+
+rule reference_grch38_fai_to_bed:
+    """Convert a FASTA index into a BED file"""
+    input:
+        fai="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa.fai",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    shell:
+        r"""awk -v FS="\t" -v OFS="\t" '{{print $1 FS "0" FS ($2-1)}}' {input.fai} > {output.bed}"""
+
+
+rule reference_grch38_male_haploid:
+    """
+    Make a bed file for male haploid regions (i.e., chrX without PAR1 and PAR2)
+    """
+    input:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
+        chrX=temp("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.chrX.bed"),
+    params:
+        par1=r"\t".join(["chrX", "10000", "2781479"]),
+        par2=r"\t".join(["chrX", "155701382", "156030895"]),
+    shell:
+        "grep chrX {input.bed} > {output.chrX} && "
+        "printf '{params.par1}\n{params.par2}\n' | "
+        " bedtools subtract -a {output.chrX} -b stdin > {output.bed}"
+
+
+rule reference_grch38_male_diploid:
+    """
+    Make a bed file for male diploid regions (i.e., drop the haploid regions)
+    """
+    input:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+        hap="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.2.bed",
+    shell:
+        "bedtools subtract -nonamecheck -a {input.bed} -b {input.hap} > {output.bed}"
+
+
+rule reference_grch38_female_diploid:
+    """
+    Make a bed file for female diploid regions (i.e., drop chrY)
+    """
+    input:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.F.2.bed",
+    shell:
+        "grep -v chrY {input.bed} > {output.bed}"

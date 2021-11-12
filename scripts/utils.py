@@ -46,6 +46,15 @@ def list_accessions(config, source, sample):
     return accessions.loc[[sample]]["accession"].tolist()
 
 
+def sample_sex(config, source, sample):
+    """
+    Get the sex of the sample from the metadata sheet
+    """
+    samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
+
+    return samples.loc[sample]["sex"]
+
+
 def list_samples(config, panel):
     """
     Get the list of samples contained in this reference panel

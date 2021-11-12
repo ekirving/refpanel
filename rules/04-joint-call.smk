@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import expand, protected, unpack
+from snakemake.io import protected, unpack
 
 from scripts.utils import list_samples
 
@@ -27,7 +27,7 @@ def gatk3_genotype_gvcf_input(wildcards):
         ],
     }
 
-
+# noinspection PyUnresolvedReferences
 rule gatk3_genotype_gvcf:
     """
     Jointly call genotypes in all samples
