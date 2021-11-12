@@ -30,6 +30,15 @@ ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_haplotype_caller
 
 rule all:
     input:
+        # "data/source/sgdp/cram/armenia293.cram",
+        # "data/source/ggvp/cram/SC_GMFUL5309722.cram",
+        # "data/source/example/bam/ERR1373257.bam",
+        # "data/source/example/cram/HGDP00094.cram",
+        "data/source/example/bam/HGDP00094_merged_sorted_dedup_recal.table",
+
+
+rule download_data:
+    input:
         "data/source/1000g/gVCF/download.done",
         "data/source/hgdp/gVCF/download.done",
         "data/source/sgdp/cram/download.done",
