@@ -6,7 +6,9 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import expand, protected
+from snakemake.io import expand, protected, unpack
+
+from scripts.utils import list_samples
 
 global workflow
 
@@ -17,16 +19,23 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 """
 
 
+def gatk3_genotype_gvcf_input(wildcards):
+    return {
+        "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        "gvcfs": [
+            f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for source, sample in list_samples(config, wildcards.panel)
+        ],
+    }
+
+
 rule gatk3_genotype_gvcf:
     """
     Jointly call genotypes in all samples
     """
     input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        # TODO add a sample metadata sheet for this to use
-        gvcfs=expand("data/panel/{panel}/vcf/{sample}.g.vcf", sample=[]),
+        unpack(gatk3_genotype_gvcf_input),
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}.vcf"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}.vcf.gz"),
     log:
         log="data/panel/{panel}/vcf/{panel}.log",
     shell:
@@ -45,7 +54,7 @@ rule gatk3_variant_recalibrator_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
@@ -93,7 +102,7 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
@@ -134,11 +143,11 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
         recal="data/panel/{panel}/vcf/{panel}_vqsr_snp.recal",
         tranche="data/panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_vqsr_snp.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}_vqsr_snp.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_vqsr_snp.log",
     shell:
@@ -160,11 +169,11 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
         recal="data/panel/{panel}/vcf/{panel}_vqsr_indel.recal",
         tranche="data/panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_vqsr_indel.vcf",
+        vcf="data/panel/{panel}/vcf/{panel}_vqsr_indel.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_vqsr_indel.log",
     shell:

@@ -1,6 +1,12 @@
+
+# data sources, containing samples and individual library accessions
 source:
+
   example:
+    # metadata sheet containing the list of accessions and fastq files
     accessions: example/example-accessions.tsv
+
+    # mapping of readgroup tags to accession metadata column names
     readgroup:
       ID: accession
       SM: sample
@@ -8,3 +14,10 @@ source:
       PL: platform
       LB: library
       DS: description
+
+# aggregations of different data sources
+panel:
+
+  example-panel:
+    # metadata sheet containing the list of samples and populations
+    samples: example/example-samples.tsv
