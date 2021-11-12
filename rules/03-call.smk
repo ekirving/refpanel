@@ -34,8 +34,11 @@ rule gatk3_haplotype_caller:
         tbi=protected("data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz.tbi"),
     log:
         log="data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.log",
+    resources:
+        mem_mb=8*1024
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T HaplotypeCaller"
         " --genotyping_mode DISCOVERY"
         " -A AlleleBalanceBySample"
@@ -53,7 +56,7 @@ rule gatk3_haplotype_caller:
         " -A RMSMappingQuality"
         " -A ReadPosRankSumTest"
         " -A VariantType"
-        " -l INFO"
+        " --logging_level INFO"
         " --emitRefConfidence GVCF"
         " -rf BadCigar"
         " --variant_index_parameter 128000"
