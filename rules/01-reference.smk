@@ -108,9 +108,9 @@ rule reference_grch38_male_haploid:
         par1=r"\t".join(["chrX", "10000", "2781479"]),
         par2=r"\t".join(["chrX", "155701382", "156030895"]),
     shell:
-        "grep chrX {input.bed} > {output.chrX} && "
-        "printf '{params.par1}\n{params.par2}\n' | "
-        " bedtools subtract -a {output.chrX} -b stdin > {output.bed}"
+        r"grep chrX {input.bed} > {output.chrX} && "
+        r"printf '{params.par1}\n{params.par2}\n' | "
+        r" bedtools subtract -a {output.chrX} -b stdin > {output.bed}"
 
 
 rule reference_grch38_male_diploid:
