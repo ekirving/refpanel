@@ -109,6 +109,7 @@ rule picard_sort_bam:
         bam="data/source/{source}/bam/{sample}_merged.bam",
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted.bam"),
+        bai=temp("data/source/{source}/bam/{sample}_merged_sorted.bai"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted.log",
     shell:
@@ -132,6 +133,7 @@ rule picard_mark_duplicates:
         bam="data/source/{source}/bam/{sample}_merged_sorted.bam",
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup.bam"),
+        bai=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup.bam.bai"),
         met="data/source/{source}/bam/{sample}_merged_sorted_dedup.metrics",
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup.log",
@@ -142,7 +144,8 @@ rule picard_mark_duplicates:
         " VALIDATION_STRINGENCY=SILENT"
         " M={output.met}"
         " I={input.bam}"
-        " O={output.bam} 2> {log}"
+        " O={output.bam} 2> {log} && "
+        "samtools index {output.bam}"
 
 
 rule gatk3_base_recalibrator:
@@ -166,7 +169,7 @@ rule gatk3_base_recalibrator:
     shell:
         "gatk3"
         " -T BaseRecalibrator"
-        " -downsample_to_fraction 0.1"
+        " --downsample_to_fraction 0.1"
         " -nct 4"
         " --preserve_qscores_less_than 6"
         " -L {input.list}"
@@ -185,6 +188,7 @@ rule gatk3_print_reads:
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         bam="data/source/{source}/bam/{sample}_merged_sorted_dedup.bam",
+        bai="data/source/{source}/bam/{sample}_merged_sorted_dedup.bam.bai",
         tbl="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table",
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam"),
