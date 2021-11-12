@@ -1,3 +1,4 @@
 source	sample	library	sample_accession	source	library_type	population	latitude	longitude	region	sex	coverage	freemix	capmq	insert_size_average	array_non_reference_discordance	library_alias_ENA
 example	HGDP00094	HGDP00094.15665963	ERS474553	sanger	PCRfree	Balochi	30.5	66.5	CENTRAL_SOUTH_ASIA	M	33.73	0.01702	20	418	0.10429	NA
 example	HGDP01328	HGDP01328.15319853	ERS474219	sanger	PCRfree	She	27	119	EAST_ASIA	M	36	0.01398	20	448.3	0.07332	NA
+example	HGDP01356	HGDP01356.15319857	ERS474267	sanger	PCRfree	Tu	36	101	EAST_ASIA	F	32.86	0.00797	21	422.4	0.038722	NA
