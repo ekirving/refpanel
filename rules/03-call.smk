@@ -58,4 +58,4 @@ rule gatk3_haplotype_caller:
         " -R {input.ref}"
         " -nct 1"
         " -I {input.cram}"
-        " -o {output.vcf}"
+        " -o {output.vcf} 2> {log}"

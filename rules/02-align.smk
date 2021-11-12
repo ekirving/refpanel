@@ -218,9 +218,6 @@ rule samtools_cram:
     output:
         cram=protected("data/source/{source}/cram/{sample}.cram"),
         crai=protected("data/source/{source}/cram/{sample}.cram.crai"),
-    log:
-        log="data/source/{source}/cram/{sample}.cram.log",
     shell:
-        "( samtools view -C -T {input.ref} -o {output.cram} {input.bam} && "
-        "  samtools index {output.cram} "
-        ") 2> {log}"
+        "samtools view -C -T {input.ref} -o {output.cram} {input.bam} && "
+        "samtools index {output.cram}"
