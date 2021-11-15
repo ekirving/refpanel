@@ -34,7 +34,7 @@ rule all:
     input:
         # "data/source/example/gVCF/HGDP00094.g.vcf.gz",
         # "data/source/example/gVCF/HGDP01356.g.vcf.gz",
-        "data/panel/example-panel/vcf/example-panel_chr22_vqsr_phased.vcf.gz",
+        "data/panel/example-panel/vcf/example-panel_chr22_vqsr.vcf.gz",
 
 
 rule refpanel:
