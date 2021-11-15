@@ -93,8 +93,11 @@ rule picard_merge_bam_files:
         log="data/source/{source}/bam/{sample}_merged.log",
     params:
         bams=lambda wildcards, input: [f"INPUT={bam}" for bam in input],
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "picard"
+        " -Xmx{resources.mem_mb}m"
         " MergeSamFiles"
         " USE_THREADING=true"
         " MAX_RECORDS_IN_RAM=2000000"
