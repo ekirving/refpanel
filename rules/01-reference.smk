@@ -98,7 +98,7 @@ rule reference_grch38_fai_to_bed:
 
 rule reference_grch38_male_haploid:
     """
-    Make a bed file for male haploid regions (i.e., chrX without PAR1 and PAR2 and chrY)
+    Make a bed file for the male haploid regions (i.e., chrX (minus PAR1 and PAR2), chrY and chrM)
     """
     input:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
@@ -109,14 +109,14 @@ rule reference_grch38_male_haploid:
         par1=r"\t".join(["chrX", "10000", "2781479"]),
         par2=r"\t".join(["chrX", "155701382", "156030895"]),
     shell:
-        r"grep -P 'chrX|chrY' {input.bed} > {output.sex} && "
+        r"grep -P 'chrX|chrY|chrM' {input.bed} > {output.sex} && "
         r"printf '{params.par1}\n{params.par2}\n' | "
         r" bedtools subtract -a {output.sex} -b stdin > {output.bed}"
 
 
 rule reference_grch38_male_diploid:
     """
-    Make a bed file for male diploid regions (i.e., drop the haploid regions)
+    Make a bed file for the male diploid regions (i.e., drop the haploid regions)
     """
     input:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
@@ -127,13 +127,25 @@ rule reference_grch38_male_diploid:
         "bedtools subtract -nonamecheck -a {input.bed} -b {input.hap} > {output.bed}"
 
 
+rule reference_grch38_female_haploid:
+    """
+    Make a bed file for the female haploid regions (i.e., chrM)
+    """
+    input:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.F.1.bed",
+    shell:
+        "grep chrM {input.bed} > {output.bed}"
+
+
 rule reference_grch38_female_diploid:
     """
-    Make a bed file for female diploid regions (i.e., drop chrY)
+    Make a bed file for female diploid regions (i.e., drop chrY and chrM)
     """
     input:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.F.2.bed",
     shell:
-        "grep -v chrY {input.bed} > {output.bed}"
+        "grep -vP 'chrY|chrM' {input.bed} > {output.bed}"
