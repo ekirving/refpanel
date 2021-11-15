@@ -118,8 +118,11 @@ rule picard_sort_bam:
         bai=temp("data/source/{source}/bam/{sample}_merged_sorted.bai"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted.log",
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "picard"
+        " -Xmx{resources.mem_mb}m"
         " SortSam"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
@@ -143,8 +146,11 @@ rule picard_mark_duplicates:
         met="data/source/{source}/bam/{sample}_merged_sorted_dedup.metrics",
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup.log",
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "picard"
+        " -Xmx{resources.mem_mb}m"
         " MarkDuplicates"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
@@ -171,9 +177,12 @@ rule gatk3_base_recalibrator:
         tbl=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal_table.log",
+    resources:
+        mem_mb=8 * 1024,
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T BaseRecalibrator"
         " --downsample_to_fraction 0.1"
         " --num_cpu_threads_per_data_thread {threads}"
@@ -199,6 +208,8 @@ rule gatk3_print_reads:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.log",
+    resources:
+        mem_mb=8 * 1024,
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
