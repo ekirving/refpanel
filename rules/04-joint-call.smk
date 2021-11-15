@@ -42,6 +42,8 @@ rule gatk3_genotype_gvcf:
         vcf=protected("data/panel/{panel}/vcf/{panel}.vcf.gz"),
     log:
         log="data/panel/{panel}/vcf/{panel}.log",
+    params:
+        gvcfs=lambda wildcards, input: " ".join([f"--variant {gvcf}" for gvcf in input.gvcfs])
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -49,7 +51,7 @@ rule gatk3_genotype_gvcf:
         " -R {input.ref}"
         " --num_threads {threads}"
         " --disable_auto_index_creation_and_locking_when_reading_rods"
-        " --variant {input.gvcfs}"
+        " {params.gvcfs}"
         " -o {output.vcf}"
 
 
