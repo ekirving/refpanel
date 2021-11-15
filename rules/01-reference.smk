@@ -190,7 +190,7 @@ rule reference_grch38_genetic_map:
     Fetch the GRCh38 genetic map
     """
     output:
-        map="data/reference/GRCh38/plink.GRCh38.map.zip",
+        map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     shell:
-        "wget --quiet -O {output.map} -o /dev/null http://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/plink.GRCh38.map.zip && "
-        "unzip -t -qq {output.map}"
+        "wget --quiet -O {output.map} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
+        "gunzip --test {output.map}"

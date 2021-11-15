@@ -23,6 +23,7 @@ include: "rules/01-reference.smk"
 include: "rules/02-align.smk"
 include: "rules/03-call.smk"
 include: "rules/04-joint-call.smk"
+include: "rules/05-phase.smk"
 
 
 # preference download rules, when they are available
@@ -34,7 +35,7 @@ rule all:
     input:
         # "data/source/example/gVCF/HGDP00094.g.vcf.gz",
         # "data/source/example/gVCF/HGDP01356.g.vcf.gz",
-        "data/panel/example-panel/vcf/example-panel_chr22_vqsr.vcf.gz",
+        "data/panel/example-panel/vcf/example-panel_chr22_vqsr_phased.vcf.gz",
 
 
 rule refpanel:

@@ -15,24 +15,26 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 """
 
 # use 25% of the total cores
-BEAGLE_NUM_THREADS = workflow.cores / 4
+SHAPEIT4_NUM_THREADS = workflow.cores / 4
 
 
-rule beagle_phase_vcf:
+rule shapeit4_phase_vcf:
     """
-    Phase the joint-callset using Beagle
+    Phase the joint-callset
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
-        map="data/reference/GRCh38/plink.GRCh38.map.zip",
+        map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_phased.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_phased.vcf.log",
-    threads: BEAGLE_NUM_THREADS
+    threads: SHAPEIT4_NUM_THREADS
     shell:
-        "beagle "
-        " nthreads={threads}"
-        " gt={input.vcf}"
-        " map={input.map}"
-        " out={output.vcf} 2> {log}"
+        "shapeit4"
+        " --thread {threads}"
+        " --input {input.vcf}"
+        " --map {input.map}"
+        " --region {wildcards.chr}"
+        " --sequencing"
+        " --output {output.vcf} 2> {log}"
