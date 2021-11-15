@@ -23,7 +23,7 @@ GATK_NUM_THREADS = 5
 
 
 wildcard_constraints:
-    chr="chr(\d+|X|Y|M)|others",
+    chr="(chr(\d+|X|Y|M))|(others)",
 
 
 def gatk3_genotype_gvcf_input(wildcards):
