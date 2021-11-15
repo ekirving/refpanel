@@ -13,7 +13,7 @@ datetime=$(date +%Y-%m-%d-%H%M.%S)
 # make a unique log file
 logfile="nohup-${datetime}.out"
 
-refpanel=${args[0]:='default'}
+refpanel=${args[0]:='example-panel'}
 #start=${args[1]:=1}
 #stop=${args[2]:=22}
 
@@ -42,7 +42,6 @@ flags+="--nolock "
 flags+="--keep-going "
 flags+="--printshellcmds "
 flags+="--show-failed-logs "
-#flags+="--keep-incomplete "
 flags+="--rerun-incomplete "
 flags+="--reason "
 flags+="--restart-times 1 "

@@ -30,7 +30,7 @@ ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_haplotype_caller
 
 rule all:
     input:
-        "data/panel/example-panel/vcf/example-panel.vcf.gz",
+        "data/panel/{refpanel}/vcf/{refpanel}.vcf.gz".format(refpanel=config.get("refpanel", "example-panel")),
 
 
 rule download_data:
