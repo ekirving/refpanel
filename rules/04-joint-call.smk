@@ -10,8 +10,6 @@ from snakemake.io import protected, unpack
 
 from scripts.utils import list_samples
 
-global workflow
-
 """
 Rules to perform joint genotype calling for the IGSR pipeline
 

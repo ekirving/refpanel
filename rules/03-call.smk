@@ -10,8 +10,6 @@ from snakemake.io import protected, unpack
 
 from scripts.utils import sample_sex
 
-global workflow
-
 """
 Rules to perform sample-level genotype calling for the IGSR pipeline
 
