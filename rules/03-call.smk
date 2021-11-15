@@ -64,7 +64,7 @@ rule gatk3_haplotype_caller:
         " --sample_ploidy {wildcards.ploidy}"
         " --intervals {input.region}"
         " -R {input.ref}"
-        " -nct 1"
+        " --num_cpu_threads_per_data_thread 1"
         " -I {input.cram}"
         " -o {output.vcf} 2> {log}"
 

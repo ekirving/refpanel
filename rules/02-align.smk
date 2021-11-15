@@ -8,6 +8,8 @@ __license__ = "MIT"
 
 from snakemake.io import expand, protected, temp
 
+from scripts.utils import fastq_path, read_group, list_accessions
+
 global workflow
 
 """
@@ -16,7 +18,8 @@ Rules to perform short-read alignment for the IGSR pipeline
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
-from scripts.utils import fastq_path, read_group, list_accessions
+# TODO reasonable?
+GATK_NUM_THREADS = 4
 
 
 rule bwa_mem_pe:
@@ -165,11 +168,12 @@ rule gatk3_base_recalibrator:
         tbl=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal_table.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T BaseRecalibrator"
         " --downsample_to_fraction 0.1"
-        " -nct 4"
+        " --num_cpu_threads_per_data_thread {threads}"
         " --preserve_qscores_less_than 6"
         " -R {input.ref}"
         " -o {output.tbl}"
@@ -192,10 +196,11 @@ rule gatk3_print_reads:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T PrintReads"
-        " -nct 4"
+        " --num_cpu_threads_per_data_thread {threads}"
         " --disable_indel_quals"
         " --preserve_qscores_less_than 6"
         " -SQQ 10"
