@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import protected, unpack, expand
+from snakemake.io import protected, unpack
 
 from scripts.utils import sample_sex
 

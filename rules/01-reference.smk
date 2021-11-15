@@ -149,3 +149,27 @@ rule reference_grch38_female_diploid:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.F.2.bed",
     shell:
         "grep -vP 'chrY|chrM' {input.bed} > {output.bed}"
+
+
+rule reference_grch38_chrom:
+    """
+    Make a bed file for a specific chromosome
+    """
+    input:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
+    shell:
+        "grep -w '{wildcards.chr}' {input.bed} > {output.bed}"
+
+
+rule reference_grch38_chrom_others:
+    """
+    Make a bed file for all the non-standard contigs (i.e., random, unknown, alt, decoy, and HLA)
+    """
+    input:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    output:
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.others.bed",
+    shell:
+        "grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"

@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+from snakemake.io import expand
+
 
 configfile: "config.yaml"
 
@@ -30,7 +32,14 @@ ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_haplotype_caller
 
 rule all:
     input:
-        "data/panel/{refpanel}/vcf/{refpanel}.vcf.gz".format(refpanel=config.get("refpanel", "example-panel")),
+        # "data/source/example/gVCF/HGDP00094.g.vcf.gz",
+        # "data/source/example/gVCF/HGDP01356.g.vcf.gz",
+        "data/panel/example-panel/vcf/example-panel_chr22_vqsr.vcf.gz",
+
+
+rule refpanel:
+    input:
+        expand("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz", panel=config["refpanel"], chr=["22"]),
 
 
 rule download_data:

@@ -25,6 +25,7 @@ GATK_NUM_THREADS = 5
 def gatk3_genotype_gvcf_input(wildcards):
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
         "gvcfs": [
             f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for source, sample in list_samples(config, wildcards.panel)
         ],
@@ -39,16 +40,17 @@ rule gatk3_genotype_gvcf:
     input:
         unpack(gatk3_genotype_gvcf_input),
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}.vcf.gz"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
     log:
-        log="data/panel/{panel}/vcf/{panel}.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}.log",
     params:
-        gvcfs=lambda wildcards, input: " ".join([f"--variant {gvcf}" for gvcf in input.gvcfs])
+        gvcfs=lambda wildcards, input: " ".join([f"--variant {gvcf}" for gvcf in input.gvcfs]),
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T GenotypeGVCFs"
         " -R {input.ref}"
+        " -L {input.chr}"
         " --num_threads {threads}"
         " --disable_auto_index_creation_and_locking_when_reading_rods"
         " {params.gvcfs}"
@@ -61,17 +63,17 @@ rule gatk3_variant_recalibrator_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_vqsr_snp.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_vqsr_snp_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -110,15 +112,15 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_vqsr_indel.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_vqsr_indel_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -152,13 +154,13 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
-        recal="data/panel/{panel}/vcf/{panel}_vqsr_snp.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_vqsr_snp.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.tranches",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_vqsr_snp.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_vqsr_snp.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -179,13 +181,13 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}.vcf.gz",
-        recal="data/panel/{panel}/vcf/{panel}_vqsr_indel.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_vqsr_indel.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.tranches",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_vqsr_indel.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_vqsr_indel.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -198,3 +200,22 @@ rule gatk3_apply_recalibration_indel:
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
         " -o {output.vcf}"
+
+
+rule picard_merge_vcfs:
+    """
+    Merge the SNP and INDEL VCF files
+    """
+    input:
+        snp="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz",
+        indel="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.log",
+    shell:
+        "picard"
+        " MergeVcfs"
+        " INPUT={input.snp}"
+        " INPUT={input.indel}"
+        " OUTPUT={output.vcf} 2> {log}"
