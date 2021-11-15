@@ -22,6 +22,10 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 GATK_NUM_THREADS = 5
 
 
+wildcard_constraints:
+    chr="chr(\d+|X|Y|M)|others",
+
+
 def gatk3_genotype_gvcf_input(wildcards):
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
