@@ -48,7 +48,8 @@ rule reference_grch38_hapmap:
     output:
         "data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
     shell:
-        "wget --quiet -O {output} -o /dev/null https://storage.cloud.google.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz"
+        "wget --quiet -O {output} -o /dev/null https://storage.cloud.google.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz && "
+        "gunzip --test {output}"
 
 
 rule reference_grch38_1000G_omni:
@@ -56,7 +57,8 @@ rule reference_grch38_1000G_omni:
     output:
         "data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
     shell:
-        "wget --quiet -O {output} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz"
+        "wget --quiet -O {output} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz && "
+        "gunzip --test {output}"
 
 
 rule reference_grch38_1000G_snps:
@@ -64,7 +66,8 @@ rule reference_grch38_1000G_snps:
     output:
         "data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
     shell:
-        "wget --quiet -O {output} -o /dev/null https://storage.cloud.google.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz"
+        "wget --quiet -O {output} -o /dev/null https://storage.cloud.google.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz && "
+        "gunzip --test {output}"
 
 
 rule reference_ncbi_remapper_fix_errors:
