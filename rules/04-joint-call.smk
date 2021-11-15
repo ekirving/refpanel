@@ -27,6 +27,7 @@ def gatk3_genotype_gvcf_input(wildcards):
         ],
     }
 
+
 # noinspection PyUnresolvedReferences
 rule gatk3_genotype_gvcf:
     """

@@ -98,20 +98,20 @@ rule reference_grch38_fai_to_bed:
 
 rule reference_grch38_male_haploid:
     """
-    Make a bed file for male haploid regions (i.e., chrX without PAR1 and PAR2)
+    Make a bed file for male haploid regions (i.e., chrX without PAR1 and PAR2 and chrY)
     """
     input:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
-        chrX=temp("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.chrX.bed"),
+        sex=temp("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.sex.bed"),
     params:
         par1=r"\t".join(["chrX", "10000", "2781479"]),
         par2=r"\t".join(["chrX", "155701382", "156030895"]),
     shell:
-        r"grep chrX {input.bed} > {output.chrX} && "
+        r"grep -P 'chrX|chrY' {input.bed} > {output.sex} && "
         r"printf '{params.par1}\n{params.par2}\n' | "
-        r" bedtools subtract -a {output.chrX} -b stdin > {output.bed}"
+        r" bedtools subtract -a {output.sex} -b stdin > {output.bed}"
 
 
 rule reference_grch38_male_diploid:

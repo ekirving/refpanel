@@ -35,7 +35,7 @@ rule gatk3_haplotype_caller:
     log:
         log="data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.log",
     resources:
-        mem_mb=8*1024
+        mem_mb=8 * 1024,
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
