@@ -183,3 +183,14 @@ rule reference_grch38_chrom_others:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.others.bed",
     shell:
         "grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"
+
+
+rule reference_grch38_genetic_map:
+    """
+    Fetch the GRCh38 genetic map
+    """
+    output:
+        map="data/reference/GRCh38/plink.GRCh38.map.zip",
+    shell:
+        "wget --quiet -O {output.map} -o /dev/null http://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/plink.GRCh38.map.zip && "
+        "unzip -t -qq {output.map}"
