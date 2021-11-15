@@ -18,6 +18,9 @@ Rules to perform joint genotype calling for the IGSR pipeline
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
+# TODO reasonable?
+GATK_NUM_THREADS = 5
+
 
 def gatk3_genotype_gvcf_input(wildcards):
     return {
@@ -39,11 +42,12 @@ rule gatk3_genotype_gvcf:
         vcf=protected("data/panel/{panel}/vcf/{panel}.vcf.gz"),
     log:
         log="data/panel/{panel}/vcf/{panel}.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T GenotypeGVCFs"
         " -R {input.ref}"
-        " -nt 5"
+        " --num_threads {threads}"
         " --disable_auto_index_creation_and_locking_when_reading_rods"
         " --variant {input.gvcfs}"
         " -o {output.vcf}"
@@ -66,11 +70,12 @@ rule gatk3_variant_recalibrator_snp:
         plot="data/panel/{panel}/vcf/{panel}_vqsr_snp_plots.R",
     log:
         log="data/panel/{panel}/vcf/{panel}.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T VariantRecalibrator"
         " -R {input.ref}"
-        " -nt 5"
+        " --num_threads {threads}"
         " -input {input.vcf}"
         " -mode SNP"
         " -recalFile {output.recal}"
@@ -112,11 +117,12 @@ rule gatk3_variant_recalibrator_indel:
         plot="data/panel/{panel}/vcf/{panel}_vqsr_indel_plots.R",
     log:
         log="data/panel/{panel}/vcf/{panel}.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T VariantRecalibrator"
         " -R {input.ref}"
-        " -nt 5"
+        " --num_threads {threads}"
         " -input {input.vcf}"
         " -mode INDEL"
         " -recalFile {output.recal}"
@@ -151,11 +157,12 @@ rule gatk3_apply_recalibration_snp:
         vcf="data/panel/{panel}/vcf/{panel}_vqsr_snp.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_vqsr_snp.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T ApplyRecalibration"
         " -R {input.ref}"
-        " -nt 5"
+        " --num_threads {threads}"
         " -input {input.vcf}"
         " -mode SNP"
         " --ts_filter_level 99.80"
@@ -177,11 +184,12 @@ rule gatk3_apply_recalibration_indel:
         vcf="data/panel/{panel}/vcf/{panel}_vqsr_indel.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_vqsr_indel.log",
+    threads: GATK_NUM_THREADS
     shell:
         "gatk3"
         " -T ApplyRecalibration"
         " -R {input.ref}"
-        " -nt 5"
+        " --num_threads {threads}"
         " -input {input.vcf}"
         " -mode INDEL"
         " --ts_filter_level 99.0"
