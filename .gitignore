@@ -1,5 +1,6 @@
 *-commands.sh
 .snakemake
+__pycache__
 data/panel/*/vcf/
 data/reference/GRCh38/
 data/source/*/bam/
