@@ -3,6 +3,9 @@
 # Email:     evan.irvingpease@gmail.com
 # License:   MIT
 
+# default reference panel
+refpanel: example-panel
+
 # data sources, containing samples and individual library accessions
 source:
 
