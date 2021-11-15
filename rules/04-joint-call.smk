@@ -46,7 +46,7 @@ rule gatk3_genotype_gvcf:
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: " ".join([f"--variant {gvcf}" for gvcf in input.gvcfs]),
     threads: GATK_NUM_THREADS
@@ -58,7 +58,7 @@ rule gatk3_genotype_gvcf:
         " --num_threads {threads}"
         " --disable_auto_index_creation_and_locking_when_reading_rods"
         " {params.gvcfs}"
-        " -o {output.vcf}"
+        " -o {output.vcf} 2> {log}"
 
 
 rule gatk3_variant_recalibrator_snp:
@@ -77,7 +77,7 @@ rule gatk3_variant_recalibrator_snp:
         tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.tranches",
         plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -107,7 +107,7 @@ rule gatk3_variant_recalibrator_snp:
         " -tranche 99.2"
         " -tranche 99.0"
         " -tranche 95.0"
-        " -tranche 90.0"
+        " -tranche 90.0 2> {log}"
 
 
 rule gatk3_variant_recalibrator_indel:
@@ -124,7 +124,7 @@ rule gatk3_variant_recalibrator_indel:
         tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.tranches",
         plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -149,7 +149,7 @@ rule gatk3_variant_recalibrator_indel:
         " -tranche 95.0"
         " -tranche 92.0"
         " -tranche 90.0"
-        " --maxGaussians 4"
+        " --maxGaussians 4 2> {log}"
 
 
 rule gatk3_apply_recalibration_snp:
@@ -164,7 +164,7 @@ rule gatk3_apply_recalibration_snp:
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -176,7 +176,7 @@ rule gatk3_apply_recalibration_snp:
         " --ts_filter_level 99.80"
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
-        " -o {output.vcf}"
+        " -o {output.vcf} 2> {log}"
 
 
 rule gatk3_apply_recalibration_indel:
@@ -191,7 +191,7 @@ rule gatk3_apply_recalibration_indel:
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -203,7 +203,7 @@ rule gatk3_apply_recalibration_indel:
         " --ts_filter_level 99.0"
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
-        " -o {output.vcf}"
+        " -o {output.vcf} 2> {log}"
 
 
 rule picard_merge_vcfs:
@@ -216,7 +216,7 @@ rule picard_merge_vcfs:
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
     shell:
         "picard"
         " MergeVcfs"

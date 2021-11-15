@@ -98,4 +98,4 @@ rule gatk3_combine_gvcfs:
         " -R {input.ref}"
         " --variant {input.gvcf1}"
         " --variant {input.gvcf2}"
-        " -o {output.vcf}"
+        " -o {output.vcf} 2> {log}"
