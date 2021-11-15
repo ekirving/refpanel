@@ -46,27 +46,33 @@ rule reference_grch38:
 rule reference_grch38_hapmap:
     """Download HapMap 3.3"""
     output:
-        "data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
+        vcf="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
+        tbi="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz.tbi",
     shell:
-        "wget --quiet -O {output} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz && "
+        "wget --quiet -O {output.vcf} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz && "
+        "wget --quiet -O {output.tbi} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz.tbi && "
         "gunzip --test {output}"
 
 
 rule reference_grch38_1000G_omni:
     """Download 1000G Omni 2.5"""
     output:
-        "data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
+        vcf="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
+        tbi="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz.tbi",
     shell:
-        "wget --quiet -O {output} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz && "
+        "wget --quiet -O {output.vcf} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz && "
+        "wget --quiet -O {output.tbi} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz.tbi && "
         "gunzip --test {output}"
 
 
 rule reference_grch38_1000G_snps:
     """Download 1000G Phase 1 high confidence SNPs"""
     output:
-        "data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
+        vcf="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
+        tbi="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi",
     shell:
-        "wget --quiet -O {output} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz && "
+        "wget --quiet -O {output.vcf} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz && "
+        "wget --quiet -O {output.tbi} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi && "
         "gunzip --test {output}"
 
 
@@ -81,6 +87,7 @@ rule reference_ncbi_remapper_fix_errors:
         vcf="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz",
+        tbi="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz.tbi",
     shell:
         "gunzip -c {input.vcf} | "
         " sed 's/POS=POS-1/POS_POS-1/g' | "

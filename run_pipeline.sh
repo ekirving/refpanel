@@ -44,7 +44,7 @@ flags+="--printshellcmds "
 flags+="--show-failed-logs "
 flags+="--rerun-incomplete "
 flags+="--reason "
-flags+="--restart-times 1 "
+#flags+="--restart-times 1 "
 flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} sanger_ftp=${MAX_FTP} "
 
 #for chr in $(seq ${start} ${stop}); do
