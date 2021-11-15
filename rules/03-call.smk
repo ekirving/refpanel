@@ -71,14 +71,12 @@ rule gatk3_haplotype_caller:
 
 def gatk3_combine_gvcfs_input(wildcards):
     """Handle sex-dependent ploidy"""
+    sex = sample_sex(config, wildcards.source, wildcards.sample)
+
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        "gvcfs": expand(
-            "data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz",
-            sex=sample_sex(config, wildcards.source, wildcards.sample),
-            ploidy=[1, 2],
-            allow_missing=True,
-        ),
+        "gvcf1": "data/source/{source}/gVCF/{sample}." + sex + ".1.g.vcf.gz",
+        "gvcf2": "data/source/{source}/gVCF/{sample}." + sex + ".2.g.vcf.gz",
     }
 
 
@@ -98,5 +96,6 @@ rule gatk3_combine_gvcfs:
         "gatk3"
         " -T CombineGVCFs"
         " -R {input.ref}"
-        " --variant {input.gvcfs}"
+        " --variant {input.gvcf1}"
+        " --variant {input.gvcf2}"
         " -o {output.vcf}"
