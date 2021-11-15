@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import protected, unpack
+from snakemake.io import protected, unpack, expand
 
 from scripts.utils import sample_sex
 
@@ -71,14 +71,15 @@ rule gatk3_haplotype_caller:
 
 def gatk3_combine_gvcfs_input(wildcards):
     """Handle sex-dependent ploidy"""
-    sex = sample_sex(config, wildcards.source, wildcards.sample)
-
-    if sex == "M":
-        gvcfs = ["data/source/{source}/gVCF/{sample}.M.1.g.vcf.gz", "data/source/{source}/gVCF/{sample}.M.2.g.vcf.gz"]
-    else:
-        gvcfs = ["data/source/{source}/gVCF/{sample}.F.2.g.vcf.gz"]
-
-    return {"ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa", "gvcfs": gvcfs}
+    return {
+        "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        "gvcfs": expand(
+            "data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz",
+            sex=sample_sex(config, wildcards.source, wildcards.sample),
+            ploidy=[1, 2],
+            allow_missing=True,
+        ),
+    }
 
 
 # noinspection PyUnresolvedReferences
