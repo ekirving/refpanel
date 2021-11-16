@@ -22,6 +22,7 @@ GATK_NUM_THREADS = 5
 
 wildcard_constraints:
     chr="(chr(\d+|X|Y|M))|(others)",
+    type="SNP|INDEL",
 
 
 def gatk3_genotype_gvcf_input(wildcards):
@@ -80,23 +81,45 @@ rule picard_merge_chromosome_vcfs:
         " OUTPUT={output.vcf} 2> {log}"
 
 
+rule gatk3_split_variants:
+    """
+    Split variants into SNPs and INDELs to perform the variant recalibration in parallel
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.log",
+    shell:
+        "gatk3 "
+        " -T SelectVariants"
+        " -R {input.ref}"
+        " --variant input.vcf"
+        " --select-type-to-include {wildcards.type}"
+        " --out {output.vcf} 2> {log}"
+
+
 rule gatk3_variant_recalibrator_snp:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for SNPs
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz.tbi",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -135,15 +158,16 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz.tbi",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -177,14 +201,15 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz.tbi",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -205,14 +230,15 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.gz",
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz.tbi",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -225,6 +251,26 @@ rule gatk3_apply_recalibration_indel:
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
         " -o {output.vcf} 2> {log}"
+
+
+rule picard_merge_variant_vcfs:
+    """
+    Merge the SNP and INDEL VCF files
+    """
+    input:
+        snp="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz",
+        indel="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.gz",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.log",
+    shell:
+        "picard"
+        " MergeVcfs"
+        " INPUT={input.snp}"
+        " INPUT={input.indel}"
+        " OUTPUT={output.vcf} 2> {log}"
 
 
 # noinspection PyTypeChecker
