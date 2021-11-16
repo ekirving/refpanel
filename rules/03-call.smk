@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import protected, unpack
+from snakemake.io import protected, unpack, temp
 
 from scripts.utils import sample_sex
 
@@ -28,8 +28,8 @@ rule gatk3_haplotype_caller:
         cram="data/source/{source}/cram/{sample}.cram",
         region="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{sex}.{ploidy}.bed",
     output:
-        vcf=protected("data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz"),
-        tbi=protected("data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz.tbi"),
+        vcf=temp("data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz"),
+        tbi=temp("data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz.tbi"),
     log:
         log="data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.log",
     resources:
@@ -73,8 +73,10 @@ def gatk3_combine_gvcfs_input(wildcards):
 
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        "gvcf1": "data/source/{source}/gVCF/{sample}." + sex + ".1.g.vcf.gz",
-        "gvcf2": "data/source/{source}/gVCF/{sample}." + sex + ".2.g.vcf.gz",
+        "vcf1": "data/source/{source}/gVCF/{sample}." + sex + ".1.g.vcf.gz",
+        "tbi1": "data/source/{source}/gVCF/{sample}." + sex + ".1.g.vcf.gz.tbi",
+        "vcf2": "data/source/{source}/gVCF/{sample}." + sex + ".2.g.vcf.gz",
+        "tbi2": "data/source/{source}/gVCF/{sample}." + sex + ".2.g.vcf.gz.tbi",
     }
 
 
@@ -94,6 +96,6 @@ rule gatk3_combine_gvcfs:
         "gatk3"
         " -T CombineGVCFs"
         " -R {input.ref}"
-        " --variant {input.gvcf1}"
-        " --variant {input.gvcf2}"
+        " --variant {input.vcf1}"
+        " --variant {input.vcf2}"
         " -o {output.vcf} 2> {log}"
