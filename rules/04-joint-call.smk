@@ -65,7 +65,7 @@ rule picard_merge_vcfs:
     Merge the chromosomes back together so we can do variant recalibration over the whole genome
     """
     input:
-        expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"]),
+        expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
