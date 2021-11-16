@@ -42,8 +42,8 @@ rule gatk3_genotype_gvcf:
     input:
         unpack(gatk3_genotype_gvcf_input),
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
@@ -60,15 +60,15 @@ rule gatk3_genotype_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule picard_merge_vcfs:
+rule picard_merge_chromosome_vcfs:
     """
     Merge the chromosomes back together so we can do variant recalibration over the whole genome
     """
     input:
         expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
     params:
