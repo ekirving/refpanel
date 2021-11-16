@@ -170,7 +170,7 @@ rule reference_grch38_chrom:
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
     shell:
-        "grep -w '{wildcards.chr}' {input.bed} > {output.bed}"
+        "grep -P '^{wildcards.chr}\t' {input.bed} > {output.bed}"
 
 
 rule reference_grch38_chrom_others:
