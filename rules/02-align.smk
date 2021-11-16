@@ -72,7 +72,7 @@ rule picard_fix_mate_info:
         " O={output.bam} 2> {log}"
 
 
-def picard_merge_bam_files_input(wildcards):
+def picard_merge_accessions_input(wildcards):
     return expand(
         "data/source/{source}/bam/{accession}_fixedmate.bam",
         source=wildcards.source,
@@ -80,12 +80,12 @@ def picard_merge_bam_files_input(wildcards):
     )
 
 
-rule picard_merge_bam_files:
+rule picard_merge_accessions:
     """
     Merging lane level bam files to Sample level bam files
     """
     input:
-        picard_merge_bam_files_input,
+        picard_merge_accessions_input,
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged.bam"),
     log:
@@ -194,7 +194,7 @@ rule gatk3_base_recalibrator:
         " -knownSites {input.mills} 2> {log}"
 
 
-rule gatk3_print_reads:
+rule gatk3_recalibrator_print_reads:
     """
     Recalibrate base quality scores using known SNPs
     """

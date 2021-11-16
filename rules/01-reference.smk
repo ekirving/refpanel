@@ -54,7 +54,7 @@ rule reference_grch38_hapmap:
         "gunzip --test {output.vcf}"
 
 
-rule reference_grch38_1000G_omni:
+rule reference_grch38_1000G_omni25:
     """Download 1000G Omni 2.5"""
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
@@ -65,7 +65,7 @@ rule reference_grch38_1000G_omni:
         "gunzip --test {output.vcf}"
 
 
-rule reference_grch38_1000G_snps:
+rule reference_grch38_1000G_phase1_snps:
     """Download 1000G Phase 1 high confidence SNPs"""
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
@@ -106,7 +106,7 @@ rule reference_grch38_fai_to_bed:
         r"""awk -v FS="\t" -v OFS="\t" '{{print $1 FS "0" FS ($2-1)}}' {input.fai} > {output.bed}"""
 
 
-rule reference_grch38_male_haploid:
+rule reference_grch38_male_haploid_bed:
     """
     Make a bed file for the male haploid regions (i.e., chrX (minus PAR1 and PAR2), chrY and chrM)
     """
@@ -124,7 +124,7 @@ rule reference_grch38_male_haploid:
         r" bedtools subtract -a {output.sex} -b stdin > {output.bed}"
 
 
-rule reference_grch38_male_diploid:
+rule reference_grch38_male_diploid_bed:
     """
     Make a bed file for the male diploid regions (i.e., drop the haploid regions)
     """
@@ -137,7 +137,7 @@ rule reference_grch38_male_diploid:
         "bedtools subtract -nonamecheck -a {input.bed} -b {input.hap} > {output.bed}"
 
 
-rule reference_grch38_female_haploid:
+rule reference_grch38_female_haploid_bed:
     """
     Make a bed file for the female haploid regions (i.e., chrM)
     """
@@ -149,7 +149,7 @@ rule reference_grch38_female_haploid:
         "grep chrM {input.bed} > {output.bed}"
 
 
-rule reference_grch38_female_diploid:
+rule reference_grch38_female_diploid_bed:
     """
     Make a bed file for female diploid regions (i.e., drop chrY and chrM)
     """
@@ -161,7 +161,7 @@ rule reference_grch38_female_diploid:
         "grep -vP 'chrY|chrM' {input.bed} > {output.bed}"
 
 
-rule reference_grch38_chrom:
+rule reference_grch38_chrom_bed:
     """
     Make a bed file for a specific chromosome
     """
@@ -173,7 +173,7 @@ rule reference_grch38_chrom:
         "grep -P '^{wildcards.chr}\t' {input.bed} > {output.bed}"
 
 
-rule reference_grch38_chrom_others:
+rule reference_grch38_chrom_others_bed:
     """
     Make a bed file for all the non-standard contigs (i.e., random, unknown, alt, decoy, and HLA)
     """
