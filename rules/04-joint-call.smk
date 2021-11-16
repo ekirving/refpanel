@@ -96,7 +96,7 @@ rule gatk3_split_variants:
         "gatk3 "
         " -T SelectVariants"
         " -R {input.ref}"
-        " --variant input.vcf"
+        " --variant {input.vcf}"
         " --selectTypeToInclude {wildcards.type}"
         " --out {output.vcf} 2> {log}"
 
