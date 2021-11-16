@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import protected, unpack, temp
+from snakemake.io import protected, unpack, temp, expand
 
 from scripts.utils import list_samples
 
@@ -60,23 +60,43 @@ rule gatk3_genotype_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
+rule picard_merge_vcfs:
+    """
+    Merge the chromosomes back together so we can do variant recalibration over the whole genome
+    """
+    input:
+        expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"]),
+    output:
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
+    params:
+        vcfs=lambda wildcards, input: [f"INPUT={vcf}" for vcf in input],
+    shell:
+        "picard"
+        " MergeVcfs"
+        " {params.vcfs}"
+        " OUTPUT={output.vcf} 2> {log}"
+
+
 rule gatk3_variant_recalibrator_snp:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for SNPs
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -115,15 +135,15 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -157,14 +177,14 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
-        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -185,14 +205,14 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
-        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_snp.vcf.gz",
+        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_indel.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.log",
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -205,26 +225,6 @@ rule gatk3_apply_recalibration_indel:
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
         " -o {output.vcf} 2> {log}"
-
-
-rule picard_merge_vcfs:
-    """
-    Merge the SNP and INDEL VCF files
-    """
-    input:
-        snp="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz",
-        indel="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz",
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
-    shell:
-        "picard"
-        " MergeVcfs"
-        " INPUT={input.snp}"
-        " INPUT={input.indel}"
-        " OUTPUT={output.vcf} 2> {log}"
 
 
 # noinspection PyTypeChecker
@@ -248,13 +248,13 @@ rule bcftools_fill_tags:
     Calculate and fill missing tags and annotations
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz",
         tsv="data/panel/{panel}/{panel}-super_populations.tsv",
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz.tbi"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.log",
     shell:
         "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
