@@ -23,12 +23,12 @@ rule shapeit4_phase_vcf:
     Phase the joint-callset
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz",
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_phased.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_phased.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_phased.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_phased.vcf.log",
     threads: SHAPEIT4_NUM_THREADS
     shell:
         "shapeit4"
@@ -37,4 +37,5 @@ rule shapeit4_phase_vcf:
         " --map {input.map}"
         " --region {wildcards.chr}"
         " --sequencing"
-        " --output {output.vcf} 2> {log}"
+        " --output {output.vcf}"
+        " --log {log}"

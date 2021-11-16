@@ -35,12 +35,12 @@ rule all:
     input:
         # "data/source/example/gVCF/HGDP00094.g.vcf.gz",
         # "data/source/example/gVCF/HGDP01356.g.vcf.gz",
-        "data/panel/example-panel/vcf/example-panel_chr22_vqsr_annot.vcf.gz",
+        "data/panel/example-panel/vcf/example-panel_chr3_vqsr_annot.vcf.gz",
 
 
 rule refpanel:
     input:
-        expand("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz", panel=config["refpanel"], chr=["22"]),
+        expand("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz", panel=config["refpanel"], chr=["3"]),
 
 
 rule download_data:
