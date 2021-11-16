@@ -40,7 +40,7 @@ rule all:
 
 rule refpanel:
     input:
-        expand("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz", panel=config["refpanel"], chr=["3"]),
+        expand("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz", panel=config["refpanel"]),
 
 
 rule download_data:

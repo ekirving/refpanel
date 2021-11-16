@@ -47,7 +47,7 @@ rule gatk3_genotype_gvcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
-        gvcfs=lambda wildcards, input: " ".join([f"--variant {gvcf}" for gvcf in input.gvcfs]),
+        gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     threads: GATK_NUM_THREADS
     shell:
         "gatk3"
@@ -104,6 +104,8 @@ rule gatk3_split_variants:
 rule gatk3_variant_recalibrator_snp:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for SNPs
+    
+    https://gatk.broadinstitute.org/hc/en-us/articles/360035531612?id=1259
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
@@ -120,8 +122,11 @@ rule gatk3_variant_recalibrator_snp:
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.log",
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T VariantRecalibrator"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -168,8 +173,11 @@ rule gatk3_variant_recalibrator_indel:
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.log",
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T VariantRecalibrator"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -210,8 +218,11 @@ rule gatk3_apply_recalibration_snp:
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.log",
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T ApplyRecalibration"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -239,8 +250,11 @@ rule gatk3_apply_recalibration_indel:
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.log",
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=8 * 1024,
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T ApplyRecalibration"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -273,7 +287,7 @@ rule picard_merge_variant_vcfs:
 
 
 # noinspection PyTypeChecker
-rule bcftools_super_populations:
+rule bcftools_samples_file:
     """
     Make a bcftools samples file for calculating INFO tags at the super population level
 
