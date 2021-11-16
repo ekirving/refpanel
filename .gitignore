@@ -2,6 +2,7 @@
 .snakemake
 __pycache__
 data/panel/*/vcf/
+data/panel/*/*.tsv
 data/reference/GRCh38/
 data/source/*/bam/
 data/source/*/cram/

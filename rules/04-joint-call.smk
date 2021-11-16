@@ -225,3 +225,37 @@ rule picard_merge_vcfs:
         " INPUT={input.snp}"
         " INPUT={input.indel}"
         " OUTPUT={output.vcf} 2> {log}"
+
+
+# noinspection PyTypeChecker
+rule bcftools_super_populations:
+    """
+    Make a bcftools samples file for calculating INFO tags at the super population level
+    """
+    input:
+        tsv=lambda wildcards: config["panel"][wildcards.panel]["samples"]
+    output:
+        tsv="data/panel/{panel}/{panel}-super_populations.tsv",
+    params:
+        col1=lambda wildcards, input: open(input.tsv).readline().split("\t").index("sample") + 1,
+        col2= lambda wildcards,input: open(input.tsv).readline().split("\t").index("super_population") + 1,
+    shell:
+        r"""awk -v FS="\t" 'NR>1 {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
+
+
+rule bcftools_fill_tags:
+    """
+    Calculate and fill missing tags and annotations
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+        tsv="data/panel/{panel}/{panel}-super_populations.tsv",
+    output:
+        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.log",
+    shell:
+        "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
+        "bcftools index --tbi {output.vcf}"
+
