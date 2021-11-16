@@ -276,14 +276,16 @@ rule picard_merge_variant_vcfs:
 rule bcftools_super_populations:
     """
     Make a bcftools samples file for calculating INFO tags at the super population level
+
+    https://m.ensembl.org/Help/Faq?id=532
     """
     input:
-        tsv=lambda wildcards: config["panel"][wildcards.panel]["samples"]
+        tsv=lambda wildcards: config["panel"][wildcards.panel]["samples"],
     output:
         tsv="data/panel/{panel}/{panel}-super_populations.tsv",
     params:
         col1=lambda wildcards, input: open(input.tsv).readline().split("\t").index("sample") + 1,
-        col2= lambda wildcards,input: open(input.tsv).readline().split("\t").index("super_population") + 1,
+        col2=lambda wildcards, input: open(input.tsv).readline().split("\t").index("super_population") + 1,
     shell:
         r"""awk -v FS="\t" 'NR>1 {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
