@@ -57,7 +57,7 @@ def sample_sex(config, source, sample):
 
 def list_samples(config, panel):
     """
-    Get the list of samples contained in this reference panel
+    Get a list of (source, sample) tuples for the given reference panel
     """
     samples = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
 

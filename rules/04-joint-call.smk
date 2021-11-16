@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import protected, unpack
+from snakemake.io import protected, unpack, temp
 
 from scripts.utils import list_samples
 
@@ -43,6 +43,7 @@ rule gatk3_genotype_gvcf:
         unpack(gatk3_genotype_gvcf_input),
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
@@ -160,7 +161,8 @@ rule gatk3_apply_recalibration_snp:
         recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.recal",
         tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.tranches",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz",
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.log",
     threads: GATK_NUM_THREADS
@@ -187,7 +189,8 @@ rule gatk3_apply_recalibration_indel:
         recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.recal",
         tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.tranches",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz",
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.log",
     threads: GATK_NUM_THREADS
@@ -212,7 +215,8 @@ rule picard_merge_vcfs:
         snp="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_snp.vcf.gz",
         indel="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_indel.vcf.gz",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
     shell:
