@@ -316,6 +316,8 @@ rule bcftools_fill_tags:
         tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.log",
+    conda:
+        "../envs/bcftools.yaml"
     shell:
         "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"

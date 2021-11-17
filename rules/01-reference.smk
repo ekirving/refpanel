@@ -88,6 +88,8 @@ rule reference_ncbi_remapper_fix_errors:
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz",
         tbi="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz.tbi",
+    conda:
+        "../envs/bcftools.yaml"
     shell:
         "gunzip -c {input.vcf} | "
         " sed 's/POS=POS-1/POS_POS-1/g' | "
