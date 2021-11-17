@@ -10,7 +10,7 @@ refpanel: example-panel
 source:
 
   example:
-    # sample metadata sheet - required cols (sample, sex, population, super_population)
+    # sample metadata sheet - required cols (sample, sex, population, superpopulation)
     samples: example/example-samples.tsv
 
     # library metadata sheet - required cols (sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)

@@ -393,7 +393,7 @@ rule bcftools_filter_vcf:
     Defined using the following criteria: 
     1) VQSR PASS;
     2) GT missingness < 5%; 
-    3) HWE p-value > 1e-10 in at least one of the 5 super-populations; 
+    3) HWE p-value > 1e-10 in at least one of the super-populations; 
     4) mendelian error rate < 5% (of tested trios);
     """
     input:

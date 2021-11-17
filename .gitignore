@@ -12,3 +12,4 @@ data/source/*/gVCF/
 logs/
 nohup*
 rulegraph.pdf
+scripts/metadata.R
