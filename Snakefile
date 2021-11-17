@@ -33,9 +33,7 @@ ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_haplotype_caller
 
 rule all:
     input:
-        # "data/source/example/gVCF/HGDP00094.g.vcf.gz",
-        # "data/source/example/gVCF/HGDP01356.g.vcf.gz",
-        "data/panel/example-panel/vcf/example-panel_chrALL_vqsr_annot.vcf.gz",
+        "",
 
 
 rule refpanel:

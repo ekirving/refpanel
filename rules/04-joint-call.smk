@@ -104,7 +104,7 @@ rule gatk3_split_variants:
 rule gatk3_variant_recalibrator_snp:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for SNPs
-    
+
     https://gatk.broadinstitute.org/hc/en-us/articles/360035531612?id=1259
     """
     input:
@@ -319,7 +319,7 @@ rule bcftools_fill_tags:
     conda:
         "../envs/bcftools.yaml"
     shell:
-        "bcftools +fill-tags {input.vcf} --tags all --samples-file {input.tsv} -Oz -o {output.vcf} && "
+        "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
 
 
@@ -356,3 +356,37 @@ rule bcftools_mendelian:
         "bcftools +mendelian {input.vcf} --mode a --trio-file {input.tsv} -Oz -o {output.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
+
+rule bcftools_filter_vcf:
+    """
+    Filter the VCF to only retain high-quality variants for downstream use
+
+    Defined using the following criteria: 
+    1) VQSR PASS;
+    2) GT missingness < 5%; 
+    3) HWE p-value > 1e-10 in at least one of the 5 super-populations; 
+    4) mendelian error rate < 5% (of tested trios);
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz",
+        super="data/panel/{panel}/{panel}-super_populations.tsv",
+        trios="data/panel/{panel}/{panel}-trios.tsv",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz.tbi",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.log",
+    params:
+        # compose the HWE filter for the super-populations found in this reference panel
+        hwe=lambda wildcards, input: " | ".join(
+            [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
+        ),
+        # use the count of trios to convert the Mendelian error count into a fraction
+        max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
+    conda:
+        "../envs/bcftools.yaml"
+    shell:
+        "bcftools view"
+        " --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MERR<{params.max_merr}'"
+        " -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools index --tbi {output.vcf}"
