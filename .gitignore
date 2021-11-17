@@ -2,6 +2,8 @@
 .snakemake
 __pycache__
 dag.pdf
+data/panel/*/*-superpops.tsv
+data/panel/*/*-trios.tsv
 data/panel/*/vcf/
 data/reference/GRCh38/
 data/source/*/bam/

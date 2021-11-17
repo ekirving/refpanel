@@ -325,10 +325,10 @@ rule bcftools_samples_file:
     input:
         tsv=lambda wildcards: config["panel"][wildcards.panel]["samples"],
     output:
-        tsv="data/panel/{panel}/{panel}-super_populations.tsv",
+        tsv="data/panel/{panel}/{panel}-superpops.tsv",
     params:
-        col1=lambda wildcards, input: open(input.tsv).readline().split("\t").index("sample") + 1,
-        col2=lambda wildcards, input: open(input.tsv).readline().split("\t").index("superpopulation") + 1,
+        col1=lambda wildcards, input: open(input.tsv).readline().split().index("sample") + 1,
+        col2=lambda wildcards, input: open(input.tsv).readline().split().index("superpopulation") + 1,
     shell:
         r"""awk -v FS="\t" 'NR>1 {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
@@ -339,7 +339,7 @@ rule bcftools_fill_tags:
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz",
-        tsv="data/panel/{panel}/{panel}-super_populations.tsv",
+        tsv="data/panel/{panel}/{panel}-superpops.tsv",
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
@@ -398,7 +398,7 @@ rule bcftools_filter_vcf:
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz",
-        super="data/panel/{panel}/{panel}-super_populations.tsv",
+        super="data/panel/{panel}/{panel}-superpops.tsv",
         trios="data/panel/{panel}/{panel}-trios.tsv",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz",
