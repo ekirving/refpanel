@@ -38,7 +38,7 @@ rule all:
 
 rule refpanel:
     input:
-        expand("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz", panel=config["refpanel"]),
+        expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
 
 
 rule download_data:

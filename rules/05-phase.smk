@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+from snakemake.io import expand, touch
+
 global workflow
 
 """
@@ -29,9 +31,9 @@ rule shapeit4_phase_vcf:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz",
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_phased.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_phased.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.log",
     threads: SHAPEIT4_NUM_THREADS
     conda:
         "../envs/shapeit4.yaml"
@@ -44,3 +46,14 @@ rule shapeit4_phase_vcf:
         " --sequencing"
         " --output {output.vcf}"
         " --log {log}"
+
+
+rule shapeit4_phase_all_vcfs:
+    input:
+        expand(
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
+            chr=config["chroms"],
+            allow_missing=True,
+        ),
+    output:
+        touch("data/panel/{panel}/vcf/phase.done"),
