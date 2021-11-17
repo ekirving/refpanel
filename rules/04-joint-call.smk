@@ -328,7 +328,7 @@ rule bcftools_samples_file:
         tsv="data/panel/{panel}/{panel}-super_populations.tsv",
     params:
         col1=lambda wildcards, input: open(input.tsv).readline().split("\t").index("sample") + 1,
-        col2=lambda wildcards, input: open(input.tsv).readline().split("\t").index("super_population") + 1,
+        col2=lambda wildcards, input: open(input.tsv).readline().split("\t").index("superpopulation") + 1,
     shell:
         r"""awk -v FS="\t" 'NR>1 {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 

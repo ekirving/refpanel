@@ -38,13 +38,13 @@ source:
   sgdp:
     # Simons Genome Diversity Project (SGDP) (n=231; excluding overlap from 1000G and HGDP)
     # https://www.nature.com/articles/nature18964
-    samples: data/source/hgdp/sgdp-samples.tsv
+    samples: data/source/sgdp/sgdp-samples.tsv
 
   ggvp:
     # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
     # missing: SC_GMFUL5306403, SC_GMFUL5306370, SC_GMMAN5482315, SC_GMFUL5306362, SC_GMFUL5306428, SC_GMFUL5306378
     # https://www.nature.com/articles/s41467-019-13480-z
-    samples: data/source/hgdp/ggvp-samples.tsv
+    samples: data/source/ggvp/ggvp-samples.tsv
 
 
 # reference panels, aggregations of samples across data sources (e.g, 1000G + HGDP)

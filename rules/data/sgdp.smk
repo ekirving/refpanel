@@ -59,7 +59,7 @@ def sgdp_list_all_cram():
 
     files = [
         [f"data/source/sgdp/cram/{sample}.cram", f"data/source/sgdp/cram/{sample}.cram.crai"]
-        for sample in samples["Sample"]
+        for sample in samples["sample"]
     ]
 
     return files

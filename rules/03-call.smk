@@ -18,6 +18,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 
 JAVA_MEMORY_MB = 8 * 1024
 
+
 rule gatk3_haplotype_caller:
     """
     Raw variant calls using HaplotypeCaller on a single sample, within a given region and sex-based ploidy
