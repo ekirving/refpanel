@@ -54,6 +54,36 @@ panel:
     # metadata sheet containing the list of samples and populations for this reference panel - req. (source, sample, superpopulation)
     samples: example/example-samples.tsv
 
+  1000g:
+    # reference panel of the 1000G samples
+    samples: data/panel/1000g/1000g-samples.tsv
+
+  hgdp:
+    # reference panel of the HGDP samples
+    samples: data/panel/hgdp/hgdp-samples.tsv
+
+  sgdp:
+    # reference panel of the SGDP samples
+    samples: data/panel/sgdp/sgdp-samples.tsv
+
+  ggvp:
+    # reference panel of the GGVP samples
+    samples: data/panel/ggvp/ggvp-samples.tsv
+
+  igsr:
+    # reference panel of al the IGSR samples (i.e., 1000G, HGDP, SGDP and GGVP)
+    # 1422 AFR  African
+    #  571 AMR  Ad Mixed American
+    #   27 CAS  Central Asian
+    #  197 CSA  Central South Asian
+    #  851 EAS  East Asian
+    #  788 EUR  European
+    #  161 MEA  Middle Eastern
+    #   41 OCE  Oceanian
+    #  630 SAS  South Asian
+    #   68 WEA  West Eurasian
+    samples: data/panel/igsr/igsr-samples.tsv
+
 
 # list of chromosomes in GRCh38
 chroms: [chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr20, chr21, chr22, chrX, chrY, chrM, others]

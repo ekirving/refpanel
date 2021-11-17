@@ -2,7 +2,6 @@
 .snakemake
 __pycache__
 dag.pdf
-data/panel/*/*.tsv
 data/panel/*/vcf/
 data/reference/GRCh38/
 data/source/*/bam/
