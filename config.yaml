@@ -10,7 +10,7 @@ refpanel: example-panel
 source:
 
   example:
-    # sample metadata sheet - required cols (sample, sex, population, superpopulation)
+    # sample metadata sheet - required cols (sample, sex)
     samples: example/example-samples.tsv
 
     # library metadata sheet - required cols (sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)
@@ -47,11 +47,11 @@ source:
     samples: data/source/ggvp/ggvp-samples.tsv
 
 
-# reference panels, aggregations of samples across data sources (e.g, 1000G + HGDP)
+# reference panels, aggregations of samples across data sources
 panel:
 
   example-panel:
-    # metadata sheet containing the list of samples and populations for this reference panel - req. (superpopulation,)
+    # metadata sheet containing the list of samples and populations for this reference panel - req. (source, sample, superpopulation)
     samples: example/example-samples.tsv
 
 

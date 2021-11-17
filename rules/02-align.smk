@@ -36,7 +36,7 @@ rule bwa_mem_pe:
     output:
         bam=temp("data/source/{source}/bam/{accession}.bam"),
     log:
-        log="data/source/{source}/bam/{accession}.log",
+        log="data/source/{source}/bam/{accession}.bam.log",
     params:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: workflow.cores / 4
@@ -63,7 +63,7 @@ rule picard_fix_mate_info:
     output:
         bam=temp("data/source/{source}/bam/{accession}_fixedmate.bam"),
     log:
-        log="data/source/{source}/bam/{accession}_fixedmate.log",
+        log="data/source/{source}/bam/{accession}_fixedmate.bam.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
@@ -97,7 +97,7 @@ rule picard_merge_accessions:
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged.bam"),
     log:
-        log="data/source/{source}/bam/{sample}_merged.log",
+        log="data/source/{source}/bam/{sample}_merged.bam.log",
     params:
         bams=lambda wildcards, input: [f"INPUT={bam}" for bam in input],
     resources:
@@ -126,7 +126,7 @@ rule picard_sort_bam:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted.bam"),
         bai=temp("data/source/{source}/bam/{sample}_merged_sorted.bai"),
     log:
-        log="data/source/{source}/bam/{sample}_merged_sorted.log",
+        log="data/source/{source}/bam/{sample}_merged_sorted.bam.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
@@ -156,7 +156,7 @@ rule picard_mark_duplicates:
         bai=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup.bam.bai"),
         met="data/source/{source}/bam/{sample}_merged_sorted_dedup.metrics",
     log:
-        log="data/source/{source}/bam/{sample}_merged_sorted_dedup.log",
+        log="data/source/{source}/bam/{sample}_merged_sorted_dedup.bam.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
@@ -189,7 +189,7 @@ rule gatk3_base_recalibrator:
     output:
         tbl=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table"),
     log:
-        log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal_table.log",
+        log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table.log",
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
@@ -222,7 +222,7 @@ rule gatk3_recalibrator_print_reads:
     output:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
-        log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.log",
+        log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam.log",
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
