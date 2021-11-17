@@ -10,10 +10,10 @@ refpanel: example-panel
 source:
 
   example:
-    # metadata sheet containing the list of samples and populations
+    # sample metadata sheet - required cols (sample, sex, population, super_population)
     samples: example/example-samples.tsv
 
-    # metadata sheet containing the list of accessions and fastq files
+    # library metadata sheet - required cols (sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)
     accessions: example/example-accessions.tsv
 
     # mapping of readgroup tags to accession metadata column names
@@ -25,11 +25,33 @@ source:
       LB: library
       DS: description
 
-# aggregations of different data sources
+  1000g:
+    # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 trios)
+    # https://www.biorxiv.org/content/10.1101/2021.02.06.430068
+    samples: data/source/1000g/1000g-samples.tsv
+
+  hgdp:
+    # Human Genome Diversity Project (HGDP) (n=929; including 111 samples from SGDP)
+    # https://www.science.org/doi/10.1126/science.aay5012
+    samples: data/source/hgdp/hgdp-samples.tsv
+
+  sgdp:
+    # Simons Genome Diversity Project (SGDP) (n=231; excluding overlap from 1000G and HGDP)
+    # https://www.nature.com/articles/nature18964
+    samples: data/source/hgdp/sgdp-samples.tsv
+
+  ggvp:
+    # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
+    # missing: SC_GMFUL5306403, SC_GMFUL5306370, SC_GMMAN5482315, SC_GMFUL5306362, SC_GMFUL5306428, SC_GMFUL5306378
+    # https://www.nature.com/articles/s41467-019-13480-z
+    samples: data/source/hgdp/ggvp-samples.tsv
+
+
+# reference panels, aggregations of samples across data sources (e.g, 1000G + HGDP)
 panel:
 
   example-panel:
-    # metadata sheet containing the list of samples and populations for this reference panel
+    # metadata sheet containing the list of samples and populations for this reference panel - req. (superpopulation,)
     samples: example/example-samples.tsv
 
 

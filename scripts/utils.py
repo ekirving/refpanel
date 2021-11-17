@@ -48,11 +48,11 @@ def list_accessions(config, source, sample):
 
 def sample_sex(config, source, sample):
     """
-    Get the sex of the sample from the metadata sheet
+    Get the sex of the sample from the metadata sheet (i.e., M or F)
     """
     samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
 
-    return samples.loc[sample]["sex"]
+    return samples.loc[sample]["sex"][0].upper()
 
 
 def list_samples(config, panel):

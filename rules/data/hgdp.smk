@@ -37,7 +37,7 @@ rule hgdp_download_gvcf:
 
 
 def hgdp_list_all_gvcf():
-    samples = pd.read_table("data/source/hgdp/hgdp_wgs.20190516.metadata.txt")
+    samples = pd.read_table(config["source"]["hgdp"]["samples"])
 
     files = [
         [f"data/source/hgdp/gVCF/{sample}.g.vcf.gz", f"data/source/hgdp/gVCF/{sample}.g.vcf.gz.tbi"]

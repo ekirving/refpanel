@@ -55,7 +55,7 @@ rule ggvp_download_cram:
 
 
 def ggvp_list_all_cram():
-    samples = pd.read_table("data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv")
+    samples = pd.read_table(config["source"]["ggvp"]["samples"])
 
     files = [
         [f"data/source/ggvp/cram/{sample}.cram", f"data/source/ggvp/cram/{sample}.cram.crai"]

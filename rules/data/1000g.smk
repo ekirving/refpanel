@@ -53,11 +53,11 @@ rule tgp_nygc_download_gvcf:
 
 
 def tgp_nygc_list_all_gvcf():
-    samples = pd.read_table("data/source/1000g/igsr-1000_genomes_30x_on_grch38.tsv")
+    samples = pd.read_table(config["source"]["1000g"]["samples"])
 
     files = [
         [f"data/source/1000g/gVCF/{sample}.g.vcf.gz", f"data/source/1000g/gVCF/{sample}.g.vcf.gz.tbi"]
-        for sample in samples["Sample name"]
+        for sample in samples["sample"]
     ]
 
     return files

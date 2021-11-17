@@ -55,7 +55,7 @@ rule sgdp_download_cram:
 
 
 def sgdp_list_all_cram():
-    samples = pd.read_table("data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv")
+    samples = pd.read_table(config["source"]["sgdp"]["samples"])
 
     files = [
         [f"data/source/sgdp/cram/{sample}.cram", f"data/source/sgdp/cram/{sample}.cram.crai"]
