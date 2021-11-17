@@ -120,6 +120,8 @@ rule reference_grch38_male_haploid_bed:
     params:
         par1=r"\t".join(["chrX", "10000", "2781479"]),
         par2=r"\t".join(["chrX", "155701382", "156030895"]),
+    conda:
+        "../envs/bedtools.yaml"
     shell:
         r"grep -P 'chrX|chrY|chrM' {input.bed} > {output.sex} && "
         r"printf '{params.par1}\n{params.par2}\n' | "
@@ -135,6 +137,8 @@ rule reference_grch38_male_diploid_bed:
         hap="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.2.bed",
+    conda:
+        "../envs/bedtools.yaml"
     shell:
         "bedtools subtract -nonamecheck -a {input.bed} -b {input.hap} > {output.bed}"
 

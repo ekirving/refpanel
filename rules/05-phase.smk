@@ -30,6 +30,8 @@ rule shapeit4_phase_vcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_phased.vcf.log",
     threads: SHAPEIT4_NUM_THREADS
+    conda:
+        "../envs/shapeit4.yaml"
     shell:
         "shapeit4"
         " --thread {threads}"

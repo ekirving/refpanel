@@ -17,6 +17,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 """
 
 GATK_NUM_THREADS = 4
+JAVA_MEMORY_MB = 8 * 1024
 
 
 wildcard_constraints:
@@ -49,8 +50,13 @@ rule gatk3_genotype_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T GenotypeGVCFs"
         " -R {input.ref}"
         " -L {input.chr}"
@@ -73,8 +79,13 @@ rule picard_merge_chromosome_vcfs:
         log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
     params:
         vcfs=lambda wildcards, input: [f"INPUT={vcf}" for vcf in input],
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard.yaml"
     shell:
         "picard"
+        " -Xmx{resources.mem_mb}m"
         " MergeVcfs"
         " {params.vcfs}"
         " OUTPUT={output.vcf} 2> {log}"
@@ -92,8 +103,13 @@ rule gatk3_split_variants:
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.log",
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
-        "gatk3 "
+        "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T SelectVariants"
         " -R {input.ref}"
         " --variant {input.vcf}"
@@ -123,7 +139,9 @@ rule gatk3_variant_recalibrator_snp:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.log",
     threads: GATK_NUM_THREADS
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -174,7 +192,9 @@ rule gatk3_variant_recalibrator_indel:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.log",
     threads: GATK_NUM_THREADS
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -219,7 +239,9 @@ rule gatk3_apply_recalibration_snp:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.log",
     threads: GATK_NUM_THREADS
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -251,7 +273,9 @@ rule gatk3_apply_recalibration_indel:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.log",
     threads: GATK_NUM_THREADS
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -278,8 +302,13 @@ rule picard_merge_variant_vcfs:
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.log",
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard.yaml"
     shell:
         "picard"
+        " -Xmx{resources.mem_mb}m"
         " MergeVcfs"
         " INPUT={input.snp}"
         " INPUT={input.indel}"

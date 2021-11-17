@@ -19,6 +19,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 """
 
 GATK_NUM_THREADS = 4
+JAVA_MEMORY_MB = 8 * 1024
 
 
 rule bwa_mem_pe:
@@ -39,6 +40,8 @@ rule bwa_mem_pe:
     params:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: workflow.cores / 4
+    conda:
+        "../envs/bwa.yaml"
     shell:
         "( bwa mem -Y "
         "   -K 100000000 "
@@ -61,8 +64,13 @@ rule picard_fix_mate_info:
         bam=temp("data/source/{source}/bam/{accession}_fixedmate.bam"),
     log:
         log="data/source/{source}/bam/{accession}_fixedmate.log",
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard.yaml"
     shell:
         "picard"
+        " -Xmx{resources.mem_mb}m"
         " FixMateInformation"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
@@ -93,7 +101,9 @@ rule picard_merge_accessions:
     params:
         bams=lambda wildcards, input: [f"INPUT={bam}" for bam in input],
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -118,7 +128,9 @@ rule picard_sort_bam:
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted.log",
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -146,7 +158,9 @@ rule picard_mark_duplicates:
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup.log",
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -176,9 +190,11 @@ rule gatk3_base_recalibrator:
         tbl=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.table"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal_table.log",
-    resources:
-        mem_mb=8 * 1024,
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -207,11 +223,14 @@ rule gatk3_recalibrator_print_reads:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.log",
-    resources:
-        mem_mb=8 * 1024,
     threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T PrintReads"
         " --num_cpu_threads_per_data_thread {threads}"
         " --disable_indel_quals"

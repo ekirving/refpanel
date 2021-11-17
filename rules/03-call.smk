@@ -16,6 +16,7 @@ Rules to perform sample-level genotype calling for the IGSR pipeline
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
+JAVA_MEMORY_MB = 8 * 1024
 
 rule gatk3_haplotype_caller:
     """
@@ -33,7 +34,9 @@ rule gatk3_haplotype_caller:
     log:
         log="data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.log",
     resources:
-        mem_mb=8 * 1024,
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -92,8 +95,13 @@ rule gatk3_combine_gvcfs:
         tbi=protected("data/source/{source}/gVCF/{sample}.g.vcf.gz.tbi"),
     log:
         log="data/source/{source}/gVCF/{sample}.g.vcf.log",
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/gatk.yaml"
     shell:
         "gatk3"
+        " -Xmx{resources.mem_mb}m"
         " -T CombineGVCFs"
         " -R {input.ref}"
         " --variant {input.vcf1}"
