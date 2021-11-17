@@ -312,13 +312,47 @@ rule bcftools_fill_tags:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz",
         tsv="data/panel/{panel}/{panel}-super_populations.tsv",
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.log",
     conda:
         "../envs/bcftools.yaml"
     shell:
-        "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
+        "bcftools +fill-tags {input.vcf} --tags all --samples-file {input.tsv} -Oz -o {output.vcf} && "
+        "bcftools index --tbi {output.vcf}"
+
+
+# noinspection PyTypeChecker
+rule bcftools_trio_file:
+    """
+    Make a bcftools trio file for checking Mendelian inconsistencies (i.e., mother1,father1,child1)
+    """
+    input:
+        # TODO what about other sources?
+        # TODO all samples in the trio file must me present in the VCF
+        tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
+    output:
+        tsv="data/panel/{panel}/{panel}-trios.tsv",
+    shell:
+        """awk 'NR>1 && $3!=0 && $4!=0 {{ print $4","$3","$2 }}' {input.tsv} > {output.tsv}"""
+
+
+rule bcftools_mendelian:
+    """
+    Annotate the VCF with any Mendelian inconsistencies, based on trio definitions
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz",
+        tsv="data/panel/{panel}/{panel}-trios.tsv",
+    output:
+        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.log",
+    conda:
+        "../envs/bcftools.yaml"
+    shell:
+        "bcftools +mendelian {input.vcf} --mode a --trio-file {input.tsv} -Oz -o {output.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
