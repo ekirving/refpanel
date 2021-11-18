@@ -46,7 +46,7 @@ flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} sanger_ftp=${MAX_FTP} "
 
 (
   set -x
-  snakemake ${flags} --batch generate_gvcfs=${batch}/3 -- generate_gvcfs
+  snakemake ${flags} --config batch=${batch} -- generate_gvcfs
 ) &>>${logfile}
 
 echo "DONE!" >>${logfile}

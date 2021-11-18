@@ -59,7 +59,13 @@ def list_all_gvcfs():
 
         files += [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"]]
 
-    return files
+    batch = config.get("batch", 0)
+    size = int(len(files) / 3)
+
+    start = (batch - 1) * size
+    finish = start + size if batch != 3 else None
+
+    return files[start:finish]
 
 
 rule generate_gvcfs:

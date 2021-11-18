@@ -399,7 +399,7 @@ rule bcftools_1000G_trios:
 rule bcftools_mendelian_error_rate:
     """
     Filter the VCF for any Mendelian inconsistencies, based on trio definitions
-    
+
     Only retain sites where the mendelian error rate < 5%
     """
     input:
