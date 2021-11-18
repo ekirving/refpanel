@@ -6,6 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import pandas as pd
 from snakemake.io import expand
 
 
@@ -47,3 +48,20 @@ rule download_data:
         "data/source/hgdp/gVCF/download.done",
         "data/source/sgdp/cram/download.done",
         "data/source/ggvp/cram/download.done",
+
+
+def list_all_gvcfs():
+    """List all the gVCF files that need generating from the downloaded CRAM files"""
+    files = []
+
+    for source in ["sgdp", "ggvp"]:
+        samples = pd.read_table(config["source"][source]["samples"])
+
+        files += [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"]]
+
+    return files
+
+
+rule generate_gvcfs:
+    input:
+        list_all_gvcfs(),
