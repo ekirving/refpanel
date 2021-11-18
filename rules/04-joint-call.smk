@@ -330,7 +330,7 @@ rule bcftools_samples_file:
         col1=lambda wildcards, input: open(input.tsv).readline().split().index("sample") + 1,
         col2=lambda wildcards, input: open(input.tsv).readline().split().index("superpopulation") + 1,
     shell:
-        r"""awk -v FS="\t" 'NR>1 {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
+        r"""awk -v FS="\t" 'NR>1 && ${params.col2}!=="" {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
 
 rule bcftools_fill_tags:
