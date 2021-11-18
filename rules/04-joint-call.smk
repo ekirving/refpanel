@@ -51,7 +51,7 @@ rule gatk3_genotype_gvcf:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     threads: GATK_NUM_THREADS
     resources:
-        mem_mb=JAVA_MEMORY_MB,
+        mem_mb=32 * 1024,
     conda:
         "../envs/gatk.yaml"
     shell:
