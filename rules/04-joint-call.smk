@@ -49,9 +49,9 @@ rule gatk3_genotype_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
-    threads: 16  # GATK does not honour the --num_threads flag
+    threads: 24  # GATK does not honour the --num_threads flag
     resources:
-        mem_mb=32 * 1024,
+        mem_mb=128 * 1024,
     conda:
         "../envs/gatk.yaml"
     shell:
