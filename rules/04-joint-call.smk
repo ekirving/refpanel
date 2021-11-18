@@ -353,16 +353,14 @@ rule bcftools_fill_tags:
 
 
 # noinspection PyTypeChecker
-rule bcftools_trio_file:
+rule bcftools_1000G_trios:
     """
-    Make a bcftools trio file for checking Mendelian inconsistencies (i.e., mother1,father1,child1)
+    Make a bcftools trio file for checking Mendelian inconsistencies in 1000G (i.e., mother1,father1,child1)
     """
     input:
-        # TODO what about other sources?
-        # TODO all samples in the trio file must me present in the VCF
         tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
     output:
-        tsv="data/panel/{panel}/{panel}-trios.tsv",
+        tsv="data/source/1000g/1000g-trios.tsv",
     shell:
         """awk 'NR>1 && $3!=0 && $4!=0 {{ print $4","$3","$2 }}' {input.tsv} > {output.tsv}"""
 
@@ -373,7 +371,7 @@ rule bcftools_mendelian:
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz",
-        tsv="data/panel/{panel}/{panel}-trios.tsv",
+        tsv=lambda wildcards: config["panel"][wildcards.panel]["trios"],
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz"),
         tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz.tbi"),
@@ -386,7 +384,8 @@ rule bcftools_mendelian:
         "bcftools index --tbi {output.vcf}"
 
 
-rule bcftools_filter_vcf:
+# noinspection PyTypeChecker
+rule bcftools_mendelian_filter_vcf:
     """
     Filter the VCF to only retain high-quality variants for downstream use
 
@@ -399,7 +398,7 @@ rule bcftools_filter_vcf:
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz",
         super="data/panel/{panel}/{panel}-superpops.tsv",
-        trios="data/panel/{panel}/{panel}-trios.tsv",
+        trios=lambda wildcards: config["panel"][wildcards.panel]["trios"],
     output:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz.tbi",

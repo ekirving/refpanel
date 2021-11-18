@@ -58,6 +58,9 @@ panel:
     # reference panel of the 1000G samples
     samples: data/panel/1000g/1000g-samples.tsv
 
+    # optional list of trios uses for checking Mendelian inconsistencies and performing phasing
+    trios: data/source/1000g/1000g-trios.tsv
+
   hgdp:
     # reference panel of the HGDP samples
     samples: data/panel/hgdp/hgdp-samples.tsv
@@ -83,6 +86,9 @@ panel:
     #  630 SAS  South Asian
     #   68 WEA  West Eurasian
     samples: data/panel/igsr/igsr-samples.tsv
+
+    # optional list of trios uses for checking Mendelian inconsistencies and performing phasing
+    trios: data/source/1000g/1000g-trios.tsv
 
 
 # list of chromosomes in GRCh38
