@@ -34,6 +34,7 @@ rule gatk3_haplotype_caller:
         tbi=temp("data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.gz.tbi"),
     log:
         log="data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.log",
+    threads: 2  # GATK uses more than the 1 thread it is given
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
