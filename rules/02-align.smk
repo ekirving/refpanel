@@ -39,7 +39,7 @@ rule bwa_mem_pe:
         log="data/source/{source}/bam/{accession}.bam.log",
     params:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
-    threads: workflow.cores / 4
+    threads: max(workflow.cores / 4, 8)
     conda:
         "../envs/bwa.yaml"
     shell:

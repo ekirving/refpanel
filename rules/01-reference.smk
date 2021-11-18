@@ -176,7 +176,7 @@ rule reference_grch38_chrom_bed:
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
     shell:
-        "grep -P '^{wildcards.chr}\t' {input.bed} > {output.bed}"
+        r"grep -P '^{wildcards.chr}\t' {input.bed} > {output.bed}"
 
 
 rule reference_grch38_chrom_others_bed:
@@ -188,7 +188,7 @@ rule reference_grch38_chrom_others_bed:
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.others.bed",
     shell:
-        "grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"
+        r"grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"
 
 
 rule reference_grch38_genetic_map:

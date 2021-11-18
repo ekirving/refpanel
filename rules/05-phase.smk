@@ -16,10 +16,6 @@ Rules to perform variant phasing on a joint-called reference panel
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/1000G_2020Oct26_NYGC_Phasing_README.pdf 
 """
 
-# use 25% of the total cores
-SHAPEIT4_NUM_THREADS = workflow.cores / 4
-
-# TODO need a version of the phasing that does not rely on trios
 # TODO build a `scaffold` using the trios from the extended 1000G NYGC dataset
 # TODO fetch the 10x Genomics callset for the HGDP project and use that also
 
@@ -35,7 +31,7 @@ rule shapeit4_phase_vcf:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.log",
-    threads: SHAPEIT4_NUM_THREADS
+    threads: max(workflow.cores / 4, 8)
     conda:
         "../envs/shapeit4.yaml"
     shell:
