@@ -352,6 +352,36 @@ rule bcftools_fill_tags:
         "bcftools index --tbi {output.vcf}"
 
 
+rule bcftools_filter_vcf:
+    """
+    Filter the VCF to only retain high-quality variants for downstream use
+
+    Defined using the following criteria: 
+    1) VQSR PASS;
+    2) GT missingness < 5%; 
+    3) HWE p-value > 1e-10 in at least one of the super-populations;
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz",
+        super="data/panel/{panel}/{panel}-superpops.tsv",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz.tbi",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.log",
+    params:
+        # TODO should this be applied to the non-1000G super populations?
+        # compose the HWE filter for the super-populations found in this reference panel
+        hwe=lambda wildcards, input: " | ".join(
+            [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
+        ),
+    conda:
+        "../envs/bcftools.yaml"
+    shell:
+        "bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe})' -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools index --tbi {output.vcf}"
+
+
 # noinspection PyTypeChecker
 rule bcftools_1000G_trios:
     """
@@ -365,56 +395,27 @@ rule bcftools_1000G_trios:
         """awk 'NR>1 && $3!=0 && $4!=0 {{ print $4","$3","$2 }}' {input.tsv} > {output.tsv}"""
 
 
-rule bcftools_mendelian:
-    """
-    Annotate the VCF with any Mendelian inconsistencies, based on trio definitions
-    """
-    input:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz",
-        tsv=lambda wildcards: config["panel"][wildcards.panel]["trios"],
-    output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.log",
-    conda:
-        "../envs/bcftools.yaml"
-    shell:
-        "bcftools +mendelian {input.vcf} --mode a --trio-file {input.tsv} -Oz -o {output.vcf} && "
-        "bcftools index --tbi {output.vcf}"
-
-
 # noinspection PyTypeChecker
-rule bcftools_mendelian_filter_vcf:
+rule bcftools_mendelian_error_rate:
     """
-    Filter the VCF to only retain high-quality variants for downstream use
-
-    Defined using the following criteria: 
-    1) VQSR PASS;
-    2) GT missingness < 5%; 
-    3) HWE p-value > 1e-10 in at least one of the super-populations; 
-    4) mendelian error rate < 5% (of tested trios);
+    Filter the VCF for any Mendelian inconsistencies, based on trio definitions
+    
+    Only retain sites where the mendelian error rate < 5%
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel.vcf.gz",
-        super="data/panel/{panel}/{panel}-superpops.tsv",
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz",
         trios=lambda wildcards: config["panel"][wildcards.panel]["trios"],
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.gz.tbi",
+        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_mendel_filter.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.log",
     params:
-        # compose the HWE filter for the super-populations found in this reference panel
-        hwe=lambda wildcards, input: " | ".join(
-            [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
-        ),
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
     conda:
         "../envs/bcftools.yaml"
     shell:
-        "bcftools view"
-        " --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MERR<{params.max_merr}'"
-        " -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
+        "bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
