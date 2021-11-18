@@ -19,6 +19,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 # use 25% of the total cores
 SHAPEIT4_NUM_THREADS = workflow.cores / 4
 
+# TODO need a version of the phasing that does not rely on trios
 # TODO build a `scaffold` using the trios from the extended 1000G NYGC dataset
 # TODO fetch the 10x Genomics callset for the HGDP project and use that also
 
