@@ -40,6 +40,7 @@ rule gatk3_haplotype_caller:
         "../envs/gatk.yaml"
     shell:
         "gatk3"
+        " -XX:ConcGCThreads=1"
         " -Xmx{resources.mem_mb}m"
         " -T HaplotypeCaller"
         " --genotyping_mode DISCOVERY"
