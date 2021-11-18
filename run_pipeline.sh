@@ -13,7 +13,7 @@ datetime=$(date +%Y-%m-%d-%H%M.%S)
 # make a unique log file
 logfile="nohup-${datetime}.out"
 
-refpanel=${args[0]:='example-panel'}
+refpanel=${args[0]:='test'}
 
 # print the server name and start time to the log file
 echo "SERVER: $HOSTNAME" >>${logfile}

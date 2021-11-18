@@ -4,17 +4,17 @@
 # License:   MIT
 
 # default reference panel
-refpanel: example-panel
+refpanel: test
 
 # data sources, containing samples and individual library accessions
 source:
 
-  example:
+  test:
     # sample metadata sheet - required cols (sample, sex)
-    samples: example/example-samples.tsv
+    samples: test/test-source-samples.tsv
 
     # library metadata sheet - required cols (sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)
-    accessions: example/example-accessions.tsv
+    accessions: test/test-source-accessions.tsv
 
     # mapping of readgroup tags to accession metadata column names
     readgroup:
@@ -50,9 +50,9 @@ source:
 # reference panels, aggregations of samples across data sources
 panel:
 
-  example-panel:
+  test:
     # metadata sheet containing the list of samples and populations for this reference panel - req. (source, sample, superpopulation)
-    samples: example/example-samples.tsv
+    samples: test/test-panel-samples.tsv
 
   1000g:
     # reference panel of the 1000G samples

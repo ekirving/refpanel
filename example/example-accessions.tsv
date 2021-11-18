@@ -1,5 +1,0 @@
-accession	sample	center	platform	layout	library	description	fastq_r1	fastq_r2
-ERR1373257	HGDP00094	Wellcome Sanger Institute	ILLUMINA	PAIRED	15665963	SAMEA2581313	example/fastq/ERR1373257_100k_1.fastq.gz	example/fastq/ERR1373257_100k_2.fastq.gz
-ERR1395807	HGDP00094	Wellcome Sanger Institute	ILLUMINA	PAIRED	15665963	SAMEA2581313	example/fastq/ERR1395807_100k_1.fastq.gz	example/fastq/ERR1395807_100k_2.fastq.gz
-ERR1295999	HGDP01328	Wellcome Sanger Institute	ILLUMINA	PAIRED	15319853	SAMEA2580979	example/fastq/ERR1295999_100k_1.fastq.gz	example/fastq/ERR1295999_100k_2.fastq.gz
-ERR1296003	HGDP01356	Wellcome Sanger Institute	ILLUMINA	PAIRED	15319857	SAMEA2581027	example/fastq/ERR1296003_100k_1.fastq.gz	example/fastq/ERR1296003_100k_2.fastq.gz
