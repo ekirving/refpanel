@@ -1,4 +1,4 @@
 channels:
   - bioconda
 dependencies:
-  - gatk=3.5
+  - bioconda::gatk=3.5=hdfd78af_11

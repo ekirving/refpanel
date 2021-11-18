@@ -1,5 +1,5 @@
 channels:
   - bioconda
 dependencies:
-  - bcftools=1.14
-  - tabix=1.11
+  - bioconda::bcftools=1.14
+  - bioconda::tabix=1.11
