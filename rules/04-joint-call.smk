@@ -49,7 +49,7 @@ rule gatk3_genotype_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
-    threads: GATK_NUM_THREADS
+    threads: 16  # GATK does not honour the --num_threads flag
     resources:
         mem_mb=32 * 1024,
     conda:
@@ -60,7 +60,7 @@ rule gatk3_genotype_gvcf:
         " -T GenotypeGVCFs"
         " -R {input.ref}"
         " -L {input.chr}"
-        " --num_threads {threads}"
+        " --num_threads {GATK_NUM_THREADS}"
         " --disable_auto_index_creation_and_locking_when_reading_rods"
         " {params.gvcfs}"
         " -o {output.vcf} 2> {log}"
