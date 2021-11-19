@@ -29,6 +29,9 @@ else
   MAX_MEM=$(free -m | awk '/^Mem:/{print $2}')
 fi
 
+# save 1 Gb
+MAX_MEM=$((MAX_MEM - 1024))
+
 flags="--cores all "
 flags+="--nolock "
 flags+="--keep-going "
