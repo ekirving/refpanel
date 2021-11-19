@@ -6,6 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+from psutil import virtual_memory
 from snakemake.io import protected, unpack, temp, expand
 
 from scripts.utils import list_samples
@@ -18,6 +19,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
+MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2)
 
 
 wildcard_constraints:
@@ -39,6 +41,8 @@ def gatk3_genotype_gvcf_input(wildcards):
 rule gatk3_genotype_gvcf:
     """
     Jointly call genotypes in all samples
+    
+    NB. GATK does not honour the --num_threads flag and will use all available cores
     """
     input:
         unpack(gatk3_genotype_gvcf_input),
@@ -49,9 +53,8 @@ rule gatk3_genotype_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
-    threads: 24  # GATK does not honour the --num_threads flag
     resources:
-        mem_mb=246 * 1024,
+        mem_mb=(MAX_MEM_MB / 2) - 1024,
     conda:
         "../envs/gatk.yaml"
     shell:
