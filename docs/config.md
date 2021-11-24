@@ -18,7 +18,7 @@ To add a new data `source` you will need to create two `tsv` metadata files:
 For examples, see [test-source-samples.tsv](../test/test-source-samples.tsv) and [test-source-accessions.tsv](
 ../test/test-source-accessions.tsv)
 
-The mapping between `@RG` tags abd `<readgroup-cols>` is defined in [config.yaml](../config.yaml)
+The mapping between `@RG` tags and `<readgroup-cols>` is defined in [config.yaml](../config.yaml)
 
 By default, the following mapping is used:
 * `ID:<accession>`
