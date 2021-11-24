@@ -404,8 +404,6 @@ rule bcftools_mendelian_error_rate:
     Filter the VCF for any Mendelian inconsistencies, based on trio definitions
 
     Only retain sites where the mendelian error rate < 5%
-    
-    I have made a change
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz",
