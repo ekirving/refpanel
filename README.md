@@ -39,7 +39,7 @@ This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,7
 The data from these projects is hosted by the the [International Genome Sample Resource (IGSR)](
 https://doi.org/10.1093/nar/gkw829) database at https://www.internationalgenome.org/  
 
-If you wish to build a customised joint-callset (e.g., with additional samples), you will need to provide a minimal 
+If you wish to build a customised joint-callset (e.g., with non-public samples), you will need to provide a minimal 
 amount of [additional metadata](docs/config.md).
 
 ### Downloading data
@@ -57,23 +57,23 @@ To (optionally) pre-fetch all the data dependencies, run:
 ## Joint-calling pipeline
 
 In brief, `refpanel` produces a phased joint-callset by:
-* [Alignment](rules/02-align.smk#L25) to GRCh38 with `bwa mem` (v0.7.15)
+* [Alignment to `GRCh38`](rules/02-align.smk#L25) with `bwa mem` (v0.7.15)
 * [Fix-mate](rules/02-align.smk#L57), [merge](rules/02-align.smk#L91), [sort](rules/02-align.smk#L119), and [mark duplicates](rules/02-align.smk#L146) with `picard` (v2.5.0)
 * [Base recalibration](rules/02-align.smk#L176) with `gatk BaseRecalibrator` (v3.5)
 * [Conversion to `cram`](rules/02-align.smk#L248) with `samtools` (v1.3.1)
-* Per-sample calling of `gVCFs` with `gatk HaplotypeCaller` (with [sex-dependent ploidy](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/README_2021November05_NYGCrawcalls_updated.docx))
-* Joint-calling of all samples with `gatk GenotypeGVCFs`
-* Variant quality score recalibration ([VQSR](https://gatk.broadinstitute.org/hc/en-us/articles/360035531612?id=1259)) with `gatk VariantRecalibrator`
-* Hard-filtering of SNPs and INDELs with `bcftools` (v1.14) on:
+* [Per-sample calling of `gVCFs`](rules/03-call.smk#L22) with `gatk HaplotypeCaller` (with [sex-dependent ploidy](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/README_2021November05_NYGCrawcalls_updated.docx))
+* [Joint-calling of all samples](rules/04-joint-call.smk#L41) with `gatk GenotypeGVCFs`
+* [Variant quality score recalibration](rules/04-joint-call.smk#L123) with `gatk VariantRecalibrator`
+* [Hard-filtering of SNPs and INDELs](rules/04-joint-call.smk#L358) with `bcftools` (v1.14) on:
   1) VQSR PASS;
   2) GT missingness < 5%; 
   3) HWE p-value > 1e-10 in at least one super-population;
   4) Mendelian error rate < 5% (based on 1000G trios);
-* Phasing with `shapeit4` (v4.2.2) using:
+* [Statistical phasing](rules/05-phase.smk#L24) with `shapeit4` (v4.2.2) using:
   * Trio data from 1000G; and
   * 10x Genomics long-reads from HGDP;
 
-For more information, see the [DAG of the rule graph](docs/rulegraph.pdf) or refer to the relevant `snakemake` ruleset.
+For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf).
 
 ## Running the pipeline
 
