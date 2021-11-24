@@ -56,7 +56,7 @@ To (optionally) pre-fetch all the data dependencies, run:
 
 ## Joint-calling pipeline
 
-In brief, `refpanel` produces a phased joint-callset by:
+In brief, `refpanel` produces a phased joint-callset via the following steps:
 * [Alignment to `GRCh38`](rules/02-align.smk#L25) with `bwa mem` (v0.7.15)
 * [Fix-mate](rules/02-align.smk#L57), [merge](rules/02-align.smk#L91), [sort](rules/02-align.smk#L119), and [mark duplicates](rules/02-align.smk#L146) with `picard` (v2.5.0)
 * [Base recalibration](rules/02-align.smk#L176) with `gatk BaseRecalibrator` (v3.5)
@@ -77,7 +77,7 @@ For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf).
 
 ## Running the pipeline
 
-To execute the entire pipeline, end-to-end, run:
+To execute the full pipeline, end-to-end, run:
 ```bash
 ./run_pipeline.sh &
 ```
