@@ -47,8 +47,8 @@ rule gatk3_genotype_gvcf:
     input:
         unpack(gatk3_genotype_gvcf_input),
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
@@ -76,8 +76,8 @@ rule picard_merge_chromosome_vcfs:
     input:
         expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
     params:
@@ -399,7 +399,7 @@ rule bcftools_1000G_trios:
 
 
 # noinspection PyTypeChecker
-rule bcftools_mendelian_error_rate:
+rule bcftools_mendelian_inconsistencies:
     """
     Filter the VCF for any Mendelian inconsistencies, based on trio definitions
 

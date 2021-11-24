@@ -21,15 +21,16 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 # TODO fetch the 10x Genomics callset for the HGDP project and use that also
 
 
-rule shapeit4_phase_vcf:
+rule shapeit4_phase_vcf_trios:
     """
-    Phase the joint-callset
+    Phase the joint-callset, using trios
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz",
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz.tbi",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
