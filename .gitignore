@@ -1,7 +1,6 @@
 *-commands.sh
 .snakemake
 __pycache__
-dag.pdf
 data/panel/*/*-superpops.tsv
 data/panel/*/*-trios.tsv
 data/panel/*/vcf/
@@ -12,5 +11,4 @@ data/source/*/fastq/
 data/source/*/gVCF/
 logs/
 nohup*
-rulegraph.pdf
 scripts/metadata.R
