@@ -69,7 +69,7 @@ rule gatk3_genotype_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule picard_merge_chromosome_vcfs:
+rule picard_merge_chrom_vcfs:
     """
     Merge the chromosomes back together so we can do variant recalibration over the whole genome
     """
