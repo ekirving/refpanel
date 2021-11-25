@@ -349,7 +349,7 @@ rule bcftools_fill_tags:
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.log",
     conda:
-        "../envs/bcftools.yaml"
+        "../envs/htslib.yaml"
     shell:
         "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
@@ -379,7 +379,7 @@ rule bcftools_filter_vcf:
             [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
         ),
     conda:
-        "../envs/bcftools.yaml"
+        "../envs/htslib.yaml"
     shell:
         "bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe})' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
@@ -417,7 +417,7 @@ rule bcftools_mendelian_inconsistencies:
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
     conda:
-        "../envs/bcftools.yaml"
+        "../envs/htslib.yaml"
     shell:
         "bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
         "bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} {input.vcf} && "
