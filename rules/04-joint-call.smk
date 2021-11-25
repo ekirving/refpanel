@@ -47,7 +47,7 @@ rule gatk3_make_multisample_chrom_gvcf:
         vcf=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz"),
         tbi=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz.tbi"),
     log:
-        log="data/source/{source}/gVCF/{source}_{chr}.g.vcf.log",
+        log="data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
