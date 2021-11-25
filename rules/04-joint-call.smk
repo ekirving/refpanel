@@ -27,7 +27,7 @@ wildcard_constraints:
     type="SNP|INDEL",
 
 
-def gatk3_merge_chrom_gvcfs_input(wildcards):
+def gatk3_make_multisample_chrom_gvcf_input(wildcards):
     source = wildcards.source
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
@@ -37,12 +37,12 @@ def gatk3_merge_chrom_gvcfs_input(wildcards):
 
 
 # noinspection PyUnresolvedReferences
-rule gatk3_merge_chrom_gvcfs:
+rule gatk3_make_multisample_chrom_gvcf:
     """
     Combine all gVCFs from one chromosome in one datasource into a multi-sample gVCF
     """
     input:
-        unpack(gatk3_merge_chrom_gvcfs_input),
+        unpack(gatk3_make_multisample_chrom_gvcf_input),
     output:
         vcf=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz"),
         tbi=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz.tbi"),
@@ -64,7 +64,7 @@ rule gatk3_merge_chrom_gvcfs:
         " -o {output.vcf} 2> {log}"
 
 
-def gatk3_genotype_gvcf_input(wildcards):
+def gatk3_genotype_chrom_gvcf_input(wildcards):
     chr = wildcards.chr
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
@@ -77,14 +77,14 @@ def gatk3_genotype_gvcf_input(wildcards):
 
 
 # noinspection PyUnresolvedReferences
-rule gatk3_genotype_gvcf:
+rule gatk3_genotype_chrom_gvcf:
     """
-    Jointly call genotypes in all samples
+    Jointly call genotypes in all samples for a specific chromosome
 
     NB. GATK does not honour the --num_threads flag and will use all available cores
     """
     input:
-        unpack(gatk3_genotype_gvcf_input),
+        unpack(gatk3_genotype_chrom_gvcf_input),
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz"),
         tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi"),
