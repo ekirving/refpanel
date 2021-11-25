@@ -75,7 +75,7 @@ def list_all_gvcfs():
     """List all the gVCF files that need generating from the downloaded CRAM files"""
     files = []
 
-    for source in ["sgdp", "ggvp"]:
+    for source in ["hgdp"]:  # ["sgdp", "ggvp"]
         samples = pd.read_table(config["source"][source]["samples"])
 
         files += [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"]]
