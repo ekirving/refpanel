@@ -37,14 +37,14 @@ conda activate refpanel
 This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,756), involving all publicly available
 samples from:
 
-* 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 trios)
-  ; [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
-* Human Genome Diversity Project (HGDP) (n=929; including overlap with SGDP)
-  ; [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
-* Simons Genome Diversity Project (SGDP) (n=231; excluding overlap with 1000G and HGDP)
-  ;  [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
-* Gambian Genome Variation Project (GGVP) (n=394; excluding overlap with 1000G)
-  ; [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
+* 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 trios); \
+  [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
+* Human Genome Diversity Project (HGDP) (n=929; including overlap with SGDP); \
+  [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
+* Simons Genome Diversity Project (SGDP) (n=231; excluding overlap with 1000G and HGDP); \
+  [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
+* Gambian Genome Variation Project (GGVP) (n=394; excluding overlap with 1000G); \
+  [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
 
 The data from these projects is hosted by the
 the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)

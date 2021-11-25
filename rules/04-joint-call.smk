@@ -95,6 +95,7 @@ rule gatk3_genotype_chrom_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
+        # TODO do we still need this huge memory allocation after merging gVCFs?
         mem_mb=(MAX_MEM_MB // 2) - 1024,
     conda:
         "../envs/gatk.yaml"
