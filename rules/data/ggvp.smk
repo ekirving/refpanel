@@ -54,6 +54,25 @@ rule ggvp_download_cram:
         r"md5sum --status --check {input.md5}"
 
 
+rule ggvp_replace_iupac_base_codes:
+    """
+    Replace any IUPAC base codes, which GATK 3.5 cannot handle, with Ns
+
+    https://www.bioinformatics.org/sms/iupac.html
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        cram="data/source/ggvp/cram/{sample}.cram",
+    output:
+        cram="data/source/{source}/cram/{sample}.cram",
+        crai="data/source/{source}/cram/{sample}.cram.crai",
+    shell:
+        "samtools view -h {input.cram} | "
+        r"""awk -v FS="\t" -v OFS="\t" '{{ if(substr($1,1,1) !~ /^@/) gsub("[^ACGTN]","N",$10) }}1' | """
+        "samtools view -C -T {input.ref} -o {output.cram} && "
+        "samtools index {output.cram}"
+
+
 def ggvp_list_all_cram():
     samples = pd.read_table(config["source"]["ggvp"]["samples"])
 
