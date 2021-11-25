@@ -368,8 +368,8 @@ rule bcftools_filter_vcf:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz",
         super="data/panel/{panel}/{panel}-superpops.tsv",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz.tbi",
+        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.log",
     params:
@@ -407,6 +407,7 @@ rule bcftools_mendelian_inconsistencies:
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz.tbi",
         trios=lambda wildcards: config["panel"][wildcards.panel]["trios"],
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz"),
