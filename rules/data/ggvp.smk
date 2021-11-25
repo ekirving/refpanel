@@ -17,7 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/ggvp-grch38
 
 
 wildcard_constraints:
-    sample="[^.]+",
+    sample="[\w.]+",
     ext="cram(.crai)?",
 
 

@@ -19,6 +19,10 @@ https://www.internationalgenome.org/data-portal/data-collection/hgdp
 FTP_HGDP = "ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs"
 
 
+wildcard_constraints:
+    sample="[\w.]+",
+
+
 rule hgdp_download_gvcf:
     """
     Download GATK HaplotypeCaller gVCFs for each HGDP sample

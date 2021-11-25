@@ -70,7 +70,8 @@ def gatk3_genotype_gvcf_input(wildcards):
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
         "gvcfs": [
-            f"data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz" for source in list_sources(config, wildcards.panel)
+            f"data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz"
+            for source in list_sources(config, wildcards.panel)
         ],
     }
 

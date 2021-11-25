@@ -17,6 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/sgdp
 
 
 wildcard_constraints:
+    sample="[\w.]+",
     ext="cram(.crai)?",
 
 
