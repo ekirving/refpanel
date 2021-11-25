@@ -53,7 +53,7 @@ rule download_data:
 
 rule merge_1000g:
     input:
-        expand("data/source/1000g/gVCF/merged/1000g_{chr}.g.vcf.gz", chr=config["chroms"]),
+        expand("data/source/1000g/gVCF/merged/1000g_{chr}.g.vcf.gz", chr=[chr for chr in config["chroms"] if chr != "chr22"]),
 
 
 rule merge_hgdp:
