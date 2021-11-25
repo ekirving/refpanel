@@ -64,7 +64,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        mem_mb=min(64 * 1024, MAX_MEM_MB),
+        mem_mb=min(32 * 1024, MAX_MEM_MB),
     conda:
         "../envs/gatk.yaml"
     shell:
