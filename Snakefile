@@ -28,8 +28,8 @@ include: "rules/05-phase.smk"
 
 
 # preference download rules, when they are available
-ruleorder: sgdp_download_cram > ggvp_filter_iupac_base_codes > samtools_cram
-ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_combine_ploidy_regions
+ruleorder: hgdp_download_cram > sgdp_download_cram > ggvp_filter_iupac_base_codes > samtools_cram
+ruleorder: tgp_nygc_download_gvcf > gatk3_combine_ploidy_regions
 
 
 rule all:
@@ -46,7 +46,7 @@ rule refpanel:
 rule download_data:
     input:
         "data/source/1000g/gVCF/download.done",
-        "data/source/hgdp/gVCF/download.done",
+        "data/source/hgdp/cram/download.done",
         "data/source/sgdp/cram/download.done",
         "data/source/ggvp/cram/download.done",
 

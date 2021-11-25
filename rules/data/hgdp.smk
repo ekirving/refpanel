@@ -16,43 +16,43 @@ https://www.internationalgenome.org/data-portal/data-collection/hgdp
 """
 
 
-FTP_HGDP = "ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs"
-
-
 wildcard_constraints:
     sample="[\w.]+",
 
 
-rule hgdp_download_gvcf:
+rule hgdp_download_cram:
     """
-    Download GATK HaplotypeCaller gVCFs for each HGDP sample
+    Download bwa-mem CRAM files for each fully-public HGDP sample
     """
+    input:
+        man="data/source/hgdp/links-to-read-alignments.txt",
     output:
-        vcf="data/source/hgdp/gVCF/{sample}.g.vcf.gz",
-        tbi="data/source/hgdp/gVCF/{sample}.g.vcf.gz.tbi",
-    log:
-        log="data/source/hgdp/gVCF/{sample}.g.vcf.log",
+        cram="data/source/hgdp/cram/{sample}.cram",
+        crai="data/source/hgdp/cram/{sample}.cram.crai",
     resources:
-        sanger_ftp=1,
+        ebi_ftp=1,
+    conda:
+        "../../envs/htslib.yaml"
     shell:
-        "wget --no-verbose -O {output.vcf} -o {log} {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz && "
-        "wget --quiet -O {output.tbi} -o /dev/null {FTP_HGDP}/{wildcards.sample}.hgdp_wgs.20190516.vcf.gz.tbi && "
-        "gunzip --test {output.vcf}"
+        r"grep -P '^{wildcards.sample}\t' {input.man} | awk '{{ print $2 }}' | "
+        r"xargs wget --quiet -O {output.cram} -o /dev/null && "
+        r"samtools quickcheck {output.cram} && "
+        r"samtools index {output.cram}"
 
 
-def hgdp_list_all_gvcf():
+def hgdp_list_all_crams():
     samples = pd.read_table(config["source"]["hgdp"]["samples"])
 
     files = [
-        [f"data/source/hgdp/gVCF/{sample}.g.vcf.gz", f"data/source/hgdp/gVCF/{sample}.g.vcf.gz.tbi"]
+        [f"data/source/hgdp/cram/{sample}.cram", f"data/source/hgdp/cram/{sample}.cram.crai"]
         for sample in samples["sample"]
     ]
 
     return files
 
 
-rule hgdp_download_all_gvcf:
+rule hgdp_download_all_cram:
     input:
-        hgdp_list_all_gvcf(),
+        hgdp_list_all_crams(),
     output:
-        touch("data/source/hgdp/gVCF/download.done"),
+        touch("data/source/hgdp/cram/download.done"),
