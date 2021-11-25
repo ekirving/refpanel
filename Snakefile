@@ -96,3 +96,8 @@ def list_all_gvcfs():
 rule generate_gvcfs:
     input:
         list_all_gvcfs(),
+
+
+rule generate_multisample_chrom_gvcfs:
+    input:
+        expand("data/source/1000g/gVCF/merged/1000g_{chr}.g.vcf.gz", chr=config["chroms"]),

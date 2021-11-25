@@ -26,7 +26,7 @@ JAVA_MEMORY_MB = 8 * 1024
 # maximum available RAM
 MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
 
-# the maximum number of sample to merge together at one time with CombineGVCFs (to prevent massive memory usage)
+# the maximum number of samples to merge together at one time with CombineGVCFs (to prevent massive memory usage)
 GATK_BATCH_SIZE = 200
 
 
@@ -78,7 +78,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
         " -o {output.vcf} 2> {log}"
 
 
-def gatk3_make_multisample_chrom_gvcf_input(wildcards):
+def gatk3_multisample_chrom_gvcf_input(wildcards):
     """Split the samples into batches"""
     num_batches = math.ceil(len(list_samples(config, wildcards.source)) / GATK_BATCH_SIZE)
 
@@ -93,12 +93,12 @@ def gatk3_make_multisample_chrom_gvcf_input(wildcards):
 
 
 # noinspection PyUnresolvedReferences
-rule gatk3_make_multisample_chrom_gvcf:
+rule gatk3_multisample_chrom_gvcf:
     """
-    Combine all gVCFs batches into one multi-sample gVCF
+    Combine all gVCFs batches into one multi-sample gVCF for each chromosome
     """
     input:
-        unpack(gatk3_make_multisample_chrom_gvcf_input),
+        unpack(gatk3_multisample_chrom_gvcf_input),
     output:
         vcf=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz"),
         tbi=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz.tbi"),
