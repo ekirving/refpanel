@@ -20,6 +20,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
 MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
+NUM_CHROMS = len(config["chroms"])
 
 
 wildcard_constraints:
@@ -51,11 +52,13 @@ rule gatk3_make_multisample_chrom_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        mem_mb=(MAX_MEM_MB // 26) - 1024,
+        mem_mb=min(24 * 1024, MAX_MEM_MB),
+    threads: workflow.cores / NUM_CHROMS
     conda:
         "../envs/gatk.yaml"
     shell:
         "gatk3"
+        " -XX:ConcGCThreads={threads}"
         " -Xmx{resources.mem_mb}m"
         " -T CombineGVCFs"
         " -R {input.ref}"
