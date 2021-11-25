@@ -29,7 +29,7 @@ include: "rules/05-phase.smk"
 
 # preference download rules, when they are available
 ruleorder: sgdp_download_cram > ggvp_filter_iupac_base_codes > samtools_cram
-ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_combine_gvcfs
+ruleorder: tgp_nygc_download_gvcf > hgdp_download_gvcf > gatk3_combine_ploidy_regions
 
 
 rule all:
