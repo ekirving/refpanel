@@ -55,10 +55,21 @@ def list_all_gvcfs():
     """List all the gVCF files that need generating from the downloaded CRAM files"""
     files = []
 
+    running = ["abh100", "ALB212", "Ayodo_430C", "Ayodo_502C", "Ayodo_81S", "Bu5", "ch113", "DNK05", "DNK07",
+               "HGDP00058", "HGDP00090", "HGDP00157", "HGDP00195", "HGDP00208", "HGDP00428", "HGDP00554", "HGDP00597",
+               "HGDP00616", "HGDP00656", "HGDP00702", "HGDP00706", "HGDP00737", "HGDP00783", "HGDP00903", "HGDP00915",
+               "HGDP00928", "HGDP00936", "HGDP00956", "HGDP01018", "HGDP01028", "HGDP01030", "HGDP01032", "HGDP01095",
+               "HGDP01153", "HGDP01198", "HGDP01203", "HGDP01211", "HGDP01242", "HGDP01246", "HGDP01297", "HGDP01306",
+               "HGDP01315", "HGDP01335", "HGDP01345", "HGDP01355", "HGDP01401", "HGDP01417", "I3", "Igor20",
+               "Jordan445", "KD4", "Kor82", "mg27", "mixa0105", "mixe0007", "NA11201", "NA15202", "Nesk_25", "Nlk1",
+               "R6", "SA0342", "SA0722", "Sir19", "Sir40", "TZ-11", "Ul5", "Y4"]
+
     for source in ["sgdp", "ggvp"]:
         samples = pd.read_table(config["source"][source]["samples"])
 
-        files += [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"]]
+        files += [
+            f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"] if sample not in running
+        ]
 
     batch = config.get("batch", 0)
     size = int(len(files) / 3)
