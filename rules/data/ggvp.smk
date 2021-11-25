@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import touch
+from snakemake.io import touch, temp
 
 """
 Rules to download data files for the Gambian Genome Variation Project (GGVP)
@@ -27,9 +27,9 @@ rule ggvp_md5:
     input:
         man="data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv",
     output:
-        md5="data/source/ggvp/cram/{sample}.{ext}.md5",
+        md5=temp("data/source/ggvp/cram/{sample}.raw.{ext}.md5"),
     params:
-        file="data/source/ggvp/cram/{sample}.{ext}",
+        file="data/source/ggvp/cram/{sample}.raw.{ext}",
         col=lambda wildcards: 4 if "crai" in wildcards.ext else 2,
     shell:
         r"""grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col}" {params.file}" }}' > {output.md5}"""
@@ -41,9 +41,9 @@ rule ggvp_download_cram:
     """
     input:
         man="data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv",
-        md5="data/source/ggvp/cram/{sample}.{ext}.md5",
+        md5="data/source/ggvp/cram/{sample}.raw.{ext}.md5",
     output:
-        cram="data/source/ggvp/cram/{sample}.{ext}",
+        cram=temp("data/source/ggvp/cram/{sample}.raw.{ext}"),
     params:
         col=lambda wildcards: 3 if "crai" in wildcards.ext else 1,
     resources:
@@ -54,23 +54,25 @@ rule ggvp_download_cram:
         r"md5sum --status --check {input.md5}"
 
 
-rule ggvp_replace_iupac_base_codes:
+rule ggvp_filter_iupac_base_codes:
     """
-    Replace any IUPAC base codes, which GATK 3.5 cannot handle, with Ns
+    Remove any reads with IUPAC base codes, as GATK 3.5 cannot handle them
+
+    e.g. SC_GMWOF5428795 and SC_GMJOL5309875 contain `M` and `R` calls
 
     https://www.bioinformatics.org/sms/iupac.html
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        cram="data/source/ggvp/cram/{sample}.cram",
+        cram="data/source/ggvp/cram/{sample}.raw.cram",
+        crai="data/source/ggvp/cram/{sample}.raw.cram.crai",
     output:
-        cram="data/source/{source}/cram/{sample}.cram",
-        crai="data/source/{source}/cram/{sample}.cram.crai",
+        cram="data/source/ggvp/cram/{sample}.cram",
+        crai="data/source/ggvp/cram/{sample}.cram.crai",
+    conda:
+        "../../envs/htslib.yaml"
     shell:
-        "samtools view -h {input.cram} | "
-        r"""awk -v FS="\t" -v OFS="\t" '{{ if(substr($1,1,1) !~ /^@/) gsub("[^ACGTN]","N",$10) }}1' | """
-        "samtools view -C -T {input.ref} -o {output.cram} && "
-        "samtools index {output.cram}"
+        """samtools view --expr 'seq=~"^[ACGTN]+$"' --write-index -C -T {input.ref} -o {output.cram} {input.cram}"""
 
 
 def ggvp_list_all_cram():
