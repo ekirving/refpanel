@@ -55,6 +55,8 @@ def list_all_gvcfs():
     """List all the gVCF files that need generating from the downloaded CRAM files"""
     files = []
 
+    import random
+
     running = ["abh100", "ALB212", "Ayodo_430C", "Ayodo_502C", "Ayodo_81S", "Bu5", "ch113", "DNK05", "DNK07",
                "HGDP00058", "HGDP00090", "HGDP00157", "HGDP00195", "HGDP00208", "HGDP00428", "HGDP00554", "HGDP00597",
                "HGDP00616", "HGDP00656", "HGDP00702", "HGDP00706", "HGDP00737", "HGDP00783", "HGDP00903", "HGDP00915",
@@ -76,6 +78,9 @@ def list_all_gvcfs():
 
     start = (batch - 1) * size
     finish = start + size if batch != 3 else None
+
+    random.seed(4)
+    random.shuffle(files)
 
     return files[start:finish]
 
