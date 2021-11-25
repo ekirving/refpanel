@@ -80,7 +80,11 @@ def list_all_gvcfs():
 
         files += [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"]]
 
-    batch = config.get("batch", 1)
+    batch = config.get("batch", None)
+
+    if batch is None:
+        return files
+
     size = int(len(files) / 3)
 
     start = (batch - 1) * size
