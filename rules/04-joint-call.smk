@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import math
+
 from psutil import virtual_memory
 from snakemake.io import protected, unpack, temp, expand
 
@@ -17,10 +19,15 @@ Rules to perform joint genotype calling for the IGSR pipeline
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
 
+# GATK / JAVA default settings
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
+
+# maximum available RAM
 MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
-NUM_CHROMS = len(config["chroms"])
+
+# the maximum number of sample to merge together at one time with CombineGVCFs (to prevent massive memory usage)
+GATK_BATCH_SIZE = 200
 
 
 wildcard_constraints:
@@ -28,19 +35,67 @@ wildcard_constraints:
     type="SNP|INDEL",
 
 
-def gatk3_make_multisample_chrom_gvcf_input(wildcards):
+def gatk3_batch_sample_chrom_gvcfs_input(wildcards):
+    """Split the samples into batches so we don't use too much RAM"""
     source = wildcards.source
+    samples = list_samples(config, source)
+    start = (int(wildcards.batch) - 1) * GATK_BATCH_SIZE
+    stop = start + GATK_BATCH_SIZE
+
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
-        "gvcfs": [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in list_samples(config, source)],
+        "gvcfs": [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples[start:stop]],
+    }
+
+
+# noinspection PyUnresolvedReferences
+rule gatk3_batch_sample_chrom_gvcfs:
+    """
+    Combine all gVCFs in batches, from one chromosome in one datasource into a multi-sample gVCF
+    """
+    input:
+        unpack(gatk3_batch_sample_chrom_gvcfs_input),
+    output:
+        vcf=temp("data/source/{source}/gVCF/merged/{source}_{chr}_{batch}.g.vcf.gz"),
+        tbi=temp("data/source/{source}/gVCF/merged/{source}_{chr}_{batch}.g.vcf.gz.tbi"),
+    log:
+        log="data/source/{source}/gVCF/merged/{source}_{chr}_{batch}.g.vcf.log",
+    params:
+        gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
+    resources:
+        mem_mb=min(64 * 1024, MAX_MEM_MB),
+    conda:
+        "../envs/gatk.yaml"
+    shell:
+        "gatk3"
+        " -XX:ConcGCThreads=1"
+        " -Xmx{resources.mem_mb}m"
+        " -T CombineGVCFs"
+        " -R {input.ref}"
+        " -L {input.chr}"
+        " {params.gvcfs}"
+        " -o {output.vcf} 2> {log}"
+
+
+def gatk3_make_multisample_chrom_gvcf_input(wildcards):
+    """Split the samples into batches"""
+    num_batches = math.ceil(len(list_samples(config, wildcards.source)) / GATK_BATCH_SIZE)
+
+    return {
+        "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
+        "gvcfs": [
+            "data/source/{source}/gVCF/merged/{source}_{chr}_" + str(batch) + ".g.vcf.gz"
+            for batch in range(1, num_batches + 1)
+        ],
     }
 
 
 # noinspection PyUnresolvedReferences
 rule gatk3_make_multisample_chrom_gvcf:
     """
-    Combine all gVCFs from one chromosome in one datasource into a multi-sample gVCF
+    Combine all gVCFs batches into one multi-sample gVCF
     """
     input:
         unpack(gatk3_make_multisample_chrom_gvcf_input),
