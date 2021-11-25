@@ -42,7 +42,7 @@ rule gatk3_merge_chrom_gvcfs:
     Combine all gVCFs from one chromosome in one datasource into a multi-sample gVCF
     """
     input:
-        unpack(gatk3_merge_source_gvcfs_input),
+        unpack(gatk3_merge_chrom_gvcfs_input),
     output:
         vcf=protected("data/source/{source}/gVCF/{source}_{chr}.g.vcf.gz"),
         tbi=protected("data/source/{source}/gVCF/{source}_{chr}.g.vcf.gz.tbi"),
