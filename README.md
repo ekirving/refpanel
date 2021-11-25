@@ -55,9 +55,8 @@ the [configuration docs](docs/config.md).
 
 ### Downloading data
 
-To reduce unnecessary computation, `refpanel` downloads compatible `gatk HaplotypeCaller` `gVCF` files for 1000G and
-HGDP, and
-`CRAM` files for SGDP and GGVP (as `gVCF` files are not publicly available).
+To ensure all data is processed consistently, `refpanel` downloads `gVCF` files for all 1000G samples, and `CRAM` files 
+for all samples in HGDP, SGDP and GGVP (as compatible `gVCF` files are not publicly available).
 
 To (optionally) pre-fetch all the data dependencies, run:
 
