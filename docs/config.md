@@ -13,7 +13,7 @@ There are four tiers to this configuration:
 * `accessions`, which uniquely identify an individual sequencing library (
   e.g., [ERR1373257](https://www.ebi.ac.uk/ena/browser/view/ERR1373257))
 
-### Adding a new source
+### Adding a new data source
 
 To add a new data `source` you will need to create two `tsv` metadata files:
 
@@ -34,7 +34,7 @@ By default, the following mapping is used:
 * `LB:<library>`
 * `DS:<description>`
 
-### Adding a new panel
+### Adding a new reference panel
 
 To add a new reference `panel` you will need to create one additional `tsv` metadata file:
 

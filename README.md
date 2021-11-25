@@ -37,24 +37,27 @@ conda activate refpanel
 This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,756), involving all publicly available
 samples from:
 
-* [1000 Genomes Project (1000G), 30x NYGC version](https://doi.org/10.1101/2021.02.06.430068) (n=3,202; inc. 2,504
-  unrelated + 698 trios)
-* [Human Genome Diversity Project (HGDP) ](https://doi.org/10.1126/science.aay5012) (n=929; including overlap with SGDP)
-* [Simons Genome Diversity Project (SGDP)](https://doi.org/10.1038/nature18964) (n=231; excluding overlap with 1000G and
-  HGDP)
-* [Gambian Genome Variation Project (GGVP)](https://doi.org/10.1038/s41467-019-13480-z) (n=394; excluding overlap with
-  1000G)
+* 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 trios)
+  ; [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
+* Human Genome Diversity Project (HGDP) (n=929; including overlap with SGDP)
+  ; [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
+* Simons Genome Diversity Project (SGDP) (n=231; excluding overlap with 1000G and HGDP)
+  ;  [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
+* Gambian Genome Variation Project (GGVP) (n=394; excluding overlap with 1000G)
+  ; [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
 
-The data from these projects is hosted by the the [International Genome Sample Resource (IGSR)](
-https://doi.org/10.1093/nar/gkw829) database at https://www.internationalgenome.org/
+The data from these projects is hosted by the
+the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
+([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)).
 
-If you wish to build a customised joint-callset (e.g., with non-public samples), you will need to provide a minimal
-amount of [additional metadata](docs/config.md).
+If you wish to build a customised joint-callset (e.g., with non-public samples), please refer to
+the [configuration docs](docs/config.md).
 
 ### Downloading data
 
-For 1000G and HGDP, we download compatible `gVCF` files output by GATK `HaplotypeCaller`. For SGDP and GGVP, we
-download `CRAM` files, as `gVCF` files are not publicly available.
+To reduce unnecessary computation, `refpanel` downloads compatible `gatk HaplotypeCaller` `gVCF` files for 1000G and
+HGDP, and
+`CRAM` files for SGDP and GGVP (as `gVCF` files are not publicly available).
 
 To (optionally) pre-fetch all the data dependencies, run:
 
@@ -78,16 +81,16 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
   with [sex-dependent ploidy](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/README_2021November05_NYGCrawcalls_updated.docx))
 * [Joint-calling of all samples](rules/04-joint-call.smk#L41) with `gatk GenotypeGVCFs`
 * [Variant quality score recalibration](rules/04-joint-call.smk#L123) with `gatk VariantRecalibrator`
-* [Hard-filtering of SNPs and INDELs](rules/04-joint-call.smk#L358) with `bcftools` (v1.14) on:
+* [Hard-filtering of SNPs and INDELs](rules/04-joint-call.smk#L358) with `bcftools` (v1.14):
     1) VQSR PASS;
     2) GT missingness < 5%;
     3) HWE p-value > 1e-10 in at least one super-population;
-    4) Mendelian error rate < 5% (based on 1000G trios);
+    4) Mendelian error rate < 5% (using 698 trios from 1000G);
 * [Statistical phasing](rules/05-phase.smk#L24) with `shapeit4` (v4.2.2) using:
-    * Trio data from 1000G; and
+    * Trio data from 1000G (n=698); and
     * 10x Genomics long-reads from HGDP;
 
-For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf).
+For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf) or the code itself.
 
 ## Running the pipeline
 
@@ -98,4 +101,5 @@ To execute the full pipeline, end-to-end, run:
 ```
 
 :warning: **This will take a long time**: Please make sure you run this on a server with as many CPUs, and as much RAM,
-as possible (e.g., this pipeline was developed on a machine with 96 cores and 755Gb of RAM).
+as possible (e.g., this pipeline was developed on a machine with 96 cores and 755Gb of RAM, with joint-calling
+distributed across multiple such nodes).
