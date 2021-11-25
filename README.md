@@ -76,7 +76,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
 * [Fix-mate](rules/02-align.smk#L57), [merge](rules/02-align.smk#L91), [sort](rules/02-align.smk#L119),
   and [mark duplicates](rules/02-align.smk#L146) with `picard` (v2.5.0)
 * [Base recalibration](rules/02-align.smk#L176) with `gatk BaseRecalibrator` (v3.5)
-* [Conversion to `cram`](rules/02-align.smk#L248) with `samtools` (v1.3.1)
+* [Conversion to `cram`](rules/02-align.smk#L248) with `samtools` (v1.14)
 * [Per-sample calling of `gVCFs`](rules/03-call.smk#L22) with `gatk HaplotypeCaller` (
   with [sex-dependent ploidy](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/README_2021November05_NYGCrawcalls_updated.docx))
 * [Joint-calling of all samples](rules/04-joint-call.smk#L41) with `gatk GenotypeGVCFs`

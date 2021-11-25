@@ -73,7 +73,13 @@ rule ggvp_filter_iupac_base_codes:
     conda:
         "../../envs/htslib.yaml"
     shell:
-        """samtools view --expr 'seq=~"^[ACGTN]+$"' --write-index -C -T {input.ref} -o {output.cram} {input.cram}"""
+        "samtools view"
+        " --expr 'seq=~\"^[ACGTN]+$\"'"
+        " --cram"
+        " --reference {input.ref}"
+        " --write-index"
+        " --output {output.cram}"
+        " {input.cram}"
 
 
 def ggvp_list_all_cram():

@@ -170,7 +170,7 @@ rule picard_mark_duplicates:
         " M={output.met}"
         " I={input.bam}"
         " O={output.bam} 2> {log} && "
-        "samtools index {output.bam}"
+        "picard BuildBamIndex I={output.bam} O={output.bai}"
 
 
 rule gatk3_base_recalibrator:
@@ -255,6 +255,12 @@ rule samtools_cram:
     output:
         cram=protected("data/source/{source}/cram/{sample}.cram"),
         crai=protected("data/source/{source}/cram/{sample}.cram.crai"),
+    conda:
+        "../envs/htslib.yaml"
     shell:
-        "samtools view -C -T {input.ref} -o {output.cram} {input.bam} && "
-        "samtools index {output.cram}"
+        "samtools view"
+        " --cram"
+        " --reference {input.ref}"
+        " --write-index"
+        " --output {output.cram}"
+        " {input.bam}"
