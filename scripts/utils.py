@@ -55,10 +55,19 @@ def sample_sex(config, source, sample):
     return samples.loc[sample]["sex"][0].upper()
 
 
-def list_samples(config, panel):
+def list_samples(config, source):
     """
-    Get a list of (source, sample) tuples for the given reference panel
+    Get a list of samples for the given data source
     """
-    samples = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
+    metadata = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
 
-    return samples[["source", "sample"]].to_records(index=False).tolist()
+    return metadata["sample"].unique().tolist()
+
+
+def list_sources(config, panel):
+    """
+    Get a list of sources for the given reference panel
+    """
+    metadata = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
+
+    return metadata["source"].unique().tolist()

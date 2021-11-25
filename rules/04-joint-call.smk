@@ -9,7 +9,7 @@ __license__ = "MIT"
 from psutil import virtual_memory
 from snakemake.io import protected, unpack, temp, expand
 
-from scripts.utils import list_samples
+from scripts.utils import list_samples, list_sources
 
 """
 Rules to perform joint genotype calling for the IGSR pipeline
@@ -19,7 +19,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
-MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2)
+MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
 
 
 wildcard_constraints:
@@ -27,12 +27,50 @@ wildcard_constraints:
     type="SNP|INDEL",
 
 
+def gatk3_merge_chrom_gvcfs_input(wildcards):
+    source = wildcards.source
+    return {
+        "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
+        "gvcfs": [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in list_samples(config, source)],
+    }
+
+
+# noinspection PyUnresolvedReferences
+rule gatk3_merge_chrom_gvcfs:
+    """
+    Combine all gVCFs from one chromosome in one datasource into a multi-sample gVCF
+    """
+    input:
+        unpack(gatk3_merge_source_gvcfs_input),
+    output:
+        vcf=protected("data/source/{source}/gVCF/{source}_{chr}.g.vcf.gz"),
+        tbi=protected("data/source/{source}/gVCF/{source}_{chr}.g.vcf.gz.tbi"),
+    log:
+        log="data/source/{source}/gVCF/{source}_{chr}.g.vcf.log",
+    params:
+        gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
+    resources:
+        mem_mb=(MAX_MEM_MB // 26),
+    conda:
+        "../envs/gatk.yaml"
+    shell:
+        "gatk3"
+        " -Xmx{resources.mem_mb}m"
+        " -T CombineGVCFs"
+        " -R {input.ref}"
+        " -L {input.chr}"
+        " {params.gvcfs}"
+        " -o {output.vcf} 2> {log}"
+
+
 def gatk3_genotype_gvcf_input(wildcards):
+    chr = wildcards.chr
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
         "gvcfs": [
-            f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for source, sample in list_samples(config, wildcards.panel)
+            f"data/source/{source}/gVCF/{source}_{chr}.g.vcf.gz" for source in list_sources(config, wildcards.panel)
         ],
     }
 

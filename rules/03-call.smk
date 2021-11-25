@@ -72,7 +72,7 @@ rule gatk3_haplotype_caller:
         " -o {output.vcf} 2> {log}"
 
 
-def gatk3_combine_gvcfs_input(wildcards):
+def gatk3_combine_ploidy_regions_input(wildcards):
     """Handle sex-dependent ploidy"""
     sex = sample_sex(config, wildcards.source, wildcards.sample)
 
@@ -86,12 +86,12 @@ def gatk3_combine_gvcfs_input(wildcards):
 
 
 # noinspection PyUnresolvedReferences
-rule gatk3_combine_gvcfs:
+rule gatk3_combine_ploidy_regions:
     """
     Merge the separate gVCFs called with sex-specific ploidy in chrX and chrY
     """
     input:
-        unpack(gatk3_combine_gvcfs_input),
+        unpack(gatk3_combine_ploidy_regions_input),
     output:
         vcf=protected("data/source/{source}/gVCF/{sample}.g.vcf.gz"),
         tbi=protected("data/source/{source}/gVCF/{sample}.g.vcf.gz.tbi"),

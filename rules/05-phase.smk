@@ -30,7 +30,8 @@ rule shapeit4_phase_vcf_trios:
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz.tbi",
+        # TODO does shapeit4 make it's own index?
+        # tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz.tbi",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
