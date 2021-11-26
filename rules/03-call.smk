@@ -37,7 +37,7 @@ rule gatk3_haplotype_caller:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -XX:ConcGCThreads=1"
@@ -102,7 +102,7 @@ rule gatk3_combine_ploidy_regions:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"

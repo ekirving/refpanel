@@ -36,7 +36,7 @@ rule shapeit4_phase_vcf_trios:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     conda:
-        "../envs/shapeit4.yaml"
+        "../envs/shapeit-4.2.2.yaml"
     shell:
         "shapeit4"
         " --thread {threads}"

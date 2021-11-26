@@ -32,7 +32,7 @@ rule hgdp_download_cram:
     resources:
         ebi_ftp=1,
     conda:
-        "../../envs/htslib.yaml"
+        "../../envs/htslib-1.14.yaml"
     shell:
         r"grep -P '^{wildcards.sample}\t' {input.man} | awk '{{ print $2 }}' | "
         r"xargs wget --quiet -O {output.cram} -o /dev/null && "
@@ -56,7 +56,7 @@ rule hgdp_filter_iupac_base_codes:
         cram="data/source/hgdp/cram/{sample}.cram",
         crai="data/source/hgdp/cram/{sample}.cram.crai",
     conda:
-        "../../envs/htslib.yaml"
+        "../../envs/htslib-1.14.yaml"
     shell:
         "samtools view"
         " --expr 'seq=~\"^[ACGTN]+$\"'"

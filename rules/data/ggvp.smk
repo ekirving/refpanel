@@ -71,7 +71,7 @@ rule ggvp_filter_iupac_base_codes:
         cram="data/source/ggvp/cram/{sample}.cram",
         crai="data/source/ggvp/cram/{sample}.cram.crai",
     conda:
-        "../../envs/htslib.yaml"
+        "../../envs/htslib-1.14.yaml"
     shell:
         "samtools view"
         " --expr 'seq=~\"^[ACGTN]+$\"'"

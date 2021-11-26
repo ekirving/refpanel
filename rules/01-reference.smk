@@ -89,7 +89,7 @@ rule reference_ncbi_remapper_fix_errors:
         vcf="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz",
         tbi="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz.tbi",
     conda:
-        "../envs/htslib.yaml"
+        "../envs/htslib-1.14.yaml"
     shell:
         "gunzip -c {input.vcf} | "
         " sed 's/POS=POS-1/POS_POS-1/g' | "
@@ -121,7 +121,7 @@ rule reference_grch38_male_haploid_bed:
         par1=r"\t".join(["chrX", "10000", "2781479"]),
         par2=r"\t".join(["chrX", "155701382", "156030895"]),
     conda:
-        "../envs/bedtools.yaml"
+        "../envs/bedtools-2.30.yaml"
     shell:
         r"grep -P 'chrX|chrY|chrM' {input.bed} > {output.sex} && "
         r"printf '{params.par1}\n{params.par2}\n' | "
@@ -138,7 +138,7 @@ rule reference_grch38_male_diploid_bed:
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.2.bed",
     conda:
-        "../envs/bedtools.yaml"
+        "../envs/bedtools-2.30.yaml"
     shell:
         "bedtools subtract -nonamecheck -a {input.bed} -b {input.hap} > {output.bed}"
 

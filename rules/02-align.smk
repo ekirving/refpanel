@@ -41,7 +41,7 @@ rule bwa_mem_pe:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: max(workflow.cores / 4, 8)
     conda:
-        "../envs/bwa.yaml"
+        "../envs/bwa-0.7.15.yaml"
     shell:
         "( bwa mem -Y "
         "   -K 100000000 "
@@ -67,7 +67,7 @@ rule picard_fix_mate_info:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/picard.yaml"
+        "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -103,7 +103,7 @@ rule picard_merge_accessions:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/picard.yaml"
+        "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -130,7 +130,7 @@ rule picard_sort_bam:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/picard.yaml"
+        "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -160,7 +160,7 @@ rule picard_mark_duplicates:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/picard.yaml"
+        "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -194,7 +194,7 @@ rule gatk3_base_recalibrator:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -227,7 +227,7 @@ rule gatk3_recalibrator_print_reads:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -256,7 +256,7 @@ rule samtools_cram:
         cram=protected("data/source/{source}/cram/{sample}.cram"),
         crai=protected("data/source/{source}/cram/{sample}.cram.crai"),
     conda:
-        "../envs/htslib.yaml"
+        "../envs/htslib-1.14.yaml"
     shell:
         "samtools view"
         " --cram"

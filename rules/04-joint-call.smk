@@ -67,7 +67,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
     resources:
         mem_mb=min(26 * 1024, MAX_MEM_MB),
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -XX:ConcGCThreads=1"
@@ -113,7 +113,7 @@ rule gatk3_multisample_chrom_gvcf:
         mem_mb=MAX_MEM_MB // 4,
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining thousands of samples
-        "../envs/gatk3.8.yaml"
+        "../envs/gatk-3.8.yaml"
     shell:
         "gatk3"
         " -XX:ConcGCThreads=1"
@@ -157,7 +157,7 @@ rule gatk3_genotype_chrom_gvcf:
         # TODO do we still need this huge memory allocation after merging gVCFs?
         mem_mb=(MAX_MEM_MB // 2) - 1024,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xms{resources.mem_mb}m"
@@ -187,7 +187,7 @@ rule picard_merge_chrom_vcfs:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/picard.yaml"
+        "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -211,7 +211,7 @@ rule gatk3_split_variants:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -246,7 +246,7 @@ rule gatk3_variant_recalibrator_snp:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -299,7 +299,7 @@ rule gatk3_variant_recalibrator_indel:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -346,7 +346,7 @@ rule gatk3_apply_recalibration_snp:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -380,7 +380,7 @@ rule gatk3_apply_recalibration_indel:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk3.5.yaml"
+        "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -410,7 +410,7 @@ rule picard_merge_variant_vcfs:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/picard.yaml"
+        "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
@@ -451,7 +451,7 @@ rule bcftools_fill_tags:
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.log",
     conda:
-        "../envs/htslib.yaml"
+        "../envs/htslib-1.14.yaml"
     shell:
         "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
@@ -481,7 +481,7 @@ rule bcftools_filter_vcf:
             [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
         ),
     conda:
-        "../envs/htslib.yaml"
+        "../envs/htslib-1.14.yaml"
     shell:
         "bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe})' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
@@ -520,7 +520,7 @@ rule bcftools_mendelian_inconsistencies:
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
     conda:
-        "../envs/htslib.yaml"
+        "../envs/htslib-1.14.yaml"
     shell:
         "bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
         "bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} {input.vcf} && "
