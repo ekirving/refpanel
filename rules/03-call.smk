@@ -74,14 +74,16 @@ rule gatk3_haplotype_caller:
 
 def gatk3_combine_ploidy_regions_input(wildcards):
     """Handle sex-dependent ploidy"""
-    sex = sample_sex(config, wildcards.source, wildcards.sample)
+    source = wildcards.source
+    sample = wildcards.sample
+    sex = sample_sex(config, source, sample)
 
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        "vcf1": "data/source/{source}/gVCF/{sample}." + sex + ".1.g.vcf.gz",
-        "tbi1": "data/source/{source}/gVCF/{sample}." + sex + ".1.g.vcf.gz.tbi",
-        "vcf2": "data/source/{source}/gVCF/{sample}." + sex + ".2.g.vcf.gz",
-        "tbi2": "data/source/{source}/gVCF/{sample}." + sex + ".2.g.vcf.gz.tbi",
+        "vcf1": f"data/source/{source}/gVCF/{sample}.{sex}.1.g.vcf.gz",
+        "tbi1": f"data/source/{source}/gVCF/{sample}.{sex}.1.g.vcf.gz.tbi",
+        "vcf2": f"data/source/{source}/gVCF/{sample}.{sex}.2.g.vcf.gz",
+        "tbi2": f"data/source/{source}/gVCF/{sample}.{sex}.2.g.vcf.gz.tbi",
     }
 
 

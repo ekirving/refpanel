@@ -46,6 +46,7 @@ def gatk3_batch_sample_chrom_gvcfs_input(wildcards):
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
         "gvcfs": [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples[start:stop]],
+        "tbi": [f"data/source/{source}/gVCF/{sample}.g.vcf.gz.tbi" for sample in samples[start:stop]],
     }
 
 
@@ -80,15 +81,16 @@ rule gatk3_batch_sample_chrom_gvcfs:
 
 def gatk3_multisample_chrom_gvcf_input(wildcards):
     """Split the samples into batches"""
-    num_batches = math.ceil(len(list_samples(config, wildcards.source)) / GATK_BATCH_SIZE)
+    source = wildcards.source
+    chr = wildcards.chr
+    num_samples = len(list_samples(config, source))
+    batches = range(1, math.ceil(num_samples / GATK_BATCH_SIZE) + 1)
 
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
-        "gvcfs": [
-            "data/source/{source}/gVCF/merged/{source}_{chr}_" + str(batch) + ".g.vcf.gz"
-            for batch in range(1, num_batches + 1)
-        ],
+        "gvcfs": [f"data/source/{source}/gVCF/merged/{source}_{chr}_{batch}.g.vcf.gz" for batch in batches],
+        "tbi": [f"data/source/{source}/gVCF/merged/{source}_{chr}_{batch}.g.vcf.gz.tbi" for batch in batches],
     }
 
 
@@ -122,14 +124,13 @@ rule gatk3_multisample_chrom_gvcf:
 
 
 def gatk3_genotype_chrom_gvcf_input(wildcards):
+    sources = list_sources(config, wildcards.panel)
     chr = wildcards.chr
     return {
         "ref": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         "chr": "data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
-        "gvcfs": [
-            f"data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz"
-            for source in list_sources(config, wildcards.panel)
-        ],
+        "gvcfs": [f"data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz" for source in sources],
+        "tbi": [f"data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz.tbi" for source in sources],
     }
 
 
