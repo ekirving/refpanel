@@ -5,7 +5,7 @@ The download footprint for the input data is:
 | Folder                  | Size |
 |-------------------------|------|
 | data/source/1000g/gVCF/ | 20T  |
-| data/source/hgdp/gVCF/  | 1.4T |
+| data/source/hgdp/cram/  | ??T  |
 | data/source/sgdp/cram/  | 16T  |
 | data/source/ggvp/cram/  | 4.8T |
 
