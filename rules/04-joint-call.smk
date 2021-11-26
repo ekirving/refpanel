@@ -67,7 +67,8 @@ rule gatk3_batch_sample_chrom_gvcfs:
     resources:
         mem_mb=min(26 * 1024, MAX_MEM_MB),
     conda:
-        "../envs/gatk-3.5.yaml"
+        # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
+        "../envs/gatk-3.8.yaml"
     shell:
         "gatk3"
         " -XX:ConcGCThreads=1"
@@ -112,7 +113,7 @@ rule gatk3_multisample_chrom_gvcf:
     resources:
         mem_mb=MAX_MEM_MB // 4,
     conda:
-        # a bug in gatk v3.5 causes excessive memory usage when combining thousands of samples
+        # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
     shell:
         "gatk3"
