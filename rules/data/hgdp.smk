@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import touch
+from snakemake.io import touch, temp
 
 """
 Rules to download data files for the Human Genome Diversity Project (HGDP)
@@ -27,8 +27,8 @@ rule hgdp_download_cram:
     input:
         man="data/source/hgdp/links-to-read-alignments.txt",
     output:
-        cram="data/source/hgdp/cram/{sample}.raw.cram",
-        crai="data/source/hgdp/cram/{sample}.raw.cram.crai",
+        cram=temp("data/source/hgdp/cram/{sample}.raw.cram"),
+        crai=temp("data/source/hgdp/cram/{sample}.raw.cram.crai"),
     resources:
         ebi_ftp=1,
     conda:
@@ -37,7 +37,7 @@ rule hgdp_download_cram:
         r"grep -P '^{wildcards.sample}\t' {input.man} | awk '{{ print $2 }}' | "
         r"xargs wget --quiet -O {output.cram} -o /dev/null && "
         r"samtools quickcheck {output.cram} && "
-        r"samtools index {output.cram}"
+        r"samtools index {output.cram} 2> /dev/null"
 
 
 rule hgdp_filter_iupac_base_codes:
