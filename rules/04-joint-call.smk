@@ -67,10 +67,11 @@ rule gatk3_batch_sample_chrom_gvcfs:
     resources:
         mem_mb=min(26 * 1024, MAX_MEM_MB),
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -XX:ConcGCThreads=1"
+        " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
         " -T CombineGVCFs"
         " -R {input.ref}"
@@ -109,12 +110,14 @@ rule gatk3_multisample_chrom_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        mem_mb=MAX_MEM_MB - (4 * 1024),
+        mem_mb=MAX_MEM_MB // 4,
     conda:
-        "../envs/gatk.yaml"
+        # a bug in gatk v3.5 causes excessive memory usage when combining thousands of samples
+        "../envs/gatk3.8.yaml"
     shell:
         "gatk3"
         " -XX:ConcGCThreads=1"
+        " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
         " -T CombineGVCFs"
         " -R {input.ref}"
@@ -154,9 +157,10 @@ rule gatk3_genotype_chrom_gvcf:
         # TODO do we still need this huge memory allocation after merging gVCFs?
         mem_mb=(MAX_MEM_MB // 2) - 1024,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
+        " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
         " -T GenotypeGVCFs"
         " -R {input.ref}"
@@ -207,7 +211,7 @@ rule gatk3_split_variants:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -242,7 +246,7 @@ rule gatk3_variant_recalibrator_snp:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -295,7 +299,7 @@ rule gatk3_variant_recalibrator_indel:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -342,7 +346,7 @@ rule gatk3_apply_recalibration_snp:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -376,7 +380,7 @@ rule gatk3_apply_recalibration_indel:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"

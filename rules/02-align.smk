@@ -194,7 +194,7 @@ rule gatk3_base_recalibrator:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
@@ -227,7 +227,7 @@ rule gatk3_recalibrator_print_reads:
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
-        "../envs/gatk.yaml"
+        "../envs/gatk3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
