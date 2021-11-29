@@ -80,6 +80,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
   with [sex-dependent ploidy](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/README_2021November05_NYGCrawcalls_updated.docx))
 * [Joint-calling of all samples](rules/04-joint-call.smk#L41) with `gatk GenotypeGVCFs`
 * [Variant quality score recalibration](rules/04-joint-call.smk#L123) with `gatk VariantRecalibrator`
+* [Annotation with dbSNP build 155](rules/04-joint-call.smk#L443) with `bcftools` (v1.14)
 * [Hard-filtering of SNPs and INDELs](rules/04-joint-call.smk#L358) with `bcftools` (v1.14):
     1) VQSR PASS;
     2) GT missingness < 5%;
@@ -100,5 +101,4 @@ To execute the full pipeline, end-to-end, run:
 ```
 
 :warning: **This will take a long time**: Please make sure you run this on a server with as many CPUs, and as much RAM,
-as possible (e.g., this pipeline was developed on a machine with 96 cores and 755Gb of RAM, with joint-calling
-distributed across multiple such nodes).
+as possible (e.g., this pipeline was developed and run on a cluster of nodes with 96 cores and 755Gb of RAM each).

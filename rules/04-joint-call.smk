@@ -446,6 +446,7 @@ rule bcftools_fill_tags:
     input:
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz",
         tsv="data/panel/{panel}/{panel}-superpops.tsv",
+        dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
@@ -454,7 +455,8 @@ rule bcftools_fill_tags:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools +fill-tags {input.vcf} -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
+        "bcftools annotate -a {input.dbsnp} -c ID {input.vcf} -Ou | "
+        "bcftools +fill-tags -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
 
 

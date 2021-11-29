@@ -236,6 +236,8 @@ rule reference_dbsnp_b155_reheader:
         vcf="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
         tbi="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz.tbi",
         txt="data/reference/GRCh38/GCF_000001405.39_GRCh38.p13_assembly_report.chroms",
+    conda:
+        "../envs/htslib-1.14.yaml"
     shell:
         r"grep -v '^#' {input.txt} | awk -v FS='\t' '{{ print $7, $10 }}' | grep -vw 'na' > {output.txt} && "
         r"bcftools annotate --rename-chrs {output.txt} -Oz -o {output.vcf} {input.vcf} && "
