@@ -200,3 +200,43 @@ rule reference_grch38_genetic_map:
     shell:
         "wget --quiet -O {output.map} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
         "gunzip --test {output.map}"
+
+
+rule reference_grch38_assembly_report:
+    """
+    Fetch the GRCh38 assembly report
+    """
+    output:
+        txt="data/reference/GRCh38/GCF_000001405.39_GRCh38.p13_assembly_report.txt",
+    shell:
+        "wget --quiet -O {output.txt} -o /dev/null ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_report.txt"
+
+
+rule reference_dbsnp_b155:
+    """
+    Fetch the dbSNP database, build 155 (2021-05-13)
+    """
+    output:
+        vcf=temp("data/reference/GRCh38/dbsnp/GCF_000001405.39.gz"),
+        tbi=temp("data/reference/GRCh38/dbsnp/GCF_000001405.39.gz.tbi"),
+    shell:
+        "wget --quiet -O {output.vcf} -o /dev/null ftp://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz && "
+        "wget --quiet -O {output.tbi} -o /dev/null ftp://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz.tbi"
+
+
+rule reference_dbsnp_b155_reheader:
+    """
+    Change the chromosome names in the dbsnp VCF from `RefSeq ID` style to `UCSC-style-name`
+    """
+    input:
+        vcf="data/reference/GRCh38/dbsnp/GCF_000001405.39.gz",
+        tbi="data/reference/GRCh38/dbsnp/GCF_000001405.39.gz.tbi",
+        txt="data/reference/GRCh38/GCF_000001405.39_GRCh38.p13_assembly_report.txt",
+    output:
+        vcf="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
+        tbi="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz.tbi",
+        txt="data/reference/GRCh38/GCF_000001405.39_GRCh38.p13_assembly_report.chroms",
+    shell:
+        r"grep -v '^#' {input.txt} | awk -v FS='\t' '{{ print $7, $10 }}' | grep -vw 'na' > {output.txt} && "
+        r"bcftools annotate --rename-chrs {output.txt} -Oz -o {output.vcf} {input.vcf} && "
+        r"bcftools index --tbi {output.vcf}"
