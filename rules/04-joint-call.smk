@@ -65,7 +65,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        mem_mb=min(26 * 1024, MAX_MEM_MB),
+        mem_mb=min(28 * 1024, MAX_MEM_MB),  # ~3.71%
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
@@ -111,7 +111,7 @@ rule gatk3_multisample_chrom_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        mem_mb=MAX_MEM_MB // 4,
+        mem_mb=min(72 * 1024, MAX_MEM_MB),  # ~9.53%
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
