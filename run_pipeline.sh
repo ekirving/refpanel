@@ -45,7 +45,7 @@ flags+="--show-failed-logs "
 flags+="--rerun-incomplete "
 flags+="--reason "
 flags+="--use-conda "
-flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} sanger_ftp=${MAX_FTP} "
+flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} "
 
 (
   set -x
