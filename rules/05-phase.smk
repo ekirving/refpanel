@@ -26,7 +26,7 @@ rule shapeit4_phase_vcf_trios:
     Phase the joint-callset, using trios
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.gz",
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",

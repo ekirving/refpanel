@@ -179,43 +179,18 @@ rule gatk3_genotype_chrom_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule picard_merge_chrom_vcfs:
-    """
-    Merge the chromosomes back together so we can do variant recalibration over the whole genome
-    """
-    input:
-        expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
-    params:
-        vcfs=lambda wildcards, input: [f"INPUT={vcf}" for vcf in input],
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-    conda:
-        "../envs/picard-2.5.0.yaml"
-    shell:
-        "picard"
-        " -Xmx{resources.mem_mb}m"
-        " MergeVcfs"
-        " {params.vcfs}"
-        " OUTPUT={output.vcf} 2> {log}"
-
-
 rule gatk3_split_variants:
     """
     Split variants into SNPs and INDELs to perform the variant recalibration in parallel
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_{type}.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
@@ -238,18 +213,18 @@ rule gatk3_variant_recalibrator_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz.tbi",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.log",
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
@@ -293,16 +268,16 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz.tbi",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.tranches",
-        plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL_plots.R",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.tranches",
+        plot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL_plots.R",
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.log",
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
@@ -341,15 +316,15 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_SNP.vcf.gz.tbi",
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz.tbi",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.log",
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
@@ -375,15 +350,15 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_INDEL.vcf.gz.tbi",
-        recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.tranches",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz.tbi",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.log",
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
@@ -408,13 +383,13 @@ rule picard_merge_variant_vcfs:
     Merge the SNP and INDEL VCF files
     """
     input:
-        snp="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz",
-        indel="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.vcf.gz",
+        snp="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz",
+        indel="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
     conda:
@@ -451,14 +426,14 @@ rule bcftools_fill_tags:
     Calculate and fill missing tags and annotations
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
         tsv="data/panel/{panel}/{panel}-superpops.tsv",
         dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.log",
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -477,13 +452,13 @@ rule bcftools_filter_vcf:
     3) HWE p-value > 1e-10 in at least one of the super-populations;
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz",
         super="data/panel/{panel}/{panel}-superpops.tsv",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.log",
     params:
         # TODO should this be applied to the non-1000G super populations?
         # compose the HWE filter for the super-populations found in this reference panel
@@ -518,14 +493,14 @@ rule bcftools_mendelian_inconsistencies:
     Only retain sites where the mendelian error rate < 5%
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz.tbi",
         trios=lambda wildcards: config["panel"][wildcards.panel]["trios"],
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.gz.tbi"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_annot_filter_mendel.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.log",
     params:
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
