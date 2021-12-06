@@ -81,7 +81,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
 * [Joint-calling of all samples](rules/04-joint-call.smk#L41) with `gatk GenotypeGVCFs`
 * [Variant quality score recalibration](rules/04-joint-call.smk#L123) with `gatk VariantRecalibrator`
 * [Annotation with dbSNP build 155](rules/04-joint-call.smk#L443) with `bcftools` (v1.14)
-* [Hard-filtering of SNPs and INDELs](rules/04-joint-call.smk#L358) with `bcftools` (v1.14):
+* [Hard-filtering of SNPs and INDELs](rules/04-joint-call.smk#L358) with `bcftools`:
     1) VQSR PASS;
     2) GT missingness < 5%;
     3) HWE p-value > 1e-10 in at least one super-population;
