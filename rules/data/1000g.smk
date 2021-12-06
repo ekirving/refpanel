@@ -19,7 +19,7 @@ FTP_TGP_NYGC = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_
 
 
 wildcard_constraints:
-    sample="\w+",
+    sample="[\w-]+",
     ext="vcf.gz(.tbi)?",
 
 

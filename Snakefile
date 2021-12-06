@@ -51,29 +51,6 @@ rule download_data:
         "data/source/ggvp/cram/download.done",
 
 
-rule merge_1000g:
-    input:
-        expand(
-            "data/source/1000g/gVCF/merged/1000g_{chr}.g.vcf.gz",
-            chr=[chr for chr in config["chroms"] if chr != "chr22"],
-        ),
-
-
-rule merge_hgdp:
-    input:
-        expand("data/source/hgdp/gVCF/merged/hgdp_{chr}.g.vcf.gz", chr=config["chroms"]),
-
-
-rule merge_sgdp:
-    input:
-        expand("data/source/sgdp/gVCF/merged/sgdp_{chr}.g.vcf.gz", chr=config["chroms"]),
-
-
-rule merge_ggvp:
-    input:
-        expand("data/source/ggvp/gVCF/merged/ggvp_{chr}.g.vcf.gz", chr=config["chroms"]),
-
-
 def list_all_gvcfs():
     """List all the gVCF files that need generating from the downloaded CRAM files"""
     files = []

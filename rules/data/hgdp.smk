@@ -17,7 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/hgdp
 
 
 wildcard_constraints:
-    sample="\w+",
+    sample="[\w-]+",
 
 
 rule hgdp_download_cram:
