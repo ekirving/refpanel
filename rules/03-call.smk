@@ -6,7 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import protected, unpack, temp
+import pandas as pd
+from snakemake.io import protected, unpack, temp, touch
 
 from scripts.utils import sample_sex
 
@@ -111,3 +112,23 @@ rule gatk3_combine_ploidy_regions:
         " --variant {input.vcf1}"
         " --variant {input.vcf2}"
         " -o {output.vcf} 2> {log}"
+
+
+def source_list_all_gvcfs(wildcards):
+    """List all gVCF files for the given data source"""
+    source = wildcards.source
+    samples = pd.read_table(config["source"][source]["samples"])
+
+    files = [
+        [f"data/source/{source}/gVCF/{sample}.g.vcf.gz", f"data/source/{source}/gVCF/{sample}.g.vcf.gz.tbi"]
+        for sample in samples["sample"]
+    ]
+
+    return files
+
+
+rule source_call_all_gvcfs:
+    input:
+        source_list_all_gvcfs,
+    output:
+        touch("data/source/{source}/gVCF/call.done"),

@@ -6,7 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import expand, protected, temp
+import pandas as pd
+from snakemake.io import expand, protected, temp, touch
 
 from scripts.utils import fastq_path, read_group, list_accessions
 
@@ -264,3 +265,23 @@ rule samtools_cram:
         " --write-index"
         " --output {output.cram}"
         " {input.bam}"
+
+
+def source_list_all_crams(wildcards):
+    """List all CRAM files for the given data source"""
+    source = wildcards.source
+    samples = pd.read_table(config["source"][source]["samples"])
+
+    files = [
+        [f"data/source/{source}/cram/{sample}.cram", f"data/source/{source}/cram/{sample}.cram.crai"]
+        for sample in samples["sample"]
+    ]
+
+    return files
+
+
+rule source_align_all_crams:
+    input:
+        source_list_all_crams,
+    output:
+        touch("data/source/{source}/cram/align.done"),

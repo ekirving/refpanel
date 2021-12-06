@@ -9,7 +9,7 @@ __license__ = "MIT"
 import math
 
 from psutil import virtual_memory
-from snakemake.io import protected, unpack, temp, expand
+from snakemake.io import protected, unpack, temp, expand, touch
 
 from scripts.utils import list_samples, list_sources
 
@@ -125,6 +125,13 @@ rule gatk3_multisample_chrom_gvcf:
         " -L {input.chr}"
         " {params.gvcfs}"
         " -o {output.vcf} 2> {log}"
+
+
+rule source_merge_gvcfs:
+    input:
+        expand("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz", chr=config["chroms"], allow_missing=True),
+    output:
+        touch("data/source/{source}/gVCF/merged/merge.done"),
 
 
 def gatk3_genotype_chrom_gvcf_input(wildcards):
