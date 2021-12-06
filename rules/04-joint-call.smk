@@ -162,8 +162,8 @@ rule gatk3_genotype_chrom_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        # TODO do we still need this huge memory allocation after merging gVCFs?
-        mem_mb=(MAX_MEM_MB // 2) - 1024,
+        mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
+        tmpdir="./tmp",  # TODO only needed because the /tmp partition is so small
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
