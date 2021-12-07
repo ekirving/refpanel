@@ -163,13 +163,14 @@ rule gatk3_genotype_chrom_gvcf:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
         mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
-        tmpdir="./tmp",  # TODO only needed because the /tmp partition is so small
+        tmpdir="./tmp/",  # the default `/tmp` partition is too small
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T GenotypeGVCFs"
         " -R {input.ref}"
         " -L {input.chr}"
