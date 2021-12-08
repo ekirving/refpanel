@@ -29,6 +29,9 @@ MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
 # the maximum number of samples to merge together at one time with CombineGVCFs (to prevent massive memory usage)
 GATK_BATCH_SIZE = 200
 
+# the default `/tmp` partition is too small
+GATK_TEMP_DIR = "./tmp/"
+
 
 wildcard_constraints:
     chr="(chr(\d+|X|Y|M))|(others)",
@@ -66,6 +69,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
         mem_mb=min(28 * 1024, MAX_MEM_MB),  # ~3.71%
+        tmpdir=GATK_TEMP_DIR,
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
@@ -74,6 +78,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
         " -XX:ConcGCThreads=1"
         " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T CombineGVCFs"
         " -R {input.ref}"
         " -L {input.chr}"
@@ -112,6 +117,7 @@ rule gatk3_multisample_chrom_gvcf:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
         mem_mb=min(72 * 1024, MAX_MEM_MB),  # ~9.53%
+        tmpdir=GATK_TEMP_DIR,
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
@@ -120,6 +126,7 @@ rule gatk3_multisample_chrom_gvcf:
         " -XX:ConcGCThreads=1"
         " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T CombineGVCFs"
         " -R {input.ref}"
         " -L {input.chr}"
@@ -163,7 +170,7 @@ rule gatk3_genotype_chrom_gvcf:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
         mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
-        tmpdir="./tmp/",  # the default `/tmp` partition is too small
+        tmpdir=GATK_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -229,11 +236,13 @@ rule gatk3_variant_recalibrator_snp:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=GATK_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T VariantRecalibrator"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -282,11 +291,13 @@ rule gatk3_variant_recalibrator_indel:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=GATK_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T VariantRecalibrator"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -329,11 +340,13 @@ rule gatk3_apply_recalibration_snp:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=GATK_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T ApplyRecalibration"
         " -R {input.ref}"
         " --num_threads {threads}"
@@ -363,11 +376,13 @@ rule gatk3_apply_recalibration_indel:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=GATK_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T ApplyRecalibration"
         " -R {input.ref}"
         " --num_threads {threads}"
