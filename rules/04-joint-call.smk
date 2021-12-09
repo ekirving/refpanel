@@ -443,6 +443,7 @@ rule bcftools_fill_tags:
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
         tsv="data/panel/{panel}/{panel}-superpops.tsv",
         dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
@@ -469,6 +470,7 @@ rule bcftools_filter_vcf:
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz.tbi",
         super="data/panel/{panel}/{panel}-superpops.tsv",
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz"),
