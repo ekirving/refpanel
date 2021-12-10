@@ -402,8 +402,9 @@ rule picard_merge_variant_vcfs:
         snp="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz",
         indel="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi"),
+        # TODO make this temp() again
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
     resources:
