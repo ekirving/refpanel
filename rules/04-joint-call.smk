@@ -437,11 +437,15 @@ rule bcftools_samples_file:
         r"""awk -v FS="\t" 'NR>1 && ${params.col2}!="" {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
 
-rule bcftools_fill_tags:
+rule bcftools_annotate:
     """
-    Calculate and fill missing tags and annotations
+    Normalise INDELs, annotate variants with dbSNP and fill all tags.
+    
+    * Polyallelic INDELs have separate rsIDs, but polyallelic SNPs do not
+    * `+fill-tags --tags all` does not set all tags! see https://github.com/samtools/bcftools/blob/develop/plugins/fill-tags.c#L404
     """
     input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
         tsv="data/panel/{panel}/{panel}-superpops.tsv",
@@ -454,8 +458,9 @@ rule bcftools_fill_tags:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools annotate -a {input.dbsnp} -c ID {input.vcf} -Ou | "
-        "bcftools +fill-tags -Oz -o {output.vcf} -- --tags all --samples-file {input.tsv} && "
+        "bcftools norm --fasta-ref {input.ref} --multiallelics -indels -Ou {input.vcf} | "
+        "bcftools annotate -a {input.dbsnp} -c ID -Ou | "
+        "bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
 
 
@@ -467,6 +472,7 @@ rule bcftools_filter_vcf:
     1) VQSR PASS;
     2) GT missingness < 5%; 
     3) HWE p-value > 1e-10 in at least one of the super-populations;
+    4) MAC >= 2 (i.e., no singletons)
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz",
@@ -486,7 +492,7 @@ rule bcftools_filter_vcf:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe})' -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MAC>=2' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
 
