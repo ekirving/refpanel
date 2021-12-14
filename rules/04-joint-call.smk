@@ -473,8 +473,9 @@ rule bcftools_annotate:
         tsv="data/panel/{panel}/{panel}-superpops.tsv",
         dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi"),
+        # TODO make this temp() again
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.log",
     conda:
