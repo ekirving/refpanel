@@ -26,14 +26,14 @@ rule shapeit4_phase_vcf_trios:
     Phase the joint-callset, using trios
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz",
         # TODO does shapeit4 make it's own index?
-        # tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz.tbi",
+        # tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz.tbi",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     conda:
         "../envs/shapeit-4.2.2.yaml"
@@ -51,7 +51,7 @@ rule shapeit4_phase_vcf_trios:
 rule shapeit4_phase_all_vcfs:
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_mendel_filter_phased.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),

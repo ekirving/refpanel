@@ -438,29 +438,49 @@ rule bcftools_samples_file:
         r"""awk -v FS="\t" 'NR>1 && ${params.col2}!="" {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
 
-rule bcftools_annotate:
+rule bcftools_norm:
     """
-    Normalise INDELs, annotate variants with dbSNP and fill all tags.
-    
-    * Polyallelic INDELs have separate rsIDs, but polyallelic SNPs do not
-    * `+fill-tags --tags all` does not set all tags! see https://github.com/samtools/bcftools/blob/develop/plugins/fill-tags.c#L404
+    Normalise INDELs
+
+    Split INDELs because polyallelic sites have separate rsIDs, whereas polyallelic SNPs do not
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
-        tsv="data/panel/{panel}/{panel}-superpops.tsv",
-        dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.log",
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools norm --fasta-ref {input.ref} --multiallelics -indels -Ou {input.vcf} | "
-        "bcftools annotate -a {input.dbsnp} -c ID -Ou | "
+        "bcftools norm --fasta-ref {input.ref} --multiallelics -indels -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools index --tbi {output.vcf}"
+
+
+rule bcftools_annotate:
+    """
+    Annotate variants with dbSNP and fill all tags.
+    
+    NB. `+fill-tags --tags all` does not set all tags! 
+    see https://github.com/samtools/bcftools/blob/develop/plugins/fill-tags.c#L404
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi",
+        tsv="data/panel/{panel}/{panel}-superpops.tsv",
+        dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.log",
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools annotate -a {input.dbsnp} -c ID -Ou {input.vcf} | "
         "bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.tsv} && "
         "bcftools index --tbi {output.vcf}"
 
@@ -476,16 +496,15 @@ rule bcftools_filter_vcf:
     4) MAC >= 2 (i.e., no singletons)
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi",
         super="data/panel/{panel}/{panel}-superpops.tsv",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.log",
     params:
-        # TODO should this be applied to the non-1000G super populations?
         # compose the HWE filter for the super-populations found in this reference panel
         hwe=lambda wildcards, input: " | ".join(
             [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
@@ -518,14 +537,14 @@ rule bcftools_mendelian_inconsistencies:
     Only retain sites where the mendelian error rate < 5%
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
         trios=lambda wildcards: config["panel"][wildcards.panel]["trios"],
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.gz.tbi"),
+        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_annot_filter_mendel.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.log",
     params:
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
