@@ -51,7 +51,7 @@ rule bwa_mem_pe:
         "   {input.ref} "
         "   {input.fastq_r1} "
         "   {input.fastq_r1} | "
-        "  samtools view -Shb -o {output.bam} -"
+        "  samtools view -Shb -o {output.bam} - "
         ") 2> {log}"
 
 

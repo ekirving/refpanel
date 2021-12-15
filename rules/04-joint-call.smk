@@ -452,16 +452,17 @@ rule bcftools_norm:
         vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.log",
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools norm"
-        " --fasta-ref {input.ref}"
-        " --atomize"
-        " --multiallelics +snps"
-        " -Oz -o {output.vcf} {input.vcf} && "
-        "bcftools index --tbi {output.vcf}"
+        "( bcftools norm"
+        "   --fasta-ref {input.ref}"
+        "   --atomize"
+        "   --multiallelics +snps"
+        "   -Oz -o {output.vcf} {input.vcf} && "
+        "  bcftools index --tbi {output.vcf} "
+        ")2> {log}"
 
 
 rule bcftools_annotate:
@@ -485,9 +486,10 @@ rule bcftools_annotate:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools annotate -a {input.dbsnp} -c ID -Ou {input.vcf} | "
-        "bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.tsv} && "
-        "bcftools index --tbi {output.vcf}"
+        "( bcftools annotate -a {input.dbsnp} -c ID -Ou {input.vcf} | "
+        "  bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.tsv} && "
+        "  bcftools index --tbi {output.vcf} "
+        ") 2> {log} "
 
 
 rule bcftools_filter_vcf:
@@ -517,8 +519,9 @@ rule bcftools_filter_vcf:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MAC>=2' -Oz -o {output.vcf} {input.vcf} && "
-        "bcftools index --tbi {output.vcf}"
+        "( bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MAC>=2' -Oz -o {output.vcf} {input.vcf} && "
+        "  bcftools index --tbi {output.vcf} "
+        ") 2> {log} "
 
 
 # noinspection PyTypeChecker
@@ -558,6 +561,7 @@ rule bcftools_mendelian_inconsistencies:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
-        "bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} {input.vcf} && "
-        "bcftools index --tbi {output.vcf}"
+        "( bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
+        "  bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} {input.vcf} && "
+        "  bcftools index --tbi {output.vcf}"
+        ") 2> {log}"
