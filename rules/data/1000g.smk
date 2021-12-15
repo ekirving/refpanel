@@ -69,3 +69,17 @@ rule tgp_nygc_download_all_gvcf:
         tgp_nygc_list_all_gvcf(),
     output:
         touch("data/source/1000g/gVCF/download.done"),
+
+
+rule tgp_nygc_plink_ped:
+    """
+    Make a PLINK pedigree file for the 602 trios.
+    
+    NB. `HG02567` appears in the pedigree, but was not sequenced as part of the 602 trios in the NYGC callset
+    """
+    input:
+        tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
+    output:
+        ped="data/source/1000g/1000g-trios.ped",
+    shell:
+        """awk 'NR>1 && $3!=0 && $4!=0' {input.tsv} | grep -Pv 'HG02567' > {output.ped}"""

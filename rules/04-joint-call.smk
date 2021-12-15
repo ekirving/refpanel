@@ -524,19 +524,16 @@ rule bcftools_filter_vcf:
         ") 2> {log} "
 
 
-# noinspection PyTypeChecker
-rule bcftools_1000G_trios:
+rule bcftools_trio_file:
     """
-    Make a bcftools trio file for checking Mendelian inconsistencies in 1000G (i.e., mother1,father1,child1)
-
-    NB. `HG02567` appears in the pedigree, but was not sequenced as part of the 602 trios in the NYGC callset
+    Convert a PLINK pedigree file into bcftools format (i.e., mother1,father1,child1)
     """
     input:
-        tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
+        ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
     output:
-        tsv="data/source/1000g/1000g-trios.tsv",
+        tsv="data/source/{panel}/{panel}-trios.tsv",
     shell:
-        """awk 'NR>1 && $3!=0 && $4!=0 {{ print $4","$3","$2 }}' {input.tsv} | grep -Pv 'HG02567' > {output.tsv}"""
+        """awk '{{ print $4","$3","$2 }}' {input.ped} > {output.tsv}"""
 
 
 # noinspection PyTypeChecker
@@ -549,7 +546,7 @@ rule bcftools_mendelian_inconsistencies:
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
-        trios=lambda wildcards: config["panel"][wildcards.panel]["trios"],
+        trios="data/source/{panel}/{panel}-trios.tsv",
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz"),
         tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi"),

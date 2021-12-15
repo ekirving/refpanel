@@ -5,6 +5,7 @@ data/panel/*/*-superpops.tsv
 data/panel/*/*-trios.tsv
 data/panel/*/vcf/
 data/reference/GRCh38/
+data/source/*/*-trios.ped
 data/source/*/*-trios.tsv
 data/source/*/bam/
 data/source/*/cram/

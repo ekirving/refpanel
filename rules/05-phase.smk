@@ -21,15 +21,46 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 # TODO fetch the 10x Genomics callset for the HGDP project and use that also
 
 
+rule whatshap_phase_set:
+    """
+    Annotate the VCF with read-based phase set blocks, for use by shapeit4
+
+    https://whatshap.readthedocs.io/en/latest/guide.html
+    https://whatshap.readthedocs.io/en/latest/guide.html#using-a-phased-vcf-instead-of-a-bam-cram-file
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        map="data/reference/GRCh38/genetic_maps/{chr}.b38.gmap.gz",
+        ped="data/source/1000g/1000g-trios.ped",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter.vcf.gz.tbi",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_whatshap.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_whatshap.vcf.gz.tbi",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_whatshap.vcf.log",
+    conda:
+        "../envs/whatshap-1.2.1.yaml"
+    shell:
+        "whatshap phase"
+        " --reference={input.ref}"
+        " --genmap {input.map}"
+        " --ped {input.ped}"
+        " --tag=PS"
+        " -o {output.vcf}"
+        " {input.vcf}"
+        " input.bam"
+
+
 rule shapeit4_phase_vcf_trios:
     """
     Phase the joint-callset, using trios
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
-        map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
+        map="data/reference/GRCh38/genetic_maps/{chr}.b38.gmap.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_whatshap.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_whatshap.vcf.gz.tbi",
     output:
-        # TODO does shapeit4 make it's own index?
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.log",

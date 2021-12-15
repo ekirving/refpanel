@@ -54,15 +54,13 @@ panel:
     # metadata sheet containing the list of samples and populations for this reference panel - req. (source, sample, superpopulation)
     samples: test/test-panel-samples.tsv
 
-    # optional list of trios uses for checking Mendelian inconsistencies and performing phasing (i.e., mother1,father1,child1)
-    trios: test/test-panel-trios.tsv
+    # optional list of trios uses for checking Mendelian inconsistencies and performing phasing
+    pedigree: test/test-panel-trios.ped
 
   1000g:
     # reference panel of the 1000G samples
     samples: data/panel/1000g/1000g-samples.tsv
-
-    # list of (mother1,father1,child1) trios
-    trios: data/source/1000g/1000g-trios.tsv
+    pedigree: data/source/1000g/1000g-trios.ped
 
   hgdp:
     # reference panel of the HGDP samples

@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import temp
+from snakemake.io import temp, expand
 
 """
 The human reference genome used by the International Genome Sample Resource (IGSR)
@@ -196,10 +196,14 @@ rule reference_grch38_genetic_map:
     Fetch the GRCh38 genetic map
     """
     output:
-        map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
+        expand(
+            "data/reference/GRCh38/genetic_maps/{chr}.b38.gmap.gz",
+            chr=[f"chr{i}" for i in range(23)] + ["chrX", "chrX_par1", "chrX_par2"],
+        ),
+        tar=temp("data/reference/GRCh38/genetic_maps/genetic_maps.b38.tar.gz"),
     shell:
-        "wget --quiet -O {output.map} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
-        "gunzip --test {output.map}"
+        "wget --quiet -O {output.tar} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
+        "tar -xzf {output.tar} -C data/reference/GRCh38/genetic_maps/"
 
 
 rule reference_grch38_assembly_report:
