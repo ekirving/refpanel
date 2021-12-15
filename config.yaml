@@ -26,7 +26,7 @@ source:
       DS: description
 
   1000g:
-    # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 trios)
+    # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
     # https://doi.org/10.1101/2021.02.06.430068
     samples: data/source/1000g/1000g-samples.tsv
 

@@ -37,7 +37,7 @@ conda activate refpanel
 This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,756), involving all publicly available
 samples from:
 
-* 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 trios); \
+* 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
   [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
 * Human Genome Diversity Project (HGDP) (n=929; including overlap with SGDP); \
   [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
@@ -85,10 +85,10 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
     1) VQSR PASS;
     2) GT missingness < 5%;
     3) HWE p-value > 1e-10 in at least one super-population;
-    4) Mendelian error rate < 5% (using 698 trios from 1000G);
+    4) Mendelian error rate < 5% (using 602 complete trios from 1000G);
     5) MAC ≥ 2 (i.e., no singletons)
 * [Statistical phasing](rules/05-phase.smk#L24) with `shapeit4` (v4.2.2) using:
-    * Trio data from 1000G (n=698); and
+    * Trio data from 1000G (n=602); and
     * 10x Genomics long-reads from HGDP;
 
 For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf) or the code itself.
