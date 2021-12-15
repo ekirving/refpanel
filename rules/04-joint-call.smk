@@ -440,9 +440,9 @@ rule bcftools_samples_file:
 
 rule bcftools_norm:
     """
-    Normalise INDELs
+    Split polyallelic INDELs, left-align and normalise.
 
-    Split INDELs because polyallelic sites have separate rsIDs, whereas polyallelic SNPs do not
+    NB. Polyallelic INDELs have separate rsIDs for each allele, whereas polyallelic SNPs do not
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
@@ -456,7 +456,11 @@ rule bcftools_norm:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools norm --fasta-ref {input.ref} --multiallelics -indels -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools norm"
+        " --fasta-ref {input.ref}"
+        " --atomize"
+        " --multiallelics +snps"
+        " -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
 
