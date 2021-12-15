@@ -87,7 +87,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
     3) HWE p-value > 1e-10 in at least one super-population;
     4) Mendelian error rate < 5% (using 602 complete trios from 1000G);
     5) MAC ≥ 2 (i.e., no singletons)
-* [Statistical phasing](rules/05-phase.smk#L24) with `shapeit4` (v4.2.2) using:
+* [Statistical phasing](rules/05-phase.smk#L24) with `whatshap` (v1.2.1) and `shapeit4` (v4.2.2) including:
     * Trio data from 1000G (n=602); and
     * 10x Genomics long-reads from HGDP;
 
