@@ -22,8 +22,42 @@ wildcard_constraints:
     sample="[\w-]+",
     ext="vcf.gz(.tbi)?",
 
+rule tgp_nygc_cram_md5:
+    """
+    Make an md5 checksum file for validating the 1000G data
+    """
+    input:
+        man="data/source/1000g/igsr_30x_GRCh38.tsv",
+    output:
+        md5="data/source/1000g/cram/{sample}.cram.md5",
+    params:
+        file="data/source/1000g/cram/{sample}.cram",
+    shell:
+        r"""awk -v FS="\t" '$6=="{wildcards.sample}" {{ print $2" {params.file}" }}' {input.man} > {output.md5}"""
 
-rule tgp_nygc_md5:
+
+rule tgp_nygc_download_cram:
+    """
+    Download bwa-mem CRAM files for each high-coverage NYGC 1000G sample
+    """
+    input:
+        man="data/source/1000g/igsr_30x_GRCh38.tsv",
+        md5="data/source/1000g/cram/{sample}.cram.md5",
+    output:
+        cram="data/source/1000g/cram/{sample}.cram",
+        crai="data/source/1000g/cram/{sample}.cram.crai",
+    resources:
+        ebi_ftp=1,
+    conda:
+        "../../envs/htslib-1.14.yaml"
+    shell:
+        r"""awk -v FS="\t" '$6=="{wildcards.sample}" {{ print $1 }}' {input.man} | """
+        r"""xargs wget --quiet -O {output.cram} -o /dev/null && """
+        r"""md5sum --status --check {input.md5} && """
+        r"""samtools index {output.cram} 2> /dev/null"""
+
+
+rule tgp_nygc_gvcf_md5:
     """
     Make an md5 checksum file for validating the 1000G data
     """
