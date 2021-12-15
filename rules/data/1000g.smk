@@ -74,7 +74,7 @@ rule tgp_nygc_download_all_gvcf:
 rule tgp_nygc_plink_ped:
     """
     Make a PLINK pedigree file for the 602 trios.
-    
+
     NB. `HG02567` appears in the pedigree, but was not sequenced as part of the 602 trios in the NYGC callset
     """
     input:

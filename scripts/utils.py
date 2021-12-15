@@ -71,3 +71,12 @@ def list_sources(config, panel):
     metadata = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
 
     return metadata["source"].unique().tolist()
+
+
+def list_source_samples(config, panel):
+    """
+    Get a list of (source, sample) for the given reference panel
+    """
+    metadata = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
+
+    return metadata[["source", "sample"]].to_records(index=False).tolist()

@@ -559,6 +559,6 @@ rule bcftools_mendelian_inconsistencies:
         "../envs/htslib-1.14.yaml"
     shell:
         "( bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
-        "  bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} {input.vcf} && "
+        "  bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} && "
         "  bcftools index --tbi {output.vcf}"
         ") 2> {log}"
