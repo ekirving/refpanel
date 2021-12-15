@@ -29,9 +29,8 @@ rule shapeit4_phase_vcf_trios:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         map="data/reference/GRCh38/genetic_maps.b38.tar.gz",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz",
         # TODO does shapeit4 make it's own index?
-        # tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.gz",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_mendel_filter_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)

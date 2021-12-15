@@ -467,7 +467,7 @@ rule bcftools_norm:
 rule bcftools_annotate:
     """
     Annotate variants with dbSNP and fill all tags.
-    
+
     NB. `+fill-tags --tags all` does not set all tags! 
     see https://github.com/samtools/bcftools/blob/develop/plugins/fill-tags.c#L404
     """
@@ -525,15 +525,15 @@ rule bcftools_filter_vcf:
 rule bcftools_1000G_trios:
     """
     Make a bcftools trio file for checking Mendelian inconsistencies in 1000G (i.e., mother1,father1,child1)
-    
-    NB. `HG02567` appears in the pedigree, but was not sequenced as part of the 602 trios in the NTGC callset
+
+    NB. `HG02567` appears in the pedigree, but was not sequenced as part of the 602 trios in the NYGC callset
     """
     input:
         tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
     output:
         tsv="data/source/1000g/1000g-trios.tsv",
     shell:
-        """awk 'NR>1 && $3!=0 && $4!=0 {{ print $4","$3","$2 }}' {input.tsv} | grep -Pv HG02567 > {output.tsv}"""
+        """awk 'NR>1 && $3!=0 && $4!=0 {{ print $4","$3","$2 }}' {input.tsv} | grep -Pv 'HG02567' > {output.tsv}"""
 
 
 # noinspection PyTypeChecker
