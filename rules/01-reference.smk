@@ -202,10 +202,10 @@ rule reference_grch38_genetic_map:
         ),
         tar=temp("data/reference/GRCh38/genetic_maps.b38.tar.gz"),
     params:
-        path="data/reference/GRCh38/genetic_maps/"
+        path="data/reference/GRCh38/genetic_maps/",
     shell:
         "wget --quiet -O {output.tar} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
-        "mkdir -P {params.path} && tar -xzf {output.tar} -C {params.path}"
+        "mkdir -p {params.path} && tar -xzf {output.tar} -C {params.path}"
 
 
 rule reference_grch38_assembly_report:
