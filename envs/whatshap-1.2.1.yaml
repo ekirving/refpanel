@@ -1,4 +1,5 @@
 channels:
   - bioconda
 dependencies:
+  - bioconda::bcftools=1.14
   - bioconda::whatshap=1.2.1

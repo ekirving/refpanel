@@ -61,11 +61,14 @@ rule whatshap_phase_set_read_based:
         "../envs/whatshap-1.2.1.yaml"
     shell:
         "whatshap phase"
-        " --reference={input.ref}"
-        " --tag=PS"
-        " -o {output.vcf}"
+        " --reference {input.ref}"
+        " --tag PS"
+        " --indels"
+        " --ignore-read-groups"
+        " --output {output.vcf}"
         " {input.vcf}"
-        " {input.cram} 2> {log}"
+        " {input.cram} 2> {log} && "
+        "bcftools index --tbi {output.vcf}"
 
 
 def bcftools_merge_samples_input(wildcards):
@@ -92,35 +95,38 @@ rule bcftools_merge_samples:
         "bcftools merge -Oz -o {output.vcf} {input}"
 
 
-# rule whatshap_phase_set_pedigree:
-#     """
-#     Build a pedigree based scaffold, for use by shapeit4
-#
-#     https://whatshap.readthedocs.io/en/latest/guide.html
-#     https://whatshap.readthedocs.io/en/latest/guide.html#using-a-phased-vcf-instead-of-a-bam-cram-file
-#     """
-#     input:
-#         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-#         map="data/reference/GRCh38/genetic_maps/{chr}.b38.gmap.gz",
-#         ped="data/source/1000g/1000g-trios.ped",
-#         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
-#         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
-#     output:
-#         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-#         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
-#     log:
-#         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.log",
-#     conda:
-#         "../envs/whatshap-1.2.1.yaml"
-#     shell:
-#         "whatshap phase"
-#         " --reference={input.ref}"
-#         " --genmap {input.map}"
-#         " --ped {input.ped}"
-#         " --tag=PS"
-#         " -o {output.vcf}"
-#         " {input.vcf}"
-#         " input.bam"
+rule whatshap_phase_set_pedigree:
+    """
+    Build a pedigree based scaffold, for use by shapeit4
+
+    https://whatshap.readthedocs.io/en/latest/guide.html
+    https://whatshap.readthedocs.io/en/latest/guide.html#using-a-phased-vcf-instead-of-a-bam-cram-file
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        map="data/reference/GRCh38/genetic_maps/{chr}.b38.gmap.gz",
+        ped="data/source/1000g/1000g-trios.ped",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.log",
+    conda:
+        "../envs/whatshap-1.2.1.yaml"
+    shell:
+        "whatshap phase"
+        " --reference {input.ref}"
+        " --genmap {input.map}"
+        " --ped {input.ped}"
+        " --use-ped-samples"
+        " --tag PS"
+        " --indels"
+        " --ignore-read-groups"
+        " --output {output.vcf}"
+        " {input.vcf} 2> {log} && "
+        "bcftools index --tbi {output.vcf}"
 
 
 rule shapeit4_phase_vcf_trios:
