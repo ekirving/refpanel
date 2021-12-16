@@ -42,7 +42,7 @@ rule bcftools_subset_sample:
 
 rule whatshap_read_based_phasing:
     """
-    Annotate the VCF with read-based phase set blocks, for use by shapeit4
+    Annotate the VCF with read-based phase set blocks (PS), for use by shapeit4
 
     https://whatshap.readthedocs.io/en/latest/guide.html
     """
@@ -131,7 +131,6 @@ rule whatshap_pedigree_phasing:
         " --use-ped-samples"
         " --tag PS"
         " --indels"
-        " --ignore-read-groups"
         " --output {output.vcf}"
         " {input.vcf} 2> {log} && "
         "bcftools index --tbi {output.vcf}"
