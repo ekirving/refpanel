@@ -40,7 +40,7 @@ rule bcftools_subset_sample:
         "bcftools index --tbi {output.vcf}"
 
 
-rule whatshap_phase_set_read_based:
+rule whatshap_read_based_phasing:
     """
     Annotate the VCF with read-based phase set blocks, for use by shapeit4
 
@@ -86,7 +86,7 @@ def bcftools_merge_samples_input(wildcards):
 
 
 # noinspection PyUnresolvedReferences
-rule bcftools_merge_samples:
+rule bcftools_merge_phased_samples:
     """
     Merge the sample-level VCFs, with read-based phase set blocks, back into a single chromosome.
     """
@@ -101,12 +101,14 @@ rule bcftools_merge_samples:
         "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
 
 
-rule whatshap_phase_set_pedigree:
+rule whatshap_pedigree_phasing:
     """
-    Build a pedigree based scaffold, for use by shapeit4
+    Build a pedigree based scaffold, for use by `shapeit4`.
 
-    https://whatshap.readthedocs.io/en/latest/guide.html
+    This takes the whole VCF as input, and produces a scaffold for `shapeit4` containing the phased 602 trios.
+
     https://whatshap.readthedocs.io/en/latest/guide.html#using-a-phased-vcf-instead-of-a-bam-cram-file
+    https://github.com/odelaneau/shapeit4/issues/17
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",

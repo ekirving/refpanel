@@ -22,6 +22,7 @@ wildcard_constraints:
     sample="[\w-]+",
     ext="vcf.gz(.tbi)?",
 
+
 rule tgp_nygc_cram_md5:
     """
     Make an md5 checksum file for validating the 1000G data
