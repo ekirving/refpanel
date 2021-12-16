@@ -45,6 +45,7 @@ rule refpanel:
 
 rule download_data:
     input:
+        "data/source/1000g/cram/download.done",
         "data/source/1000g/gVCF/download.done",
         "data/source/hgdp/cram/download.done",
         "data/source/sgdp/cram/download.done",

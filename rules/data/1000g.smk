@@ -58,6 +58,24 @@ rule tgp_nygc_download_cram:
         r"""samtools index {output.cram} 2> /dev/null"""
 
 
+def tgp_nygc_list_all_cram():
+    samples = pd.read_table(config["source"]["1000g"]["samples"])
+
+    files = [
+        [f"data/source/1000g/cram/{sample}.cram", f"data/source/1000g/cram/{sample}.cram.crai"]
+        for sample in samples["sample"]
+    ]
+
+    return files
+
+
+rule tgp_nygc_download_all_cram:
+    input:
+        tgp_nygc_list_all_cram(),
+    output:
+        touch("data/source/1000g/cram/download.done"),
+
+
 rule tgp_nygc_gvcf_md5:
     """
     Make an md5 checksum file for validating the 1000G data
