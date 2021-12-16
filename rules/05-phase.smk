@@ -126,6 +126,7 @@ rule whatshap_pedigree_phasing:
     shell:
         "whatshap phase"
         " --reference {input.ref}"
+        " --chromosome {wildcards.chr}"
         " --genmap {input.map}"
         " --ped {input.ped}"
         " --use-ped-samples"
