@@ -109,10 +109,10 @@ rule whatshap_phase_set_pedigree:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.log",
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
