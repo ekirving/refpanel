@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import expand, touch, temp
+from snakemake.io import expand, touch, temp, unpack
 
 from scripts.utils import list_source_samples
 
@@ -74,25 +74,31 @@ rule whatshap_phase_set_read_based:
 def bcftools_merge_samples_input(wildcards):
     panel = wildcards.panel
     chr = wildcards.chr
-    samples = list_source_samples(config, panel)
-    return [
-        f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz" for source, sample in samples
-    ]
+
+    vcf = []
+    tbi = []
+
+    for source, sample in list_source_samples(config, panel):
+        vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz")
+        tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz.tbi")
+
+    return {"vcfs": vcf, "tbi": tbi}
 
 
+# noinspection PyUnresolvedReferences
 rule bcftools_merge_samples:
     """
     Merge the sample-level VCFs, with read-based phase set blocks, back into a single chromosome.
     """
     input:
-        bcftools_merge_samples_input,
+        unpack(bcftools_merge_samples_input),
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools merge -Oz -o {output.vcf} {input}"
+        "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
 
 
 rule whatshap_phase_set_pedigree:
