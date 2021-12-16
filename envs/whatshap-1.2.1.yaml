@@ -1,4 +1,4 @@
 channels:
   - bioconda
 dependencies:
-  - bioconda::whatshap-1.2.1
+  - bioconda::whatshap=1.2.1
