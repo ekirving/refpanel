@@ -107,13 +107,12 @@ rule whatshap_pedigree_phasing:
 
     This takes the whole VCF as input, and produces a scaffold for `shapeit4` containing the phased 602 trios.
 
-    https://whatshap.readthedocs.io/en/latest/guide.html#using-a-phased-vcf-instead-of-a-bam-cram-file
-    https://github.com/odelaneau/shapeit4/issues/17
+    https://whatshap.readthedocs.io/en/latest/guide.html#phasing-pedigrees
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        map="data/reference/GRCh38/genetic_maps/{chr}.b38.gmap",
-        ped="data/source/1000g/1000g-trios.ped",
+        map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map",
+        ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
     output:
@@ -142,9 +141,9 @@ rule shapeit4_phase_vcf_trios:
     Phase the joint-callset, using trios
     """
     input:
-        map="data/reference/GRCh38/genetic_maps/{chr}.b38.gmap",
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+        map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",
     log:

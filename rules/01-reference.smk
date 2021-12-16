@@ -12,6 +12,7 @@ from snakemake.io import temp, expand
 The human reference genome used by the International Genome Sample Resource (IGSR)
 
 https://www.internationalgenome.org/
+https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0
 """
 
 
@@ -190,19 +191,46 @@ rule reference_grch38_chrom_others_bed:
     shell:
         r"grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"
 
-
-rule reference_grch38_genetic_map:
+rule reference_grch38_whatshap_genetic_map:
     """
-    Fetch the GRCh38 genetic map
+    Fetch the GRCh38 genetic map needed for `whatshap`
+    """
+    output:
+        map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_withX.txt.gz",
+    shell:
+        "wget --quiet -O {output.map} -o /dev/null https://storage.googleapis.com/broad-alkesgroup-public/Eagle/downloads/tables/genetic_map_hg38_withX.txt.gz"
+
+rule reference_grch38_whatshap_genetic_map_chrom:
+    """
+    Extract a specific chromosome
+
+    Format: `position` `COMBINED_rate(cM/Mb)` `Genetic_Map(cM)`
+
+    https://whatshap.readthedocs.io/en/latest/guide.html#pedigree-phasing-parameters
+    """
+    input:
+        map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_withX.txt.gz",
+    output:
+        map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map",
+    params:
+        # the Eagle format has no 'chr' prefix and uses 23 for chrX
+        chr=lambda wildcards: str(wildcards.chr).replace("chr", "").replace("X", "23")
+    shell:
+        "gunzip -c {input.map} | awk 'NR==1 || $1==\"{params.chr}\" {{ print $2,$3,$4 }}' > {output.map}"
+
+
+rule reference_grch38_shapeit4_genetic_map:
+    """
+    Fetch the GRCh38 genetic map needed for `shapeit4`
     """
     output:
         expand(
-            "data/reference/GRCh38/genetic_maps/{chr}.b38.gmap",
+            "data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap",
             chr=[f"chr{i}" for i in range(1, 23)] + ["chrX", "chrX_par1", "chrX_par2"],
         ),
         tar=temp("data/reference/GRCh38/genetic_maps.b38.tar.gz"),
     params:
-        path="data/reference/GRCh38/genetic_maps/",
+        path="data/reference/GRCh38/genetic_maps/shapeit4/",
     shell:
         "wget --quiet -O {output.tar} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
         "mkdir -p {params.path} && tar -xzf {output.tar} -C {params.path} && gunzip {params.path}/*.gz"
