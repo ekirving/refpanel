@@ -47,6 +47,7 @@ rule whatshap_phase_set_read_based:
     https://whatshap.readthedocs.io/en/latest/guide.html
     """
     input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         vcf="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz",
         tbi="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz.tbi",
         cram="data/source/{source}/cram/{sample}.cram",
@@ -60,6 +61,7 @@ rule whatshap_phase_set_read_based:
         "../envs/whatshap-1.2.1.yaml"
     shell:
         "whatshap phase"
+        " --reference={input.ref}"
         " --tag=PS"
         " -o {output.vcf}"
         " {input.vcf}"
