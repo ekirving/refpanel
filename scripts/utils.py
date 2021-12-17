@@ -80,3 +80,33 @@ def list_source_samples(config, panel):
     metadata = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
 
     return metadata[["source", "sample"]].to_records(index=False).tolist()
+
+
+def list_families(config, panel):
+    """
+    Get a list of families from the reference panel pedigree
+    """
+    pedigree = pd.read_table(
+        config["panel"][panel]["pedigree"],
+        delimiter=" ",
+        usecols=range(4),
+        names=["family", "child", "father", "mother"],
+        header=None,
+    )
+
+    return pedigree["family"].unique().tolist()
+
+
+def list_family_children(config, panel, family):
+    """
+    Get a list of children belonging to a specific family from the pedigree
+    """
+    pedigree = pd.read_table(
+        config["panel"][panel]["pedigree"],
+        delimiter=" ",
+        usecols=range(4),
+        names=["family", "child", "father", "mother"],
+        header=None,
+    ).set_index("family", drop=False)
+
+    return pedigree.loc[[family]]["child"].unique().tolist()

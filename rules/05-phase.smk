@@ -6,9 +6,10 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import pandas as pd
 from snakemake.io import expand, touch, temp, unpack
 
-from scripts.utils import list_source_samples
+from scripts.utils import list_source_samples, list_families, list_family_children
 
 global workflow
 
@@ -133,10 +134,10 @@ rule whatshap_pedigree_phasing:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
     output:
-        vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_whatshap.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_whatshap.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_whatshap.vcf.log",
+        log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.log",
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
@@ -151,6 +152,62 @@ rule whatshap_pedigree_phasing:
         " --output {output.vcf}"
         " {input.vcf} 2> {log} && "
         "bcftools index --tbi {output.vcf}"
+
+
+rule bcftools_extract_children:
+    """
+    Extract the children from the phased trios, as these will be merged to form the scaffold. 
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz",
+        tbi="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz.tbi",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family_children.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family_children.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family_children.vcf.log",
+    params:
+        children=lambda wildcards: ",".join(list_family_children(config, wildcards.panel, wildcards.family)),
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools view --samples '{params.children}' -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools index --tbi {output.vcf}"
+
+
+def bcftools_merge_phased_children_input(wildcards):
+    """
+    Return a list of VCF/TBI files for each family in the pedigree
+    """
+    panel = wildcards.panel
+    chr = wildcards.chr
+
+    vcf = []
+    tbi = []
+
+    for family in list_families(config, panel):
+        vcf.append(f"data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family_children.vcf.gz"),
+        tbi.append(f"data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family_children.vcf.gz.tbi"),
+
+    return {"vcfs": vcf, "tbi": tbi}
+
+
+# noinspection PyUnresolvedReferences
+rule bcftools_merge_phased_children:
+    """
+    Merge the family-level trio phased VCFs back into a single chromosome.
+
+    Produces a scaffold for `shapeit4` containing the 602 phased trios from 1000G.
+    """
+    input:
+        unpack(bcftools_merge_phased_children_input),
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
 
 
 rule shapeit4_phase_vcf:
