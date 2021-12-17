@@ -225,7 +225,7 @@ rule reference_grch38_shapeit4_genetic_map:
     """
     output:
         expand(
-            "data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap",
+            "data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap.gz",
             chr=[f"chr{i}" for i in range(1, 23)] + ["chrX", "chrX_par1", "chrX_par2"],
         ),
         tar=temp("data/reference/GRCh38/genetic_maps.b38.tar.gz"),
@@ -233,7 +233,7 @@ rule reference_grch38_shapeit4_genetic_map:
         path="data/reference/GRCh38/genetic_maps/shapeit4/",
     shell:
         "wget --quiet -O {output.tar} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
-        "mkdir -p {params.path} && tar -xzf {output.tar} -C {params.path} && gunzip {params.path}/*.gz"
+        "mkdir -p {params.path} && tar -xzf {output.tar} -C {params.path}"
 
 
 rule reference_grch38_assembly_report:

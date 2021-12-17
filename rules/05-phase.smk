@@ -136,14 +136,18 @@ rule whatshap_pedigree_phasing:
         "bcftools index --tbi {output.vcf}"
 
 
-rule shapeit4_phase_vcf_trios:
+rule shapeit4_phase_vcf:
     """
-    Phase the joint-callset, using trios
+    Phase the joint-callset, using the pedigree phased VCF as a scaffold and the read-based phase sets as input.
+    
+    See https://github.com/odelaneau/shapeit4/issues/17
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
-        map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap",
+        map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap.gz",
+        vcf1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
+        tbi1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+        vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
+        tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",
     log:
@@ -154,7 +158,8 @@ rule shapeit4_phase_vcf_trios:
     shell:
         "shapeit4"
         " --thread {threads}"
-        " --input {input.vcf}"
+        " --input {input.vcf1}"
+        " --scaffold {input.vcf2}"
         " --map {input.map}"
         " --region {wildcards.chr}"
         " --sequencing"
