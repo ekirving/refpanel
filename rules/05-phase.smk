@@ -22,6 +22,8 @@ see https://github.com/odelaneau/shapeit4/issues/17
 # TODO need a version that does not rely on trios
 # TODO build a `scaffold` using the trios from the extended 1000G NYGC dataset
 # TODO fetch the 10x Genomics callset for the HGDP project and use that also
+# TODO add benchmarks to all rules
+# TODO implement the "best practices" criteria https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html
 
 
 rule bcftools_subset_sample:
