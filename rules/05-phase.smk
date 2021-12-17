@@ -71,7 +71,10 @@ rule whatshap_read_based_phasing:
         "bcftools index --tbi {output.vcf}"
 
 
-def bcftools_merge_samples_input(wildcards):
+def bcftools_merge_phased_samples_input(wildcards):
+    """
+    Return a list of VCF/TBI files for each sample in the reference panel
+    """
     panel = wildcards.panel
     chr = wildcards.chr
 
@@ -91,7 +94,7 @@ rule bcftools_merge_phased_samples:
     Merge the sample-level VCFs, with read-based phase set blocks, back into a single chromosome.
     """
     input:
-        unpack(bcftools_merge_samples_input),
+        unpack(bcftools_merge_phased_samples_input),
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
@@ -104,7 +107,7 @@ rule bcftools_merge_phased_samples:
 rule pedigree_family:
     """
     Extract a specific family from the pedigree.
-    
+
     There are 602 trios in 1000G, but only 576 families (including quads and multi-generational families)  
     """
     input:
@@ -153,7 +156,7 @@ rule whatshap_pedigree_phasing:
 rule shapeit4_phase_vcf:
     """
     Phase the joint-callset, using the pedigree phased VCF as a scaffold and the read-based phase sets as input.
-    
+
     See https://github.com/odelaneau/shapeit4/issues/17
     """
     input:

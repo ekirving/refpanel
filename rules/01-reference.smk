@@ -191,6 +191,7 @@ rule reference_grch38_chrom_others_bed:
     shell:
         r"grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"
 
+
 rule reference_grch38_whatshap_genetic_map:
     """
     Fetch the GRCh38 genetic map needed for `whatshap`
@@ -199,6 +200,7 @@ rule reference_grch38_whatshap_genetic_map:
         map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_withX.txt.gz",
     shell:
         "wget --quiet -O {output.map} -o /dev/null https://storage.googleapis.com/broad-alkesgroup-public/Eagle/downloads/tables/genetic_map_hg38_withX.txt.gz"
+
 
 rule reference_grch38_whatshap_genetic_map_chrom:
     """
@@ -214,7 +216,7 @@ rule reference_grch38_whatshap_genetic_map_chrom:
         map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map",
     params:
         # the Eagle format has no 'chr' prefix and uses 23 for chrX
-        chr=lambda wildcards: str(wildcards.chr).replace("chr", "").replace("X", "23")
+        chr=lambda wildcards: str(wildcards.chr).replace("chr", "").replace("X", "23"),
     shell:
         "gunzip -c {input.map} | awk 'NR==1 || $1==\"{params.chr}\" {{ print $2,$3,$4 }}' > {output.map}"
 
