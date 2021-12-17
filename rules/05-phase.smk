@@ -101,25 +101,39 @@ rule bcftools_merge_phased_samples:
         "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
 
 
+rule pedigree_family:
+    """
+    Extract a specific family from the pedigree.
+    
+    There are 602 trios in 1000G, but only 576 families (including quads and multi-generational families)  
+    """
+    input:
+        ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
+    output:
+        ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
+    shell:
+        """awk '$1=="{wildcards.family}"' {input.ped} > {output.ped}"""
+
+
 rule whatshap_pedigree_phasing:
     """
     Build a pedigree based scaffold, for use by `shapeit4`.
 
-    This takes the whole VCF as input, and produces a scaffold for `shapeit4` containing the phased 602 trios.
+    This takes the whole VCF as input, extracts a single family, and performs trio phasing.
 
     https://whatshap.readthedocs.io/en/latest/guide.html#phasing-pedigrees
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map",
-        ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
+        ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
+        vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_whatshap.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_whatshap.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.log",
+        log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_whatshap.vcf.log",
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
