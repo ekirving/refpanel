@@ -88,7 +88,12 @@ def bcftools_merge_phased_samples_input(wildcards):
         vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz")
         tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz.tbi")
 
-    return {"vcfs": vcf, "tbi": tbi}
+    file_list = f"data/panel/{panel}/vcf/sample/{panel}_{chr}.list"
+
+    with open(file_list, "w") as fout:
+        fout.write("\n".join(vcf))
+
+    return {"vcfs": vcf, "tbi": tbi, "list": file_list}
 
 
 # noinspection PyUnresolvedReferences
@@ -104,7 +109,7 @@ rule bcftools_merge_phased_samples:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
+        "bcftools merge --file-list {input.list} -Oz -o {output.vcf}"
 
 
 rule pedigree_family:
