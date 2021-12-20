@@ -91,7 +91,7 @@ def bcftools_merge_phased_samples_input(wildcards):
     file_list = f"data/panel/{panel}/vcf/sample/{panel}_{chr}.list"
 
     with open(file_list, "w") as fout:
-        fout.write("\n".join(vcf))
+        fout.write("\n".join(vcf) + "\n")
 
     return {"vcfs": vcf, "tbi": tbi, "list": file_list}
 
@@ -100,15 +100,20 @@ def bcftools_merge_phased_samples_input(wildcards):
 rule bcftools_merge_phased_samples:
     """
     Merge the sample-level VCFs, with read-based phase set blocks, back into a single chromosome.
+    
+    Raise the `ulimit` to prevent exceeding the maximum number of open files. 
     """
     input:
         unpack(bcftools_merge_phased_samples_input),
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+    params:
+        limit=lambda wildcards, input: len(input.vcf) + 10
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
+        "ulimit -n {params.limit} && "
         "bcftools merge --file-list {input.list} -Oz -o {output.vcf}"
 
 
