@@ -19,12 +19,6 @@ Rules to perform variant phasing on a joint-called reference panel
 see https://github.com/odelaneau/shapeit4/issues/17 
 """
 
-# TODO need a version that does not rely on trios
-# TODO build a `scaffold` using the trios from the extended 1000G NYGC dataset
-# TODO fetch the 10x Genomics callset for the HGDP project and use that also
-# TODO add benchmarks to all rules
-# TODO implement the "best practices" criteria https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html
-
 
 rule bcftools_subset_sample:
     """
@@ -43,6 +37,7 @@ rule bcftools_subset_sample:
         "bcftools index --tbi {output.vcf}"
 
 
+# TODO fetch the 10x Genomics callset for the HGDP project and use that also
 rule whatshap_read_based_phasing:
     """
     Annotate the VCF with read-based phase set blocks (PS), for use by shapeit4
@@ -250,6 +245,7 @@ rule bcftools_merge_phased_children:
         "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
 
 
+# TODO add a version that does not rely on trios
 rule shapeit4_phase_vcf:
     """
     Phase the joint-callset, using the pedigree phased VCF as a scaffold and the read-based phase sets as input.

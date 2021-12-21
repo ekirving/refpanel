@@ -13,6 +13,10 @@ from snakemake.io import expand
 configfile: "config.yaml"
 
 
+# TODO add benchmarks to all rules
+# TODO implement the "best practices" criteria https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html
+
+
 # rules to download the data sources
 include: "rules/data/1000g.smk"
 include: "rules/data/hgdp.smk"
