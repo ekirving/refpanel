@@ -87,12 +87,12 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
     3) HWE p-value > 1e-10 in at least one super-population;
     4) Mendelian error rate < 5% (using 602 trios from 1000G);
     5) MAC ≥ 2 (i.e., no singletons)
-* [Read-based phasing](rules/05-phase.smk) with `whatshap` (v1.2.1) using:
+* [Read-based phasing](rules/05-phase-reads.smk) with `whatshap` (v1.2.1) using:
     * _Illumina_ paired-end reads from all projects;
     * _10x Genomics_ long-read sequencing from HGDP;
-* [Pedigree phasing](rules/05-phase.smk) with `whatshap` using:
+* [Pedigree phasing](rules/06-phase-trios.smk) with `whatshap` using:
     * Trios from 1000G (n=602); 
-* [Statistical phasing](rules/05-phase.smk) with `shapeit4` (v4.2.2)
+* [Statistical phasing](rules/07-phase-stat.smk) with `shapeit4` (v4.2.2)
 
 For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf) or the code itself.
 

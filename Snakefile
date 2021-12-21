@@ -23,12 +23,14 @@ include: "rules/data/hgdp.smk"
 include: "rules/data/sgdp.smk"
 include: "rules/data/ggvp.smk"
 #
-# rules to apply the IGSR genotyping pipeline
+# rules for the genotyping and phasing pipeline
 include: "rules/01-reference.smk"
 include: "rules/02-align.smk"
 include: "rules/03-call.smk"
 include: "rules/04-joint-call.smk"
-include: "rules/05-phase.smk"
+include: "rules/05-phase-reads.smk"
+include: "rules/06-phase-trios.smk"
+include: "rules/07-phase-stat.smk"
 
 
 # preference download rules, when they are available
