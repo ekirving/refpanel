@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import expand, protected, temp, touch
+from snakemake.io import expand, protected, temp, touch, multiext
 
 from scripts.utils import fastq_path, read_group, list_accessions
 
@@ -22,11 +22,7 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
 
-# We ran a number of quality control (QC) tools to look for quality issues, sample swaps, and contamination issues.
-# We ran FastQC (Andrews, 2019) v0.11.3 on the raw sequence data to assess yield and raw base qualities.
 # We ran Picard (Broad Institute, 2019) v2.4.1 CollectMultipleMetrics and CollectWGSMetrics on the aligned BAM to collect alignment and insert size metrics.
-# Picard CollectGcBiasMetrics was run to compute normalized coverage across multiple GC bins.
-# Reads duplication metrics were quantified by running Picard MarkDuplicates on the BAM.
 # VerifyBamID (Jun et al., 2012) was run in chip-free mode to estimate the likelihood of sample contamination. We use a cutoff of 2% to flag any sample for contamination and none of the samples reached the cutoff.
 # Per sample variant metrics were collected using the GATK VariantEval tool (Van der Auwera and O’Connor, 2020).
 # As part of QC, we estimated SNV density using the SNVDensity tool from VCFtools v0.1.12 (Danecek et al., 2011) in bins of 1000 bp across the callable genome, defined here as the GRCh38 reference excluding gaps (“N”s in the GRCh38 reference sequence).
@@ -316,7 +312,7 @@ def source_list_all_crams(wildcards):
     return [f"data/source/{source}/cram/{sample}.cram" for sample in samples["sample"]]
 
 
-rule source_align_all_crams:
+rule source_align_samples:
     """
     Align all samples in a data source.
     """
@@ -324,3 +320,92 @@ rule source_align_all_crams:
         source_list_all_crams,
     output:
         touch("data/source/{source}/cram/align.done"),
+
+
+rule picard_collect_multiple_metrics:
+    """
+    Collect multiple classes of metrics
+
+    https://gatk.broadinstitute.org/hc/en-us/articles/360036485252-CollectMultipleMetrics-Picard-
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        cram="data/source/{source}/cram/{sample}.cram",
+    output:
+        multiext(
+            "data/source/{source}/cram/{sample}",
+            ".alignment_summary_metrics",
+            ".base_distribution_by_cycle.pdf",
+            ".base_distribution_by_cycle_metrics",
+            ".insert_size_histogram.pdf",
+            ".insert_size_metrics",
+            ".quality_by_cycle.pdf",
+            ".quality_by_cycle_metrics",
+            ".quality_distribution.pdf",
+            ".quality_distribution_metrics",
+        ),
+    log:
+        log="data/source/{source}/cram/{sample}.multiple_metrics.log",
+    params:
+        prefix="data/source/{source}/cram/{sample}",
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard-2.5.0.yaml"
+    shell:
+        "picard"
+        " -Xmx{resources.mem_mb}m"
+        " CollectMultipleMetrics "
+        " R={input.ref}"
+        " I={input.cram}"
+        " O={params.prefix} 2> {log}"
+
+
+rule picard_collect_wgs_metrics:
+    """
+    Collect metrics about coverage and performance of whole genome sequencing (WGS) experiments.
+
+    https://gatk.broadinstitute.org/hc/en-us/articles/360037269351-CollectWgsMetrics-Picard-
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        cram="data/source/{source}/cram/{sample}.cram",
+    output:
+        txt="data/source/{source}/cram/{sample}.wgs_metrics",
+    log:
+        log="data/source/{source}/cram/{sample}.wgs_metrics.log",
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+    conda:
+        "../envs/picard-2.5.0.yaml"
+    shell:
+        "picard"
+        " -Xmx{resources.mem_mb}m"
+        " CollectWgsMetrics "
+        " R={input.ref}"
+        " I={input.cram}"
+        " O={output.txt} 2> {log}"
+
+
+def source_list_metrics(wildcards):
+    """List all alignment metrics files for the given data source"""
+    source = wildcards.source
+    samples = pd.read_table(config["source"][source]["samples"])
+
+    return [
+        [
+            f"data/source/{source}/cram/{sample}.multiple_metrics.log",
+            f"data/source/{source}/cram/{sample}.wgs_metrics.log",
+        ]
+        for sample in samples["sample"]
+    ]
+
+
+rule source_alignment_metrics:
+    """
+    Calculate alignment metrics for the given data source.
+    """
+    input:
+        source_list_metrics,
+    output:
+        touch("data/source/{source}/cram/metrics.done"),

@@ -25,6 +25,12 @@ To align all samples in a data source, run:
 snakemake data/source/${source}/cram/align.done
 ```
 
+### QC metrics
+To calculate alignment QC metrics for all samples in a data source, run:
+```bash
+snakemake data/source/${source}/cram/metrics.done
+```
+
 ### Calling gVCFs
 To call genotype likelihoods in all samples in a data source, run:
 ```bash
