@@ -154,6 +154,8 @@ rule whatshap_pedigree_phasing:
         log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.log",
     conda:
         "../envs/whatshap-1.2.1.yaml"
+    resources:
+        mem_mb=6 * 1024,
     shell:
         "whatshap phase"
         " --reference {input.ref}"
