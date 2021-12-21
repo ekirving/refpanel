@@ -106,3 +106,5 @@ To execute the full pipeline, end-to-end, run:
 
 :warning: **This will take a long time**: Please make sure you run this on a server with as many CPUs, and as much RAM,
 as possible (e.g., this pipeline was developed and run on a cluster of nodes with 96 cores and 755Gb of RAM each).
+
+The pipeline can also be broken down [into separate steps](docs/steps.md), for distribution across multiple nodes in a cluster.

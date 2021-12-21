@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import temp, unpack
+from snakemake.io import temp, unpack, expand, touch
 
 from scripts.utils import list_families, list_family_children
 
@@ -150,3 +150,17 @@ rule bcftools_merge_phased_children:
         "../envs/htslib-1.14.yaml"
     shell:
         "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
+
+
+rule panel_pedigree_phasing:
+    """
+    Perform pedigree based phasing of all trios in a reference panel.
+    """
+    input:
+        expand(
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
+            chr=config["chroms"],
+            allow_missing=True,
+        ),
+    output:
+        touch("data/panel/{panel}/vcf/trios.done"),

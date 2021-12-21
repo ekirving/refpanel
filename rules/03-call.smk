@@ -123,6 +123,9 @@ def source_list_all_gvcfs(wildcards):
 
 
 rule source_call_all_gvcfs:
+    """
+    Call genotype likelihoods in all samples in a data source.
+    """
     input:
         source_list_all_gvcfs,
     output:

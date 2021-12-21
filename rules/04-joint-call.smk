@@ -135,10 +135,13 @@ rule gatk3_multisample_chrom_gvcf:
 
 
 rule source_merge_gvcfs:
+    """
+    Merge all `gVCF` files in a data source.
+    """
     input:
         expand("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz", chr=config["chroms"], allow_missing=True),
     output:
-        touch("data/source/{source}/gVCF/merged/merge.done"),
+        touch("data/source/{source}/gVCF/merge.done"),
 
 
 def gatk3_genotype_chrom_gvcf_input(wildcards):
@@ -560,3 +563,17 @@ rule bcftools_mendelian_inconsistencies:
         "  bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} && "
         "  bcftools index --tbi {output.vcf}"
         ") 2> {log}"
+
+
+rule panel_joint_call:
+    """
+    Joint-call a reference panel.
+    """
+    input:
+        expand(
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+            chr=config["chroms"],
+            allow_missing=True,
+        ),
+    output:
+        touch("data/panel/{panel}/vcf/joint-call.done"),

@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import temp, unpack
+from snakemake.io import temp, unpack, expand, touch
 
 from scripts.utils import list_source_samples
 
@@ -111,3 +111,17 @@ rule bcftools_merge_phased_samples:
     shell:
         "ulimit -n {params.limit} && "
         "bcftools merge --file-list {input.list} -Oz -o {output.vcf}"
+
+
+rule panel_read_based_phasing:
+    """
+    Perform read-based phasing of all samples in a reference panel
+    """
+    input:
+        expand(
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
+            chr=config["chroms"],
+            allow_missing=True,
+        ),
+    output:
+        touch("data/panel/{panel}/vcf/whatshap.done"),

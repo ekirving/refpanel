@@ -50,7 +50,10 @@ rule shapeit4_phase_vcf:
         " --log {log}"
 
 
-rule shapeit4_phase_all_vcfs:
+rule panel_statistical_phasing:
+    """
+    Perform statistical phasing of all samples a reference panel.
+    """
     input:
         expand(
             "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",

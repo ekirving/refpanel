@@ -288,6 +288,9 @@ def source_list_all_crams(wildcards):
 
 
 rule source_align_all_crams:
+    """
+    Align all samples in a data source.
+    """
     input:
         source_list_all_crams,
     output:
