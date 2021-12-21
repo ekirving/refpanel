@@ -209,7 +209,10 @@ rule picard_mark_duplicates:
         " M={output.met}"
         " I={input.bam}"
         " O={output.bam} 2> {log} && "
-        "picard BuildBamIndex I={output.bam} O={output.bai}"
+        "picard BuildBamIndex I={output.bam} O={output.bai} 2> /dev/null"
+
+
+ruleorder: picard_mark_duplicates > bwa_mem_pe
 
 
 rule gatk3_base_recalibrator:
