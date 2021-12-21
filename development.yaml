@@ -14,6 +14,6 @@ dependencies:
   - bioconda::snakemake=6.10.0
   - bioconda::tabix=1.11
   - bioconda::whatshap=1.2.1
-  - conda-forge::openssl=1.0
+  - conda-forge::openssl=1.1
   - conda-forge::pandas=1.3.4
   - conda-forge::python=3.9.7
