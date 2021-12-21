@@ -11,7 +11,7 @@ dependencies:
   - bioconda::picard=2.5.0
   - bioconda::samtools=1.14
   - bioconda::snakefmt=0.4.4
-  - bioconda::snakemake=6.10.0
+  - bioconda::snakemake=6.12.3
   - bioconda::tabix=1.11
   - bioconda::whatshap=1.2.1
   - conda-forge::openssl=1.1
