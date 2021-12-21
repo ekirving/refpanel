@@ -139,6 +139,8 @@ rule whatshap_pedigree_phasing:
 
     This takes the whole VCF as input, extracts a single family, and performs trio phasing.
 
+    Raises a "Zero genetic distances encountered" warning due to high density of the genetic map.
+
     https://whatshap.readthedocs.io/en/latest/guide.html#phasing-pedigrees
     """
     input:
