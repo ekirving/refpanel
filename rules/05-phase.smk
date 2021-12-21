@@ -133,6 +133,28 @@ rule pedigree_family:
         """awk '$1=="{wildcards.family}"' {input.ped} > {output.ped}"""
 
 
+rule bcftools_subset_family:
+    """
+    Subset a specific family from the join-callset, so we can efficiently parallelize the pedigree-based phasing
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
+        ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz.tbi"),
+    params:
+        samples=lambda wildcards, input: ",".join(
+            set(pd.read_table(input.ped, header=None, sep=" ", usecols=[1, 2, 3]).values.flatten())
+        ),
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools view --samples '{params.samples}' -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools index --tbi {output.vcf}"
+
+
 rule whatshap_pedigree_phasing:
     """
     Build a pedigree based scaffold, for use by `shapeit4`.
@@ -147,8 +169,8 @@ rule whatshap_pedigree_phasing:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map",
         ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz",
+        tbi="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz.tbi",
     output:
         vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz.tbi"),
