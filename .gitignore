@@ -13,3 +13,4 @@ data/source/*/gVCF/
 logs/
 nohup*
 scripts/metadata.R
+tmp/
