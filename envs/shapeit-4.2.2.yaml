@@ -1,4 +1,4 @@
 channels:
   - bioconda
 dependencies:
-  - bioconda::shapeit4-4.2.2
+  - bioconda::shapeit4=4.2.2
