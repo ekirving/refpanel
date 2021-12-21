@@ -52,7 +52,7 @@ rule bcftools_subset_family:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools view --samples '{params.samples}' -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools view --samples '{params.samples}' --trim-alt-alleles -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
 
@@ -113,7 +113,7 @@ rule bcftools_extract_children:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools view --samples '{params.children}' -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools view --samples '{params.children}' --trim-alt-alleles -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
 
