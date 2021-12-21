@@ -22,8 +22,6 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
 
-# TODO add adapter trimming step
-
 # We ran a number of quality control (QC) tools to look for quality issues, sample swaps, and contamination issues.
 # We ran FastQC (Andrews, 2019) v0.11.3 on the raw sequence data to assess yield and raw base qualities.
 # We ran Picard (Broad Institute, 2019) v2.4.1 CollectMultipleMetrics and CollectWGSMetrics on the aligned BAM to collect alignment and insert size metrics.
@@ -35,6 +33,34 @@ JAVA_MEMORY_MB = 8 * 1024
 # We annotated small variant calls with predicted functional consequence using the Ensembl Variant Effect Predictor (VEP) v104 tool (McLaren et al., 2016). For each site, we chose one functional consequence per allele-gene combination (using “--pick_allele_gene” parameter) with default ordering of selection criteria. To avoid bias coming from families and to facilitate comparison to the phase 3 call set, cohort- and genome-level counts per predicted functional categories were reported based on the 2,504-sample jointly-genotyped high coverage call set which includes unrelated samples only (see Methods subsection below). Only variants that passed VQSR were considered in summary counts. No other filtering criteria were applied unless specifically noted.
 
 
+rule fastp_trim_adapters:
+    """
+    Pre-process paired-end FASTQ files. 
+
+    Detect and trim sequencing adapters, remove low quality reads, and read with too many Ns, or reads that are too short. 
+    """
+    input:
+        fastq_r1=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r1"),
+        fastq_r2=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r2"),
+    output:
+        fastq_r1=temp("data/source/{source}/fastq/{accession}_trim.r1.fastq.gz"),
+        fastq_r2=temp("data/source/{source}/fastq/{accession}_trim.r2.fastq.gz"),
+        json="data/source/{source}/fastq/{accession}_trim.json",
+        html="data/source/{source}/fastq/{accession}_trim.html",
+    log:
+        "data/source/{source}/fastq/{accession}_trim.log",
+    conda:
+        "../envs/fastp-0.23.2.yaml"
+    shell:
+        "fastp "
+        " --in1 {input.fastq_r1}"
+        " --in2 {input.fastq_r2}"
+        " --out1 {output.fastq_r1}"
+        " --out2 {output.fastq_r2}"
+        " --json {output.json}"
+        " --html {output.html} 2> {log}"
+
+
 rule bwa_mem_pe:
     """
     Alignment at accession level
@@ -44,8 +70,8 @@ rule bwa_mem_pe:
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         bwt="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa.bwt",
-        fastq_r1=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r1"),
-        fastq_r2=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r2"),
+        fastq_r1="data/source/{source}/fastq/{accession}_trim.r1.fastq.gz",
+        fastq_r2="data/source/{source}/fastq/{accession}_trim.r2.fastq.gz",
     output:
         bam=temp("data/source/{source}/bam/{accession}.bam"),
     log:

@@ -71,6 +71,7 @@ them!
 
 In brief, `refpanel` produces a jointly-called and phased callset via the following steps:
 
+* [Adapter trimming](rules/02-align.smk) with `fastp` (v.0.23.2)
 * [Alignment to `GRCh38`](rules/02-align.smk) with `bwa mem` (v0.7.15)
 * [Fix-mate](rules/02-align.smk), [merge](rules/02-align.smk), [sort](rules/02-align.smk),
   and [mark duplicates](rules/02-align.smk) with `picard` (v2.5.0)
