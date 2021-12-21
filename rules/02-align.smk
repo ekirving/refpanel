@@ -22,12 +22,6 @@ https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_cove
 GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
 
-# We ran Picard (Broad Institute, 2019) v2.4.1 CollectMultipleMetrics and CollectWGSMetrics on the aligned BAM to collect alignment and insert size metrics.
-# VerifyBamID (Jun et al., 2012) was run in chip-free mode to estimate the likelihood of sample contamination. We use a cutoff of 2% to flag any sample for contamination and none of the samples reached the cutoff.
-# Per sample variant metrics were collected using the GATK VariantEval tool (Van der Auwera and O’Connor, 2020).
-# As part of QC, we estimated SNV density using the SNVDensity tool from VCFtools v0.1.12 (Danecek et al., 2011) in bins of 1000 bp across the callable genome, defined here as the GRCh38 reference excluding gaps (“N”s in the GRCh38 reference sequence).
-# We annotated small variant calls with predicted functional consequence using the Ensembl Variant Effect Predictor (VEP) v104 tool (McLaren et al., 2016). For each site, we chose one functional consequence per allele-gene combination (using “--pick_allele_gene” parameter) with default ordering of selection criteria. To avoid bias coming from families and to facilitate comparison to the phase 3 call set, cohort- and genome-level counts per predicted functional categories were reported based on the 2,504-sample jointly-genotyped high coverage call set which includes unrelated samples only (see Methods subsection below). Only variants that passed VQSR were considered in summary counts. No other filtering criteria were applied unless specifically noted.
-
 
 rule fastp_trim_adapters:
     """
