@@ -23,11 +23,35 @@ GATK_NUM_THREADS = 4
 JAVA_MEMORY_MB = 8 * 1024
 
 
-rule fastp_trim_adapters:
+rule fastp_trim_adapters_se:
     """
-    Pre-process paired-end FASTQ files. 
+    Pre-process single-end FASTQ files. 
 
-    Detect and trim sequencing adapters, remove low quality reads, and read with too many Ns, or reads that are too short. 
+    Detect and trim sequencing adapters, and remove reads that are low quality, have too many Ns, or are too short. 
+    """
+    input:
+        fastq=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession),
+    output:
+        fastq=temp("data/source/{source}/fastq/{accession}_trim.fastq.gz"),
+        json="data/source/{source}/fastq/{accession}_trim.json",
+        html="data/source/{source}/fastq/{accession}_trim.html",
+    log:
+        log="data/source/{source}/fastq/{accession}_trim.log",
+    conda:
+        "../envs/fastp-0.23.2.yaml"
+    shell:
+        "fastp "
+        " --in1 {input.fastq}"
+        " --out1 {output.fastq}"
+        " --json {output.json}"
+        " --html {output.html} 2> {log}"
+
+
+rule fastp_trim_adapters_pe:
+    """
+    Pre-process paired-end FASTQ files.
+
+    Detect and trim sequencing adapters, and remove reads that are low quality, have too many Ns, or are too short.
     """
     input:
         fastq_r1=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession, "r1"),
@@ -51,11 +75,37 @@ rule fastp_trim_adapters:
         " --html {output.html} 2> {log}"
 
 
+rule bwa_mem_se:
+    """
+    Align a single-end FASTQ file to the reference.
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        bwt="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa.bwt",
+        fastq="data/source/{source}/fastq/{accession}_trim.fastq.gz",
+    output:
+        bam=temp("data/source/{source}/bam/{accession}.se.bam"),
+    log:
+        log="data/source/{source}/bam/{accession}.se.bam.log",
+    params:
+        rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
+    threads: max(workflow.cores / 4, 8)
+    conda:
+        "../envs/bwa-0.7.15.yaml"
+    shell:
+        "( bwa mem -Y "
+        "   -K 100000000 "
+        "   -t {threads} "
+        "   -R '{params.rg}' "
+        "   {input.ref} "
+        "   {input.fastq} | "
+        "  samtools view -Shb -o {output.bam} - "
+        ") 2> {log}"
+
+
 rule bwa_mem_pe:
     """
-    Alignment at accession level
-
-    https://github.com/CCDG/Pipeline-Standardization/blob/master/PipelineStandard.md#alignment
+    Align a paired-end FASTQ file to the reference.
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
@@ -63,9 +113,9 @@ rule bwa_mem_pe:
         fastq_r1="data/source/{source}/fastq/{accession}_trim.r1.fastq.gz",
         fastq_r2="data/source/{source}/fastq/{accession}_trim.r2.fastq.gz",
     output:
-        bam=temp("data/source/{source}/bam/{accession}.bam"),
+        bam=temp("data/source/{source}/bam/{accession}.pe.bam"),
     log:
-        log="data/source/{source}/bam/{accession}.bam.log",
+        log="data/source/{source}/bam/{accession}.pe.bam.log",
     params:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: max(workflow.cores / 4, 8)
@@ -88,7 +138,7 @@ rule picard_fix_mate_info:
     Fix mate information in the BAM
     """
     input:
-        bam="data/source/{source}/bam/{accession}.bam",
+        bam="data/source/{source}/bam/{accession}.pe.bam",
     output:
         bam=temp("data/source/{source}/bam/{accession}_fixedmate.bam"),
     log:
@@ -110,11 +160,19 @@ rule picard_fix_mate_info:
 
 
 def picard_merge_accessions_input(wildcards):
-    return expand(
-        "data/source/{source}/bam/{accession}_fixedmate.bam",
-        source=wildcards.source,
-        accession=list_accessions(config, wildcards.source, wildcards.sample),
-    )
+    """
+    List all the accession BAMs for the current sample
+    """
+    source = wildcards.source
+
+    bam = []
+    for accession, paired in list_accessions(config, wildcards.source, wildcards.sample):
+        if paired:
+            bam.append(f"data/source/{source}/bam/{accession}_fixedmate.bam")
+        else:
+            bam.append(f"data/source/{source}/bam/{accession}.se.bam")
+
+    return bam
 
 
 rule picard_merge_accessions:

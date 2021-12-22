@@ -9,7 +9,7 @@ __license__ = "MIT"
 import pandas as pd
 
 
-def fastq_path(config, source, accession, pair):
+def fastq_path(config, source, accession, pair="r1"):
     """
     Get the path to the FASTQ file for the given accession
     """
@@ -39,11 +39,14 @@ def read_group(config, source, accession):
 
 def list_accessions(config, source, sample):
     """
-    Get the list of accession codes for the given sample
+    Get the list of accession codes and their paired-end status
     """
     accessions = pd.read_table(config["source"][source]["accessions"]).set_index("sample", drop=False)
 
-    return accessions.loc[[sample]]["accession"].tolist()
+    # is the library paired-end or single-end?
+    accessions["paired"] = accessions["fastq_r2"].map(lambda fq: fq != "")
+
+    return accessions.loc[[sample]][["accession", "paired"]].to_records(index=False).tolist()
 
 
 def sample_sex(config, source, sample):
