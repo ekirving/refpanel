@@ -2,3 +2,4 @@ channels:
   - bioconda
 dependencies:
   - bioconda::ensembl-vep=105.0
+  - bioconda::tabix=1.11

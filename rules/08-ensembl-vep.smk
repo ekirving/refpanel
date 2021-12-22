@@ -69,4 +69,5 @@ rule ensembl_vep_annotate_vcf:
         " --input_file {input.vcf}"
         " --fasta {input.ref}"
         " --stats_file {output.htm}"
-        " --output_file {output.vcf} &> {log}"
+        " --output_file {output.vcf} &> {log} && "
+        "tabix {output.vcf}"
