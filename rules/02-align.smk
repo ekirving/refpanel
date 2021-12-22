@@ -38,7 +38,7 @@ rule fastp_trim_adapters:
         json="data/source/{source}/fastq/{accession}_trim.json",
         html="data/source/{source}/fastq/{accession}_trim.html",
     log:
-        "data/source/{source}/fastq/{accession}_trim.log",
+        log="data/source/{source}/fastq/{accession}_trim.log",
     conda:
         "../envs/fastp-0.23.2.yaml"
     shell:

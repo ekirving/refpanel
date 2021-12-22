@@ -24,8 +24,8 @@ rule bcftools_subset_sample:
     Subset a single sample from the join-callset, so we can efficiently parallelize the read-based phasing
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz.tbi",
     output:
         vcf=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz.tbi"),
@@ -100,8 +100,8 @@ rule bcftools_merge_phased_samples:
     input:
         unpack(bcftools_merge_phased_samples_input),
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_whatshap.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_whatshap.vcf.gz.tbi",
     params:
         limit=lambda wildcards, input: len(input.vcf) + 10,
     conda:
@@ -119,7 +119,7 @@ rule panel_read_based_phasing:
     """
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_whatshap.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),

@@ -27,14 +27,14 @@ rule shapeit4_phase_vcf:
     """
     input:
         map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap.gz",
-        vcf1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-        tbi1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
-        vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
-        tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
+        vcf1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_whatshap.vcf.gz",
+        tbi1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_whatshap.vcf.gz.tbi",
+        vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_trios.vcf.gz",
+        tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_trios.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_phased.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     conda:
         "../envs/shapeit-4.2.2.yaml"
@@ -56,7 +56,7 @@ rule panel_statistical_phasing:
     """
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_phased.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),

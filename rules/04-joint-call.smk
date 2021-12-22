@@ -9,7 +9,7 @@ __license__ = "MIT"
 import math
 
 from psutil import virtual_memory
-from snakemake.io import protected, unpack, temp, expand, touch
+from snakemake.io import protected, unpack, temp, expand, touch, directory
 
 from scripts.utils import list_samples, list_sources
 
@@ -549,8 +549,8 @@ rule bcftools_mendelian_inconsistencies:
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
         trios="data/source/{panel}/{panel}-trios.tsv",
     output:
-        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz"),
-        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.log",
     params:
@@ -565,13 +565,62 @@ rule bcftools_mendelian_inconsistencies:
         ") 2> {log}"
 
 
+rule ensembl_vep_install_cache:
+    """
+    Download and install the VEP cache file for GRCh38
+    """
+    output:
+        dir=directory("data/ensembl/vep/"),
+    log:
+        log="data/ensembl/vep/vep_install_cache.log",
+    conda:
+        "../envs/ensembl-vep-105.0.yaml"
+    shell:
+        "vep_install"
+        " --AUTO c"
+        " --SPECIES homo_sapiens"
+        " --ASSEMBLY GRCh38"
+        " --CACHEDIR {output.dir}"
+        " --NO_UPDATE 2> {log}"
+
+
+rule ensembl_vep:
+    """
+    Annotate the VCF with predicted effect of each variant on genes, transcripts, and protein sequence, as well as 
+    regulatory regions.
+
+    https://www.ensembl.org/info/docs/tools/vep/script/vep_options.html
+    """
+    input:
+        dir="data/ensembl/vep/",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
+    output:
+        vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz"),
+        tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.log",
+    threads: 4
+    conda:
+        "../envs/ensembl-vep-105.0.yaml"
+    shell:
+        "vep"
+        " --species homo_sapiens"
+        " --assembly GRCh38"
+        " --cache"
+        " --dir_cache {input.dir}"
+        " --fork {threads}"
+        " --input_file {input.vcf}"
+        " --output_file {output.vcf} 2> {log}"
+
+
 rule panel_joint_call:
     """
     Joint-call a reference panel.
     """
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),
