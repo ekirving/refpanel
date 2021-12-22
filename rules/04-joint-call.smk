@@ -581,7 +581,7 @@ rule ensembl_vep_install_cache:
         " --SPECIES homo_sapiens"
         " --ASSEMBLY GRCh38"
         " --CACHEDIR {output.dir}"
-        " --NO_UPDATE 2> {log}"
+        " --NO_UPDATE &> {log}"
 
 
 rule ensembl_vep_annotate_vcf:
@@ -611,7 +611,7 @@ rule ensembl_vep_annotate_vcf:
         " --dir_cache {input.dir}"
         " --fork {threads}"
         " --input_file {input.vcf}"
-        " --output_file {output.vcf} 2> {log}"
+        " --output_file {output.vcf} &> {log}"
 
 
 rule panel_joint_call:
