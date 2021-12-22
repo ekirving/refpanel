@@ -592,12 +592,14 @@ rule ensembl_vep_annotate_vcf:
     https://www.ensembl.org/info/docs/tools/vep/script/vep_options.html
     """
     input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         dir="data/ensembl/vep/",
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
     output:
         vcf=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz"),
         tbi=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz.tbi"),
+        htm=protected("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.html"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.log",
     threads: 4
@@ -605,12 +607,16 @@ rule ensembl_vep_annotate_vcf:
         "../envs/ensembl-vep-105.0.yaml"
     shell:
         "vep"
+        " --offline"
+        " --everything"
         " --species homo_sapiens"
         " --assembly GRCh38"
-        " --cache"
         " --dir_cache {input.dir}"
+        " --vcf"
         " --fork {threads}"
         " --input_file {input.vcf}"
+        " --fasta {input.ref}"
+        " --stats_file {output.htm}"
         " --output_file {output.vcf} &> {log}"
 
 
