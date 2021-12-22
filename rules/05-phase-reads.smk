@@ -110,7 +110,8 @@ rule bcftools_merge_phased_samples:
         mem_mb=8 * 1024,
     shell:
         "ulimit -n {params.limit} && "
-        "bcftools merge --file-list {input.list} -Oz -o {output.vcf}"
+        "bcftools merge --file-list {input.list} -Oz -o {output.vcf} && "
+        "bcftools index {output.vcf}"
 
 
 rule panel_read_based_phasing:
