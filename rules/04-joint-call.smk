@@ -584,7 +584,7 @@ rule ensembl_vep_install_cache:
         " --NO_UPDATE 2> {log}"
 
 
-rule ensembl_vep:
+rule ensembl_vep_annotate_vcf:
     """
     Annotate the VCF with predicted effect of each variant on genes, transcripts, and protein sequence, as well as 
     regulatory regions.
