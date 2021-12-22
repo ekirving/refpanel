@@ -39,8 +39,8 @@ rule bcftools_subset_family:
     Subset a specific family from the join-callset, so we can efficiently parallelize the pedigree-based phasing
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
         ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
     output:
         vcf=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz"),
@@ -123,8 +123,8 @@ rule bcftools_merge_phased_families:
     input:
         unpack(bcftools_merge_phased_families_input),
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_trios.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_trios.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -137,7 +137,7 @@ rule panel_pedigree_phasing:
     """
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_vep_trios.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),
