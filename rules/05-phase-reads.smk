@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import os
+
 from snakemake.io import temp, unpack, expand, touch
 
 from scripts.utils import list_source_samples
@@ -24,8 +26,8 @@ rule bcftools_subset_sample:
     Subset a single sample from the join-callset, so we can efficiently parallelize the read-based phasing
     """
     input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
     output:
         vcf=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz.tbi"),
@@ -84,6 +86,8 @@ def bcftools_merge_phased_samples_input(wildcards):
 
     file_list = f"data/panel/{panel}/vcf/sample/{panel}_{chr}.list"
 
+    os.makedirs(os.path.dirname(file_list), exist_ok=True)
+
     with open(file_list, "w") as fout:
         fout.write("\n".join(vcf) + "\n")
 
@@ -100,8 +104,8 @@ rule bcftools_merge_phased_samples:
     input:
         unpack(bcftools_merge_phased_samples_input),
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
     params:
         limit=lambda wildcards, input: len(input.vcf) + 10,
     conda:
@@ -120,7 +124,7 @@ rule panel_read_based_phasing:
     """
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),

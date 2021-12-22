@@ -18,23 +18,49 @@ https://whatshap.readthedocs.io/en/latest/guide.html
 """
 
 
-# TODO add a version that does not rely on trios
 rule shapeit4_phase_vcf:
     """
-    Phase the joint-callset, using the pedigree phased VCF as a scaffold and the read-based phase sets as input.
+    Statistically phase the joint-callset, using the read-based phase sets as input.
+    """
+    input:
+        map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.log",
+    threads: max(workflow.cores / 4, 8)
+    conda:
+        "../envs/shapeit-4.2.2.yaml"
+    shell:
+        "shapeit4"
+        " --thread {threads}"
+        " --input {input.vcf}"
+        " --map {input.map}"
+        " --region {wildcards.chr}"
+        " --sequencing"
+        " --output {output.vcf}"
+        " --log {log}"
+
+
+rule shapeit4_phase_trios_vcf:
+    """
+    Statistically phase the joint-callset, using the pedigree phased VCF as a scaffold and the read-based phase sets as 
+    input.
 
     See https://github.com/odelaneau/shapeit4/issues/17
     """
     input:
         map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap.gz",
-        vcf1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz",
-        tbi1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_whatshap.vcf.gz.tbi",
-        vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz",
-        tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_trios.vcf.gz.tbi",
+        vcf1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
+        tbi1="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
+        vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz",
+        tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     conda:
         "../envs/shapeit-4.2.2.yaml"
@@ -50,15 +76,26 @@ rule shapeit4_phase_vcf:
         " --log {log}"
 
 
+def panel_statistical_phasing_input(wildcards):
+    """
+    Check if the current panel has a pedigree, or not.
+    """
+    panel = wildcards.panel
+    chroms = config["chroms"]
+
+    if config["panel"][wildcards.panel].get("pedigree") is None:
+        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased.vcf.gz" for chr in chroms]
+    else:
+        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.gz" for chr in chroms]
+
+    return vcf
+
+
 rule panel_statistical_phasing:
     """
     Perform statistical phasing of all samples a reference panel.
     """
     input:
-        expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel_phased.vcf.gz",
-            chr=config["chroms"],
-            allow_missing=True,
-        ),
+        panel_statistical_phasing_input,
     output:
         touch("data/panel/{panel}/vcf/phase.done"),

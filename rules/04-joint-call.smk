@@ -9,7 +9,7 @@ __license__ = "MIT"
 import math
 
 from psutil import virtual_memory
-from snakemake.io import protected, unpack, temp, expand, touch, directory
+from snakemake.io import protected, unpack, temp, expand, touch
 
 from scripts.utils import list_samples, list_sources
 
@@ -467,6 +467,18 @@ rule bcftools_norm:
         ")2> {log}"
 
 
+rule bcftools_trio_file:
+    """
+    Convert a PLINK pedigree file into bcftools format (i.e., mother1,father1,child1)
+    """
+    input:
+        ped=lambda wildcards: config["panel"][wildcards.panel].get("pedigree", "/dev/null"),
+    output:
+        tsv="data/source/{panel}/{panel}-trios.tsv",
+    shell:
+        """awk '{{ print $4","$3","$2 }}' {input.ped} > {output.tsv}"""
+
+
 rule bcftools_annotate:
     """
     Annotate variants with dbSNP and fill all tags.
@@ -477,7 +489,8 @@ rule bcftools_annotate:
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi",
-        tsv="data/panel/{panel}/{panel}-superpops.tsv",
+        super="data/panel/{panel}/{panel}-superpops.tsv",
+        trios="data/source/{panel}/{panel}-trios.tsv",
         dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz",
@@ -488,7 +501,8 @@ rule bcftools_annotate:
         "../envs/htslib-1.14.yaml"
     shell:
         "( bcftools annotate -a {input.dbsnp} -c ID -Ou {input.vcf} | "
-        "  bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.tsv} && "
+        "  bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
+        "  bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.super} && "
         "  bcftools index --tbi {output.vcf} "
         ") 2> {log} "
 
@@ -501,12 +515,14 @@ rule bcftools_filter_vcf:
     1) VQSR PASS;
     2) GT missingness < 5%; 
     3) HWE p-value > 1e-10 in at least one of the super-populations;
-    4) MAC >= 2 (i.e., no singletons)
+    4) Mendelian error rate < 5%
+    5) MAC >= 2 (i.e., no singletons)
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi",
         super="data/panel/{panel}/{panel}-superpops.tsv",
+        trios="data/source/{panel}/{panel}-trios.tsv",
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi"),
@@ -517,52 +533,14 @@ rule bcftools_filter_vcf:
         hwe=lambda wildcards, input: " | ".join(
             [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
         ),
+        # use the count of trios to convert the Mendelian error count into a fraction
+        max_merr=lambda wildcards, input: max(math.ceil(len(open(input.trios).readlines()) * 0.05), 1),
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "( bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MAC>=2' -Oz -o {output.vcf} {input.vcf} && "
+        "( bcftools view --include 'FILTER=\"PASS\" & F_MISSING<0.05 & ({params.hwe}) & MERR<{params.max_merr} & MAC>=2' -Oz -o {output.vcf} {input.vcf} && "
         "  bcftools index --tbi {output.vcf} "
         ") 2> {log} "
-
-
-rule bcftools_trio_file:
-    """
-    Convert a PLINK pedigree file into bcftools format (i.e., mother1,father1,child1)
-    """
-    input:
-        ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
-    output:
-        tsv="data/source/{panel}/{panel}-trios.tsv",
-    shell:
-        """awk '{{ print $4","$3","$2 }}' {input.ped} > {output.tsv}"""
-
-
-# noinspection PyTypeChecker
-rule bcftools_mendelian_inconsistencies:
-    """
-    Filter the VCF for any Mendelian inconsistencies, based on trio definitions
-
-    Only retain sites where the mendelian error rate < 5%
-    """
-    input:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
-        trios="data/source/{panel}/{panel}-trios.tsv",
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.log",
-    params:
-        # use the count of trios to convert the Mendelian error count into a fraction
-        max_merr=lambda wildcards, input: len(open(input.trios).readlines()) * 0.05,
-    conda:
-        "../envs/htslib-1.14.yaml"
-    shell:
-        "( bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
-        "  bcftools view --include 'MERR<{params.max_merr}' -Oz -o {output.vcf} && "
-        "  bcftools index --tbi {output.vcf}"
-        ") 2> {log}"
 
 
 rule panel_joint_call:
@@ -571,7 +549,7 @@ rule panel_joint_call:
     """
     input:
         expand(
-            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_mendel.vcf.gz",
+            "data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
             chr=config["chroms"],
             allow_missing=True,
         ),
