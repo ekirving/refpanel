@@ -94,6 +94,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
 * [Pedigree phasing](rules/06-phase-trios.smk) with `whatshap` using:
     * Trios from 1000G (n=602); 
 * [Statistical phasing](rules/07-phase-stat.smk) with `shapeit4` (v4.2.2)
+* [Variant effect prediction](rules/08-ensembl-vep.smk) with `ensembl-vep` (v105.0) 
 
 For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf) or the code itself.
 
