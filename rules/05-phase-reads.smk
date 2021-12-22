@@ -32,7 +32,7 @@ rule bcftools_subset_sample:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "bcftools view --samples '{wildcards.sample}' --trim-alt-alleles -Oz -o {output.vcf} {input.vcf} && "
+        "bcftools view --samples '{wildcards.sample}' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
 
