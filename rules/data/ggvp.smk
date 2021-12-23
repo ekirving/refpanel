@@ -85,7 +85,7 @@ rule ggvp_filter_iupac_base_codes:
 rule ggvp_correct_read_groups:
     """
     Standardise the sample naming in the read groups
-    
+
     e.g. replace `SC_GMFUL5306388-sc-2012-05-09T14:55:57Z-1371772` with `SC_GMFUL5306388`
     """
     input:
@@ -98,13 +98,9 @@ rule ggvp_correct_read_groups:
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
-        "samtools reheader "
-        " --command \"sed 's/SM:[^\\t]*/SM:{wildcards.sample}/g'\""
-        " --cram"
-        " --reference {input.ref}"
-        " --write-index"
-        " --output {output.cram}"
-        " - {input.cram} "
+        "samtools reheader --command \"sed 's/SM:[^\\t]*/SM:{wildcards.sample}/g'\" {input.cram} > {output.cram} && "
+        "samtools index {output.cram}"
+
 
 def ggvp_list_all_cram():
     samples = pd.read_table(config["source"]["ggvp"]["samples"])
