@@ -98,13 +98,13 @@ rule ggvp_correct_read_groups:
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
-        r"samtools reheader "
-        r" --command \"sed 's/SM:[^\t]*/SM:{wildcards.sample}/g'\""
-        r" --cram"
-        r" --reference {input.ref}"
-        r" --write-index"
-        r" --output {output.cram}"
-        r" - {input.cram} "
+        "samtools reheader "
+        " --command \"sed 's/SM:[^\\t]*/SM:{wildcards.sample}/g'\""
+        " --cram"
+        " --reference {input.ref}"
+        " --write-index"
+        " --output {output.cram}"
+        " - {input.cram} "
 
 def ggvp_list_all_cram():
     samples = pd.read_table(config["source"]["ggvp"]["samples"])
