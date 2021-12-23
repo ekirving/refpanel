@@ -18,6 +18,10 @@ Rules to perform short-read alignment for the IGSR pipeline
 """
 
 
+wildcard_constraints:
+    source="[^_]+",
+
+
 rule fastp_trim_adapters_se:
     """
     Pre-process single-end FASTQ files. 
