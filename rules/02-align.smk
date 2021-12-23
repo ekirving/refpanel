@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import expand, protected, temp, touch, multiext
+from snakemake.io import protected, temp, touch, multiext
 
 from scripts.utils import fastq_path, read_group, list_accessions
 

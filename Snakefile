@@ -27,10 +27,12 @@ include: "rules/data/ggvp.smk"
 include: "rules/01-reference.smk"
 include: "rules/02-align.smk"
 include: "rules/03-call.smk"
-include: "rules/04-joint-call.smk"
-include: "rules/05-phase-reads.smk"
-include: "rules/06-phase-trios.smk"
-include: "rules/07-phase-stat.smk"
+include: "rules/04-merge-calls.smk"
+include: "rules/05-joint-call.smk"
+include: "rules/06-phase-reads.smk"
+include: "rules/07-phase-trios.smk"
+include: "rules/08-phase-stat.smk"
+include: "rules/09-ensembl-vep.smk"
 
 
 # preference download rules, when they are available
