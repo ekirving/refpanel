@@ -26,7 +26,7 @@ rule ggvp_md5:
     Make an md5 checksum file for validating the GGVP data
     """
     input:
-        man="data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv",
+        man=ancient("data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv"),
     output:
         md5=temp("data/source/ggvp/cram/{sample}.raw.{ext}.md5"),
     params:
@@ -41,7 +41,7 @@ rule ggvp_download_cram:
     Download bwa-mem CRAM files for each fully-public GGVP sample
     """
     input:
-        man="data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv",
+        man=ancient("data/source/ggvp/gambian_genome_variation_project.GRCh38DH.alignment.tsv"),
         md5="data/source/ggvp/cram/{sample}.raw.{ext}.md5",
     output:
         cram=temp("data/source/ggvp/cram/{sample}.raw.{ext}"),

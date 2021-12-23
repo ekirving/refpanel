@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import touch, temp
+from snakemake.io import touch, temp, ancient
 
 """
 Rules to download data files for the Human Genome Diversity Project (HGDP)
@@ -49,7 +49,7 @@ rule hgdp_filter_iupac_base_codes:
     https://www.bioinformatics.org/sms/iupac.html
     """
     input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        ref=ancient("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"),
         cram="data/source/hgdp/cram/{sample}.raw.cram",
         crai="data/source/hgdp/cram/{sample}.raw.cram.crai",
     output:

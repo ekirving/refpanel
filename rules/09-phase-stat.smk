@@ -84,7 +84,7 @@ def panel_statistical_phasing_input(wildcards):
     chroms = [chr for chr in config["chroms"] if chr not in ["chrY", "chrM", "others"]]
 
     if config["panel"][wildcards.panel].get("pedigree") is None:
-        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased.vcf.gz" for chr in chroms]
+        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz" for chr in chroms]
     else:
         vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.gz" for chr in chroms]
 

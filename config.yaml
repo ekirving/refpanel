@@ -89,7 +89,7 @@ panel:
     samples: data/panel/igsr/igsr-samples.tsv
 
     # use the 1000g trios
-    trios: data/source/1000g/1000g-trios.tsv
+    pedigree: data/source/1000g/1000g-trios.ped
 
 
 # list of chromosomes in GRCh38

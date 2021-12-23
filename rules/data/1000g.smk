@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import touch
+from snakemake.io import touch, ancient
 
 """
 Rules to download data files from the New York Genome Center (NYGC) high-coverage version of the 1000 Genomes Project (TGP)
@@ -26,7 +26,7 @@ rule tgp_nygc_cram_md5:
     Make an md5 checksum file for validating the 1000G data
     """
     input:
-        man="data/source/1000g/igsr_30x_GRCh38.tsv",
+        man=ancient("data/source/1000g/igsr_30x_GRCh38.tsv"),
     output:
         md5="data/source/1000g/cram/{sample}.cram.md5",
     params:
@@ -40,7 +40,7 @@ rule tgp_nygc_download_cram:
     Download bwa-mem CRAM files for each high-coverage NYGC 1000G sample
     """
     input:
-        man="data/source/1000g/igsr_30x_GRCh38.tsv",
+        man=ancient("data/source/1000g/igsr_30x_GRCh38.tsv"),
         md5="data/source/1000g/cram/{sample}.cram.md5",
     output:
         cram="data/source/1000g/cram/{sample}.cram",

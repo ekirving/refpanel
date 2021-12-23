@@ -7,7 +7,7 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import touch
+from snakemake.io import touch, ancient
 
 """
 Rules to download data files for the Simons Genome Diversity Project (SGDP)
@@ -26,7 +26,7 @@ rule sgdp_md5:
     Make an md5 checksum file for validating the SGDP data
     """
     input:
-        man="data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv",
+        man=ancient("data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv"),
     output:
         md5="data/source/sgdp/cram/{sample}.{ext}.md5",
     params:
@@ -41,7 +41,7 @@ rule sgdp_download_cram:
     Download bwa-mem CRAM files for each fully-public SGDP sample
     """
     input:
-        man="data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv",
+        man=ancient("data/source/sgdp/simons_diversity_data.GRCh38DH.alignment.tsv"),
         md5="data/source/sgdp/cram/{sample}.{ext}.md5",
     output:
         cram="data/source/sgdp/cram/{sample}.{ext}",
