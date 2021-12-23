@@ -6,6 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import numpy as np
 import pandas as pd
 from psutil import virtual_memory
 
@@ -61,7 +62,9 @@ def list_accessions(config, source, sample):
     """
     Get the list of accession codes and their paired-end status
     """
-    accessions = pd.read_table(config["source"][source]["accessions"]).set_index("sample", drop=False)
+    accessions = (
+        pd.read_table(config["source"][source]["accessions"]).set_index("sample", drop=False).replace(np.nan, "")
+    )
 
     # is the library paired-end or single-end?
     accessions["paired"] = accessions["fastq_r2"].map(lambda fq: fq != "")

@@ -46,6 +46,19 @@ source:
     # https://doi.org/10.1038/s41467-019-13480-z
     samples: data/source/ggvp/ggvp-samples.tsv
 
+  cgg-afr:
+    # Modern African genomes from CGG
+    samples: data/source/cgg-afr/cgg-afr-samples.tsv
+    accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
+
+    # mapping of readgroup tags to accession metadata column names
+    readgroup:
+      ID: accession
+      SM: sample
+      CN: center
+      PL: platform
+      LB: library
+      DS: description
 
 # reference panels, aggregations of samples across data sources
 panel:
@@ -90,6 +103,10 @@ panel:
 
     # use the 1000g trios
     pedigree: data/source/1000g/1000g-trios.ped
+
+  cgg-afr:
+    # Modern African genomes from CGG
+    samples: data/panel/cgg-afr/cgg-afr-samples.tsv
 
 
 # list of chromosomes in GRCh38
