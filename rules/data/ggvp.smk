@@ -82,7 +82,7 @@ rule ggvp_filter_iupac_base_codes:
         " {input.cram}"
 
 
-rule ggvp_correct_read_groups:
+rule ggvp_standardise_sample_names:
     """
     Standardise the sample naming in the read groups
 
