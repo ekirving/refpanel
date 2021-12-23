@@ -48,40 +48,12 @@ rule all:
 
 rule refpanel:
     input:
+        # run the pipeline end-to-end
         expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
 
 
 rule download_data:
     input:
-        "data/source/1000g/cram/download.done",
-        "data/source/1000g/gVCF/download.done",
-        "data/source/hgdp/cram/download.done",
-        "data/source/sgdp/cram/download.done",
-        "data/source/ggvp/cram/download.done",
-
-
-def list_all_gvcfs():
-    """List all the gVCF files that need generating from the downloaded CRAM files"""
-    files = []
-
-    for source in ["hgdp"]:  # ["sgdp", "ggvp"]
-        samples = pd.read_table(config["source"][source]["samples"])
-
-        files += [f"data/source/{source}/gVCF/{sample}.g.vcf.gz" for sample in samples["sample"]]
-
-    batch = config.get("batch", 0)
-
-    if batch == 0:
-        return files
-
-    size = int(len(files) / 3)
-
-    start = (batch - 1) * size
-    finish = start + size if batch != 3 else None
-
-    return files[start:finish]
-
-
-rule generate_gvcfs:
-    input:
-        list_all_gvcfs(),
+        # download CRAMs for all data sources, and gVCFs for 1000g
+        expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp"]),
+        expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
