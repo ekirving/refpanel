@@ -36,12 +36,14 @@ rule fastp_trim_adapters_se:
         html="data/source/{source}/fastq/{accession}_trim.html",
     log:
         log="data/source/{source}/fastq/{accession}_trim.log",
+    threads: 4
     conda:
         "../envs/fastp-0.23.2.yaml"
     shell:
         "fastp "
         " --in1 {input.fastq}"
         " --out1 {output.fastq}"
+        " --thread {threads}"
         " --json {output.json}"
         " --html {output.html} 2> {log}"
 
@@ -62,6 +64,7 @@ rule fastp_trim_adapters_pe:
         html="data/source/{source}/fastq/{accession}_trim.html",
     log:
         log="data/source/{source}/fastq/{accession}_trim.log",
+    threads: 4
     conda:
         "../envs/fastp-0.23.2.yaml"
     shell:
@@ -70,6 +73,7 @@ rule fastp_trim_adapters_pe:
         " --in2 {input.fastq_r2}"
         " --out1 {output.fastq_r1}"
         " --out2 {output.fastq_r2}"
+        " --thread {threads}"
         " --json {output.json}"
         " --html {output.html} 2> {log}"
 
