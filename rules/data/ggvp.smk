@@ -64,7 +64,6 @@ rule ggvp_filter_iupac_base_codes:
     https://www.bioinformatics.org/sms/iupac.html
     """
     input:
-        ref=ancient("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"),
         cram="data/source/ggvp/cram/{sample}.raw.cram",
         crai="data/source/ggvp/cram/{sample}.raw.cram.crai",
     output:
