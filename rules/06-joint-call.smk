@@ -377,8 +377,8 @@ rule bcftools_annotate:
         "../envs/htslib-1.14.yaml"
     shell:
         "( bcftools annotate -a {input.dbsnp} -c ID -Ou {input.vcf} | "
-        "  bcftools +mendelian {input.vcf} --mode a --trio-file {input.trios} -Ou | "
-        "  bcftools +fill-tags -Oz -o {output.vcf} -- --tags all,F_MISSING --samples-file {input.super} && "
+        "  bcftools +fill-tags -- --tags all,F_MISSING --samples-file {input.super} | "
+        "  bcftools +mendelian --mode a --trio-file {input.trios} -Oz -o {output.vcf} && "
         "  bcftools index --tbi {output.vcf} "
         ") 2> {log} "
 
