@@ -68,8 +68,8 @@ rule ggvp_filter_iupac_base_codes:
         cram="data/source/ggvp/cram/{sample}.raw.cram",
         crai="data/source/ggvp/cram/{sample}.raw.cram.crai",
     output:
-        cram="data/source/ggvp/cram/{sample}.cram",
-        crai="data/source/ggvp/cram/{sample}.cram.crai",
+        cram=temp("data/source/ggvp/cram/{sample}.filtered.cram"),
+        crai=temp("data/source/ggvp/cram/{sample}.filtered.cram.crai"),
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -81,6 +81,30 @@ rule ggvp_filter_iupac_base_codes:
         " --output {output.cram}"
         " {input.cram}"
 
+
+rule ggvp_correct_read_groups:
+    """
+    Standardise the sample naming in the read groups
+    
+    e.g. replace `SC_GMFUL5306388-sc-2012-05-09T14:55:57Z-1371772` with `SC_GMFUL5306388`
+    """
+    input:
+        ref=ancient("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"),
+        cram="data/source/ggvp/cram/{sample}.filtered.cram",
+        crai="data/source/ggvp/cram/{sample}.filtered.cram.crai",
+    output:
+        cram="data/source/ggvp/cram/{sample}.cram",
+        crai="data/source/ggvp/cram/{sample}.cram.crai",
+    conda:
+        "../../envs/htslib-1.14.yaml"
+    shell:
+        r"samtools reheader "
+        r" --command \"sed 's/SM:[^\t]*/SM:{wildcards.sample}/g'\""
+        r" --cram"
+        r" --reference {input.ref}"
+        r" --write-index"
+        r" --output {output.cram}"
+        r" - {input.cram} "
 
 def ggvp_list_all_cram():
     samples = pd.read_table(config["source"]["ggvp"]["samples"])
