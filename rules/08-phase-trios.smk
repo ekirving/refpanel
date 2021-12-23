@@ -9,7 +9,7 @@ __license__ = "MIT"
 import pandas as pd
 from snakemake.io import temp, unpack, expand, touch
 
-from scripts.utils import list_families
+from scripts.common import list_families
 
 global workflow
 

@@ -7,6 +7,26 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
+from psutil import virtual_memory
+
+"""
+Helper functions and common settings to support the main workflow
+"""
+
+# maximum available RAM
+MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
+
+# GATK / JAVA default settings
+JAVA_MEMORY_MB = 8 * 1024
+
+# number of threads to assign GATK
+GATK_NUM_THREADS = 4
+
+# the maximum number of samples to merge together at one time with CombineGVCFs (to prevent massive memory usage)
+GATK_BATCH_SIZE = 200
+
+# the default `/tmp` partition is too small
+GATK_TEMP_DIR = "./tmp/"
 
 
 def fastq_path(config, source, accession, pair="r1"):

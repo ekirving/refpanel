@@ -7,20 +7,15 @@ __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
 import pandas as pd
-from snakemake.io import protected, temp, touch, multiext
+from snakemake.io import protected, temp, touch
 
-from scripts.utils import fastq_path, read_group, list_accessions
+from scripts.common import fastq_path, read_group, list_accessions, GATK_NUM_THREADS, JAVA_MEMORY_MB
 
 global workflow
 
 """
 Rules to perform short-read alignment for the IGSR pipeline
-
-https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
-
-GATK_NUM_THREADS = 4
-JAVA_MEMORY_MB = 8 * 1024
 
 
 rule fastp_trim_adapters_se:
@@ -372,92 +367,3 @@ rule source_align_samples:
         source_list_all_crams,
     output:
         touch("data/source/{source}/cram/align.done"),
-
-
-rule picard_collect_multiple_metrics:
-    """
-    Collect multiple classes of metrics
-
-    https://gatk.broadinstitute.org/hc/en-us/articles/360036485252-CollectMultipleMetrics-Picard-
-    """
-    input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        cram="data/source/{source}/cram/{sample}.cram",
-    output:
-        multiext(
-            "data/source/{source}/cram/{sample}",
-            ".alignment_summary_metrics",
-            ".base_distribution_by_cycle.pdf",
-            ".base_distribution_by_cycle_metrics",
-            ".insert_size_histogram.pdf",
-            ".insert_size_metrics",
-            ".quality_by_cycle.pdf",
-            ".quality_by_cycle_metrics",
-            ".quality_distribution.pdf",
-            ".quality_distribution_metrics",
-        ),
-    log:
-        log="data/source/{source}/cram/{sample}.multiple_metrics.log",
-    params:
-        prefix="data/source/{source}/cram/{sample}",
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-    conda:
-        "../envs/picard-2.5.0.yaml"
-    shell:
-        "picard"
-        " -Xmx{resources.mem_mb}m"
-        " CollectMultipleMetrics "
-        " R={input.ref}"
-        " I={input.cram}"
-        " O={params.prefix} 2> {log}"
-
-
-rule picard_collect_wgs_metrics:
-    """
-    Collect metrics about coverage and performance of whole genome sequencing (WGS) experiments.
-
-    https://gatk.broadinstitute.org/hc/en-us/articles/360037269351-CollectWgsMetrics-Picard-
-    """
-    input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        cram="data/source/{source}/cram/{sample}.cram",
-    output:
-        txt="data/source/{source}/cram/{sample}.wgs_metrics",
-    log:
-        log="data/source/{source}/cram/{sample}.wgs_metrics.log",
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-    conda:
-        "../envs/picard-2.5.0.yaml"
-    shell:
-        "picard"
-        " -Xmx{resources.mem_mb}m"
-        " CollectWgsMetrics "
-        " R={input.ref}"
-        " I={input.cram}"
-        " O={output.txt} 2> {log}"
-
-
-def source_list_metrics(wildcards):
-    """List all alignment metrics files for the given data source"""
-    source = wildcards.source
-    samples = pd.read_table(config["source"][source]["samples"])
-
-    return [
-        [
-            f"data/source/{source}/cram/{sample}.multiple_metrics.log",
-            f"data/source/{source}/cram/{sample}.wgs_metrics.log",
-        ]
-        for sample in samples["sample"]
-    ]
-
-
-rule source_alignment_metrics:
-    """
-    Calculate alignment metrics for the given data source.
-    """
-    input:
-        source_list_metrics,
-    output:
-        touch("data/source/{source}/cram/metrics.done"),

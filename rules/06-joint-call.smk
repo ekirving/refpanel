@@ -10,20 +10,13 @@ import math
 
 from snakemake.io import protected, unpack, temp, expand, touch
 
-from scripts.utils import list_sources
+from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, GATK_TEMP_DIR
 
 """
 Rules to perform joint genotype calling for the IGSR pipeline
 
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
-
-# GATK / JAVA default settings
-GATK_NUM_THREADS = 4
-JAVA_MEMORY_MB = 8 * 1024
-
-# the default `/tmp` partition is too small
-GATK_TEMP_DIR = "./tmp/"
 
 
 def gatk3_genotype_chrom_gvcf_input(wildcards):

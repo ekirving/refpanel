@@ -9,15 +9,13 @@ __license__ = "MIT"
 import pandas as pd
 from snakemake.io import protected, unpack, temp, touch
 
-from scripts.utils import sample_sex
+from scripts.common import sample_sex, JAVA_MEMORY_MB
 
 """
 Rules to perform sample-level genotype calling for the IGSR pipeline
 
 https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
 """
-
-JAVA_MEMORY_MB = 8 * 1024
 
 
 rule gatk3_haplotype_caller:

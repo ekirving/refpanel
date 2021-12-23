@@ -8,25 +8,13 @@ __license__ = "MIT"
 
 import math
 
-from psutil import virtual_memory
 from snakemake.io import protected, unpack, temp, expand, touch
 
-from scripts.utils import list_samples
+from scripts.common import list_samples, MAX_MEM_MB, GATK_BATCH_SIZE, GATK_TEMP_DIR
 
 """
-Rules to perform joint genotype calling for the IGSR pipeline
-
-https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf 
+Rules to merge all sample-level gVCF files for a data source
 """
-
-# maximum available RAM
-MAX_MEM_MB = int(virtual_memory().total / 1024 ** 2) - 1024
-
-# the maximum number of samples to merge together at one time with CombineGVCFs (to prevent massive memory usage)
-GATK_BATCH_SIZE = 200
-
-# the default `/tmp` partition is too small
-GATK_TEMP_DIR = "./tmp/"
 
 
 wildcard_constraints:

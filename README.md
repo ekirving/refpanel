@@ -77,25 +77,25 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
   and [mark duplicates](rules/02-align.smk) with `picard` (v2.5.0)
 * [Base recalibration](rules/02-align.smk) with `gatk BaseRecalibrator` (v3.5)
 * [Conversion to `cram`](rules/02-align.smk) with `samtools` (v1.14)
-* [Per-sample calling of `gVCFs`](rules/03-call.smk) with `gatk HaplotypeCaller` (
+* [Per-sample calling of `gVCFs`](rules/04-call.smk) with `gatk HaplotypeCaller` (
   with [sex-dependent ploidy](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/README_2021November05_NYGCrawcalls_updated.docx))
-* [Merging samples](rules/04-merge-calls.smk) with `gatk CombineGVCFs`
-* [Joint-calling of all samples](rules/05-joint-call.smk) with `gatk GenotypeGVCFs`
-* [Variant quality score recalibration](rules/05-joint-call.smk) with `gatk VariantRecalibrator`
-* [Annotation with dbSNP build 155](rules/05-joint-call.smk) with `bcftools` (v1.14)
-* [Hard-filtering of SNPs and INDELs](rules/05-joint-call.smk) with `bcftools`:
+* [Merging samples](rules/05-merge-calls.smk) with `gatk CombineGVCFs`
+* [Joint-calling of all samples](rules/06-joint-call.smk) with `gatk GenotypeGVCFs`
+* [Variant quality score recalibration](rules/06-joint-call.smk) with `gatk VariantRecalibrator`
+* [Annotation with dbSNP build 155](rules/06-joint-call.smk) with `bcftools` (v1.14)
+* [Hard-filtering of SNPs and INDELs](rules/06-joint-call.smk) with `bcftools`:
     1) VQSR PASS;
     2) GT missingness < 5%;
     3) HWE p-value > 1e-10 in at least one super-population;
     4) Mendelian error rate < 5% (using 602 trios from 1000G);
     5) MAC ≥ 2 (i.e., no singletons)
-* [Read-based phasing](rules/06-phase-reads.smk) with `whatshap` (v1.2.1) using:
+* [Read-based phasing](rules/07-phase-reads.smk) with `whatshap` (v1.2.1) using:
     * _Illumina_ paired-end reads from all projects;
     * _10x Genomics_ long-read sequencing from HGDP (n=XXX);
-* [Pedigree phasing](rules/07-phase-trios.smk) with `whatshap` using:
+* [Pedigree phasing](rules/08-phase-trios.smk) with `whatshap` using:
     * Trios from 1000G (n=602);
-* [Statistical phasing](rules/08-phase-stat.smk) with `shapeit4` (v4.2.2)
-* [Variant effect prediction](rules/09-ensembl-vep.smk) with `ensembl-vep` (v105.0)
+* [Statistical phasing](rules/09-phase-stat.smk) with `shapeit4` (v4.2.2)
+* [Variant effect prediction](rules/10-ensembl-vep.smk) with `ensembl-vep` (v105.0)
 
 For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf) or the code itself.
 

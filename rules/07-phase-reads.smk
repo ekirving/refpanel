@@ -10,7 +10,7 @@ import os
 
 from snakemake.io import temp, unpack, expand, touch
 
-from scripts.utils import list_source_samples
+from scripts.common import list_source_samples
 
 global workflow
 
