@@ -107,7 +107,7 @@ rule bcftools_merge_phased_samples:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
     params:
-        limit=lambda wildcards, input: len(input.vcf) + 10,
+        limit=lambda wildcards, input: len(input.vcfs) + 10,
     conda:
         "../envs/htslib-1.14.yaml"
     resources:
