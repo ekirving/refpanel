@@ -46,6 +46,7 @@ rule gatk3_genotype_chrom_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
+    threads: GATK_NUM_THREADS
     resources:
         mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
         tmpdir=GATK_TEMP_DIR,
@@ -59,7 +60,7 @@ rule gatk3_genotype_chrom_gvcf:
         " -T GenotypeGVCFs"
         " -R {input.ref}"
         " -L {input.chr}"
-        " --num_threads {GATK_NUM_THREADS}"
+        " --num_threads {threads}"
         " --disable_auto_index_creation_and_locking_when_reading_rods"
         " {params.gvcfs}"
         " -o {output.vcf} 2> {log}"

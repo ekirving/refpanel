@@ -15,8 +15,6 @@ Rules to download data files from the New York Genome Center (NYGC) high-coverag
 https://www.internationalgenome.org/data-portal/data-collection/30x-grch38
 """
 
-FTP_TGP_NYGC = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated"
-
 
 wildcard_constraints:
     sample="[\w-]+",
@@ -101,8 +99,10 @@ rule tgp_nygc_download_gvcf:
         vcf="data/source/1000g/gVCF/{sample}.g.{ext}",
     resources:
         ebi_ftp=1,
+    params:
+        ftp="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated",
     shell:
-        "wget --quiet -O {output.vcf} -o /dev/null {FTP_TGP_NYGC}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
+        "wget --quiet -O {output.vcf} -o /dev/null {params.ftp}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
         "md5sum --status --check {input.md5}"
 
 
