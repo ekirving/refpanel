@@ -62,11 +62,11 @@ rule sgdp_standardise_sample_names:
     e.g. replace `SC_GMFUL5306388-sc-2012-05-09T14:55:57Z-1371772` with `SC_GMFUL5306388`
     """
     input:
-        cram="data/source/ggvp/cram/{sample}.raw.cram",
-        crai="data/source/ggvp/cram/{sample}.raw.cram.crai",
+        cram="data/source/sgdp/cram/{sample}.raw.cram",
+        crai="data/source/sgdp/cram/{sample}.raw.cram.crai",
     output:
-        cram="data/source/ggvp/cram/{sample}.cram",
-        crai="data/source/ggvp/cram/{sample}.cram.crai",
+        cram="data/source/sgdp/cram/{sample}.cram",
+        crai="data/source/sgdp/cram/{sample}.cram.crai",
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
