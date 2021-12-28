@@ -10,7 +10,7 @@ import math
 
 from snakemake.io import protected, unpack, temp, expand, touch
 
-from scripts.common import list_samples, MAX_MEM_MB, GATK_BATCH_SIZE, GATK_TEMP_DIR
+from scripts.common import list_samples, MAX_MEM_MB, GATK_BATCH_SIZE, JAVA_TEMP_DIR
 
 """
 Rules to merge all sample-level gVCF files for a data source
@@ -53,7 +53,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
         mem_mb=min(28 * 1024, MAX_MEM_MB),  # ~3.71%
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
@@ -101,7 +101,7 @@ rule gatk3_multisample_chrom_gvcf:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
         mem_mb=min(72 * 1024, MAX_MEM_MB),  # ~9.53%
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"

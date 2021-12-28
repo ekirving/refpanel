@@ -10,7 +10,7 @@ import math
 
 from snakemake.io import protected, unpack, temp, expand, touch
 
-from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, GATK_TEMP_DIR
+from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR
 
 """
 Rules to perform joint genotype calling for the IGSR pipeline
@@ -49,7 +49,7 @@ rule gatk3_genotype_chrom_gvcf:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -115,7 +115,7 @@ rule gatk3_variant_recalibrator_snp:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -170,7 +170,7 @@ rule gatk3_variant_recalibrator_indel:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -219,7 +219,7 @@ rule gatk3_apply_recalibration_snp:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -255,7 +255,7 @@ rule gatk3_apply_recalibration_indel:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
-        tmpdir=GATK_TEMP_DIR,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/gatk-3.5.yaml"
     shell:

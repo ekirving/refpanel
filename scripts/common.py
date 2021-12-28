@@ -27,7 +27,7 @@ GATK_NUM_THREADS = 4
 GATK_BATCH_SIZE = 200
 
 # the default `/tmp` partition is too small
-GATK_TEMP_DIR = "./tmp/"
+JAVA_TEMP_DIR = "./tmp/"
 
 
 def fastq_path(config, source, accession, pair="r1"):

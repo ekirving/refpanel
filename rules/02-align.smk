@@ -9,7 +9,7 @@ __license__ = "MIT"
 import pandas as pd
 from snakemake.io import protected, temp, touch
 
-from scripts.common import fastq_path, read_group, list_accessions, GATK_NUM_THREADS, JAVA_MEMORY_MB
+from scripts.common import fastq_path, read_group, list_accessions, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR
 
 global workflow
 
@@ -192,11 +192,13 @@ rule picard_merge_accessions:
         bams=lambda wildcards, input: [f"INPUT={bam}" for bam in input],
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " MergeSamFiles"
         " USE_THREADING=true"
         " MAX_RECORDS_IN_RAM=2000000"
@@ -219,11 +221,13 @@ rule picard_sort_bam:
         log="data/source/{source}/bam/{sample}_merged_sorted.bam.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " SortSam"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
@@ -249,11 +253,13 @@ rule picard_mark_duplicates:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup.bam.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=JAVA_TEMP_DIR,
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " MarkDuplicates"
         " MAX_RECORDS_IN_RAM=2000000"
         " VALIDATION_STRINGENCY=SILENT"
