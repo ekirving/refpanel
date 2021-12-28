@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import os
+
 import pandas as pd
 from snakemake.io import temp, unpack, expand, touch
 
@@ -80,8 +82,6 @@ rule whatshap_pedigree_phasing:
         log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.log",
     conda:
         "../envs/whatshap-1.2.1.yaml"
-    resources:
-        mem_mb=6 * 1024,
     shell:
         "whatshap phase"
         " --reference {input.ref}"
@@ -110,7 +110,14 @@ def bcftools_merge_phased_families_input(wildcards):
         vcf.append(f"data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz"),
         tbi.append(f"data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz.tbi"),
 
-    return {"vcfs": vcf, "tbi": tbi}
+    file_list = f"data/panel/{panel}/vcf/family/{panel}_{chr}.list"
+
+    os.makedirs(os.path.dirname(file_list), exist_ok=True)
+
+    with open(file_list, "w") as fout:
+        fout.write("\n".join(vcf) + "\n")
+
+    return {"vcfs": vcf, "tbi": tbi, "list": file_list}
 
 
 # noinspection PyUnresolvedReferences
@@ -133,7 +140,7 @@ rule bcftools_merge_phased_families:
         mem_mb=8 * 1024,
     shell:
         "ulimit -n {params.limit} && "
-        "bcftools merge -Oz -o {output.vcf} {input.vcfs} && "
+        "bcftools merge --file-list {input.list} -Oz -o {output.vcf} && "
         "bcftools index --tbi {output.vcf}"
 
 
