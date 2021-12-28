@@ -29,6 +29,9 @@ GATK_BATCH_SIZE = 200
 # the default `/tmp` partition is too small
 JAVA_TEMP_DIR = "./tmp/"
 
+# the hard limit for the maximum open file descriptors
+MAX_OPEN_FILES = 99999
+
 
 def fastq_path(config, source, accession, pair="r1"):
     """

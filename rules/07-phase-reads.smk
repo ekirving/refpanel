@@ -10,7 +10,7 @@ import os
 
 from snakemake.io import temp, unpack, expand, touch
 
-from scripts.common import list_source_samples
+from scripts.common import list_source_samples, MAX_OPEN_FILES
 
 global workflow
 
@@ -107,7 +107,7 @@ rule bcftools_merge_phased_samples:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
     params:
-        limit=lambda wildcards, input: len(input.vcfs) + 10,
+        limit=MAX_OPEN_FILES,
     conda:
         "../envs/htslib-1.14.yaml"
     resources:

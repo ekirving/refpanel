@@ -125,10 +125,16 @@ rule bcftools_merge_phased_families:
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz.tbi",
+    params:
+        limit=MAX_OPEN_FILES,
     conda:
         "../envs/htslib-1.14.yaml"
+    resources:
+        mem_mb=8 * 1024,
     shell:
-        "bcftools merge -Oz -o {output.vcf} {input.vcfs}"
+        "ulimit -n {params.limit} && "
+        "bcftools merge -Oz -o {output.vcf} {input.vcfs} && "
+        "bcftools index --tbi {output.vcf}"
 
 
 rule panel_pedigree_phasing:
