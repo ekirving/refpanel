@@ -67,7 +67,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
         " -R {input.ref}"
         " -L {input.chr}"
         " {params.gvcfs}"
-        " -o {output.vcf} 2> {log}"
+        " -o {output.vcf} &> {log}"
 
 
 def gatk3_multisample_chrom_gvcf_input(wildcards):
@@ -100,7 +100,7 @@ rule gatk3_multisample_chrom_gvcf:
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     resources:
-        mem_mb=min(72 * 1024, MAX_MEM_MB),  # ~9.53%
+        mem_mb=min(50 * 1024, MAX_MEM_MB),  # ~6.67%
         tmpdir=JAVA_TEMP_DIR,
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
@@ -115,7 +115,7 @@ rule gatk3_multisample_chrom_gvcf:
         " -R {input.ref}"
         " -L {input.chr}"
         " {params.gvcfs}"
-        " -o {output.vcf} 2> {log}"
+        " -o {output.vcf} &> {log}"
 
 
 rule source_merge_gvcfs:

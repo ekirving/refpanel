@@ -115,7 +115,7 @@ rule bcftools_merge_phased_samples:
     shell:
         "ulimit -n {params.limit} && "
         "bcftools merge --file-list {input.list} -Oz -o {output.vcf} && "
-        "bcftools index {output.vcf}"
+        "bcftools index --tbi {output.vcf}"
 
 
 rule panel_read_based_phasing:
