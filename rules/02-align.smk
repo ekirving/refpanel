@@ -197,6 +197,7 @@ rule picard_merge_accessions:
         "../envs/picard-2.5.0.yaml"
     shell:
         "picard"
+        " -XX:ConcGCThreads=1"
         " -Xmx{resources.mem_mb}m"
         " -Djava.io.tmpdir='{resources.tmpdir}'"
         " MergeSamFiles"
