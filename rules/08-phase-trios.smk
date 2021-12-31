@@ -26,7 +26,18 @@ rule pedigree_family:
     """
     Extract a specific family from the pedigree.
 
-    There are 602 trios in 1000G, but only 576 families (including quads and multi-generational families)  
+    There are 602 trios in 1000G, but only 576 families (including some quads and multi-generational families)
+    
+    NB. there are 8 individuals (i.e., HG00656, HG00657, NA19238, NA19660, NA19661, NA19678, NA19679, NA20282) who are 
+    present in 2 families each, due to family naming that doesn't take into account some overlapping pedigrees 
+    (see https://www.biorxiv.org/content/10.1101/078600v1.full#app-3)
+    
+    The problematic family codes have been fixed manually in `data/source/1000g/1000g-trios.ped`
+    * CHS2 = SH074 + SH089
+    * YRI1 = Y028 + Y117
+    * MXL1 = m004 + m009
+    * MXL2 = m008 + m011
+    * ASW4 = 2467 + 2469
     """
     input:
         ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
