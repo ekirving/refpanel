@@ -400,8 +400,8 @@ rule bcftools_filter_vcf:
         super="data/panel/{panel}/{panel}-superpops.tsv",
         trios="data/source/{panel}/{panel}-trios.tsv",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi"),
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.log",
     params:
