@@ -23,7 +23,7 @@ https://whatshap.readthedocs.io/en/latest/guide.html
 
 rule bcftools_subset_sample:
     """
-    Subset a single sample from the join-callset, so we can efficiently parallelize the read-based phasing
+    Subset a specific sample from the join-callset, so we can efficiently parallelize the read-based phasing
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
