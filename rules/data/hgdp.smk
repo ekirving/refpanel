@@ -53,8 +53,8 @@ rule hgdp_filter_iupac_base_codes:
         cram="data/source/hgdp/cram/{sample}.raw.cram",
         crai="data/source/hgdp/cram/{sample}.raw.cram.crai",
     output:
-        cram="data/source/hgdp/cram/{sample}.cram",
-        crai="data/source/hgdp/cram/{sample}.cram.crai",
+        cram=temp("data/source/hgdp/cram/{sample}.filtered.cram"),
+        crai=temp("data/source/hgdp/cram/{sample}.filtered.cram.crai"),
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -65,6 +65,26 @@ rule hgdp_filter_iupac_base_codes:
         " --write-index"
         " --output {output.cram}"
         " {input.cram}"
+
+
+rule hgdp_standardise_sample_names:
+    """
+    Standardise the sample naming in the read groups
+
+    e.g. replace `SAMEA3302828` with `HGDP00526`
+    """
+    input:
+        cram="data/source/hgdp/cram/{sample}.filtered.cram",
+        crai="data/source/hgdp/cram/{sample}.filtered.cram.crai",
+    output:
+        cram="data/source/hgdp/cram/{sample}.cram",
+        crai="data/source/hgdp/cram/{sample}.cram.crai",
+    conda:
+        "../../envs/htslib-1.14.yaml"
+    shell:
+        "samtools reheader --command \"sed 's/SM:[^\\t]*/SM:{wildcards.sample}/g'\" {input.cram} > {output.cram} && "
+        "samtools index {output.cram}"
+
 
 
 def hgdp_list_all_crams():

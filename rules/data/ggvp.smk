@@ -64,6 +64,7 @@ rule ggvp_filter_iupac_base_codes:
     https://www.bioinformatics.org/sms/iupac.html
     """
     input:
+        ref=ancient("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"),
         cram="data/source/ggvp/cram/{sample}.raw.cram",
         crai="data/source/ggvp/cram/{sample}.raw.cram.crai",
     output:
@@ -88,7 +89,6 @@ rule ggvp_standardise_sample_names:
     e.g. replace `SC_GMFUL5306388-sc-2012-05-09T14:55:57Z-1371772` with `SC_GMFUL5306388`
     """
     input:
-        ref=ancient("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"),
         cram="data/source/ggvp/cram/{sample}.filtered.cram",
         crai="data/source/ggvp/cram/{sample}.filtered.cram.crai",
     output:
