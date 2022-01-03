@@ -46,6 +46,12 @@ source:
     # https://doi.org/10.1038/s41467-019-13480-z
     samples: data/source/ggvp/ggvp-samples.tsv
 
+  appg:
+    # Arabian Peninsula Population Genomic (APPG) study (n=137)
+    # https://doi.org/10.1016/j.cell.2021.07.013
+    samples: data/source/appg/appg-samples.tsv
+    accessions: data/source/appg/appg-accessions.tsv
+
   cgg-afr:
     # Modern African genomes from CGG
     samples: data/source/cgg-afr/cgg-afr-samples.tsv

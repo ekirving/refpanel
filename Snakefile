@@ -22,6 +22,7 @@ include: "rules/data/1000g.smk"
 include: "rules/data/hgdp.smk"
 include: "rules/data/sgdp.smk"
 include: "rules/data/ggvp.smk"
+include: "rules/data/appg.smk"
 #
 # rules for the genotyping and phasing pipeline
 include: "rules/01-reference.smk"
