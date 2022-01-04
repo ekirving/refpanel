@@ -9,7 +9,6 @@ __license__ = "MIT"
 import pandas as pd
 from snakemake.io import touch, temp, ancient
 
-from scripts.common import get_accession_sample
 
 """
 Rules to download data files for the Arabian Peninsula Population Genomic (APPG) study

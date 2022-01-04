@@ -75,17 +75,6 @@ def list_accessions(config, source, sample):
     return accessions.loc[[sample]][["accession", "paired"]].to_records(index=False).tolist()
 
 
-def get_accession_sample(config, source, accession):
-    """
-    Get the sample code for a given accession
-    """
-    accessions = (
-        pd.read_table(config["source"][source]["accessions"]).set_index("accessions", drop=False).replace(np.nan, "")
-    )
-
-    return accessions.loc[[accession]]["sample"]
-
-
 def sample_sex(config, source, sample):
     """
     Get the sex of the sample from the metadata sheet (i.e., M or F)
