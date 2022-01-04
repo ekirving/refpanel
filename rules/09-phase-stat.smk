@@ -42,7 +42,7 @@ rule shapeit4_phase_vcf:
         " --region {wildcards.chr}"
         " --sequencing"
         " --output {output.vcf}"
-        " --log {log}"
+        " &> {log}"
 
 
 rule shapeit4_phase_trios_vcf:
@@ -74,7 +74,7 @@ rule shapeit4_phase_trios_vcf:
         " --region {wildcards.chr}"
         " --sequencing"
         " --output {output.vcf}"
-        " --log {log}"
+        " &> {log}"
 
 
 def panel_statistical_phasing_input(wildcards):

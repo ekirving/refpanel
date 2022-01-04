@@ -52,6 +52,15 @@ source:
     samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
 
+    # mapping of readgroup tags to accession metadata column names
+    readgroup:
+      ID: accession
+      SM: sample
+      CN: center
+      PL: platform
+      LB: library
+      DS: description
+
   cgg-afr:
     # Modern African genomes from CGG
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
