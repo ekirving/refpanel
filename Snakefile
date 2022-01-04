@@ -38,7 +38,7 @@ include: "rules/10-ensembl-vep.smk"
 
 
 # preference download rules, when they are available
-ruleorder: tgp_nygc_download_cram > hgdp_filter_iupac_base_codes > sgdp_standardise_sample_names > ggvp_standardise_sample_names > samtools_cram
+ruleorder: tgp_nygc_download_cram > hgdp_standardise_sample_names > sgdp_standardise_sample_names > ggvp_standardise_sample_names > samtools_cram
 ruleorder: tgp_nygc_download_gvcf > gatk3_combine_ploidy_regions
 
 
