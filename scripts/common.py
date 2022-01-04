@@ -52,8 +52,8 @@ def read_group(config, source, accession):
     """
     accessions = pd.read_table(config["source"][source]["accessions"]).set_index("accession", drop=False)
 
-    # get the column name mapping for the read group tags
-    mapping = config["source"][source]["readgroup"]
+    # get the column name mapping for the read group tags, or use the default mapping
+    mapping = config["source"][source].get("readgroup", config["readgroup"])
 
     # apply the mapping
     tags = [f"{tag}:{accessions.loc[accession][col]}" for tag, col in mapping.items()]

@@ -16,15 +16,6 @@ source:
     # library metadata sheet - required cols (sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)
     accessions: test/test-source-accessions.tsv
 
-    # mapping of readgroup tags to accession metadata column names
-    readgroup:
-      ID: accession
-      SM: sample
-      CN: center
-      PL: platform
-      LB: library
-      DS: description
-
   1000g:
     # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
     # https://doi.org/10.1101/2021.02.06.430068
@@ -52,28 +43,10 @@ source:
     samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
 
-    # mapping of readgroup tags to accession metadata column names
-    readgroup:
-      ID: accession
-      SM: sample
-      CN: center
-      PL: platform
-      LB: library
-      DS: description
-
   cgg-afr:
     # Modern African genomes from CGG
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
-
-    # mapping of readgroup tags to accession metadata column names
-    readgroup:
-      ID: accession
-      SM: sample
-      CN: center
-      PL: platform
-      LB: library
-      DS: description
 
 # reference panels, aggregations of samples across data sources
 panel:
@@ -123,6 +96,14 @@ panel:
     # Modern African genomes from CGG
     samples: data/panel/cgg-afr/cgg-afr-samples.tsv
 
+# mapping of readgroup tags to accession metadata column names
+readgroup:
+  ID: accession
+  SM: sample
+  CN: center
+  PL: platform
+  LB: library
+  DS: description
 
 # list of chromosomes in GRCh38
 chroms: [ chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr20, chr21, chr22, chrX, chrY, chrM, others ]
