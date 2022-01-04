@@ -3,12 +3,12 @@
 A fully automated and reproducible pipeline for building large reference panels of jointly-called and phased human
 genomes.
 
-This pipeline is designed to produce a callset compatible with the [alignment and SNP calling workflow](
+This pipeline was inspired by the [alignment and SNP calling workflow](
 http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/20190405_NYGC_b38_pipeline_description.pdf)
 used by the New York Genome Center (NYGC) in their recent [1000G 30x paper](
-https://www.biorxiv.org/content/10.1101/2021.02.06.430068); implemented here
-using [snakemake](https://snakemake.readthedocs.io/en/stable/)
-and [conda](https://docs.conda.io/projects/conda/en/latest/) for full reproducibility.
+https://www.biorxiv.org/content/10.1101/2021.02.06.430068); implemented here, with improvements,
+using [snakemake](https://snakemake.readthedocs.io/en/stable/) and
+[conda](https://docs.conda.io/projects/conda/en/latest/) for full reproducibility.
 
 ## Installation
 
