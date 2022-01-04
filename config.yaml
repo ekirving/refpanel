@@ -44,9 +44,15 @@ source:
     accessions: data/source/appg/appg-accessions.tsv
 
   cgg-afr:
-    # Modern African genomes from CGG
+    # Modern African genomes from the CGG (n=48)
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
+
+  cgg-isa:
+    # Modern Jehai genomes (West Malaysia) from the CGG (n=2)
+    # https://doi.org/10.1126/science.aat3628
+    samples: data/source/cgg-isa/cgg-isa-samples.tsv
+    accessions: data/source/cgg-isa/cgg-isa-accessions.tsv
 
 # reference panels, aggregations of samples across data sources
 panel:
@@ -93,8 +99,12 @@ panel:
     pedigree: data/source/1000g/1000g-trios.ped
 
   cgg-afr:
-    # Modern African genomes from CGG
+    # reference panel of the CGG-AFR samples
     samples: data/panel/cgg-afr/cgg-afr-samples.tsv
+
+  cgg-isa:
+    # reference panel of the CGG-ISA samples
+    samples: data/panel/cgg-isa/cgg-isa-samples.tsv
 
 # mapping of readgroup tags to accession metadata column names
 readgroup:
