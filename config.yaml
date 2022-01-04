@@ -103,14 +103,14 @@ panel:
     samples: data/panel/ggvp/ggvp-samples.tsv
 
   igsr:
-    # reference panel of al the IGSR samples (n=4756; inc. 1000G, HGDP, SGDP and GGVP)
+    # reference panel of all the IGSR samples (n=4,893; inc. 1000G, HGDP, SGDP, GGVP and APPG)
     # 1422 AFR  African
     #  571 AMR  Ad Mixed American
     #   27 CAS  Central Asian
     #  197 CSA  Central South Asian
     #  851 EAS  East Asian
     #  788 EUR  European
-    #  161 MEA  Middle Eastern
+    #  298 MEA  Middle Eastern
     #   41 OCE  Oceanian
     #  630 SAS  South Asian
     #   68 WEA  West Eurasian

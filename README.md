@@ -34,7 +34,7 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,756), involving all publicly available
+This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,893), involving all publicly available
 samples from:
 
 * 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
@@ -45,18 +45,21 @@ samples from:
   [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
 * Gambian Genome Variation Project (GGVP) (n=394; excluding overlap with 1000G); \
   [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
+* Arabian Peninsula Population Genomic (APPG) study (n=137); \
+  [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
 The data from these projects is hosted by the
 the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
-([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)).
+([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)) and the [European Nucleotide Archive (ENA)](
+https://www.ebi.ac.uk/ena/browser/home).
 
 If you wish to build a customised joint-callset (e.g., with non-public samples), please refer to
 the [configuration docs](docs/config.md).
 
 ### Downloading data
 
-To ensure all data is processed consistently, `refpanel` downloads `gVCF` files for all 1000G samples, and `CRAM` files
-for all samples in HGDP, SGDP and GGVP (as compatible `gVCF` files are not publicly available).
+To ensure all data is processed consistently, `refpanel` downloads `CRAM` files for all samples in 1000G, HGDP, SGDP and
+GGVP, as well as `gVCF` files for 1000G and `fastq` files for APPG.
 
 To (optionally) pre-fetch all the data dependencies, run:
 

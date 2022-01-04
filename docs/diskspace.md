@@ -9,5 +9,6 @@ The download footprint for the input data is:
 | data/source/hgdp/cram/  | 36T  |
 | data/source/sgdp/cram/  | 16T  |
 | data/source/ggvp/cram/  | 4.9T |
+| data/source/appg/fastq/ | ???  |
 
 You will also need **a lot of additional space** to store the intermediate outputs from running the pipeline.
