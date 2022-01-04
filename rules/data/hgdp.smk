@@ -86,7 +86,6 @@ rule hgdp_standardise_sample_names:
         "samtools index {output.cram}"
 
 
-
 def hgdp_list_all_crams():
     samples = pd.read_table(config["source"]["hgdp"]["samples"])
 

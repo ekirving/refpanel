@@ -24,73 +24,52 @@ wildcard_constraints:
 
 rule appg_md5:
     """
-    Make an md5 checksum file for validating the APPG CRAMs
+    Make md5 checksum files for validating the APPG FASTQs
     """
     input:
         man=ancient("data/source/appg/appg-accessions.tsv"),
     output:
-        md5=temp("data/source/appg/cram/{accession}.raw.cram.md5"),
-    params:
-        file="data/source/appg/cram/{accession}.raw.cram",
+        r1_md5=temp("data/source/appg/fastq/{accession}_r1.md5"),
+        r2_md5=temp("data/source/appg/fastq/{accession}_r2.md5"),
     shell:
-        r"""awk -v FS="\t" '$2=="{wildcards.accession}" {{ print $4" {params.file}" }}' {input.man} > {output.md5}"""
+        r"""awk -v FS="\t" '$2=="{wildcards.accession}" {{ print $9,  $13 }}' {input.man} > {output.r1_md5} && """
+        r"""awk -v FS="\t" '$2=="{wildcards.accession}" {{ print $10, $14 }}' {input.man} > {output.r2_md5}"""
 
 
-rule appg_download_cram:
+rule appg_download_fastq:
     """
-    Download CRAM files for each APPG accession
+    Download FASTQ files for each APPG accession
     """
     input:
         man=ancient("data/source/appg/appg-accessions.tsv"),
-        md5="data/source/appg/cram/{accession}.raw.cram.md5",
+        md5="data/source/appg/fastq/{accession}_{pair}.md5",
     output:
-        cram=temp("data/source/appg/cram/{accession}.raw.cram"),
-        crai=temp("data/source/appg/cram/{accession}.raw.cram.crai"),
+        fastq="data/source/appg/fastq/{accession}_{pair}.fastq.gz",
+    params:
+        col=lambda wildcards: 11 if wildcards.pair == "r1" else 12,
     resources:
         ebi_ftp=1,
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
-        r"""awk -v FS="\t" '$2=="{wildcards.accession}" {{ print $3 }}' {input.man} | """
-        "xargs wget --quiet -O {output.cram} -o /dev/null && "
-        "md5sum --status --check {input.md5} && "
-        "smatools index {output.cram}"
+        r"""awk -v FS="\t" '$2=="{wildcards.accession}" {{ print ${params.col} }}' {input.man} | """
+        "xargs wget --quiet -O {output.fastq} -o /dev/null && "
+        "md5sum --status --check {input.md5}"
 
 
-rule appg_standardise_sample_names:
-    """
-    Standardise the sample naming in the read groups
-
-    e.g. replace `ERS2705196` with `APPG7555879`
-    """
-    input:
-        cram="data/source/appg/cram/{accession}.raw.cram",
-        crai="data/source/appg/cram/{accession}.raw.cram.crai",
-    output:
-        cram="data/source/appg/cram/{accession}.cram",
-        crai="data/source/appg/cram/{accession}.cram.crai",
-    params:
-        sample=lambda wildcards: get_accession_sample(config, "appg", wildcards.accession),
-    conda:
-        "../../envs/htslib-1.14.yaml"
-    shell:
-        "samtools reheader --command \"sed 's/SM:[^\\t]*/SM:{params.sample}/g'\" {input.cram} > {output.cram} && "
-        "samtools index {output.cram}"
-
-
-def appg_list_all_crams():
-    samples = pd.read_table(config["source"]["appg"]["samples"])
+def appg_list_all_fastq():
+    accessions = pd.read_table(config["source"]["appg"]["accessions"])
 
     files = [
-        [f"data/source/appg/cram/{sample}.cram", f"data/source/appg/cram/{sample}.cram.crai"]
-        for sample in samples["sample"]
+        [f"data/source/appg/fastq/{accession}_r1.fastq.gz", f"data/source/appg/fastq/{accession}_r2.fastq.gz"]
+        for accession in accessions["accession"]
     ]
 
     return files
 
 
-rule appg_download_all_cram:
+rule appg_download_all_fastq:
     input:
-        appg_list_all_crams(),
+        appg_list_all_fastq(),
     output:
-        touch("data/source/appg/cram/download.done"),
+        touch("data/source/appg/fastq/download.done"),

@@ -20,7 +20,7 @@ https://whatshap.readthedocs.io/en/latest/guide.html
 
 rule shapeit4_phase_vcf:
     """
-    Statistically phase the joint-callset, using the read-based phase sets as input.
+    Statistically phase the joint-callset, using the read-based phase sets as input
     """
     input:
         map="data/reference/GRCh38/genetic_maps/shapeit4/{chr}.b38.gmap.gz",
@@ -34,6 +34,7 @@ rule shapeit4_phase_vcf:
     conda:
         "../envs/shapeit-4.2.2.yaml"
     shell:
+        # TODO this strips all the annotations from the original VCF
         "shapeit4"
         " --thread {threads}"
         " --input {input.vcf}"
