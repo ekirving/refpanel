@@ -56,7 +56,7 @@ source:
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
 
   PRJNA46161:
-    # Khoisan and Bantu genomes from southern Africa (n=5)
+    # Khoisan and Bantu genomes from southern Africa (n=3)
     # https://doi.org/10.1038/nature08795
     samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
     accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
