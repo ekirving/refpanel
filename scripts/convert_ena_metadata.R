@@ -12,6 +12,7 @@ quiet(library(argparser))
 quiet(library(readr))
 quiet(library(dplyr))
 quiet(library(tidyr))
+quiet(library(stringr))
 
 # get the command line arguments
 p <- arg_parser("Convert ENA formattted metadata into `refpanel` format")
@@ -23,10 +24,6 @@ argv <- parse_args(p)
 # parse the ENA metadata
 meta <- read_tsv(argv$ena, na = c("", "NA", "unspecified"), col_types = cols()) %>%
 
-  # split the delimited cols
-  separate(col = fastq_md5, into = c("fastq_r1_md5", "fastq_r2_md5"), sep = ";") %>%
-  separate(col = fastq_ftp, into = c("fastq_r1_ftp", "fastq_r2_ftp"), sep = ";") %>%
-
   # select and rename the ENA columns
   select(
     project = study_accession,
@@ -34,21 +31,57 @@ meta <- read_tsv(argv$ena, na = c("", "NA", "unspecified"), col_types = cols()) 
     alias = sample_alias,
     accession = run_accession,
     center = center_name,
-    instrument = instrument_platform,
+    platform = instrument_platform,
+    instrument = instrument_model,
     library = library_name,
     layout = library_layout,
     description = study_title,
-    fastq_r1_md5,
-    fastq_r2_md5,
-    fastq_r1_ftp,
-    fastq_r2_ftp
+    fastq_md5,
+    fastq_ftp,
   ) %>%
 
+  # drop the alias if it's identical to the sample code
+  mutate(alias = ifelse(sample == alias, NA, alias)) %>%
+
   # if no library code is defined, use the sample name
-  mutate(library = coalesce(library, sample)) %>%
+  mutate(library = coalesce(library, sample))
+
+# flip the sample and alias if the sample code contains whitespace
+if (sum(str_count(meta$sample, " ")) > 0 && sum(str_count(meta$alias, " ")) == 0) {
+  meta <- rename(meta, alias = sample, sample = alias) %>% relocate(sample, .before = alias)
+}
+
+# handle single-end libraries
+meta_se <- filter(meta, layout == "SINGLE")
+
+# handle regular paired-end libraries
+meta_pe <- filter(meta, layout == "PAIRED", str_count(fastq_ftp, ";") == 1) %>%
+
+  # split the delimited cols
+  separate(col = fastq_md5, into = c("fastq_r1_md5", "fastq_r2_md5"), sep = ";") %>%
+  separate(col = fastq_ftp, into = c("fastq_r1_ftp", "fastq_r2_ftp"), sep = ";")
+
+# handle special case of paired-end libraries that have unpaired mates
+meta_pe_se <- meta %>%
+  filter(layout == "PAIRED", str_count(fastq_ftp, ";") == 2) %>%
+
+  # split the delimited cols
+  separate(col = fastq_md5, into = c("fastq_md5", "fastq_r1_md5", "fastq_r2_md5"), sep = ";") %>%
+  separate(col = fastq_ftp, into = c("fastq_ftp", "fastq_r1_ftp", "fastq_r2_ftp"), sep = ";")
+
+# join the libraries back together
+meta <- bind_rows(meta_se, meta_pe, meta_pe_se) %>%
+  arrange(accession) %>%
+
+  # add the explicit ftp:// protocol
+  mutate(fastq_ftp = ifelse(!is.na(fastq_ftp), paste0("ftp://", fastq_ftp), NA)) %>%
+  mutate(fastq_r1_ftp = ifelse(!is.na(fastq_r1_ftp), paste0("ftp://", fastq_r1_ftp), NA)) %>%
+  mutate(fastq_r2_ftp = ifelse(!is.na(fastq_r2_ftp), paste0("ftp://", fastq_r2_ftp), NA)) %>%
 
   # add the local file paths
-  mutate(fastq_r1 = ifelse(fastq_r1_ftp != "", paste0("data/source/", project, "/fastq/", accession, "_r1.fastq.gz"))) %>%
-  mutate(fastq_r2 = ifelse(fastq_r2_ftp != "", paste0("data/source/", project, "/fastq/", accession, "_r2.fastq.gz")))
+  mutate(fastq = ifelse(!is.na(fastq_ftp), paste0("data/source/", project, "/fastq/", accession, ".fastq.gz"), NA)) %>%
+  mutate(fastq_r1 = ifelse(!is.na(fastq_r1_ftp), paste0("data/source/", project, "/fastq/", accession, "_r1.fastq.gz"), NA)) %>%
+  mutate(fastq_r2 = ifelse(!is.na(fastq_r2_ftp), paste0("data/source/", project, "/fastq/", accession, "_r2.fastq.gz"), NA))
 
-write_tsv(meta, argv$output)
+
+write_tsv(meta, argv$output, na = "")
