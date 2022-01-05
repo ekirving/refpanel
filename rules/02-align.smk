@@ -169,10 +169,11 @@ def picard_merge_accessions_input(wildcards):
     source = wildcards.source
 
     bam = []
-    for accession, paired in list_accessions(config, wildcards.source, wildcards.sample):
-        if paired:
+    for accession, layout, unpaired in list_accessions(config, wildcards.source, wildcards.sample):
+        if layout == "PAIRED":
             bam.append(f"data/source/{source}/bam/{accession}_fixedmate.bam")
-        else:
+
+        if layout == "SINGLE" or unpaired:
             bam.append(f"data/source/{source}/bam/{accession}.se.bam")
 
     return bam

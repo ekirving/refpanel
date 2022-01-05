@@ -18,10 +18,12 @@ To download all the `gVCF` files for 1000G, run:
 snakemake data/source/1000g/gVCF/download.done
 ```
 
-To download all the `fastq` files for APPG, run:
+To download all the `fastq` files for the other data sources, run:
 
 ```bash
-snakemake data/source/appg/fastq/download.done
+for source in appg PRJEB26721 PRJEB28198 PRJNA46161; do
+  snakemake data/source/${source}/fastq/download.done
+done
 ```
 
 To avoid issues with rate limits on the EBI FTP service, downloads are limited to 15 concurrent FTP connections. If your

@@ -33,15 +33,13 @@ JAVA_TEMP_DIR = "./tmp/"
 MAX_OPEN_FILES = 99999
 
 
-def fastq_path(config, source, accession, pair="r1"):
+def fastq_path(config, source, accession, pair="se"):
     """
     Get the path to the FASTQ file for the given accession
     """
-    accessions = pd.read_table(config["source"][source]["accessions"]).set_index("accession", drop=False)
+    accession = pd.read_table(config["source"][source]["accessions"]).set_index("accession", drop=False).loc[accession]
 
-    path = accessions.loc[accession]["fastq_r1" if pair == "r1" else "fastq_r2"]
-
-    return path
+    return accession[f"fastq_{pair}"]
 
 
 def read_group(config, source, accession):
@@ -65,14 +63,16 @@ def list_accessions(config, source, sample):
     """
     Get the list of accession codes and their paired-end status
     """
-    accessions = (
-        pd.read_table(config["source"][source]["accessions"]).set_index("sample", drop=False).replace(np.nan, "")
-    )
+    meta = pd.read_table(config["source"][source]["accessions"]).set_index("sample", drop=False).replace(np.nan, "")
 
-    # is the library paired-end or single-end?
-    accessions["paired"] = accessions["fastq_r2"].map(lambda fq: fq != "")
+    if "layout" not in meta:
+        # determine the library layout
+        meta["layout"] = ["SINGLE" if row.get("fastq_r2", "") == "" else "PAIRED" for _, row in meta.iterrows()]
 
-    return accessions.loc[[sample]][["accession", "paired"]].to_records(index=False).tolist()
+    # does the accession contain unpaired mates
+    meta["unpaired"] = [row["layout"] == "PAIRED" and row.get("fastq_se", "") != "" for _, row in meta.iterrows()]
+
+    return meta.loc[[sample]][["accession", "layout", "unpaired"]].to_records(index=False).tolist()
 
 
 def sample_sex(config, source, sample):

@@ -52,7 +52,8 @@ if (sum(str_count(meta$sample, " ")) > 0 && sum(str_count(meta$alias, " ")) == 0
 }
 
 # handle single-end libraries
-meta_se <- filter(meta, layout == "SINGLE")
+meta_se <- filter(meta, layout == "SINGLE") %>%
+  rename(fastq_se_md5 = fastq_md5, fastq_se_ftp = fastq_ftp)
 
 # handle regular paired-end libraries
 meta_pe <- filter(meta, layout == "PAIRED", str_count(fastq_ftp, ";") == 1) %>%
@@ -66,22 +67,24 @@ meta_pe_se <- meta %>%
   filter(layout == "PAIRED", str_count(fastq_ftp, ";") == 2) %>%
 
   # split the delimited cols
-  separate(col = fastq_md5, into = c("fastq_md5", "fastq_r1_md5", "fastq_r2_md5"), sep = ";") %>%
-  separate(col = fastq_ftp, into = c("fastq_ftp", "fastq_r1_ftp", "fastq_r2_ftp"), sep = ";")
+  separate(col = fastq_md5, into = c("fastq_se_md5", "fastq_r1_md5", "fastq_r2_md5"), sep = ";") %>%
+  separate(col = fastq_ftp, into = c("fastq_se_ftp", "fastq_r1_ftp", "fastq_r2_ftp"), sep = ";")
 
 # join the libraries back together
 meta <- bind_rows(meta_se, meta_pe, meta_pe_se) %>%
   arrange(accession) %>%
 
   # add the explicit ftp:// protocol
-  mutate(fastq_ftp = ifelse(!is.na(fastq_ftp), paste0("ftp://", fastq_ftp), NA)) %>%
+  mutate(fastq_se_ftp = ifelse(!is.na(fastq_se_ftp), paste0("ftp://", fastq_se_ftp), NA)) %>%
   mutate(fastq_r1_ftp = ifelse(!is.na(fastq_r1_ftp), paste0("ftp://", fastq_r1_ftp), NA)) %>%
   mutate(fastq_r2_ftp = ifelse(!is.na(fastq_r2_ftp), paste0("ftp://", fastq_r2_ftp), NA)) %>%
 
   # add the local file paths
-  mutate(fastq = ifelse(!is.na(fastq_ftp), paste0("data/source/", project, "/fastq/", accession, ".fastq.gz"), NA)) %>%
+  mutate(fastq_se = ifelse(!is.na(fastq_se_ftp), paste0("data/source/", project, "/fastq/", accession, "_se.fastq.gz"), NA)) %>%
   mutate(fastq_r1 = ifelse(!is.na(fastq_r1_ftp), paste0("data/source/", project, "/fastq/", accession, "_r1.fastq.gz"), NA)) %>%
-  mutate(fastq_r2 = ifelse(!is.na(fastq_r2_ftp), paste0("data/source/", project, "/fastq/", accession, "_r2.fastq.gz"), NA))
+  mutate(fastq_r2 = ifelse(!is.na(fastq_r2_ftp), paste0("data/source/", project, "/fastq/", accession, "_r2.fastq.gz"), NA)) %>%
 
+  # drop all columns that are completely empty
+  select_if(~ !all(is.na(.)))
 
 write_tsv(meta, argv$output, na = "")
