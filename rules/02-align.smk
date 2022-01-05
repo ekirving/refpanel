@@ -32,10 +32,10 @@ rule fastp_trim_adapters_se:
         fastq=lambda wildcards: fastq_path(config, wildcards.source, wildcards.accession),
     output:
         fastq=temp("data/source/{source}/fastq/{accession}_trim.fastq.gz"),
-        json="data/source/{source}/fastq/{accession}_trim.json",
-        html="data/source/{source}/fastq/{accession}_trim.html",
+        json="data/source/{source}/fastq/{accession}_se_trim.json",
+        html="data/source/{source}/fastq/{accession}_se_trim.html",
     log:
-        log="data/source/{source}/fastq/{accession}_trim.log",
+        log="data/source/{source}/fastq/{accession}_se_trim.log",
     threads: 4
     conda:
         "../envs/fastp-0.23.2.yaml"
@@ -60,10 +60,10 @@ rule fastp_trim_adapters_pe:
     output:
         fastq_r1=temp("data/source/{source}/fastq/{accession}_trim.r1.fastq.gz"),
         fastq_r2=temp("data/source/{source}/fastq/{accession}_trim.r2.fastq.gz"),
-        json="data/source/{source}/fastq/{accession}_trim.json",
-        html="data/source/{source}/fastq/{accession}_trim.html",
+        json="data/source/{source}/fastq/{accession}_pe_trim.json",
+        html="data/source/{source}/fastq/{accession}_pe_trim.html",
     log:
-        log="data/source/{source}/fastq/{accession}_trim.log",
+        log="data/source/{source}/fastq/{accession}_pe_trim.log",
     threads: 4
     conda:
         "../envs/fastp-0.23.2.yaml"
