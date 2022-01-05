@@ -43,16 +43,30 @@ source:
     samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
 
+  PRJEB26721:
+    # Jehai genomes from West Malaysia (n=2)
+    # https://doi.org/10.1126/science.aat3628
+    samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
+    accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
+
+  PRJEB28198:
+    # Pan-African genomes (n=9)
+    # https://doi.org/10.1186/s13059-019-1684-5
+    samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
+    accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
+
+  PRJNA46161:
+    # Khoisan and Bantu genomes from southern Africa (n=5)
+    # https://doi.org/10.1038/nature08795
+    samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
+    accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
+
+  # TODO move elsewhere
   cgg-afr:
     # Modern African genomes from the CGG (n=48)
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
 
-  cgg-isa:
-    # Modern Jehai genomes (West Malaysia) from the CGG (n=2)
-    # https://doi.org/10.1126/science.aat3628
-    samples: data/source/cgg-isa/cgg-isa-samples.tsv
-    accessions: data/source/cgg-isa/cgg-isa-accessions.tsv
 
 # reference panels, aggregations of samples across data sources
 panel:
