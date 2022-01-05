@@ -15,7 +15,7 @@ quiet(library(tidyr))
 quiet(library(stringr))
 
 # get the command line arguments
-p <- arg_parser("Convert ENA formattted metadata into `refpanel` format")
+p <- arg_parser("Convert ENA formatted metadata into `refpanel` format")
 p <- add_argument(p, "--ena", help = "ENA metadata")
 p <- add_argument(p, "--output", help = "Output file")
 
