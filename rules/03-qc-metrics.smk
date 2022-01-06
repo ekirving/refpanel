@@ -83,6 +83,33 @@ rule picard_collect_wgs_metrics:
         " O={output.txt} 2> {log}"
 
 
+rule samtools_idxstats:
+    """
+    Check the coverage per contig in the alignments
+    """
+    input:
+        cram="data/source/{source}/cram/{sample}.cram",
+    output:
+        idx="data/source/{source}/cram/{sample}.cram.idxstats",
+    shell:
+        "samtools idxstats {input.cram} > {output.idx}"
+
+
+rule sample_sex_chr_ratio:
+    """
+    Calculate the X/Y coverage ratio
+    """
+    input:
+        idx="data/source/{source}/cram/{sample}.cram.idxstats",
+    output:
+        xyr="data/source/{source}/cram/{sample}.cram.xy_ratio",
+    shell:
+        "awk '"
+        ' $1=="chrX" {{ xcov=$3/$2 }}; '
+        ' $1=="chrY" {{ ycov=$3/$2 }}; '
+        " END {{ print xcov/ycov }}' {input.idx} > {output.xyr}"
+
+
 def source_list_metrics(wildcards):
     """List all alignment metrics files for the given data source"""
     source = wildcards.source
@@ -92,6 +119,7 @@ def source_list_metrics(wildcards):
         [
             f"data/source/{source}/cram/{sample}.multiple_metrics.log",
             f"data/source/{source}/cram/{sample}.wgs_metrics.log",
+            f"data/source/{source}/cram/{sample}.cram.xy_ratio",
         ]
         for sample in samples["sample"]
     ]
