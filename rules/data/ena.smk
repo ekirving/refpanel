@@ -50,7 +50,7 @@ rule ena_fastq_md5:
 
 rule ena_fastq_download:
     """
-    Download FASTQ files for each APPG accession
+    Download FASTQ files for each ENA accession
     """
     input:
         man=lambda wildcards: ancient(config["source"][wildcards.source]["accessions"]),
