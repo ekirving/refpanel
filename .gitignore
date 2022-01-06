@@ -1,6 +1,7 @@
 *-commands.sh
 .snakemake
 __pycache__
+data/ensembl/vep/
 data/panel/*/*-superpops.tsv
 data/panel/*/*-trios.tsv
 data/panel/*/vcf/
@@ -10,7 +11,7 @@ data/source/*/bam/
 data/source/*/cram/
 data/source/*/fastq/
 data/source/*/gVCF/
-data/ensembl/vep/
+filereport_read_run_*
 logs/
 nohup*
 scripts/metadata.R

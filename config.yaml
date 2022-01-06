@@ -9,13 +9,6 @@ refpanel: test
 # data sources, containing samples and individual library accessions
 source:
 
-  test:
-    # sample metadata sheet - required cols (sample, sex)
-    samples: test/test-source-samples.tsv
-
-    # library metadata sheet - required cols (sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)
-    accessions: test/test-source-accessions.tsv
-
   1000g:
     # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
     # https://doi.org/10.1101/2021.02.06.430068
@@ -35,90 +28,60 @@ source:
     # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
     # missing: SC_GMFUL5306403, SC_GMFUL5306370, SC_GMMAN5482315, SC_GMFUL5306362, SC_GMFUL5306428, SC_GMFUL5306378
     # https://doi.org/10.1038/s41467-019-13480-z
-    samples: data/source/ggvp/ggvp-samples.tsv
+    samples: data/source/ggvp/ggvp-panel.tsv
 
   appg:
     # Arabian Peninsula Population Genomic (APPG) study (n=137)
     # https://doi.org/10.1016/j.cell.2021.07.013
-    samples: data/source/appg/appg-samples.tsv
+    samples: data/source/appg/appg-panel.tsv
     accessions: data/source/appg/appg-accessions.tsv
+    ena_ftp: true
 
   PRJEB26721:
     # Jehai genomes from West Malaysia (n=2)
     # https://doi.org/10.1126/science.aat3628
     samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
     accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
+    ena_ftp: true
 
   PRJEB28198:
     # Pan-African genomes (n=9)
     # https://doi.org/10.1186/s13059-019-1684-5
     samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
+    ena_ftp: true
 
   PRJNA46161:
     # Khoisan and Bantu genomes from southern Africa (n=3)
     # https://doi.org/10.1038/nature08795
     samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
     accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
+    ena_ftp: true
 
-  # TODO move elsewhere
   cgg-afr:
-    # Modern African genomes from the CGG (n=48)
-    samples: data/source/cgg-afr/cgg-afr-samples.tsv
+    # Unpublished African genomes from the CGG (n=48)
+    samples: data/source/cgg-afr/cgg-afr-panel.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
+    public: false
 
 
 # reference panels, aggregations of samples across data sources
 panel:
 
-  test:
-    # metadata sheet containing the list of samples and populations for this reference panel - req. (source, sample, superpopulation)
-    samples: test/test-panel-samples.tsv
-
-    # optional list of trios uses for checking Mendelian inconsistencies and performing phasing
-    pedigree: test/test-panel-trios.ped
-
   1000g:
     # reference panel of the 1000G samples
-    samples: data/panel/1000g/1000g-samples.tsv
+    samples: data/source/1000g/1000g-panel.tsv
     pedigree: data/source/1000g/1000g-trios.ped
 
-  hgdp:
-    # reference panel of the HGDP samples
-    samples: data/panel/hgdp/hgdp-samples.tsv
-
-  sgdp:
-    # reference panel of the SGDP samples
-    samples: data/panel/sgdp/sgdp-samples.tsv
-
-  ggvp:
-    # reference panel of the GGVP samples
-    samples: data/panel/ggvp/ggvp-samples.tsv
-
-  igsr:
-    # reference panel of all the IGSR samples (n=4,893; inc. 1000G, HGDP, SGDP, GGVP and APPG)
-    # 1422 AFR  African
-    #  571 AMR  Ad Mixed American
-    #   27 CAS  Central Asian
-    #  197 CSA  Central South Asian
-    #  851 EAS  East Asian
-    #  788 EUR  European
-    #  298 MEA  Middle Eastern
-    #   41 OCE  Oceanian
-    #  630 SAS  South Asian
-    #   68 WEA  West Eurasian
-    samples: data/panel/igsr/igsr-samples.tsv
-
-    # use the 1000g trios
+  refpanel-v1:
+    # reference panel of all the public data sources (n=4,893)
+    samples: data/panel/refpanel-v1/refpanel-v1-panel.tsv
     pedigree: data/source/1000g/1000g-trios.ped
 
   cgg-afr:
     # reference panel of the CGG-AFR samples
-    samples: data/panel/cgg-afr/cgg-afr-samples.tsv
+    samples: data/source/cgg-afr/cgg-afr-panel.tsv
 
-  cgg-isa:
-    # reference panel of the CGG-ISA samples
-    samples: data/panel/cgg-isa/cgg-isa-samples.tsv
 
 # mapping of readgroup tags to accession metadata column names
 readgroup:

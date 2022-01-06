@@ -80,7 +80,7 @@ def ena_list_all_fastq(wildcards):
     for _, accession in accessions.iterrows():
         fastqs += [accession.get("fastq_se"), accession.get("fastq_r1"), accession.get("fastq_r2")]
 
-    return [fq for fq in fastqs if fq is not None]
+    return [fq for fq in fastqs if isinstance(fq, str)]
 
 
 rule ena_download_all_fastq:

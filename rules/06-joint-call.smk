@@ -8,7 +8,7 @@ __license__ = "MIT"
 
 import math
 
-from snakemake.io import protected, unpack, temp, expand, touch
+from snakemake.io import protected, unpack, temp, expand, touch, ancient
 
 from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR
 
@@ -306,7 +306,7 @@ rule bcftools_samples_file:
     https://m.ensembl.org/Help/Faq?id=532
     """
     input:
-        tsv=lambda wildcards: config["panel"][wildcards.panel]["samples"],
+        tsv=lambda wildcards: ancient(config["panel"][wildcards.panel]["samples"]),
     output:
         tsv="data/panel/{panel}/{panel}-superpops.tsv",
     params:

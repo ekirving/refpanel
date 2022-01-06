@@ -34,8 +34,8 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `igsr` (n=4,893), involving all publicly available
-samples from:
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,893), involving all publicly 
+available samples from:
 
 * 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
   [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
@@ -48,18 +48,23 @@ samples from:
 * Arabian Peninsula Population Genomic (APPG) study (n=137); \
   [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
+It also includes some additional genomes from:
+* Schuster et al., 2010 (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
+* McColl et al., 2018 (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
+* Lorente-Galdos et al., 2019 (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
+
 The data from these projects is hosted by the
 the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
 ([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)) and the [European Nucleotide Archive (ENA)](
 https://www.ebi.ac.uk/ena/browser/home).
 
-If you wish to build a customised joint-callset (e.g., with non-public samples), please refer to
+If you wish to build a customised joint-callset (e.g., including non-public samples), please refer to
 the [configuration docs](docs/config.md).
 
 ### Downloading data
 
-To ensure all data is processed consistently, `refpanel` downloads `CRAM` files for all samples in 1000G, HGDP, SGDP and
-GGVP, as well as `gVCF` files for 1000G and `fastq` files for APPG.
+To ensure all data is processed consistently, `refpanel` downloads `gVCF` files for 1000G; `CRAM` files for 1000G, HGDP, 
+SGDP and GGVP;  and `fastq` files for all other data sources.
 
 To (optionally) pre-fetch all the data dependencies, run:
 
