@@ -22,6 +22,7 @@ include: "rules/data/hgdp.smk"
 include: "rules/data/sgdp.smk"
 include: "rules/data/ggvp.smk"
 include: "rules/data/ena.smk"
+include: "rules/data/phase10x.smk"
 #
 # rules for the genotyping and phasing pipeline
 include: "rules/01-reference.smk"
@@ -54,10 +55,10 @@ rule refpanel:
 
 rule download_data:
     input:
-        # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; 10x gVCFs for HGDP; and FASTQs for everything else
+        # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; 10x gVCFs for HGDP and APPG; and FASTQs for everything else
         expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp"]),
         expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
-        expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp"]),
+        expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp", "appg"]),
         expand(
             "data/source/{source}/fastq/download.done",
             source=[source for source in config["source"] if config["source"][source].get("ena_ftp", False)],

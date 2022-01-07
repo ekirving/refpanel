@@ -118,7 +118,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
     5) MAC ≥ 2 (i.e., no singletons)
 * [Read-based phasing](rules/07-phase-reads.smk) with `whatshap` (v1.2.1) using:
     * _Illumina_ paired-end reads from all projects;
-    * _10x Genomics_ long-read sequencing from HGDP (n=XXX);
+    * _10x Genomics_ linked-read sequencing from HGDP (n=26) and APPG (n=137);
 * [Pedigree phasing](rules/08-phase-trios.smk) with `whatshap` using:
     * Trios from 1000G (n=602);
 * [Statistical phasing](rules/09-phase-stat.smk) with `shapeit4` (v4.2.2)

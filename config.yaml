@@ -41,6 +41,7 @@ source:
     panel: data/source/appg/appg-panel.tsv
     samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
+    prephased: data/source/appg/appg-10x-gVCFs.tsv
     ena_ftp: true
 
   PRJNA46161:
