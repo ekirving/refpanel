@@ -81,7 +81,12 @@ def sample_sex(config, source, sample):
     """
     samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
 
-    return samples.loc[sample]["sex"][0].upper()
+    sex = samples.loc[sample].get("sex")[0].upper()
+
+    # sanity check that the metadata is well formed
+    assert sex in {"M", "F"}
+
+    return sex
 
 
 def list_samples(config, source):
@@ -104,11 +109,20 @@ def list_sources(config, panel):
 
 def list_source_samples(config, panel):
     """
-    Get a list of (source, sample) for the given reference panel
+    Get a list of (source, sample, prephased) for the given reference panel
     """
     metadata = pd.read_table(config["panel"][panel]["samples"]).set_index("sample", drop=False)
 
-    return metadata[["source", "sample"]].to_records(index=False).tolist()
+    prephased = []
+
+    # do any of the data sources contain pre-phased linked-reads
+    for source in metadata["source"].unique():
+        if file_path := config["source"][source].get("prephased"):
+            prephased += pd.read_table(file_path).set_index("sample", drop=False)["sample"].tolist()
+
+    metadata["prephased"] = [sample in prephased for sample in metadata["sample"]]
+
+    return metadata[["source", "sample", "prephased"]].to_records(index=False).tolist()
 
 
 def list_families(config, panel):

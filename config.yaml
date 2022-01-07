@@ -20,6 +20,7 @@ source:
     # https://doi.org/10.1126/science.aay5012
     panel: data/source/hgdp/hgdp-panel.tsv
     samples: data/source/hgdp/hgdp-samples.tsv
+    prephased: data/source/hgdp/hgdp-10x-gVCFs.tsv
 
   sgdp:
     # Simons Genome Diversity Project (SGDP) (n=231; excluding overlap from 1000G and HGDP)
@@ -32,13 +33,13 @@ source:
     # missing: SC_GMFUL5306403, SC_GMFUL5306370, SC_GMMAN5482315, SC_GMFUL5306362, SC_GMFUL5306428, SC_GMFUL5306378
     # https://doi.org/10.1038/s41467-019-13480-z
     panel: data/source/ggvp/ggvp-panel.tsv
-    samples: data/source/ggvp/ggvp-panel.tsv
+    samples: data/source/ggvp/ggvp-samples.tsv
 
   appg:
     # Arabian Peninsula Population Genomic (APPG) study (n=137)
     # https://doi.org/10.1016/j.cell.2021.07.013
     panel: data/source/appg/appg-panel.tsv
-    samples: data/source/appg/appg-panel.tsv
+    samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
     ena_ftp: true
 
@@ -66,11 +67,10 @@ source:
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
     ena_ftp: true
 
-
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
     panel: data/source/cgg-afr/cgg-afr-panel.tsv
-    samples: data/source/cgg-afr/cgg-afr-panel.tsv
+    samples: data/source/cgg-afr/cgg-afr-samples.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
     private: true
 
@@ -91,7 +91,11 @@ panel:
   cgg-afr-v1:
     # reference panel of the CGG-AFR samples + all the public samples in refpanel-v1 (n=4,956)
     samples: data/source/cgg-afr/cgg-afr-panel.tsv
+    pedigree: data/source/1000g/1000g-trios.ped
 
+  hgdp:
+    # TODO remove when done testing
+    samples: data/source/hgdp/hgdp-panel.tsv
 
 # mapping of readgroup tags to accession metadata column names
 readgroup:

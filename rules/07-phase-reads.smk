@@ -38,7 +38,6 @@ rule bcftools_subset_sample:
         "bcftools index --tbi {output.vcf}"
 
 
-# TODO fetch the 10x Genomics callset for the HGDP project and use that also
 rule whatshap_read_based_phasing:
     """
     Annotate the VCF with read-based phase set blocks (PS), for use by shapeit4
@@ -70,6 +69,46 @@ rule whatshap_read_based_phasing:
         "bcftools index --tbi {output.vcf}"
 
 
+rule whatshap_linked_read_phasing:
+    """
+    Incorporate phase information from linked-reads (e.g., 10x Genomics)
+
+    At present, `whatshap` cannot directly phase from the BX tag used in 10x Genomics BAM files 
+    (see https://github.com/whatshap/whatshap/pull/238).
+
+    The suggested workflow is to use the phased VCFs output by `longranger` as input to `whatshap` via the `PHASEINPUT`
+    positional argument, see:
+    - https://bitbucket.org/whatshap/whatshap/issues/228/recomendation-about-10x-genomics
+    - https://github.com/whatshap/whatshap/issues/243
+    - https://doi.org/10.1038/s41467-017-01389-4#Sec11
+    - https://doi.org/10.1038/s41467-018-08148-z
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        vcf="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz",
+        tbi="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz.tbi",
+        cram="data/source/{source}/cram/{sample}.cram",
+        crai="data/source/{source}/cram/{sample}.cram.crai",
+        phase10x="data/source/{source}/gVCF/phase10x/{sample}.phase10x.vcf.gz",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.log",
+    conda:
+        "../envs/whatshap-1.2.1.yaml"
+    shell:
+        "whatshap phase"
+        " --reference {input.ref}"
+        " --tag PS"
+        " --indels"
+        " --ignore-read-groups"
+        " --output {output.vcf}"
+        " {input.vcf}"
+        " {input.cram} {input.phase10x} 2> {log} && "
+        "bcftools index --tbi {output.vcf}"
+
+
 def bcftools_merge_phased_samples_input(wildcards):
     """
     Return a list of VCF/TBI files for each sample in the reference panel
@@ -80,9 +119,13 @@ def bcftools_merge_phased_samples_input(wildcards):
     vcf = []
     tbi = []
 
-    for source, sample in list_source_samples(config, panel):
-        vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz")
-        tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz.tbi")
+    for source, sample, prephased in list_source_samples(config, panel):
+        if prephased:
+            vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz")
+            tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz.tbi")
+        else:
+            vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz")
+            tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz.tbi")
 
     file_list = f"data/panel/{panel}/vcf/sample/{panel}_{chr}.list"
 
