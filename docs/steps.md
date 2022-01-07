@@ -8,21 +8,21 @@ To download all the `CRAM` files for the four IGSR data sources, run:
 
 ```bash
 for source in 1000g hgdp sgdp ggvp; do
-  snakemake data/source/${source}/cram/download.done
+  ./refpanel data/source/${source}/cram/download.done
 done
 ```
 
 To download all the `gVCF` files for 1000G, run:
 
 ```bash
-snakemake data/source/1000g/gVCF/download.done
+./refpanel data/source/1000g/gVCF/download.done
 ```
 
 To download all the `fastq` files for the other data sources, run:
 
 ```bash
 for source in appg PRJEB26721 PRJEB28198 PRJNA46161; do
-  snakemake data/source/${source}/fastq/download.done
+  ./refpanel data/source/${source}/fastq/download.done
 done
 ```
 
@@ -34,7 +34,7 @@ cluster nodes have unique IP addresses, then you may wish to run each of these d
 To align all samples in a data source, run:
 
 ```bash
-snakemake data/source/${source}/cram/align.done
+./refpanel data/source/${source}/cram/align.done
 ```
 
 ### QC metrics
@@ -42,7 +42,7 @@ snakemake data/source/${source}/cram/align.done
 To calculate alignment QC metrics for all samples in a data source, run:
 
 ```bash
-snakemake data/source/${source}/cram/metrics.done
+./refpanel data/source/${source}/cram/metrics.done
 ```
 
 ### Calling gVCFs
@@ -50,7 +50,7 @@ snakemake data/source/${source}/cram/metrics.done
 To call genotype likelihoods in all samples in a data source, run:
 
 ```bash
-snakemake data/source/${source}/gVCF/call.done
+./refpanel data/source/${source}/gVCF/call.done
 ```
 
 ### Merging gVCFs
@@ -58,7 +58,7 @@ snakemake data/source/${source}/gVCF/call.done
 To merge all `gVCF` files in a data source, run:
 
 ```bash
-snakemake data/source/${source}/gVCF/merge.done
+./refpanel data/source/${source}/gVCF/merge.done
 ```
 
 This is one of the most time-consuming steps, as `gatk CombineGVCFs` is extremely slow when there are thousands of
@@ -69,7 +69,7 @@ samples.
 To joint-call a reference panel, run:
 
 ```bash
-snakemake data/panel/${panel}/vcf/joint-call.done
+./refpanel data/panel/${panel}/vcf/joint-call.done
 ```
 
 ### Read-based phasing
@@ -77,7 +77,7 @@ snakemake data/panel/${panel}/vcf/joint-call.done
 To perform read-based phasing of all samples in a reference panel, run:
 
 ```bash
-snakemake data/panel/${panel}/vcf/whatshap.done
+./refpanel data/panel/${panel}/vcf/whatshap.done
 ```
 
 ### Pedigree phasing
@@ -85,7 +85,7 @@ snakemake data/panel/${panel}/vcf/whatshap.done
 To perform pedigree based phasing of all trios in a reference panel, run:
 
 ```bash
-snakemake data/panel/${panel}/vcf/trios.done
+./refpanel data/panel/${panel}/vcf/trios.done
 ```
 
 ### Statistical phasing
@@ -93,6 +93,6 @@ snakemake data/panel/${panel}/vcf/trios.done
 To perform statistical phasing of all samples a reference panel, run:
 
 ```bash
-snakemake data/panel/${panel}/vcf/trios.done
+./refpanel data/panel/${panel}/vcf/trios.done
 ```
 

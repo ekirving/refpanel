@@ -15,5 +15,6 @@ data/source/*/gVCF/
 filereport_read_run_*
 logs/
 nohup*
+refpanel-*.log
 scripts/metadata.R
 tmp/

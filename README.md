@@ -69,8 +69,10 @@ SGDP and GGVP;  and `fastq` files for all other data sources.
 To (optionally) pre-fetch all the data dependencies, run:
 
 ```bash
-./download_data.sh &
+./refpanel download_data &
 ```
+
+All output will be automatically written to a log file `refpanel-<YYYY-MM-DD-HHMM.SS>.log` 
 
 :warning: **These files are very large**: Please make sure you have [sufficient disk space](docs/diskspace.md) to store
 them!
@@ -129,8 +131,10 @@ For more information, refer to the [DAG of the rule graph](docs/rulegraph.pdf) o
 To execute the full pipeline, end-to-end, run:
 
 ```bash
-./run_pipeline.sh &
+./refpanel &
 ```
+
+All output will be automatically written to a log file `refpanel-<YYYY-MM-DD-HHMM.SS>.log`
 
 :warning: **This will take a long time**: Please make sure you run this on a server with as many CPUs, and as much RAM,
 as possible (e.g., this pipeline was developed and run on a cluster of nodes with 96 cores and 755Gb of RAM each).

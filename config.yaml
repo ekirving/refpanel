@@ -4,7 +4,7 @@
 # License:   MIT
 
 # default reference panel
-refpanel: test
+refpanel: refpanel-v1
 
 # data sources, containing samples and individual library accessions
 source:

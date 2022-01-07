@@ -5,15 +5,18 @@
 # Email:     evan.irvingpease@gmail.com
 # License:   MIT
 
+# get the command line arguments
+args=("$@")
+
 datetime=$(date +%Y-%m-%d-%H%M.%S)
 
 # make a unique log file
-logfile="nohup-${datetime}.out"
+logfile="refpanel-${datetime}.log"
 
 # print the server name and start time to the log file
 echo "SERVER: $HOSTNAME" >>${logfile}
 echo "DATE: ${datetime}" >>${logfile}
-echo "REFPANEL: Download Data" >>$logfile
+echo "TARGETS: " "${args[@]}" >>$logfile
 
 # load the conda environment
 eval "$(conda shell.bash hook)"
@@ -21,7 +24,7 @@ conda activate refpanel
 
 MAX_FTP=15
 
-if ! command -v free &> /dev/null; then
+if ! command -v free &>/dev/null; then
   # MacOS does not have the free command
   MAX_MEM=$(sysctl -a | awk '/^hw.memsize:/{print $2/(1024)^2}')
 else
@@ -39,13 +42,9 @@ flags+="--printshellcmds "
 flags+="--show-failed-logs "
 flags+="--rerun-incomplete "
 flags+="--reason "
-flags+="--restart-times 1 "
 flags+="--use-conda "
 flags+="--resources mem_mb=${MAX_MEM} ebi_ftp=${MAX_FTP} "
 
-(
-  set -x
-  snakemake ${flags} -- download_data
-) &>>${logfile}
+snakemake ${flags} -- "${args[@]}" &>>${logfile}
 
 echo "DONE!" >>${logfile}
