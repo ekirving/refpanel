@@ -12,34 +12,48 @@ source:
   1000g:
     # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
     # https://doi.org/10.1101/2021.02.06.430068
+    panel: data/source/1000g/1000g-panel.tsv
     samples: data/source/1000g/1000g-samples.tsv
 
   hgdp:
     # Human Genome Diversity Project (HGDP) (n=929; including 111 samples from SGDP)
     # https://doi.org/10.1126/science.aay5012
+    panel: data/source/hgdp/hgdp-panel.tsv
     samples: data/source/hgdp/hgdp-samples.tsv
 
   sgdp:
     # Simons Genome Diversity Project (SGDP) (n=231; excluding overlap from 1000G and HGDP)
     # https://doi.org/10.1038/nature18964
+    panel: data/source/sgdp/sgdp-panel.tsv
     samples: data/source/sgdp/sgdp-samples.tsv
 
   ggvp:
     # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
     # missing: SC_GMFUL5306403, SC_GMFUL5306370, SC_GMMAN5482315, SC_GMFUL5306362, SC_GMFUL5306428, SC_GMFUL5306378
     # https://doi.org/10.1038/s41467-019-13480-z
+    panel: data/source/ggvp/ggvp-panel.tsv
     samples: data/source/ggvp/ggvp-panel.tsv
 
   appg:
     # Arabian Peninsula Population Genomic (APPG) study (n=137)
     # https://doi.org/10.1016/j.cell.2021.07.013
+    panel: data/source/appg/appg-panel.tsv
     samples: data/source/appg/appg-panel.tsv
     accessions: data/source/appg/appg-accessions.tsv
+    ena_ftp: true
+
+  PRJNA46161:
+    # Khoisan and Bantu genomes from southern Africa (n=3)
+    # https://doi.org/10.1038/nature08795
+    panel: data/source/PRJNA46161/PRJNA46161-panel.tsv
+    samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
+    accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
     ena_ftp: true
 
   PRJEB26721:
     # Jehai genomes from West Malaysia (n=2)
     # https://doi.org/10.1126/science.aat3628
+    panel: data/source/PRJEB26721/PRJEB26721-panel.tsv
     samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
     accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
     ena_ftp: true
@@ -47,22 +61,18 @@ source:
   PRJEB28198:
     # Pan-African genomes (n=9)
     # https://doi.org/10.1186/s13059-019-1684-5
+    panel: data/source/PRJEB28198/PRJEB28198-panel.tsv
     samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
     ena_ftp: true
 
-  PRJNA46161:
-    # Khoisan and Bantu genomes from southern Africa (n=3)
-    # https://doi.org/10.1038/nature08795
-    samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
-    accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
-    ena_ftp: true
 
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
+    panel: data/source/cgg-afr/cgg-afr-panel.tsv
     samples: data/source/cgg-afr/cgg-afr-panel.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
-    public: false
+    private: true
 
 
 # reference panels, aggregations of samples across data sources
@@ -74,12 +84,12 @@ panel:
     pedigree: data/source/1000g/1000g-trios.ped
 
   refpanel-v1:
-    # reference panel of all the public data sources (n=4,893)
-    samples: data/panel/refpanel-v1/refpanel-v1-panel.tsv
+    # reference panel of all the public data sources (n=4,907)
+    samples: data/panel/refpanel-v1/refpanel-v1.tsv
     pedigree: data/source/1000g/1000g-trios.ped
 
-  cgg-afr:
-    # reference panel of the CGG-AFR samples
+  cgg-afr-v1:
+    # reference panel of the CGG-AFR samples + all the public samples in refpanel-v1 (n=4,956)
     samples: data/source/cgg-afr/cgg-afr-panel.tsv
 
 

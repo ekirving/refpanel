@@ -34,7 +34,7 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,893), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,907), involving all publicly 
 available samples from:
 
 * 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
@@ -74,6 +74,23 @@ To (optionally) pre-fetch all the data dependencies, run:
 
 :warning: **These files are very large**: Please make sure you have [sufficient disk space](docs/diskspace.md) to store
 them!
+
+## Ancestry composition
+
+Superpopulation assignments are based on the original 1000G, HGDP and SGDP metadata.
+
+| Superpopulation     | Code | Samples |
+|---------------------|------|--------:|
+| African             | AFR  | 1,434   |
+| American            | AMR  | 571     |
+| Central Asian       | CAS  | 27      |
+| Central South Asian | CSA  | 197     |
+| East Asian          | EAS  | 853     |
+| European            | EUR  | 788     |
+| Middle Eastern      | MEA  | 298     |
+| Oceanian            | OCE  | 41      |
+| South Asian         | SAS  | 630     |
+| West Eurasian       | WEA  | 68      |
 
 ## Joint-calling pipeline
 

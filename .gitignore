@@ -1,4 +1,5 @@
 *-commands.sh
+.Rproj.user
 .snakemake
 __pycache__
 data/ensembl/vep/
