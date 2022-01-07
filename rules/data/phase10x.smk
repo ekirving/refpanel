@@ -17,6 +17,8 @@ Rules to download 10x Genomics pre-phased gVCFs
 rule phase10x_download_gvcfs:
     """
     Download gVCFs phased with 10x Genomics linked-reads
+    
+    Add a random wait time before starting the download, to prevent too many requests per second on the FTP service.
     """
     input:
         tsv=lambda wildcards: ancient(config["source"][wildcards.source]["prephased"]),
@@ -28,6 +30,7 @@ rule phase10x_download_gvcfs:
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
+        r"sleep $(( $RANDOM % 10 + 1))s && "
         r"grep -P '^{wildcards.sample}\t' {input.tsv} | awk '{{ print $2 }}' | "
         r"xargs wget --quiet -O {output.vcf} -o /dev/null && "
         r"bcftools index --tbi {output.vcf}"
