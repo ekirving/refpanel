@@ -6,7 +6,6 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-import pandas as pd
 from snakemake.io import expand
 
 
@@ -55,9 +54,10 @@ rule refpanel:
 
 rule download_data:
     input:
-        # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; and FASTQs for all `ena_ftp` sources
+        # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; 10x gVCFs for HGDP; and FASTQs for everything else
         expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp"]),
         expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
+        expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp"]),
         expand(
             "data/source/{source}/fastq/download.done",
             source=[source for source in config["source"] if config["source"][source].get("ena_ftp", False)],

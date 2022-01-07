@@ -102,3 +102,37 @@ rule hgdp_download_all_cram:
         hgdp_list_all_crams(),
     output:
         touch("data/source/hgdp/cram/download.done"),
+
+
+rule hgdp_download_10x_gvcfs:
+    """
+    Download the 10x Genomics gVCFs phased with linked-reads
+    """
+    input:
+        man="data/source/hgdp/hgdp-10x-gVCFs.tsv",
+    output:
+        vcf="data/source/hgdp/gVCF/phase10x/{sample}.phase10x.vcf.gz",
+        tbi="data/source/hgdp/gVCF/phase10x/{sample}.phase10x.vcf.gz.tbi",
+    resources:
+        ftp=1,
+    conda:
+        "../../envs/htslib-1.14.yaml"
+    shell:
+        r"grep -P '^{wildcards.sample}\t' {input.man} | awk '{{ print $2 }}' | "
+        r"xargs wget --quiet -O {output.vcf} -o /dev/null && "
+        r"bcftools index --tbi {output.vcf}"
+
+
+def hgdp_list_all_10x_gvcfs():
+    samples = pd.read_table("data/source/hgdp/hgdp-10x-gVCFs.tsv")
+
+    files = [f"data/source/hgdp/gVCF/phase10x/{sample}.phase10x.vcf.gz" for sample in samples["sample"]]
+
+    return files
+
+
+rule hgdp_download_all_10x_gvcfs:
+    input:
+        hgdp_list_all_10x_gvcfs(),
+    output:
+        touch("data/source/hgdp/gVCF/phase10x/download.done"),
