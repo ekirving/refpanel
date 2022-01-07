@@ -48,7 +48,7 @@ rule ggvp_download_cram:
     params:
         col=lambda wildcards: 3 if "crai" in wildcards.ext else 1,
     resources:
-        ebi_ftp=1,
+        ftp=1,
     shell:
         r"grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col} }}' | "
         r"xargs wget --quiet -O {output.cram} -o /dev/null && "

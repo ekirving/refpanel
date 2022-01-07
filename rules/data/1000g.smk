@@ -46,7 +46,7 @@ rule tgp_nygc_download_cram:
         cram="data/source/1000g/cram/{sample}.cram",
         crai="data/source/1000g/cram/{sample}.cram.crai",
     resources:
-        ebi_ftp=1,
+        ftp=1,
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -98,7 +98,7 @@ rule tgp_nygc_download_gvcf:
     output:
         vcf="data/source/1000g/gVCF/{sample}.g.{ext}",
     resources:
-        ebi_ftp=1,
+        ftp=1,
     params:
         ftp="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated",
     shell:

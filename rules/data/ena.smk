@@ -60,7 +60,7 @@ rule ena_fastq_download:
     params:
         idx=lambda wildcards, input: get_column_indexes(input.man, ["accession", f"fastq_{wildcards.pair}_ftp"]),
     resources:
-        ebi_ftp=1,
+        ftp=1,
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:

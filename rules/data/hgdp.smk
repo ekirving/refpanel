@@ -30,7 +30,7 @@ rule hgdp_download_cram:
         cram=temp("data/source/hgdp/cram/{sample}.raw.cram"),
         crai=temp("data/source/hgdp/cram/{sample}.raw.cram.crai"),
     resources:
-        ebi_ftp=1,
+        ftp=1,
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
