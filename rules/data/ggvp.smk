@@ -15,9 +15,19 @@ Rules to download data files for the Gambian Genome Variation Project (GGVP)
 https://www.internationalgenome.org/data-portal/data-collection/ggvp-grch38
 """
 
+# the CRAM files for these 6 samples are missing from the IGSR website
+MISSING_CRAM = [
+    "SC_GMFUL5306362",
+    "SC_GMFUL5306370",
+    "SC_GMFUL5306378",
+    "SC_GMFUL5306403",
+    "SC_GMFUL5306428",
+    "SC_GMMAN5482315",
+]
+
 
 wildcard_constraints:
-    sample="[\w-]+",
+    sample=f"((?!{'|'.join(MISSING_CRAM)})[\w-])+",
     ext="cram(.crai)?",
 
 
@@ -107,6 +117,7 @@ def ggvp_list_all_cram():
     files = [
         [f"data/source/ggvp/cram/{sample}.cram", f"data/source/ggvp/cram/{sample}.cram.crai"]
         for sample in samples["sample"]
+        if sample not in MISSING_CRAM
     ]
 
     return files

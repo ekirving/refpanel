@@ -30,10 +30,11 @@ source:
 
   ggvp:
     # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
-    # missing: SC_GMFUL5306403, SC_GMFUL5306370, SC_GMMAN5482315, SC_GMFUL5306362, SC_GMFUL5306428, SC_GMFUL5306378
     # https://doi.org/10.1038/s41467-019-13480-z
     panel: data/source/ggvp/ggvp-panel.tsv
     samples: data/source/ggvp/ggvp-samples.tsv
+    accessions: data/source/ggvp/ggvp-accessions.tsv
+    ena_ftp: true
 
   appg:
     # Arabian Peninsula Population Genomic (APPG) study (n=137)

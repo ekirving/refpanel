@@ -14,6 +14,10 @@ Rules to download 10x Genomics pre-phased gVCFs
 """
 
 
+wildcard_constraints:
+    sample="[\w-]+",
+
+
 rule phase10x_download_gvcfs:
     """
     Download gVCFs phased with 10x Genomics linked-reads

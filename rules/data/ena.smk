@@ -16,6 +16,9 @@ Rules to download FASTQ files from the ENA
 https://www.ebi.ac.uk/ena/browser/
 """
 
+# data sources that store their data in the ENA
+ENA_SOURCES = [source for source in config["source"] if config["source"][source].get("ena_ftp", False)]
+
 
 wildcard_constraints:
     sample="[\w-]+",
@@ -63,6 +66,8 @@ rule ena_fastq_download:
         ftp=1,
     conda:
         "../../envs/htslib-1.14.yaml"
+    wildcard_constraints:
+        source="|".join(ENA_SOURCES),
     shell:
         r"""awk -v FS="\t" '${params.idx[0]}=="{wildcards.accession}" {{ print ${params.idx[1]} }}' {input.man} | """
         "xargs wget --quiet -O {output.fastq} -o /dev/null && "
