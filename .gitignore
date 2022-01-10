@@ -13,9 +13,10 @@ data/source/*/cram/
 data/source/*/fastq/
 data/source/*/gVCF/
 filereport_read_run_*
+igsr*.tsv
+igsr/
 logs/
 nohup*
 refpanel-*.log
 scripts/metadata.R
 tmp/
-igsr/
