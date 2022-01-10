@@ -1,7 +1,7 @@
 # refpanel
 
 A fully automated and reproducible pipeline for building large reference panels of jointly-called and phased human
-genomes.
+genomes, aligned to `GRCh38`.
 
 This pipeline was inspired by the [alignment and SNP calling workflow](
 http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/20190405_NYGC_b38_pipeline_description.pdf)

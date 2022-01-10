@@ -18,3 +18,4 @@ nohup*
 refpanel-*.log
 scripts/metadata.R
 tmp/
+igsr/

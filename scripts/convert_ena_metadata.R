@@ -21,8 +21,11 @@ p <- add_argument(p, "--output", help = "Output file")
 
 argv <- parse_args(p)
 
+# argv$ena <- "filereport_read_run_ggvp.tsv"
+# argv$output <- "data/source/ggvp/ggvp-accessions.tsv"
+
 # parse the ENA metadata
-meta <- read_tsv(argv$ena, na = c("", "NA", "unspecified"), col_types = cols()) %>%
+meta <- read_tsv(argv$ena, na = c("", "NA", "unspecified"), col_types = cols(.default = "c")) %>%
   # select and rename the ENA columns
   select(
     project = study_accession,
