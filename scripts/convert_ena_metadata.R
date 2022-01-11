@@ -16,11 +16,13 @@ quiet(library(tidyr))
 
 # get the command line arguments
 p <- arg_parser("Convert ENA formatted metadata into `refpanel` format")
+p <- add_argument(p, "--source", help = "Data source name")
 p <- add_argument(p, "--ena", help = "ENA metadata")
 p <- add_argument(p, "--output", help = "Output file")
 
 argv <- parse_args(p)
 
+# argv$source <- "ggvp"
 # argv$ena <- "filereport_read_run_ggvp.tsv"
 # argv$output <- "data/source/ggvp/ggvp-accessions.tsv"
 
@@ -76,9 +78,9 @@ meta <- bind_rows(meta_se, meta_pe, meta_pe_se) %>%
   mutate(fastq_r1_ftp = ifelse(!is.na(fastq_r1_ftp), paste0("ftp://", fastq_r1_ftp), NA)) %>%
   mutate(fastq_r2_ftp = ifelse(!is.na(fastq_r2_ftp), paste0("ftp://", fastq_r2_ftp), NA)) %>%
   # add the local file paths
-  mutate(fastq_se = ifelse(!is.na(fastq_se_ftp), paste0("data/source/", project, "/fastq/", accession, "_se.fastq.gz"), NA)) %>%
-  mutate(fastq_r1 = ifelse(!is.na(fastq_r1_ftp), paste0("data/source/", project, "/fastq/", accession, "_r1.fastq.gz"), NA)) %>%
-  mutate(fastq_r2 = ifelse(!is.na(fastq_r2_ftp), paste0("data/source/", project, "/fastq/", accession, "_r2.fastq.gz"), NA)) %>%
+  mutate(fastq_se = ifelse(!is.na(fastq_se_ftp), paste0("data/source/", argv$source, "/fastq/", accession, "_se.fastq.gz"), NA)) %>%
+  mutate(fastq_r1 = ifelse(!is.na(fastq_r1_ftp), paste0("data/source/", argv$source, "/fastq/", accession, "_r1.fastq.gz"), NA)) %>%
+  mutate(fastq_r2 = ifelse(!is.na(fastq_r2_ftp), paste0("data/source/", argv$source, "/fastq/", accession, "_r2.fastq.gz"), NA)) %>%
   # drop all columns that are completely empty
   select_if(~ !all(is.na(.)))
 

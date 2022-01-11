@@ -17,7 +17,14 @@ quiet(library(stringr))
 quiet(library(tidyr))
 quiet(library(purrr))
 
-meta <- read_tsv("igsr_populations.tsv", col_types = cols(.default = "c")) %>%
+# get the command line arguments
+p <- arg_parser("Convert IGSR formatted metadata into `refpanel` format")
+p <- add_argument(p, "--igsr", help = "IGSA metadata", default = "igsr_populations.tsv")
+p <- add_argument(p, "--output", help = "Output file", default = "data/source/igsr_populations.tsv")
+
+argv <- parse_args(p)
+
+meta <- read_tsv(argv$igsr, col_types = cols(.default = "c")) %>%
   # select and rename the IGSR columns
   select(
     population = "Population code",
@@ -97,12 +104,14 @@ pop_map <- list(
 )
 
 # create 3-letter population codes based on the population names
-new_codes <- abbreviate(unique(meta$population_name), minlength = 3, strict = TRUE) %>% toupper()
+new_codes <- abbreviate(sort(unique(meta$population_name)), minlength = 3, strict = TRUE) %>% toupper()
 
 # get the codes that have already been defined
 old_codes <- meta %>%
   filter(!is.na(population)) %>%
-  select(population, population_name)
+  select(population, population_name) %>%
+  arrange(population_name)
+
 old_codes <- setNames(as.list(old_codes$population), old_codes$population_name)
 
 # keep the codes that have already been defined (e.g. YRI for Yoruba)
@@ -110,20 +119,13 @@ for (key in names(old_codes)) {
   new_codes[key] <- old_codes[key]
 }
 
-# manually override some duplicate names
-new_codes["Brahui"] <- "BRA"
-new_codes["Esan"] <- "ESA"
-new_codes["Polish"] <- "POL"
-new_codes["Aleut"] <- "ALE"
-new_codes["Mongolian"] <- "MON"
-
 # codes must be unique
-stopifnot(length(new_codes) == length(unique(new_codes)))
+stopifnot(length(new_codes) == length(unlist(unique(new_codes))))
 
 # new_codes[duplicated(new_codes)]
 
 # apply the population codes
-meta <- meta %>% mutate(population = coalesce(population, as.character(new_codes[population_name])))
+meta <- meta %>% mutate(population = as.character(new_codes[population_name]))
 
 # check the population codes are unique
 dup <- meta %>%
@@ -200,4 +202,4 @@ meta <- meta %>%
   mutate(population_desc = str_replace(population_desc, " [(](SGDP|HGDP)[)]", ""))
 
 # save the metadata
-write_tsv(meta, "data/source/igsr_populations.tsv", na = "")
+write_tsv(meta, argv$output, na = "")

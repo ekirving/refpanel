@@ -17,7 +17,7 @@ quiet(library(tidyr))
 # get the command line arguments
 p <- arg_parser("Convert IGSR formatted metadata into `refpanel` format")
 p <- add_argument(p, "--source", help = "Data source name")
-p <- add_argument(p, "--igsr", help = "ENA metadata")
+p <- add_argument(p, "--igsr", help = "IGSA metadata")
 p <- add_argument(p, "--output", help = "Output file")
 
 argv <- parse_args(p)
