@@ -13,6 +13,7 @@ source:
     # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
     # https://doi.org/10.1101/2021.02.06.430068
     samples: data/source/1000g/1000g-samples.tsv
+    pedigree: data/source/1000g/1000g-trios.ped
 
   hgdp:
     # Human Genome Diversity Project (HGDP) (n=816)
@@ -30,6 +31,7 @@ source:
     # https://doi.org/10.1038/s41467-019-13480-z
     samples: data/source/ggvp/ggvp-samples.tsv
     accessions: data/source/ggvp/ggvp-accessions.tsv
+    pedigree: data/source/ggvp/ggvp-trios.ped
     ena_ftp: true
 
   appg:
@@ -74,21 +76,18 @@ panel:
   1000g:
     # reference panel of the 1000G samples
     samples: data/source/1000g/1000g-panel.tsv
-    pedigree: data/source/1000g/1000g-trios.ped
+    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
   refpanel-v1:
     # reference panel of all the public data sources (n=4,907)
     samples: data/panel/refpanel-v1/refpanel-v1.tsv
-    pedigree: data/source/1000g/1000g-trios.ped
+    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
   cgg-afr-v1:
     # reference panel of the CGG-AFR samples + all the public samples in refpanel-v1 (n=4,956)
     samples: data/source/cgg-afr/cgg-afr-panel.tsv
-    pedigree: data/source/1000g/1000g-trios.ped
+    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
-  hgdp:
-    # TODO remove when done testing
-    samples: data/source/hgdp/hgdp-panel.tsv
 
 # mapping of readgroup tags to accession metadata column names
 readgroup:
