@@ -115,14 +115,15 @@ def source_list_metrics(wildcards):
     source = wildcards.source
     samples = pd.read_table(config["source"][source]["samples"])
 
-    return [
-        [
+    files = []
+    for sample in samples["sample"]:
+        files += [
             f"data/source/{source}/cram/{sample}.multiple_metrics.log",
             f"data/source/{source}/cram/{sample}.wgs_metrics.log",
             f"data/source/{source}/cram/{sample}.cram.xy_ratio",
         ]
-        for sample in samples["sample"]
-    ]
+
+    return files
 
 
 rule source_alignment_metrics:
