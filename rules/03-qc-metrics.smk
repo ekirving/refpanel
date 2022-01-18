@@ -91,6 +91,8 @@ rule samtools_idxstats:
         cram="data/source/{source}/cram/{sample}.cram",
     output:
         idx="data/source/{source}/cram/{sample}.cram.idxstats",
+    conda:
+        "../envs/htslib-1.14.yaml"
     shell:
         "samtools idxstats {input.cram} > {output.idx}"
 
