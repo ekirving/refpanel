@@ -39,11 +39,11 @@ available samples from:
 
 * 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
   [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
-* Human Genome Diversity Project (HGDP) (n=929; including overlap with SGDP); \
+* Human Genome Diversity Project (HGDP) (n=816; excluding overlap with SGDP); \
   [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
-* Simons Genome Diversity Project (SGDP) (n=231; excluding overlap with 1000G and HGDP); \
+* Simons Genome Diversity Project (SGDP) (n=252; excluding overlap with 1000G); \
   [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
-* Gambian Genome Variation Project (GGVP) (n=394; excluding overlap with 1000G); \
+* Gambian Genome Variation Project (GGVP) (n=400; excluding overlap with 1000G); \
   [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
 * Arabian Peninsula Population Genomic (APPG) study (n=137); \
   [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)

@@ -15,18 +15,18 @@ source:
     samples: data/source/1000g/1000g-samples.tsv
 
   hgdp:
-    # Human Genome Diversity Project (HGDP) (n=929; including 111 samples from SGDP)
+    # Human Genome Diversity Project (HGDP) (n=816)
     # https://doi.org/10.1126/science.aay5012
     samples: data/source/hgdp/hgdp-samples.tsv
     prephased: data/source/hgdp/hgdp-10x-gVCFs.tsv
 
   sgdp:
-    # Simons Genome Diversity Project (SGDP) (n=231; excluding overlap from 1000G and HGDP)
+    # Simons Genome Diversity Project (SGDP) (n=252)
     # https://doi.org/10.1038/nature18964
     samples: data/source/sgdp/sgdp-samples.tsv
 
   ggvp:
-    # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
+    # Gambian Genome Variation Project (GGVP) (n=400)
     # https://doi.org/10.1038/s41467-019-13480-z
     samples: data/source/ggvp/ggvp-samples.tsv
     accessions: data/source/ggvp/ggvp-accessions.tsv
