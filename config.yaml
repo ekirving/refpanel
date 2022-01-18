@@ -12,26 +12,22 @@ source:
   1000g:
     # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
     # https://doi.org/10.1101/2021.02.06.430068
-    panel: data/source/1000g/1000g-panel.tsv
     samples: data/source/1000g/1000g-samples.tsv
 
   hgdp:
     # Human Genome Diversity Project (HGDP) (n=929; including 111 samples from SGDP)
     # https://doi.org/10.1126/science.aay5012
-    panel: data/source/hgdp/hgdp-panel.tsv
     samples: data/source/hgdp/hgdp-samples.tsv
     prephased: data/source/hgdp/hgdp-10x-gVCFs.tsv
 
   sgdp:
     # Simons Genome Diversity Project (SGDP) (n=231; excluding overlap from 1000G and HGDP)
     # https://doi.org/10.1038/nature18964
-    panel: data/source/sgdp/sgdp-panel.tsv
     samples: data/source/sgdp/sgdp-samples.tsv
 
   ggvp:
     # Gambian Genome Variation Project (GGVP) (n=394; excluding 118 from 1000G, and 6 missing from IGSR)
     # https://doi.org/10.1038/s41467-019-13480-z
-    panel: data/source/ggvp/ggvp-panel.tsv
     samples: data/source/ggvp/ggvp-samples.tsv
     accessions: data/source/ggvp/ggvp-accessions.tsv
     ena_ftp: true
@@ -39,7 +35,6 @@ source:
   appg:
     # Arabian Peninsula Population Genomic (APPG) study (n=137)
     # https://doi.org/10.1016/j.cell.2021.07.013
-    panel: data/source/appg/appg-panel.tsv
     samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
     prephased: data/source/appg/appg-10x-gVCFs.tsv
@@ -48,7 +43,6 @@ source:
   PRJNA46161:
     # Khoisan and Bantu genomes from southern Africa (n=3)
     # https://doi.org/10.1038/nature08795
-    panel: data/source/PRJNA46161/PRJNA46161-panel.tsv
     samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
     accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
     ena_ftp: true
@@ -56,7 +50,6 @@ source:
   PRJEB26721:
     # Jehai genomes from West Malaysia (n=2)
     # https://doi.org/10.1126/science.aat3628
-    panel: data/source/PRJEB26721/PRJEB26721-panel.tsv
     samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
     accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
     ena_ftp: true
@@ -64,14 +57,12 @@ source:
   PRJEB28198:
     # Pan-African genomes (n=9)
     # https://doi.org/10.1186/s13059-019-1684-5
-    panel: data/source/PRJEB28198/PRJEB28198-panel.tsv
     samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
     ena_ftp: true
 
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
-    panel: data/source/cgg-afr/cgg-afr-panel.tsv
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
     private: true

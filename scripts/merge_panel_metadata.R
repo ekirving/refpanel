@@ -24,9 +24,11 @@ argv <- parse_args(p)
 config <- read_yaml("config.yaml")
 
 # load all data sources
-sources <- lapply(config$source, function(source) {
-  if (is.null(source$private) || source$private == argv$private) {
-    read_tsv(source$panel, show_col_types = FALSE)
+sources <- lapply(names(config$source), function(source) {
+  if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
+    read_tsv(config$source[[source]]$samples, show_col_types = FALSE) %>%
+      mutate(source = source) %>%
+      select(source, sample, population, population_name, superpopulation, superpopulation_name)
   }
 })
 

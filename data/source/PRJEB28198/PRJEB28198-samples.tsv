@@ -1,10 +1,10 @@
-sample	sex	language_family	location	population	superpopulation
-EastAfricanBantu_A401		Niger-Congo	Kenya	EAB	AFR
-SouthAfricanBantu_A402		Niger-Congo	South Africa	SAB	AFR
-KhomaniSan_A403		Khoe-San	South Africa	KHO	AFR
-WestAfricanBantu_A404		Niger-Congo	Gabon	WAB	AFR
-BakaPygmy_A405		Niger-Congo	Gabon	BAK	AFR
-Saharawi_A406		Afro-Asiatic	Western Sahara	SAH	AFR
-Libyan_A407		Afro-Asiatic	Libya	LIB	AFR
-Toubou_A408		Nilo-Saharan	Chad	TOU	AFR
-Laal_A409		Unclassified	Chad	LAA	AFR
+sample	sex	language_family	location	population	population_name	superpopulation	superpopulation_name
+EastAfricanBantu_A401		Niger-Congo	Kenya	EAB	East African Bantu	AFR	African Ancestry
+SouthAfricanBantu_A402		Niger-Congo	South Africa	SAB	South African Bantu	AFR	African Ancestry
+KhomaniSan_A403		Khoe-San	South Africa	KHO	Khomani San	AFR	African Ancestry
+WestAfricanBantu_A404		Niger-Congo	Gabon	WAB	West African Bantu	AFR	African Ancestry
+BakaPygmy_A405		Niger-Congo	Gabon	BAK	Baka Pygmy	AFR	African Ancestry
+Saharawi_A406		Afro-Asiatic	Western Sahara	SAH	Saharawi	AFR	African Ancestry
+Libyan_A407		Afro-Asiatic	Libya	LIB	Libyan	AFR	African Ancestry
+Toubou_A408		Nilo-Saharan	Chad	TOU	Toubou	AFR	African Ancestry
+Laal_A409		Unclassified	Chad	LAA	Laal	AFR	African Ancestry
