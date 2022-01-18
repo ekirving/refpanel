@@ -56,7 +56,7 @@ Plus some additional genomes from:
 The data from these projects is hosted by the
 the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
 ([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)) and the [European Nucleotide Archive (ENA)](
-https://www.ebi.ac.uk/ena/browser/home).
+https://www.ebi.ac.uk/ena/browser/home) ([doi:10.1093/nar/gkq967](https://doi.org/10.1093/nar/gkq967)).
 
 If you wish to build a customised joint-callset (e.g., including non-public samples), please refer to
 the [configuration docs](docs/config.md).
