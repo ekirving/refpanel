@@ -1,395 +1,401 @@
-sample	sex	population	superpopulation
-SC_GMJOL5309930	female	GWJ	AFR
-SC_GMJOL5309891	male	GWJ	AFR
-SC_GMFUL5306338	female	GWF	AFR
-SC_GMFUL5309700	female	GWF	AFR
-SC_GMFUL5306371	male	GWF	AFR
-SC_GMFUL5309748	female	GWF	AFR
-SC_GMFUL5309717	female	GWF	AFR
-SC_GMFUL5306408	female	GWF	AFR
-SC_GMFUL5306395	male	GWF	AFR
-SC_GMFUL5306427	female	GWF	AFR
-SC_GMFUL5306345	female	GWF	AFR
-SC_GMFUL5306340	female	GWF	AFR
-SC_GMFUL5309781	male	GWF	AFR
-SC_GMFUL5306369	male	GWF	AFR
-SC_GMFUL5306388	male	GWF	AFR
-SC_GMFUL5306357	female	GWF	AFR
-SC_GMJOL5309979	female	GWJ	AFR
-SC_GMJOL5309948	male	GWJ	AFR
-SC_GMFUL5306383	female	GWF	AFR
-SC_GMFUL5306415	male	GWF	AFR
-SC_GMFUL5306352	male	GWF	AFR
-SC_GMFUL5306351	male	GWF	AFR
-SC_GMFUL5309755	male	GWF	AFR
-SC_GMFUL5306375	male	GWF	AFR
-SC_GMFUL5306399	male	GWF	AFR
-SC_GMFUL5306407	female	GWF	AFR
-SC_GMFUL5306344	male	GWF	AFR
-SC_GMFUL5309747	male	GWF	AFR
-SC_GMJOL5309917	female	GWJ	AFR
-SC_GMJOL5309911	female	GWJ	AFR
-SC_GMJOL5309981	female	GWJ	AFR
-SC_GMJOL5309935	female	GWJ	AFR
-SC_GMJOL5309950	male	GWJ	AFR
-SC_GMJOL5309959	female	GWJ	AFR
-SC_GMJOL5309974	male	GWJ	AFR
-SC_GMJOL5309896	female	GWJ	AFR
-SC_GMFUL5306410	male	GWF	AFR
-SC_GMJOL5309904	male	GWJ	AFR
-SC_GMFUL5306390	female	GWF	AFR
-SC_GMJOL5309928	male	GWJ	AFR
-SC_GMWOF5428721	male	GWW	AFR
-SC_GMWOF5428745	male	GWW	AFR
-SC_GMFUL5306426	female	GWF	AFR
-SC_GMWOF5428810	female	GWW	AFR
-SC_GMFUL5306421	male	GWF	AFR
-SC_GMWOF5428834	male	GWW	AFR
-SC_GMFUL5309730	male	GWF	AFR
-SC_GMWOF5428858	male	GWW	AFR
-SC_GMFUL5306382	female	GWF	AFR
-SC_GMWOF5428795	female	GWW	AFR
-SC_GMJOL5309980	female	GWJ	AFR
-SC_GMWOF5428803	male	GWW	AFR
-SC_GMJOL5309973	male	GWJ	AFR
-SC_GMWOF5428877	male	GWW	AFR
-SC_GMJOL5309942	male	GWJ	AFR
-SC_GMWOF5428790	female	GWW	AFR
-SC_GMJOL5309966	female	GWJ	AFR
-SC_GMWOF5428822	female	GWW	AFR
-SC_GMFUL5309716	female	GWF	AFR
-SC_GMWOF5428846	female	GWW	AFR
-SC_GMFUL5306363	male	GWF	AFR
-SC_GMWOF5428815	male	GWW	AFR
-SC_GMFUL5309709	male	GWF	AFR
-SC_GMWOF5428839	male	GWW	AFR
-SC_GMFUL5306387	male	GWF	AFR
-SC_GMWOF5428808	male	GWW	AFR
-SC_GMJOL5309860	female	GWJ	AFR
-SC_GMWOF5428841	male	GWW	AFR
-SC_GMJOL5309884	female	GWJ	AFR
-SC_GMWOF5428865	female	GWW	AFR
-SC_GMWOF5428770	female	GWW	AFR
-SC_GMMAN5482162	male	GWD	AFR
-SC_GMFUL5306419	male	GWF	AFR
-SC_GMMAN5482186	female	GWD	AFR
-SC_GMFUL5306356	female	GWF	AFR
-SC_GMJOL5309897	male	GWJ	AFR
-SC_GMFUL5309773	female	GWF	AFR
-SC_GMJOL5309905	male	GWJ	AFR
-SC_GMJOL5309961	female	GWJ	AFR
-SC_GMJOL5309929	female	GWJ	AFR
-SC_GMJOL5309985	female	GWJ	AFR
-SC_GMJOL5309835	female	GWJ	AFR
-SC_GMJOL5309827	male	GWJ	AFR
-SC_GMJOL5309859	female	GWJ	AFR
-SC_GMFUL5309711	male	GWF	AFR
-SC_GMJOL5309943	female	GWJ	AFR
-SC_GMFUL5306349	male	GWF	AFR
-SC_GMJOL5309967	male	GWJ	AFR
-SC_GMFUL5309735	male	GWF	AFR
-SC_GMJOL5309912	female	GWJ	AFR
-SC_GMMAN5482233	male	GWD	AFR
-SC_GMJOL5309936	female	GWJ	AFR
-SC_GMMAN5482290	female	GWD	AFR
-SC_GMJOL5309796	female	GWJ	AFR
-SC_GMMAN5482322	male	GWD	AFR
-SC_GMJOL5309804	male	GWJ	AFR
-SC_GMMAN5482283	female	GWD	AFR
-SC_GMJOL5309828	male	GWJ	AFR
-SC_GMWOF5428707	female	GWW	AFR
-SC_GMMAN5482276	male	GWD	AFR
-SC_GMWOF5428771	male	GWW	AFR
-SC_GMWOF5428737	female	GWW	AFR
-SC_GMWOF5428740	female	GWW	AFR
-SC_GMWOF5428794	female	GWW	AFR
-SC_GMWOF5428827	male	GWW	AFR
-SC_GMWOF5428802	male	GWW	AFR
-SC_GMWOF5428788	male	GWW	AFR
-SC_GMWOF5428826	male	GWW	AFR
-SC_GMMAN5482251	male	GWD	AFR
-SC_GMWOF5428787	male	GWW	AFR
-SC_GMMAN5482220	female	GWD	AFR
-SC_GMWOF5428819	female	GWW	AFR
-SC_GMMAN5482340	female	GWD	AFR
-SC_GMWOF5428833	male	GWW	AFR
-SC_GMWOF5428857	male	GWW	AFR
-SC_GMMAN5482170	female	GWD	AFR
-SC_GMMAN5482225	female	GWD	AFR
-SC_GMMAN5482194	female	GWD	AFR
-SC_GMMAN5482282	male	GWD	AFR
-SC_GMMAN5482202	male	GWD	AFR
-SC_GMMAN5482314	female	GWD	AFR
-SC_GMWOF5428763	female	GWW	AFR
-SC_GMMAN5482299	male	GWD	AFR
-SC_GMWOF5428732	male	GWW	AFR
-SC_GMMAN5482307	male	GWD	AFR
-SC_GMWOF5428744	female	GWW	AFR
-SC_GMMAN5482268	female	GWD	AFR
-SC_GMWOF5428713	female	GWW	AFR
-SC_GMMAN5482232	male	GWD	AFR
-SC_GMMAN5482252	male	GWD	AFR
-SC_GMMAN5482256	male	GWD	AFR
-SC_GMMAN5482221	female	GWD	AFR
-SC_GMMAN5482193	female	GWD	AFR
-SC_GMMAN5482199	female	GWD	AFR
-SC_GMMAN5482201	female	GWD	AFR
-SC_GMMAN5482207	male	GWD	AFR
-SC_GMMAN5482244	female	GWD	AFR
-SC_GMMAN5482163	male	GWD	AFR
-SC_GMMAN5482181	male	GWD	AFR
-SC_GMMAN5482187	male	GWD	AFR
-SC_GMMAN5482213	female	GWD	AFR
-SC_GMMAN5482219	female	GWD	AFR
-SC_GMWOF5428814	female	GWW	AFR
-SC_GMWOF5428838	female	GWW	AFR
-SC_GMWOF5428871	female	GWW	AFR
-SC_GMMAN5482168	female	GWD	AFR
-SC_GMMAN5482240	male	GWD	AFR
-SC_GMWOF5428821	female	GWW	AFR
-SC_GMWOF5428869	female	GWW	AFR
-SC_GMMAN5482308	female	GWD	AFR
-SC_GMJOL5309890	female	GWJ	AFR
-SC_GMJOL5309922	male	GWJ	AFR
-SC_GMJOL5309939	female	GWJ	AFR
-SC_GMFUL5306418	male	GWF	AFR
-SC_GMFUL5306413	male	GWF	AFR
-SC_GMFUL5309722	female	GWF	AFR
-SC_GMFUL5306374	male	GWF	AFR
-SC_GMFUL5306398	male	GWF	AFR
-SC_GMFUL5306406	female	GWF	AFR
-SC_GMFUL5306343	female	GWF	AFR
-SC_GMFUL5306367	male	GWF	AFR
-SC_GMFUL5306355	female	GWF	AFR
-SC_GMFUL5309708	male	GWF	AFR
-SC_GMFUL5306379	female	GWF	AFR
-SC_GMFUL5309741	female	GWF	AFR
-SC_GMFUL5306432	female	GWF	AFR
-SC_GMWOF5428724	male	GWW	AFR
-SC_GMWOF5428748	male	GWW	AFR
-SC_GMWOF5428736	male	GWW	AFR
-SC_GMWOF5428705	male	GWW	AFR
-SC_GMWOF5428729	female	GWW	AFR
-SC_GMWOF5428786	male	GWW	AFR
-SC_GMWOF5428818	female	GWW	AFR
-SC_GMJOL5309852	male	GWJ	AFR
-SC_GMJOL5309876	male	GWJ	AFR
-SC_GMJOL5309821	female	GWJ	AFR
-SC_GMWOF5428762	male	GWW	AFR
-SC_GMWOF5428731	male	GWW	AFR
-SC_GMWOF5428755	male	GWW	AFR
-SC_GMJOL5309965	female	GWJ	AFR
-SC_GMJOL5309934	female	GWJ	AFR
-SC_GMJOL5309958	female	GWJ	AFR
-SC_GMJOL5309895	female	GWJ	AFR
-SC_GMJOL5309903	male	GWJ	AFR
-SC_GMJOL5309927	male	GWJ	AFR
-SC_GMFUL5306348	male	GWF	AFR
-SC_GMFUL5309789	female	GWF	AFR
-SC_GMFUL5309710	male	GWF	AFR
-SC_GMFUL5309703	male	GWF	AFR
-SC_GMJOL5309953	male	GWJ	AFR
-SC_GMJOL5309977	male	GWJ	AFR
-SC_GMJOL5309819	female	GWJ	AFR
-SC_GMJOL5309883	female	GWJ	AFR
-SC_GMWOF5428820	female	GWW	AFR
-SC_GMWOF5428813	male	GWW	AFR
-SC_GMWOF5428798	female	GWW	AFR
-SC_GMWOF5428806	male	GWW	AFR
-SC_GMFUL5306420	male	GWF	AFR
-SC_GMJOL5309972	male	GWJ	AFR
-SC_GMJOL5309941	male	GWJ	AFR
-SC_GMJOL5309898	male	GWJ	AFR
-SC_GMJOL5309960	female	GWJ	AFR
-SC_GMJOL5309906	female	GWJ	AFR
-SC_GMJOL5309984	female	GWJ	AFR
-SC_GMFUL5306346	male	GWF	AFR
-SC_GMWOF5428851	male	GWW	AFR
-SC_GMWOF5428875	male	GWW	AFR
-SC_GMMAN5482309	male	GWD	AFR
-SC_GMWOF5428849	female	GWW	AFR
-SC_GMWOF5428882	male	GWW	AFR
-SC_GMFUL5306391	female	GWF	AFR
-SC_GMMAN5482234	male	GWD	AFR
-SC_GMFUL5306423	male	GWF	AFR
-SC_GMMAN5482171	female	GWD	AFR
-SC_GMFUL5306360	female	GWF	AFR
-SC_GMMAN5482241	male	GWD	AFR
-SC_GMFUL5309763	female	GWF	AFR
-SC_GMMAN5482195	female	GWD	AFR
-SC_GMFUL5306339	female	GWF	AFR
-SC_GMMAN5482291	female	GWD	AFR
-SC_GMMAN5482323	male	GWD	AFR
-SC_GMMAN5482260	male	GWD	AFR
-SC_GMMAN5482284	female	GWD	AFR
-SC_GMMAN5482316	female	GWD	AFR
-SC_GMMAN5482215	female	GWD	AFR
-SC_GMMAN5482239	male	GWD	AFR
-SC_GMMAN5482176	female	GWD	AFR
-SC_GMMAN5482208	male	GWD	AFR
-SC_GMMAN5482203	male	GWD	AFR
-SC_GMMAN5482227	male	GWD	AFR
-SC_GMMAN5482164	female	GWD	AFR
-SC_GMFUL5306389	male	GWF	AFR
-SC_GMWOF5428863	female	GWW	AFR
-SC_GMFUL5306396	male	GWF	AFR
-SC_GMWOF5428832	male	GWW	AFR
-SC_GMFUL5306404	female	GWF	AFR
-SC_GMWOF5428825	female	GWW	AFR
-SC_GMMAN5482169	female	GWD	AFR
-SC_GMFUL5306341	male	GWF	AFR
-SC_GMMAN5482258	female	GWD	AFR
-SC_GMJOL5309963	male	GWJ	AFR
-SC_GMJOL5309956	female	GWJ	AFR
-SC_GMJOL5309951	male	GWJ	AFR
-SC_GMJOL5309975	male	GWJ	AFR
-SC_GMJOL5309920	female	GWJ	AFR
-SC_GMJOL5309944	male	GWJ	AFR
-SC_GMJOL5309968	male	GWJ	AFR
-SC_GMFUL5306416	male	GWF	AFR
-SC_GMFUL5306411	male	GWF	AFR
-SC_GMFUL5306353	male	GWF	AFR
-SC_GMFUL5309718	female	GWF	AFR
-SC_GMFUL5306377	male	GWF	AFR
-SC_GMJOL5309812	female	GWJ	AFR
-SC_GMJOL5309836	female	GWJ	AFR
-SC_GMJOL5309797	female	GWJ	AFR
-SC_GMJOL5309805	male	GWJ	AFR
-SC_GMJOL5309829	male	GWJ	AFR
-SC_GMJOL5309913	female	GWJ	AFR
-SC_GMJOL5309937	male	GWJ	AFR
-SC_GMJOL5309843	female	GWJ	AFR
-SC_GMJOL5309867	female	GWJ	AFR
-SC_GMJOL5309925	male	GWJ	AFR
-SC_GMJOL5309949	male	GWJ	AFR
-SC_GMJOL5309918	female	GWJ	AFR
-SC_GMJOL5309982	female	GWJ	AFR
-SC_GMFUL5309756	male	GWF	AFR
-SC_GMFUL5309701	male	GWF	AFR
-SC_GMFUL5309725	female	GWF	AFR
-SC_GMWOF5428715	female	GWW	AFR
-SC_GMWOF5428739	female	GWW	AFR
-SC_GMWOF5428708	male	GWW	AFR
-SC_GMWOF5428842	female	GWW	AFR
-SC_GMWOF5428866	female	GWW	AFR
-SC_GMWOF5428811	female	GWW	AFR
-SC_GMMAN5482332	male	GWD	AFR
-SC_GMMAN5482293	female	GWD	AFR
-SC_GMMAN5482301	male	GWD	AFR
-SC_GMMAN5482255	male	GWD	AFR
-SC_GMMAN5482192	female	GWD	AFR
-SC_GMMAN5482200	female	GWD	AFR
-SC_GMMAN5482224	female	GWD	AFR
-SC_GMMAN5482248	female	GWD	AFR
-SC_GMMAN5482185	male	GWD	AFR
-SC_GMMAN5482217	female	GWD	AFR
-SC_GMWOF5428835	male	GWW	AFR
-SC_GMWOF5428859	male	GWW	AFR
-SC_GMWOF5428796	female	GWW	AFR
-SC_GMWOF5428804	male	GWW	AFR
-SC_GMWOF5428828	male	GWW	AFR
-SC_GMWOF5428789	male	GWW	AFR
-SC_GMWOF5428861	male	GWW	AFR
-SC_GMMAN5482236	male	GWD	AFR
-SC_GMMAN5482173	female	GWD	AFR
-SC_GMMAN5482197	female	GWD	AFR
-SC_GMMAN5482205	male	GWD	AFR
-SC_GMMAN5482229	male	GWD	AFR
-SC_GMMAN5482231	male	GWD	AFR
-SC_GMMAN5482250	male	GWD	AFR
-SC_GMMAN5482243	female	GWD	AFR
-SC_GMMAN5482180	male	GWD	AFR
-SC_GMMAN5482212	female	GWD	AFR
-SC_GMWOF5428830	male	GWW	AFR
-SC_GMWOF5428854	male	GWW	AFR
-SC_GMWOF5428823	female	GWW	AFR
-SC_GMWOF5428847	female	GWW	AFR
-SC_GMWOF5428816	male	GWW	AFR
-SC_GMWOF5428873	female	GWW	AFR
-SC_GMMAN5482178	male	GWD	AFR
-SC_GMMAN5482274	male	GWD	AFR
-SC_GMMAN5482298	male	GWD	AFR
-SC_GMMAN5482306	male	GWD	AFR
-SC_GMFUL5306354	female	GWF	AFR
-SC_GMJOL5309914	female	GWJ	AFR
-SC_GMJOL5309899	male	GWJ	AFR
-SC_GMJOL5309907	female	GWJ	AFR
-SC_GMJOL5309844	male	GWJ	AFR
-SC_GMJOL5309868	male	GWJ	AFR
-SC_GMJOL5309813	female	GWJ	AFR
-SC_GMJOL5309837	female	GWJ	AFR
-SC_GMWOF5428778	male	GWW	AFR
-SC_GMWOF5428723	male	GWW	AFR
-SC_GMWOF5428747	male	GWW	AFR
-SC_GMFUL5306412	female	GWF	AFR
-SC_GMJOL5309971	male	GWJ	AFR
-SC_GMJOL5309940	male	GWJ	AFR
-SC_GMJOL5309964	female	GWJ	AFR
-SC_GMJOL5309933	female	GWJ	AFR
-SC_GMFUL5306397	male	GWF	AFR
-SC_GMFUL5306405	female	GWF	AFR
-SC_GMFUL5306429	female	GWF	AFR
-SC_GMFUL5309738	female	GWF	AFR
-SC_GMFUL5306366	male	GWF	AFR
-SC_GMFUL5306359	female	GWF	AFR
-SC_GMJOL5309945	male	GWJ	AFR
-SC_GMJOL5309969	female	GWJ	AFR
-SC_GMJOL5309851	male	GWJ	AFR
-SC_GMJOL5309875	male	GWJ	AFR
-SC_GMJOL5309820	female	GWJ	AFR
-SC_GMFUL5309764	female	GWF	AFR
-SC_GMFUL5306392	male	GWF	AFR
-SC_GMFUL5306400	male	GWF	AFR
-SC_GMFUL5309733	male	GWF	AFR
-SC_GMFUL5306424	male	GWF	AFR
-SC_GMFUL5306361	female	GWF	AFR
-SC_GMFUL5309702	female	GWF	AFR
-SC_GMFUL5306385	female	GWF	AFR
-SC_GMFUL5309719	female	GWF	AFR
-SC_GMJOL5309983	female	GWJ	AFR
-SC_GMJOL5309952	male	GWJ	AFR
-SC_GMJOL5309976	male	GWJ	AFR
-SC_GMJOL5309921	male	GWJ	AFR
-SC_GMJOL5309957	female	GWJ	AFR
-SC_GMJOL5309926	male	GWJ	AFR
-SC_GMJOL5309919	male	GWJ	AFR
-SC_GMFUL5306431	female	GWF	AFR
-SC_GMFUL5306347	male	GWF	AFR
-SC_GMWOF5428831	male	GWW	AFR
-SC_GMWOF5428855	male	GWW	AFR
-SC_GMWOF5428879	male	GWW	AFR
-SC_GMWOF5428792	female	GWW	AFR
-SC_GMWOF5428800	female	GWW	AFR
-SC_GMWOF5428824	female	GWW	AFR
-SC_GMWOF5428817	male	GWW	AFR
-SC_GMMAN5482211	male	GWD	AFR
-SC_GMMAN5482235	female	GWD	AFR
-SC_GMMAN5482172	female	GWD	AFR
-SC_GMMAN5482228	male	GWD	AFR
-SC_GMMAN5482165	female	GWD	AFR
-SC_GMMAN5482189	female	GWD	AFR
-SC_GMMAN5482292	female	GWD	AFR
-SC_GMMAN5482300	male	GWD	AFR
-SC_GMMAN5482324	male	GWD	AFR
-SC_GMMAN5482348	male	GWD	AFR
-SC_GMMAN5482285	female	GWD	AFR
-SC_GMMAN5482216	male	GWD	AFR
-SC_GMMAN5482177	female	GWD	AFR
-SC_GMMAN5482209	male	GWD	AFR
-SC_GMMAN5482266	female	GWD	AFR
-SC_GMMAN5482191	male	GWD	AFR
-SC_GMMAN5482223	female	GWD	AFR
-SC_GMMAN5482247	female	GWD	AFR
-SC_GMMAN5482184	male	GWD	AFR
-SC_GMWOF5428812	female	GWW	AFR
-SC_GMWOF5428797	female	GWW	AFR
-SC_GMWOF5428805	male	GWW	AFR
-SC_GMWOF5428829	male	GWW	AFR
-SC_GMWOF5428850	male	GWW	AFR
-SC_GMWOF5428874	male	GWW	AFR
-SC_GMWOF5428843	female	GWW	AFR
-SC_GMWOF5428867	female	GWW	AFR
-SC_GMWOF5428906	male	GWW	AFR
-SC_GMMAN5482242	female	GWD	AFR
-SC_GMWOF5428716	female	GWW	AFR
-SC_GMWOF5428728	male	GWW	AFR
+source	sample	sex	population	population_name	population_desc	superpopulation	superpopulation_name	latitude	longitude
+ggvp	SC_GMFUL5306338	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306339	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306340	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306341	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306343	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306344	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306345	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306346	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306347	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306348	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306349	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306351	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306352	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306353	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306354	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306355	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306356	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306357	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306359	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306360	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306361	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306362	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306363	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306366	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306367	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306369	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306370	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306371	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306374	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306375	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306377	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306378	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306379	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306382	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306383	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306385	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306387	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306388	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306389	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306390	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306391	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306392	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306395	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306396	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306397	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306398	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306399	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306400	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306403	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306404	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306405	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306406	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306407	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306408	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306410	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306411	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306412	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306413	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306415	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306416	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306418	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306419	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306420	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306421	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306423	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306424	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306426	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306427	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306428	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306429	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306431	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5306432	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309700	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309701	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309702	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309703	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309708	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309709	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309710	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309711	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309716	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309717	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309718	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309719	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309722	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309725	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309730	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309733	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309735	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309738	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309741	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309747	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309748	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309755	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309756	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309763	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309764	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309773	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309781	male	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMFUL5309789	female	GWF	Gambian Fula	Gambian in Western Division, The Gambia - Fula	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309796	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309797	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309804	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309805	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309812	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309813	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309819	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309820	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309821	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309827	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309828	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309829	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309835	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309836	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309837	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309843	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309844	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309851	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309852	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309859	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309860	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309867	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309868	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309875	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309876	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309883	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309884	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309890	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309891	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309895	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309896	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309897	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309898	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309899	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309903	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309904	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309905	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309906	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309907	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309911	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309912	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309913	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309914	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309917	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309918	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309919	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309920	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309921	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309922	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309925	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309926	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309927	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309928	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309929	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309930	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309933	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309934	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309935	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309936	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309937	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309939	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309940	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309941	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309942	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309943	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309944	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309945	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309948	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309949	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309950	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309951	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309952	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309953	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309956	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309957	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309958	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309959	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309960	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309961	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309963	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309964	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309965	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309966	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309967	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309968	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309969	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309971	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309972	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309973	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309974	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309975	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309976	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309977	male	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309979	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309980	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309981	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309982	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309983	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309984	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMJOL5309985	female	GWJ	Gambian Jola	Gambian in Western Division, The Gambia - Jola	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482162	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482163	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482164	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482165	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482168	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482169	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482170	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482171	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482172	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482173	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482176	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482177	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482178	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482180	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482181	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482184	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482185	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482186	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482187	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482189	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482191	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482192	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482193	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482194	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482195	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482197	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482199	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482200	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482201	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482202	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482203	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482205	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482207	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482208	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482209	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482211	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482212	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482213	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482215	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482216	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482217	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482219	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482220	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482221	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482223	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482224	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482225	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482227	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482228	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482229	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482231	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482232	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482233	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482234	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482235	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482236	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482239	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482240	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482241	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482242	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482243	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482244	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482247	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482248	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482250	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482251	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482252	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482255	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482256	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482258	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482260	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482266	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482268	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482274	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482276	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482282	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482283	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482284	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482285	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482290	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482291	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482292	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482293	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482298	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482299	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482300	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482301	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482306	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482307	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482308	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482309	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482314	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482315	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482316	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482322	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482323	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482324	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482332	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482340	female	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMMAN5482348	male	GWD	Gambian Mandinka	Gambian in Western Division, The Gambia - Mandinka	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428705	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428707	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428708	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428713	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428715	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428716	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428721	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428723	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428724	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428728	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428729	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428731	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428732	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428736	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428737	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428739	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428740	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428744	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428745	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428747	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428748	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428755	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428762	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428763	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428770	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428771	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428778	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428786	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428787	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428788	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428789	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428790	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428792	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428794	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428795	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428796	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428797	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428798	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428800	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428802	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428803	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428804	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428805	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428806	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428808	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428810	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428811	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428812	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428813	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428814	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428815	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428816	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428817	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428818	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428819	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428820	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428821	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428822	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428823	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428824	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428825	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428826	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428827	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428828	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428829	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428830	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428831	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428832	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428833	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428834	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428835	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428838	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428839	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428841	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428842	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428843	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428846	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428847	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428849	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428850	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428851	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428854	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428855	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428857	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428858	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428859	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428861	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428863	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428865	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428866	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428867	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428869	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428871	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428873	female	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428874	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428875	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428877	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428879	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428882	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
+ggvp	SC_GMWOF5428906	male	GWW	Gambian Wolof	Gambian in Western Division, The Gambia - Wolof	AFR	African Ancestry	13.454876	-16.579032
