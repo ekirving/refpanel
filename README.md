@@ -81,18 +81,18 @@ them!
 
 Superpopulation assignments are based on the original 1000G, HGDP and SGDP metadata.
 
-| Superpopulation     | Code | Samples |
-|---------------------|------|--------:|
-| African             | AFR  | 1,434   |
-| American            | AMR  | 571     |
-| Central Asian       | CAS  | 27      |
-| Central South Asian | CSA  | 197     |
-| East Asian          | EAS  | 853     |
-| European            | EUR  | 788     |
-| Middle Eastern      | MEA  | 298     |
-| Oceanian            | OCE  | 41      |
-| South Asian         | SAS  | 630     |
-| West Eurasian       | WEA  | 68      |
+| Superpopulation                     | Code | Samples |
+|-------------------------------------|------|--------:|
+| African Ancestry                    | AFR  |   1,427 |
+| American Ancestry                   | AMR  |     563 |
+| Central Asian and Siberian Ancestry | CAS  |      25 |
+| Central and South Asian Ancestry    | CSA  |     199 |
+| East Asian Ancestry                 | EAS  |     824 |
+| European Ancestry                   | EUR  |     786 |
+| Middle Eastern Ancestry             | MEA  |     297 |
+| Oceanian Ancestry                   | OCE  |      38 |
+| South Asian Ancestry                | SAS  |     615 |
+| West Eurasian Ancestry              | WEA  |      47 |
 
 ## Joint-calling pipeline
 

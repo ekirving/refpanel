@@ -50,8 +50,6 @@ dup <- panel %>%
   tally() %>%
   filter(n > 1)
 
-panel %>% filter(population %in% dup$population)
-
 stopifnot(nrow(dup) == 0)
 
 # check the super-population pairings are consistent
@@ -63,6 +61,11 @@ dup <- panel %>%
   filter(n > 1)
 
 stopifnot(nrow(dup) == 0)
+
+# panel %>%
+#   group_by(superpopulation, superpopulation_name) %>%
+#   tally() %>%
+#   select(Superpopulation=superpopulation_name, Code=superpopulation, Samples=n)
 
 # save the metadata
 write_tsv(panel, argv$output, na = "")
