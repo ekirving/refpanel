@@ -59,7 +59,7 @@ duplicates <- meta %>%
 
 stopifnot(length(duplicates) == 0)
 
-# load the igsr populations
+# load the IGSR populations
 pops <- read_tsv("data/source/igsr_populations.tsv", show_col_types = FALSE)
 
 # join the population metadata

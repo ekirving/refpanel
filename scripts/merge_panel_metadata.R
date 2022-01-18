@@ -17,7 +17,7 @@ quiet(library(yaml))
 # get the command line arguments
 p <- arg_parser("Merge all the data sources into a single reference panel")
 p <- add_argument(p, "--private", flag = TRUE, help = "Include private data sources")
-p <- add_argument(p, "--output", help = "Output file")
+p <- add_argument(p, "--output", help = "Output file", default = "data/panel/refpanel-v1/refpanel-v1.tsv")
 
 argv <- parse_args(p)
 
@@ -35,25 +35,34 @@ sources <- lapply(names(config$source), function(source) {
 panel <- bind_rows(sources)
 
 # make sure that sample codes are unique
-duplicates <- panel %>%
+dup <- panel %>%
   group_by(sample) %>%
   tally() %>%
-  filter(n > 1) %>%
-  pull(sample)
+  filter(n > 1)
 
-stopifnot(length(duplicates) == 0)
+stopifnot(nrow(dup) == 0)
 
 # make sure that population codes are consistent
-duplicates <- panel %>%
+dup <- panel %>%
   select(population, population_name) %>%
+  unique() %>%
+  group_by(population) %>%
+  tally() %>%
+  filter(n > 1)
+
+panel %>% filter(population %in% dup$population)
+
+stopifnot(nrow(dup) == 0)
+
+# check the super-population pairings are consistent
+dup <- panel %>%
+  select(population_name, superpopulation_name) %>%
   unique() %>%
   group_by(population_name) %>%
   tally() %>%
-  filter(n > 1) %>%
-  pull(population_name)
+  filter(n > 1)
 
-stopifnot(length(duplicates) == 0)
-
+stopifnot(nrow(dup) == 0)
 
 # save the metadata
 write_tsv(panel, argv$output, na = "")

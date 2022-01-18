@@ -144,7 +144,7 @@ meta <- meta %>%
   slice_min(order_by = prefer_source(population_desc)) %>%
   mutate(population_desc = str_replace(population_desc, " [(](SGDP|HGDP)[)]", ""))
 
-# check the superpopulation pairings are consistent
+# check the super-population pairings are consistent
 dup <- meta %>%
   select(population_name, superpopulation_name) %>%
   unique() %>%
