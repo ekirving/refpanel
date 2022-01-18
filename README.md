@@ -34,7 +34,7 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,907), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,822), involving all publicly 
 available samples from:
 
 * 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
