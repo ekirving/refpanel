@@ -4205,6 +4205,7 @@ sgdp	Kusunda02	KSN	Kusunda	SAS	South Asian Ancestry
 sgdp	Kusunda15	KSN	Kusunda	SAS	South Asian Ancestry
 sgdp	lez42	LZG	Lezgin	WEA	West Eurasian Ancestry
 sgdp	lez49	LZG	Lezgin	WEA	West Eurasian Ancestry
+sgdp	M13	MDG	Madiga	SAS	South Asian Ancestry
 sgdp	M4	MDG	Madiga	SAS	South Asian Ancestry
 sgdp	Mansi41	MNS	Mansi	CAS	Central Asian and Siberian Ancestry
 sgdp	Mansi79	MNS	Mansi	CAS	Central Asian and Siberian Ancestry
@@ -4215,6 +4216,8 @@ sgdp	mixa0105	MXT	Mixtec	AMR	American Ancestry
 sgdp	mixe0002	MIX	Mixe	AMR	American Ancestry
 sgdp	mixe0007	MIX	Mixe	AMR	American Ancestry
 sgdp	mixe0042	MIX	Mixe	AMR	American Ancestry
+sgdp	ML2	MAL	Mala	SAS	South Asian Ancestry
+sgdp	ML3	MAL	Mala	SAS	South Asian Ancestry
 sgdp	NA00726	KRN	Korean	EAS	East Asian Ancestry
 sgdp	NA11200	QCH	Quechua	AMR	American Ancestry
 sgdp	NA11201	QCH	Quechua	AMR	American Ancestry
@@ -4230,6 +4233,7 @@ sgdp	NA17374	GRK	Greek	WEA	West Eurasian Ancestry
 sgdp	NA17377	GRK	Greek	WEA	West Eurasian Ancestry
 sgdp	NA17385	HWN	Hawaiian	OCE	Oceanian Ancestry
 sgdp	NA17386	MAR	Maori	OCE	Oceanian Ancestry
+sgdp	NA19044	LWK	Luhya	AFR	African Ancestry
 sgdp	NA21490	MAS	Masai	AFR	African Ancestry
 sgdp	NA21581	MAS	Masai	AFR	African Ancestry
 sgdp	ND15865	PLS	Polish	WEA	West Eurasian Ancestry

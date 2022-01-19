@@ -187,6 +187,7 @@ sgdp	Kusunda02	male	KSN	Kusunda	Kusunda in Nepal	SAS	South Asian Ancestry	28.072
 sgdp	Kusunda15	male	KSN	Kusunda	Kusunda in Nepal	SAS	South Asian Ancestry	28.072453	83.373633
 sgdp	lez42	male	LZG	Lezgin	Lezgin in Russia	WEA	West Eurasian Ancestry	42.1	48.2
 sgdp	lez49	male	LZG	Lezgin	Lezgin in Russia	WEA	West Eurasian Ancestry	42.1	48.2
+sgdp	M13	male	MDG	Madiga	Madiga in India	SAS	South Asian Ancestry	17.7	83.3
 sgdp	M4	male	MDG	Madiga	Madiga in India	SAS	South Asian Ancestry	17.7	83.3
 sgdp	Mansi41	female	MNS	Mansi	Mansi in Russia	CAS	Central Asian and Siberian Ancestry	63.725	61.775
 sgdp	Mansi79	male	MNS	Mansi	Mansi in Russia	CAS	Central Asian and Siberian Ancestry	63.725	61.775
@@ -197,6 +198,8 @@ sgdp	mixa0105	female	MXT	Mixtec	Mixtec in Mexico	AMR	American Ancestry	17	-97
 sgdp	mixe0002	female	MIX	Mixe	Mixe in Mexico	AMR	American Ancestry	16.95	-96.58
 sgdp	mixe0007	female	MIX	Mixe	Mixe in Mexico	AMR	American Ancestry	16.95	-96.58
 sgdp	mixe0042	female	MIX	Mixe	Mixe in Mexico	AMR	American Ancestry	16.95	-96.58
+sgdp	ML2	male	MAL	Mala	Mala in India	SAS	South Asian Ancestry	17.7	83.3
+sgdp	ML3	male	MAL	Mala	Mala in India	SAS	South Asian Ancestry	17.7	83.3
 sgdp	NA00726	female	KRN	Korean	Korean in Korea	EAS	East Asian Ancestry	37.6	127
 sgdp	NA11200	male	QCH	Quechua	Quechua in Peru	AMR	American Ancestry	-13.5	-72
 sgdp	NA11201	female	QCH	Quechua	Quechua in Peru	AMR	American Ancestry	-13.5	-72
@@ -212,6 +215,7 @@ sgdp	NA17374	male	GRK	Greek	Greek in Greece	WEA	West Eurasian Ancestry	38	23.7
 sgdp	NA17377	male	GRK	Greek	Greek in Greece	WEA	West Eurasian Ancestry	38	23.7
 sgdp	NA17385	male	HWN	Hawaiian	Hawaiian in USA	OCE	Oceanian Ancestry	21.3	-157.8
 sgdp	NA17386	male	MAR	Maori	Maori in New Zealand	OCE	Oceanian Ancestry	-41.3	174.5
+sgdp	NA19044	male	LWK	Luhya	Luhya in Webuye, Kenya	AFR	African Ancestry	-1.27	36.61
 sgdp	NA21490	male	MAS	Masai	Masai in Kenya	AFR	African Ancestry	-1.5	35.2
 sgdp	NA21581	male	MAS	Masai	Masai in Kenya	AFR	African Ancestry	-1.5	35.2
 sgdp	ND15865	male	PLS	Polish	Polish in Poland	WEA	West Eurasian Ancestry	52.2	21

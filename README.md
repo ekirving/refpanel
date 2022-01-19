@@ -34,14 +34,14 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,822), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,833), involving all publicly 
 available samples from:
 
 * 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
   [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
 * Human Genome Diversity Project (HGDP) (n=816; excluding overlap with SGDP); \
   [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
-* Simons Genome Diversity Project (SGDP) (n=252; excluding overlap with 1000G); \
+* Simons Genome Diversity Project (SGDP) (n=256; excluding overlap with 1000G); \
   [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
 * Gambian Genome Variation Project (GGVP) (n=400; excluding overlap with 1000G); \
   [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
@@ -84,15 +84,15 @@ Superpopulation assignments are based on the original 1000G, HGDP and SGDP metad
 
 | Superpopulation                     | Code | Samples |
 |-------------------------------------|------|--------:|
-| African Ancestry                    | AFR  |   1,427 |
-| American Ancestry                   | AMR  |     563 |
+| African Ancestry                    | AFR  |   1,431 |
+| American Ancestry                   | AMR  |     564 |
 | Central Asian and Siberian Ancestry | CAS  |      25 |
 | Central and South Asian Ancestry    | CSA  |     199 |
-| East Asian Ancestry                 | EAS  |     824 |
-| European Ancestry                   | EUR  |     786 |
+| East Asian Ancestry                 | EAS  |     826 |
+| European Ancestry                   | EUR  |     788 |
 | Middle Eastern Ancestry             | MEA  |     297 |
 | Oceanian Ancestry                   | OCE  |      38 |
-| South Asian Ancestry                | SAS  |     615 |
+| South Asian Ancestry                | SAS  |     618 |
 | West Eurasian Ancestry              | WEA  |      47 |
 
 ## Joint-calling pipeline

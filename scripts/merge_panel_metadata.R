@@ -65,10 +65,9 @@ dup <- panel %>%
 
 stopifnot(nrow(dup) == 0)
 
-# panel %>%
-#   group_by(superpopulation, superpopulation_name) %>%
-#   tally() %>%
-#   select(Superpopulation=superpopulation_name, Code=superpopulation, Samples=n)
-
+# panel %>% nrow()
+# panel %>% group_by(source) %>% tally()
+# panel %>% group_by(superpopulation, superpopulation_name) %>% tally() %>% select(Superpopulation=superpopulation_name, Code=superpopulation, Samples=n)
+  
 # save the metadata
 write_tsv(panel, argv$output, na = "")
