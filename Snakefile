@@ -56,7 +56,7 @@ rule refpanel:
 rule download_data:
     input:
         # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; 10x gVCFs for HGDP and APPG; and FASTQs for everything else
-        expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp"]),
+        expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp", "PRJNA76713"]),
         expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
         expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp", "appg"]),
         expand(

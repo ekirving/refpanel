@@ -49,6 +49,11 @@ source:
     accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
     ena_ftp: true
 
+  PRJNA76713:
+    # HGDP samples sequenced in Meyer et al. 2012 (n=8)
+    # https://doi.org/10.1126/science.1224344
+    samples: data/source/PRJNA76713/PRJNA76713-samples.tsv
+
   PRJEB26721:
     # Jehai genomes from West Malaysia (n=2)
     # https://doi.org/10.1126/science.aat3628

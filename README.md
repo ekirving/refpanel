@@ -48,7 +48,7 @@ available samples from:
 * Arabian Peninsula Population Genomic (APPG) study (n=137); \
   [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
-Plus some additional genomes from:
+Plus some additional public genomes from:
 * Schuster et al., 2010 (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
 * Meyer et al., 2012 (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
 * McColl et al., 2018 (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)

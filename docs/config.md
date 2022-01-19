@@ -17,11 +17,11 @@ There are four tiers to this configuration:
 
 To add a new data `source` you will need to create two `tsv` metadata files:
 
-* `<source>-samples.tsv`; required columns `(sample, sex)`
+* `<source>-samples.tsv`; required columns `(sample, sex, population, superpopulation)`
 * `<source>-accessions.tsv`; required columns `(sample, accession, <readgroup-cols>, fastq_r1, fastq_r2)`
 
-For examples, see [test-source-samples.tsv](../test/test-source-samples.tsv) and [test-source-accessions.tsv](
-../test/test-source-accessions.tsv)
+For examples, see [PRJEB26721-samples.tsv](../data/source/PRJEB26721/PRJEB26721-samples.tsv) and [PRJEB26721-accessions.tsv](
+../data/source/PRJEB26721/PRJEB26721-accessions.tsv)
 
 The mapping between `@RG` tags and `<readgroup-cols>` is defined in [config.yaml](../config.yaml)
 
@@ -38,7 +38,7 @@ By default, the following mapping is used:
 
 To add a new reference `panel` you will need to create one additional `tsv` metadata file:
 
-* `<panel>-samples.tsv` metadata sheet; required columns `(source, sample, superpopulation)`
+* `<panel>.tsv` metadata sheet; required columns `(source, sample, population, superpopulation)`
 
-For an example, see [test-panel-samples.tsv](../test/test-panel-samples.tsv)
+For an example, see [refpanel-v1.tsv](../data/panel/refpanel-v1/refpanel-v1.tsv)
 

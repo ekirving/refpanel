@@ -1,0 +1,9 @@
+source	sample	sex	population	population_name	population_desc	superpopulation	superpopulation_name	latitude	longitude
+PRJNA76713	HGDP00456	M	MBT	Mbuti	Mbuti in Democratic Republic of Congo	AFR	African Ancestry	1	29
+PRJNA76713	HGDP00521	M	FRN	French	French in France	EUR	European Ancestry	46	2
+PRJNA76713	HGDP00665	M	SRD	Sardinian	Sardinian in Italy	EUR	European Ancestry	40	9
+PRJNA76713	HGDP00778	M	HAN	Han	Han in China	EAS	East Asian Ancestry	32.3	114
+PRJNA76713	HGDP00927	M	YRI	Yoruba	"Yoruba in Ibadan, Nigeria"	AFR	African Ancestry	7.4	3.92
+PRJNA76713	HGDP00998	M	KRT	Karitiana	Karitiana in Brazil	AMR	American Ancestry	-10	-63
+PRJNA76713	HGDP01284	M	MND	Mandenka	Mandenka in Senegal	AFR	African Ancestry	12	-12
+PRJNA76713	HGDP01307	M	DAI	Dai	Dai in China	EAS	East Asian Ancestry	21	100

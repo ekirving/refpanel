@@ -4809,6 +4809,14 @@ appg	APPG7623351	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
 PRJNA46161	NB1	KHO	Khoisan	AFR	African Ancestry
 PRJNA46161	KB1	KHO	Khoisan	AFR	African Ancestry
 PRJNA46161	ABT	SAB	South African Bantu	AFR	African Ancestry
+PRJNA76713	HGDP00456	MBT	Mbuti	AFR	African Ancestry
+PRJNA76713	HGDP00521	FRN	French	EUR	European Ancestry
+PRJNA76713	HGDP00665	SRD	Sardinian	EUR	European Ancestry
+PRJNA76713	HGDP00778	HAN	Han	EAS	East Asian Ancestry
+PRJNA76713	HGDP00927	YRI	Yoruba	AFR	African Ancestry
+PRJNA76713	HGDP00998	KRT	Karitiana	AMR	American Ancestry
+PRJNA76713	HGDP01284	MND	Mandenka	AFR	African Ancestry
+PRJNA76713	HGDP01307	DAI	Dai	EAS	East Asian Ancestry
 PRJEB26721	JHF05	JEH	Jehai in West Malaysia	EAS	East Asian Ancestry
 PRJEB26721	JHM06	JEH	Jehai in West Malaysia	EAS	East Asian Ancestry
 PRJEB28198	EastAfricanBantu_A401	EAB	East African Bantu	AFR	African Ancestry

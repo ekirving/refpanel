@@ -21,6 +21,9 @@ p <- add_argument(p, "--output", help = "Output file", default = "data/panel/ref
 
 argv <- parse_args(p)
 
+# argv$private <- TRUE
+# argv$output <- "data/panel/cgg-afr-v1/cgg-afr-v1.tsv"
+
 config <- read_yaml("config.yaml")
 
 # load all data sources
