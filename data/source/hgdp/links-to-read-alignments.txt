@@ -800,7 +800,6 @@ HGDP01415	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGDP/data/Ba
 HGDP01416	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGDP/data/BantuKenya/HGDP01416/alignment/HGDP01416.alt_bwamem_GRCh38DH.20181023.BantuKenya.cram
 HGDP01418	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGDP/data/BantuKenya/HGDP01418/alignment/HGDP01418.alt_bwamem_GRCh38DH.20181023.BantuKenya.cram
 HGDP01419	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGDP/data/BantuKenya/HGDP01419/alignment/HGDP01419.alt_bwamem_GRCh38DH.20181023.BantuKenya.cram
-
 HGDP00019	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/simons_diversity_data/data/Brahui/SAMEA3302677/alignment/SAMEA3302677.alt_bwamem_GRCh38DH.20200922.Brahui.simons.cram
 HGDP00027	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/simons_diversity_data/data/Brahui/SAMEA3302782/alignment/SAMEA3302782.alt_bwamem_GRCh38DH.20200922.Brahui.simons.cram
 HGDP00058	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/simons_diversity_data/data/Balochi/SAMEA3449877/alignment/SAMEA3449877.alt_bwamem_GRCh38DH.20200922.Balochi.simons.cram
