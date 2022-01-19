@@ -91,18 +91,11 @@ def sample_sex(config, source, sample):
 
 def gatk_flags(config, source, sample):
     """
-    Get any sample specific GATK flags, to deal with subtle validation errors
+    Get any sample specific GATK flags, to deal with specific edge cases in some older sequencing libraries
     """
-    samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
+    samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False).replace(np.nan, "")
 
-    relaxed = samples.loc[sample].get("gatk_relaxed")
-
-    flags = ""
-
-    if relaxed:
-        flags += "--allow_potentially_misencoded_quality_scores --maximum_cycle_value 600"
-
-    return flags
+    return samples.loc[sample].get("gatk_flags", "")
 
 
 def list_samples(config, source):
