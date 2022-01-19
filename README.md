@@ -50,6 +50,7 @@ available samples from:
 
 Plus some additional genomes from:
 * Schuster et al., 2010 (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
+* Meyer et al., 2012 (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
 * McColl et al., 2018 (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
 * Lorente-Galdos et al., 2019 (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
 

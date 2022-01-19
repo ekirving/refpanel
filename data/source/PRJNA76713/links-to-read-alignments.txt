@@ -1,0 +1,9 @@
+sample	file
+HGDP00456	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP00456.cram
+HGDP00521	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP00521.cram
+HGDP00665	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP00665.cram
+HGDP00778	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP00778.cram
+HGDP00927	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP00927.cram
+HGDP00998	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP00998.cram
+HGDP01284	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP01284.cram
+HGDP01307	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/read-alignments/meyer2012/HGDP01307.cram
