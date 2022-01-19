@@ -21,6 +21,7 @@ ENA_SOURCES = [source for source in config["source"] if config["source"][source]
 
 
 wildcard_constraints:
+    source="[\w-]+",
     sample="[\w-]+",
     pair="r1|r2|se",
 

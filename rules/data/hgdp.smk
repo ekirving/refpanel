@@ -17,6 +17,7 @@ https://www.internationalgenome.org/data-portal/data-collection/hgdp
 
 
 wildcard_constraints:
+    source="hgdp|PRJNA76713",
     sample="[\w-]+",
 
 
@@ -25,10 +26,10 @@ rule hgdp_download_cram:
     Download bwa-mem CRAM files for each fully-public HGDP sample
     """
     input:
-        man="data/source/hgdp/links-to-read-alignments.txt",
+        man="data/source/{source}/links-to-read-alignments.txt",
     output:
-        cram=temp("data/source/hgdp/cram/{sample}.raw.cram"),
-        crai=temp("data/source/hgdp/cram/{sample}.raw.cram.crai"),
+        cram=temp("data/source/{source}/cram/{sample}.raw.cram"),
+        crai=temp("data/source/{source}/cram/{sample}.raw.cram.crai"),
     resources:
         ftp=1,
     conda:
@@ -50,11 +51,11 @@ rule hgdp_filter_iupac_base_codes:
     """
     input:
         ref=ancient("data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"),
-        cram="data/source/hgdp/cram/{sample}.raw.cram",
-        crai="data/source/hgdp/cram/{sample}.raw.cram.crai",
+        cram="data/source/{source}/cram/{sample}.raw.cram",
+        crai="data/source/{source}/cram/{sample}.raw.cram.crai",
     output:
-        cram=temp("data/source/hgdp/cram/{sample}.filtered.cram"),
-        crai=temp("data/source/hgdp/cram/{sample}.filtered.cram.crai"),
+        cram=temp("data/source/{source}/cram/{sample}.filtered.cram"),
+        crai=temp("data/source/{source}/cram/{sample}.filtered.cram.crai"),
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -74,11 +75,11 @@ rule hgdp_standardise_sample_names:
     e.g. replace `SAMEA3302828` with `HGDP00526`
     """
     input:
-        cram="data/source/hgdp/cram/{sample}.filtered.cram",
-        crai="data/source/hgdp/cram/{sample}.filtered.cram.crai",
+        cram="data/source/{source}/cram/{sample}.filtered.cram",
+        crai="data/source/{source}/cram/{sample}.filtered.cram.crai",
     output:
-        cram="data/source/hgdp/cram/{sample}.cram",
-        crai="data/source/hgdp/cram/{sample}.cram.crai",
+        cram="data/source/{source}/cram/{sample}.cram",
+        crai="data/source/{source}/cram/{sample}.cram.crai",
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -86,11 +87,12 @@ rule hgdp_standardise_sample_names:
         "samtools index {output.cram}"
 
 
-def hgdp_list_all_crams():
+def hgdp_list_all_crams(wildcards):
+    source = wildcards.source
     samples = pd.read_table(config["source"]["hgdp"]["samples"])
 
     files = [
-        [f"data/source/hgdp/cram/{sample}.cram", f"data/source/hgdp/cram/{sample}.cram.crai"]
+        [f"data/source/{source}/cram/{sample}.cram", f"data/source/{source}/cram/{sample}.cram.crai"]
         for sample in samples["sample"]
     ]
 
@@ -99,6 +101,6 @@ def hgdp_list_all_crams():
 
 rule hgdp_download_all_cram:
     input:
-        hgdp_list_all_crams(),
+        hgdp_list_all_crams,
     output:
-        touch("data/source/hgdp/cram/download.done"),
+        touch("data/source/{source}/cram/download.done"),

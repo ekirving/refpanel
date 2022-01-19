@@ -15,6 +15,7 @@ Rules to download 10x Genomics pre-phased gVCFs
 
 
 wildcard_constraints:
+    source="[\w-]+",
     sample="[\w-]+",
 
 
