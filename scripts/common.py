@@ -89,6 +89,22 @@ def sample_sex(config, source, sample):
     return sex
 
 
+def gatk_flags(config, source, sample):
+    """
+    Get any sample specific GATK flags, to deal with subtle validation errors
+    """
+    samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
+
+    relaxed = samples.loc[sample].get("gatk_relaxed")
+
+    flags = ""
+
+    if relaxed:
+        flags += "--allow_potentially_misencoded_quality_scores --maximum_cycle_value 600"
+
+    return flags
+
+
 def list_samples(config, source):
     """
     Get a list of samples for the given data source

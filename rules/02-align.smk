@@ -9,7 +9,15 @@ __license__ = "MIT"
 import pandas as pd
 from snakemake.io import protected, temp, touch
 
-from scripts.common import fastq_path, read_group, list_accessions, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR
+from scripts.common import (
+    fastq_path,
+    read_group,
+    list_accessions,
+    GATK_NUM_THREADS,
+    JAVA_MEMORY_MB,
+    JAVA_TEMP_DIR,
+    gatk_flags,
+)
 
 global workflow
 
@@ -324,6 +332,9 @@ rule gatk3_recalibrator_print_reads:
         bam=temp("data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam"),
     log:
         log="data/source/{source}/bam/{sample}_merged_sorted_dedup_recal.bam.log",
+    params:
+        # fetch any sample specific flags
+        flags=lambda wildcards: gatk_flags(config, wildcards.source, wildcards.sample),
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
@@ -336,6 +347,7 @@ rule gatk3_recalibrator_print_reads:
         " --num_cpu_threads_per_data_thread {threads}"
         " --disable_indel_quals"
         " --preserve_qscores_less_than 6"
+        " {params.flags}"
         " -SQQ 10"
         " -SQQ 20"
         " -SQQ 30"
