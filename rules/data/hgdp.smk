@@ -26,7 +26,7 @@ rule hgdp_download_cram:
     Download bwa-mem CRAM files for each fully-public HGDP sample
     """
     input:
-        man="data/source/{source}/links-to-read-alignments.txt",
+        man=ancient("data/source/{source}/links-to-read-alignments.txt"),
     output:
         cram=temp("data/source/{source}/cram/{sample}.raw.cram"),
         crai=temp("data/source/{source}/cram/{sample}.raw.cram.crai"),
