@@ -115,13 +115,13 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
     1) VQSR PASS;
     2) GT missingness < 5%;
     3) HWE p-value > 1e-10 in at least one super-population;
-    4) Mendelian error rate < 5% (using trios from 1000G and GGVP);
+    4) Mendelian error rate < 5%, using trios from 1000G (n=602) and GGVP (n=133);
     5) MAC ≥ 2 (i.e., no singletons)
 * [Read-based phasing](rules/07-phase-reads.smk) with `whatshap` (v1.2.1) using:
     * _Illumina_ paired-end reads from all projects;
     * _10x Genomics_ linked-read sequencing from HGDP (n=26) and APPG (n=137);
 * [Pedigree phasing](rules/08-phase-trios.smk) with `whatshap` using:
-    * Trios from 1000G (n=602) nad GGVP (n=133);
+    * Trios from 1000G (n=602) and GGVP (n=133);
 * [Statistical phasing](rules/09-phase-stat.smk) with `shapeit4` (v4.2.2)
 * [Variant effect prediction](rules/10-ensembl-vep.smk) with `ensembl-vep` (v105.0)
 
