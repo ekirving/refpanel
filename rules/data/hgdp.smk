@@ -91,10 +91,9 @@ def hgdp_list_all_crams(wildcards):
     source = wildcards.source
     samples = pd.read_table(config["source"]["hgdp"]["samples"])
 
-    files = [
-        [f"data/source/{source}/cram/{sample}.cram", f"data/source/{source}/cram/{sample}.cram.crai"]
-        for sample in samples["sample"]
-    ]
+    files = []
+    for sample in samples["sample"]:
+        files += [f"data/source/{source}/cram/{sample}.cram", f"data/source/{source}/cram/{sample}.cram.crai"]
 
     return files
 
