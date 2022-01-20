@@ -89,7 +89,7 @@ rule hgdp_standardise_sample_names:
 
 def hgdp_list_all_crams(wildcards):
     source = wildcards.source
-    samples = pd.read_table(config["source"]["hgdp"]["samples"])
+    samples = pd.read_table(config["source"][source]["samples"])
 
     files = []
     for sample in samples["sample"]:
