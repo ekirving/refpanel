@@ -311,6 +311,7 @@ rule gatk3_base_recalibrator:
         " --downsample_to_fraction 0.1"
         " --num_cpu_threads_per_data_thread {threads}"
         " --preserve_qscores_less_than 6"
+        " --maximum_cycle_value 600"
         " -R {input.ref}"
         " -o {output.tbl}"
         " -I {input.bam}"
