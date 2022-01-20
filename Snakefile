@@ -53,16 +53,18 @@ rule refpanel:
         expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
 
 
+ENA_SOURCES = [
+    source for source in config["source"] if config["source"][source].get("ena_ftp", False) and source != "ggvp"
+]
+
+
 rule download_data:
     input:
         # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; 10x gVCFs for HGDP and APPG; and FASTQs for everything else
         expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp", "PRJNA76713"]),
         expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
         expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp", "appg"]),
-        expand(
-            "data/source/{source}/fastq/download.done",
-            source=[source for source in config["source"] if config["source"][source].get("ena_ftp", False)],
-        ),
+        expand("data/source/{source}/fastq/download.done", source=ENA_SOURCES),
 
 
 rule align_sources:
