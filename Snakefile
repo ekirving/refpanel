@@ -63,3 +63,21 @@ rule download_data:
             "data/source/{source}/fastq/download.done",
             source=[source for source in config["source"] if config["source"][source].get("ena_ftp", False)],
         ),
+
+
+rule align_sources:
+    input:
+        # align all samples in all data sources
+        expand("data/source/{source}/cram/align.done", source=config["source"]),
+
+
+rule call_sources:
+    input:
+        # call all samples in all data sources
+        expand("data/source/{source}/gVCF/call.done", source=config["source"]),
+
+
+rule merge_sources:
+    input:
+        # merge all samples in each data source
+        expand("data/source/{source}/gVCF/merge.done", source=config["source"]),
