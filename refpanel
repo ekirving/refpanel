@@ -22,6 +22,7 @@ echo "TARGETS: " "${args[@]}" >>$logfile
 eval "$(conda shell.bash hook)"
 conda activate refpanel
 
+# maximum number of concurrent FTP requests (prevents overloading the FTP server)
 MAX_FTP=15
 
 if ! command -v free &>/dev/null; then
@@ -32,7 +33,7 @@ else
   MAX_MEM=$(free -m | awk '/^Mem:/{print $2}')
 fi
 
-# save 1 Gb
+# hide 1 GB of RAM from the snakemake scheduler, to avoid exhausting total system RAM
 MAX_MEM=$((MAX_MEM - 1024))
 
 flags="--cores all "
