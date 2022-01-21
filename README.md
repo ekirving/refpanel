@@ -10,6 +10,8 @@ https://www.biorxiv.org/content/10.1101/2021.02.06.430068); implemented here, wi
 using [snakemake](https://snakemake.readthedocs.io/en/stable/) and
 [conda](https://docs.conda.io/projects/conda/en/latest/) for full reproducibility.
 
+:warning: **This pipeline is in active development and subject to ongoing improvements.**
+
 ## Installation
 
 Download the `refpanel` source code

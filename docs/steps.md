@@ -93,6 +93,6 @@ To perform pedigree based phasing of all trios in a reference panel, run:
 To perform statistical phasing of all samples a reference panel, run:
 
 ```bash
-./refpanel data/panel/${panel}/vcf/trios.done
+./refpanel data/panel/${panel}/vcf/phase.done
 ```
 
