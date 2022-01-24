@@ -6,6 +6,8 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
+import sys
+
 import numpy as np
 import pandas as pd
 from psutil import virtual_memory
@@ -81,10 +83,16 @@ def sample_sex(config, source, sample):
     """
     samples = pd.read_table(config["source"][source]["samples"]).set_index("sample", drop=False)
 
-    sex = samples.loc[sample].get("sex")[0].upper()
+    sex = ""
 
-    # sanity check that the metadata is well formed
-    assert sex in {"M", "F"}
+    try:
+        sex = samples.loc[sample].get("sex")[0].upper()
+
+        # sanity check that the metadata is well formed
+        assert sex in {"M", "F"}
+
+    except (TypeError, IndexError, AssertionError):
+        raise RuntimeError(f"Sample sex must be 'M' or 'F', not '{sex}'")
 
     return sex
 

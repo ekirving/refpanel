@@ -58,7 +58,7 @@ ENA_SOURCES = [
 rule download_data:
     input:
         # download sample data for all data sources (the starting point varies between sources)
-        expand("data/source/{source}/fastq/download.done",source=ENA_SOURCES),
+        expand("data/source/{source}/fastq/download.done", source=ENA_SOURCES),
         expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp", "PRJNA76713"]),
         expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
         expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp", "appg"]),
