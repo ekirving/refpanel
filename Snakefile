@@ -69,6 +69,12 @@ rule align_sources:
         expand("data/source/{source}/cram/align.done", source=config["source"]),
 
 
+rule metrics_sources:
+    input:
+        # calculate alignment metrics for all samples in all data sources
+        expand("data/source/{source}/cram/metrics.done", source=config["source"]),
+
+
 rule call_sources:
     input:
         # call all samples in all data sources
