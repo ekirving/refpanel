@@ -1,138 +1,138 @@
-sample	population	population_name	long_ID	pop_ID	annotation	superpopulation	superpopulation_name
-APPG7555879	UAE	United Arab Emirates 	longranger222_wgs_26958_APPG7555879_GRCh38_gatk	UAE19	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555867	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555867_GRCh38_gatk	UAE6	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555897	UAE	United Arab Emirates 	longranger222_wgs_28420_APPG7555897_GRCh38_gatk	UAE37	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555899	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555899_GRCh38_gatk	UAE39	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555900	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555900_GRCh38_gatk	UAE40	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555901	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555901_GRCh38_gatk	UAE41	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555902	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555902_GRCh38_gatk	UAE42	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7836393	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836393_GRCh38_gatk	SAUDI12	SaudiA	MEA	Middle Eastern Ancestry
-APPG7836394	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836394_GRCh38_gatk	SAUDI13	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836395	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836395_GRCh38_gatk	SAUDI14	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836403	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836403_GRCh38_gatk	SAUDI22	SaudiA	MEA	Middle Eastern Ancestry
-APPG7836397	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836397_GRCh38_gatk	SAUDI16	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836398	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836398_GRCh38_gatk	SAUDI17	SaudiA	MEA	Middle Eastern Ancestry
-APPG7836399	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836399_GRCh38_gatk	SAUDI18	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836401	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836401_GRCh38_gatk	SAUDI20	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836402	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836402_GRCh38_gatk	SAUDI21	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836396	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836396_GRCh38_gatk	SAUDI15	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836404	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836404_GRCh38_gatk	SAUDI23	Saudi.o	MEA	Middle Eastern Ancestry
-APPG7836405	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836405_GRCh38_gatk	SAUDI24	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836406	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836406_GRCh38_gatk	SAUDI25	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836407	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836407_GRCh38_gatk	SAUDI26	SaudiB	MEA	Middle Eastern Ancestry
-APPG7836408	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836408_GRCh38_gatk	SAUDI28	SaudiA	MEA	Middle Eastern Ancestry
-APPG7836409	IRQ	Iraq	longranger222_wgs_29106_APPG7836409_GRCh38_gatk	IRAQ13	Kurd	MEA	Middle Eastern Ancestry
-APPG7836410	IRQ	Iraq	longranger222_wgs_29106_APPG7836410_GRCh38_gatk	IRAQ14	Kurd	MEA	Middle Eastern Ancestry
-APPG7850840	SAU	Saudi Arabia	longranger222_wgs_29691_APPG7850840_GRCh38_gatk	SAUDI27	SaudiB	MEA	Middle Eastern Ancestry
-APPG7850841	SAU	Saudi Arabia	longranger222_wgs_29691_APPG7850841_GRCh38_gatk	SAUDI29	SaudiB	MEA	Middle Eastern Ancestry
-APPG7555863	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555863_GRCh38_gatk	UAE1	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555864	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555864_GRCh38_gatk	UAE2	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555865	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555865_GRCh38_gatk	UAE4	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555866	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555866_GRCh38_gatk	UAE5	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555868	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555868_GRCh38_gatk	UAE7	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555869	UAE	United Arab Emirates 	longranger222_wgs_27038_APPG7555869_GRCh38_gatk	UAE8	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555870	UAE	United Arab Emirates 	longranger222_wgs_27038_APPG7555870_GRCh38_gatk	UAE9	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555871	UAE	United Arab Emirates 	longranger222_wgs_27038_3_APPG7555871_GRCh38_gatk	UAE11	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555872	UAE	United Arab Emirates 	longranger222_wgs_27038_APPG7555872_GRCh38_gatk	UAE12	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555873	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555873_GRCh38_gatk	UAE13	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555874	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555874_GRCh38_gatk	UAE14	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555875	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555875_GRCh38_gatk	UAE15	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555876	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555876_GRCh38_gatk	UAE16	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555877	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555877_GRCh38_gatk	UAE17	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555878	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555878_GRCh38_gatk	UAE18	Emirati.o	MEA	Middle Eastern Ancestry
-APPG7555880	UAE	United Arab Emirates 	longranger222_wgs_27031_APPG7555880_GRCh38_gatk	UAE20	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555881	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555881_GRCh38_gatk	UAE21	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555882	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555882_GRCh38_gatk	UAE22	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555883	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555883_GRCh38_gatk	UAE23	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555884	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555884_GRCh38_gatk	UAE24	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555885	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555885_GRCh38_gatk	UAE25	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555886	UAE	United Arab Emirates 	longranger222_wgs_APPG7555886_GRCh38_gatk	UAE26	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555887	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555887_GRCh38_gatk	UAE27	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555888	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555888_GRCh38_gatk	UAE28	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555889	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555889_GRCh38_gatk	UAE29	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555890	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555890_GRCh38_gatk	UAE30	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555891	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555891_GRCh38_gatk	UAE31	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555892	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555892_GRCh38_gatk	UAE32	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555893	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555893_GRCh38_gatk	UAE33	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555894	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555894_GRCh38_gatk	UAE34	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555895	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555895_GRCh38_gatk	UAE35	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555896	UAE	United Arab Emirates 	longranger222_wgs_27412_APPG7555896_GRCh38_gatk	UAE36	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555898	UAE	United Arab Emirates 	longranger222_wgs_APPG7555898_GRCh38_gatk	UAE38	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555903	UAE	United Arab Emirates 	longranger222_wgs_APPG7555903_GRCh38_gatk	UAE43	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555904	UAE	United Arab Emirates 	longranger222_wgs_APPG7555904_GRCh38_gatk	UAE44	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555905	UAE	United Arab Emirates 	longranger222_wgs_APPG7555905_GRCh38_gatk	UAE45	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555906	UAE	United Arab Emirates 	longranger222_wgs_APPG7555906_GRCh38_gatk	UAE46	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555907	UAE	United Arab Emirates 	longranger222_wgs_APPG7555907_GRCh38_gatk	UAE47	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555908	UAE	United Arab Emirates 	longranger222_wgs_27493_APPG7555908_GRCh38_gatk	UAE48	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7555909	UAE	United Arab Emirates 	longranger222_wgs_27493_APPG7555909_GRCh38_gatk	UAE50	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555910	UAE	United Arab Emirates 	longranger222_wgs_27493_APPG7555910_GRCh38_gatk	UAE51	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555911	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555911_GRCh38_gatk	UAE52	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7555912	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555912_GRCh38_gatk	UAE53	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555913	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555913_GRCh38_gatk	UAE54	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555914	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555914_GRCh38_gatk	UAE55	EmiratiD	MEA	Middle Eastern Ancestry
-APPG7555915	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555915_GRCh38_gatk	UAE56	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7555916	IRQ	Iraq	longranger222_wgs_27461_APPG7555916_GRCh38_gatk	IRAQ1	Arab	MEA	Middle Eastern Ancestry
-APPG7555918	IRQ	Iraq	longranger222_wgs_27461_APPG7555918_GRCh38_gatk	IRAQ3	Arab	MEA	Middle Eastern Ancestry
-APPG7555919	IRQ	Iraq	longranger222_wgs_27632_APPG7555919_GRCh38_gatk	IRAQ4	Arab	MEA	Middle Eastern Ancestry
-APPG7555920	IRQ	Iraq	longranger222_wgs_27632_APPG7555920_GRCh38_gatk	IRAQ5	Kurd	MEA	Middle Eastern Ancestry
-APPG7555921	IRQ	Iraq	longranger222_wgs_27632_APPG7555921_GRCh38_gatk	IRAQ6	Arab	MEA	Middle Eastern Ancestry
-APPG7555922	IRQ	Iraq	longranger222_wgs_27632_APPG7555922_GRCh38_gatk	IRAQ7	Arab	MEA	Middle Eastern Ancestry
-APPG7555923	IRQ	Iraq	longranger222_wgs_27632_APPG7555923_GRCh38_gatk	IRAQ8	Arab	MEA	Middle Eastern Ancestry
-APPG7555924	IRQ	Iraq	longranger222_wgs_27632_APPG7555924_GRCh38_gatk	IRAQ9	Arab	MEA	Middle Eastern Ancestry
-APPG7555925	IRQ	Iraq	longranger222_wgs_27632_APPG7555925_GRCh38_gatk	IRAQ10	Kurd	MEA	Middle Eastern Ancestry
-APPG7555926	YEM	Yemen	longranger222_wgs_27632_APPG7555926_GRCh38_gatk	YEMEN1	Yemen	MEA	Middle Eastern Ancestry
-APPG7555927	YEM	Yemen	longranger222_wgs_27426_APPG7555927_GRCh38_gatk	YEMEN2	Yemen	MEA	Middle Eastern Ancestry
-APPG7555928	YEM	Yemen	longranger222_wgs_27426_APPG7555928_GRCh38_gatk	YEMEN3	Yemen	MEA	Middle Eastern Ancestry
-APPG7555929	YEM	Yemen	longranger222_wgs_27426_APPG7555929_GRCh38_gatk	YEMEN4	Yemen	MEA	Middle Eastern Ancestry
-APPG7555930	YEM	Yemen	longranger222_wgs_27426_APPG7555930_GRCh38_gatk	YEMEN5	Yemen	MEA	Middle Eastern Ancestry
-APPG7555931	YEM	Yemen	longranger222_wgs_APPG7555931_GRCh38_gatk	YEMEN6	Yemen	MEA	Middle Eastern Ancestry
-APPG7555932	YEM	Yemen	longranger222_wgs_27426_APPG7555932_GRCh38_gatk	YEMEN7	Yemen	MEA	Middle Eastern Ancestry
-APPG7555933	YEM	Yemen	longranger222_wgs_27426_APPG7555933_GRCh38_gatk	YEMEN8	Yemen	MEA	Middle Eastern Ancestry
-APPG7555934	YEM	Yemen	longranger222_wgs_27426_APPG7555934_GRCh38_gatk	YEMEN9	Yemen	MEA	Middle Eastern Ancestry
-APPG7555935	YEM	Yemen	longranger222_wgs_27492_APPG7555935_GRCh38_gatk	YEMEN10	Yemen	MEA	Middle Eastern Ancestry
-APPG7555936	YEM	Yemen	longranger222_wgs_27554_APPG7555936_GRCh38_gatk	YEMEN11	Yemen	MEA	Middle Eastern Ancestry
-APPG7555937	YEM	Yemen	longranger222_wgs_27554_APPG7555937_GRCh38_gatk	YEMEN12	Yemen	MEA	Middle Eastern Ancestry
-APPG7555938	YEM	Yemen	longranger222_wgs_APPG7555938_GRCh38_gatk	YEMEN13	Yemen	MEA	Middle Eastern Ancestry
-APPG7555939	YEM	Yemen	longranger222_wgs_27491_APPG7555939_GRCh38_gatk	YEMEN14	Yemen	MEA	Middle Eastern Ancestry
-APPG7555941	YEM	Yemen	longranger222_wgs_27491_APPG7555941_GRCh38_gatk	YEMEN16	Yemen	MEA	Middle Eastern Ancestry
-APPG7555942	YEM	Yemen	longranger222_wgs_27491_APPG7555942_GRCh38_gatk	YEMEN17	Yemen	MEA	Middle Eastern Ancestry
-APPG7555943	YEM	Yemen	longranger222_wgs_27489_APPG7555943_GRCh38_gatk	YEMEN18	Yemen.o	MEA	Middle Eastern Ancestry
-APPG7555944	YEM	Yemen	longranger222_wgs_27489_APPG7555944_GRCh38_gatk	YEMEN19	Yemen	MEA	Middle Eastern Ancestry
-APPG7555945	YEM	Yemen	longranger222_wgs_27489_APPG7555945_GRCh38_gatk	YEMEN20	Yemen.o	MEA	Middle Eastern Ancestry
-APPG7555946	YEM	Yemen	longranger222_wgs_27489_APPG7555946_GRCh38_gatk	YEMEN21	Yemen	MEA	Middle Eastern Ancestry
-APPG7555947	SYR	Syria	longranger222_wgs_27489_APPG7555947_GRCh38_gatk	SYRIA1	Syria	MEA	Middle Eastern Ancestry
-APPG7555948	SYR	Syria	longranger222_wgs_27489_APPG7555948_GRCh38_gatk	SYRIA2	Syria	MEA	Middle Eastern Ancestry
-APPG7555949	SAU	Saudi Arabia	longranger222_wgs_27489_APPG7555949_GRCh38_gatk	SAUDI1	SaudiA	MEA	Middle Eastern Ancestry
-APPG7555950	SAU	Saudi Arabia	longranger222_wgs_27489_APPG7555950_GRCh38_gatk	SAUDI2	SaudiA	MEA	Middle Eastern Ancestry
-APPG7555951	SAU	Saudi Arabia	longranger222_wgs_27633_APPG7555951_GRCh38_gatk	SAUDI3	SaudiA	MEA	Middle Eastern Ancestry
-APPG7555952	SAU	Saudi Arabia	longranger222_wgs_27633_APPG7555952_GRCh38_gatk	SAUDI4	SaudiA	MEA	Middle Eastern Ancestry
-APPG7555953	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555953_GRCh38_gatk	SAUDI5	SaudiA	MEA	Middle Eastern Ancestry
-APPG7555954	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555954_GRCh38_gatk	SAUDI6	SaudiB	MEA	Middle Eastern Ancestry
-APPG7555955	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555955_GRCh38_gatk	SAUDI7	SaudiB	MEA	Middle Eastern Ancestry
-APPG7555956	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555956_GRCh38_gatk	SAUDI8	SaudiB	MEA	Middle Eastern Ancestry
-APPG7555957	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555957_GRCh38_gatk	SAUDI9	SaudiB	MEA	Middle Eastern Ancestry
-APPG7555958	OMN	Oman	longranger222_wgs_27631_APPG7555958_GRCh38_gatk	OMAN1	Oman	MEA	Middle Eastern Ancestry
-APPG7555959	OMN	Oman	longranger222_wgs_27582_APPG7555959_GRCh38_gatk	OMAN2	Oman.o	MEA	Middle Eastern Ancestry
-APPG7555960	OMN	Oman	longranger222_wgs_27582_APPG7555960_GRCh38_gatk	OMAN3	Oman	MEA	Middle Eastern Ancestry
-APPG7555961	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7555961_GRCh38_gatk	UAE57	EmiratiC	MEA	Middle Eastern Ancestry
-APPG7623331	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7623331_GRCh38_gatk	UAE3	EmiratiB	MEA	Middle Eastern Ancestry
-APPG7623332	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7623332_GRCh38_gatk	UAE10	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7623333	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7623333_GRCh38_gatk	UAE49	EmiratiA	MEA	Middle Eastern Ancestry
-APPG7623334	IRQ	Iraq	longranger222_wgs_27582_APPG7623334_GRCh38_gatk	IRAQ11	Arab	MEA	Middle Eastern Ancestry
-APPG7623335	IRQ	Iraq	longranger222_wgs_27582_APPG7623335_GRCh38_gatk	IRAQ12	Arab	MEA	Middle Eastern Ancestry
-APPG7623336	JOR	Jordan	longranger222_wgs_APPG7623336_GRCh38_gatk	JORDAN1	Jordan	MEA	Middle Eastern Ancestry
-APPG7623337	SYR	Syria	longranger222_wgs_APPG7623337_GRCh38_gatk	SYRIA3	Syria	MEA	Middle Eastern Ancestry
-APPG7623338	SYR	Syria	longranger222_wgs_27751_APPG7623338_GRCh38_gatk	SYRIA4	Syria	MEA	Middle Eastern Ancestry
-APPG7623339	SYR	Syria	longranger222_wgs_27751_APPG7623339_GRCh38_gatk	SYRIA5	Syria	MEA	Middle Eastern Ancestry
-APPG7623340	SYR	Syria	longranger222_wgs_27751_APPG7623340_GRCh38_gatk	SYRIA6	Syria	MEA	Middle Eastern Ancestry
-APPG7623341	SYR	Syria	longranger222_wgs_27751_APPG7623341_GRCh38_gatk	SYRIA7	Syria	MEA	Middle Eastern Ancestry
-APPG7623342	SYR	Syria	longranger222_wgs_27751_APPG7623342_GRCh38_gatk	SYRIA8	Syria	MEA	Middle Eastern Ancestry
-APPG7623343	SYR	Syria	longranger222_wgs_27751_APPG7623343_GRCh38_gatk	SYRIA9	Syria	MEA	Middle Eastern Ancestry
-APPG7623344	SYR	Syria	longranger222_wgs_APPG7623344_GRCh38_gatk	SYRIA10	Syria	MEA	Middle Eastern Ancestry
-APPG7623345	SYR	Syria	longranger222_wgs_27726_APPG7623345_GRCh38_gatk	SYRIA11	Syria	MEA	Middle Eastern Ancestry
-APPG7623346	JOR	Jordan	longranger222_wgs_APPG7623346_GRCh38_gatk	JORDAN2	Jordan	MEA	Middle Eastern Ancestry
-APPG7623347	JOR	Jordan	longranger222_wgs_27726_APPG7623347_GRCh38_gatk	JORDAN3	Jordan	MEA	Middle Eastern Ancestry
-APPG7623348	YEM	Yemen	longranger222_wgs_27726_APPG7623348_GRCh38_gatk	YEMEN22	Yemen	MEA	Middle Eastern Ancestry
-APPG7623349	SYR	Syria	longranger222_wgs_APPG7623349_GRCh38_gatk	SYRIA12	Syria	MEA	Middle Eastern Ancestry
-APPG7623350	SAU	Saudi Arabia	longranger222_wgs_27726_APPG7623350_GRCh38_gatk	SAUDI10	SaudiA	MEA	Middle Eastern Ancestry
-APPG7623351	SAU	Saudi Arabia	longranger222_wgs_27726_APPG7623351_GRCh38_gatk	SAUDI11	SaudiA	MEA	Middle Eastern Ancestry
+source	sample	sex	population	population_name	long_ID	pop_ID	annotation	superpopulation	superpopulation_name
+appg	APPG7555863	Male	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555863_GRCh38_gatk	UAE1	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555864	Female	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555864_GRCh38_gatk	UAE2	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555865	Female	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555865_GRCh38_gatk	UAE4	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555866	Male	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555866_GRCh38_gatk	UAE5	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555867	Male	UAE	United Arab Emirates 	longranger222_wgs_26964_APPG7555867_GRCh38_gatk	UAE6	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555868	Male	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555868_GRCh38_gatk	UAE7	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555869	Female	UAE	United Arab Emirates 	longranger222_wgs_27038_APPG7555869_GRCh38_gatk	UAE8	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555870	Male	UAE	United Arab Emirates 	longranger222_wgs_27038_APPG7555870_GRCh38_gatk	UAE9	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555871	Male	UAE	United Arab Emirates 	longranger222_wgs_27038_3_APPG7555871_GRCh38_gatk	UAE11	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555872	Male	UAE	United Arab Emirates 	longranger222_wgs_27038_APPG7555872_GRCh38_gatk	UAE12	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555873	Male	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555873_GRCh38_gatk	UAE13	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555874	Female	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555874_GRCh38_gatk	UAE14	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555875	Female	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555875_GRCh38_gatk	UAE15	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555876	Female	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555876_GRCh38_gatk	UAE16	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555877	Male	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555877_GRCh38_gatk	UAE17	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555878	Male	UAE	United Arab Emirates 	longranger222_wgs_26965_APPG7555878_GRCh38_gatk	UAE18	Emirati.o	MEA	Middle Eastern Ancestry
+appg	APPG7555879	Male	UAE	United Arab Emirates 	longranger222_wgs_26958_APPG7555879_GRCh38_gatk	UAE19	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555880	Male	UAE	United Arab Emirates 	longranger222_wgs_27031_APPG7555880_GRCh38_gatk	UAE20	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555881	Female	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555881_GRCh38_gatk	UAE21	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555882	Male	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555882_GRCh38_gatk	UAE22	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555883	Male	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555883_GRCh38_gatk	UAE23	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555884	Male	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555884_GRCh38_gatk	UAE24	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555885	Female	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555885_GRCh38_gatk	UAE25	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555886	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555886_GRCh38_gatk	UAE26	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555887	Male	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555887_GRCh38_gatk	UAE27	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555888	Male	UAE	United Arab Emirates 	longranger222_wgs_27055_APPG7555888_GRCh38_gatk	UAE28	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555889	Female	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555889_GRCh38_gatk	UAE29	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555890	Male	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555890_GRCh38_gatk	UAE30	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555891	Female	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555891_GRCh38_gatk	UAE31	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555892	Female	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555892_GRCh38_gatk	UAE32	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555893	Female	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555893_GRCh38_gatk	UAE33	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555894	Female	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555894_GRCh38_gatk	UAE34	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555895	Female	UAE	United Arab Emirates 	longranger222_wgs_27099_APPG7555895_GRCh38_gatk	UAE35	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555896	Female	UAE	United Arab Emirates 	longranger222_wgs_27412_APPG7555896_GRCh38_gatk	UAE36	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555897	Female	UAE	United Arab Emirates 	longranger222_wgs_28420_APPG7555897_GRCh38_gatk	UAE37	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555898	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555898_GRCh38_gatk	UAE38	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555899	Male	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555899_GRCh38_gatk	UAE39	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555900	Female	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555900_GRCh38_gatk	UAE40	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555901	Female	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555901_GRCh38_gatk	UAE41	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555902	Male	UAE	United Arab Emirates 	longranger222_wgs_28927_APPG7555902_GRCh38_gatk	UAE42	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555903	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555903_GRCh38_gatk	UAE43	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555904	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555904_GRCh38_gatk	UAE44	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555905	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555905_GRCh38_gatk	UAE45	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555906	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555906_GRCh38_gatk	UAE46	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555907	Female	UAE	United Arab Emirates 	longranger222_wgs_APPG7555907_GRCh38_gatk	UAE47	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555908	Female	UAE	United Arab Emirates 	longranger222_wgs_27493_APPG7555908_GRCh38_gatk	UAE48	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7555909	Female	UAE	United Arab Emirates 	longranger222_wgs_27493_APPG7555909_GRCh38_gatk	UAE50	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555910	Female	UAE	United Arab Emirates 	longranger222_wgs_27493_APPG7555910_GRCh38_gatk	UAE51	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555911	Female	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555911_GRCh38_gatk	UAE52	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7555912	Female	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555912_GRCh38_gatk	UAE53	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555913	Female	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555913_GRCh38_gatk	UAE54	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555914	Female	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555914_GRCh38_gatk	UAE55	EmiratiD	MEA	Middle Eastern Ancestry
+appg	APPG7555915	Male	UAE	United Arab Emirates 	longranger222_wgs_27453_APPG7555915_GRCh38_gatk	UAE56	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7555916	Male	IRQ	Iraq	longranger222_wgs_27461_APPG7555916_GRCh38_gatk	IRAQ1	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555918	Female	IRQ	Iraq	longranger222_wgs_27461_APPG7555918_GRCh38_gatk	IRAQ3	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555919	Male	IRQ	Iraq	longranger222_wgs_27632_APPG7555919_GRCh38_gatk	IRAQ4	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555920	Male	IRQ	Iraq	longranger222_wgs_27632_APPG7555920_GRCh38_gatk	IRAQ5	Kurd	MEA	Middle Eastern Ancestry
+appg	APPG7555921	Female	IRQ	Iraq	longranger222_wgs_27632_APPG7555921_GRCh38_gatk	IRAQ6	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555922	Female	IRQ	Iraq	longranger222_wgs_27632_APPG7555922_GRCh38_gatk	IRAQ7	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555923	Female	IRQ	Iraq	longranger222_wgs_27632_APPG7555923_GRCh38_gatk	IRAQ8	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555924	Male	IRQ	Iraq	longranger222_wgs_27632_APPG7555924_GRCh38_gatk	IRAQ9	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7555925	Female	IRQ	Iraq	longranger222_wgs_27632_APPG7555925_GRCh38_gatk	IRAQ10	Kurd	MEA	Middle Eastern Ancestry
+appg	APPG7555926	Male	YEM	Yemen	longranger222_wgs_27632_APPG7555926_GRCh38_gatk	YEMEN1	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555927	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555927_GRCh38_gatk	YEMEN2	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555928	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555928_GRCh38_gatk	YEMEN3	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555929	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555929_GRCh38_gatk	YEMEN4	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555930	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555930_GRCh38_gatk	YEMEN5	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555931	Male	YEM	Yemen	longranger222_wgs_APPG7555931_GRCh38_gatk	YEMEN6	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555932	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555932_GRCh38_gatk	YEMEN7	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555933	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555933_GRCh38_gatk	YEMEN8	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555934	Male	YEM	Yemen	longranger222_wgs_27426_APPG7555934_GRCh38_gatk	YEMEN9	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555935	Male	YEM	Yemen	longranger222_wgs_27492_APPG7555935_GRCh38_gatk	YEMEN10	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555936	Male	YEM	Yemen	longranger222_wgs_27554_APPG7555936_GRCh38_gatk	YEMEN11	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555937	Male	YEM	Yemen	longranger222_wgs_27554_APPG7555937_GRCh38_gatk	YEMEN12	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555938	Male	YEM	Yemen	longranger222_wgs_APPG7555938_GRCh38_gatk	YEMEN13	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555939	Male	YEM	Yemen	longranger222_wgs_27491_APPG7555939_GRCh38_gatk	YEMEN14	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555941	Female	YEM	Yemen	longranger222_wgs_27491_APPG7555941_GRCh38_gatk	YEMEN16	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555942	Female	YEM	Yemen	longranger222_wgs_27491_APPG7555942_GRCh38_gatk	YEMEN17	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555943	Male	YEM	Yemen	longranger222_wgs_27489_APPG7555943_GRCh38_gatk	YEMEN18	Yemen.o	MEA	Middle Eastern Ancestry
+appg	APPG7555944	Male	YEM	Yemen	longranger222_wgs_27489_APPG7555944_GRCh38_gatk	YEMEN19	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555945	Female	YEM	Yemen	longranger222_wgs_27489_APPG7555945_GRCh38_gatk	YEMEN20	Yemen.o	MEA	Middle Eastern Ancestry
+appg	APPG7555946	Female	YEM	Yemen	longranger222_wgs_27489_APPG7555946_GRCh38_gatk	YEMEN21	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7555947	Female	SYR	Syria	longranger222_wgs_27489_APPG7555947_GRCh38_gatk	SYRIA1	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7555948	Male	SYR	Syria	longranger222_wgs_27489_APPG7555948_GRCh38_gatk	SYRIA2	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7555949	Male	SAU	Saudi Arabia	longranger222_wgs_27489_APPG7555949_GRCh38_gatk	SAUDI1	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7555950	Female	SAU	Saudi Arabia	longranger222_wgs_27489_APPG7555950_GRCh38_gatk	SAUDI2	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7555951	Male	SAU	Saudi Arabia	longranger222_wgs_27633_APPG7555951_GRCh38_gatk	SAUDI3	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7555952	Male	SAU	Saudi Arabia	longranger222_wgs_27633_APPG7555952_GRCh38_gatk	SAUDI4	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7555953	Male	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555953_GRCh38_gatk	SAUDI5	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7555954	Male	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555954_GRCh38_gatk	SAUDI6	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7555955	Male	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555955_GRCh38_gatk	SAUDI7	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7555956	Female	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555956_GRCh38_gatk	SAUDI8	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7555957	Male	SAU	Saudi Arabia	longranger222_wgs_27631_APPG7555957_GRCh38_gatk	SAUDI9	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7555958	Male	OMN	Oman	longranger222_wgs_27631_APPG7555958_GRCh38_gatk	OMAN1	Oman	MEA	Middle Eastern Ancestry
+appg	APPG7555959	Female	OMN	Oman	longranger222_wgs_27582_APPG7555959_GRCh38_gatk	OMAN2	Oman.o	MEA	Middle Eastern Ancestry
+appg	APPG7555960	Female	OMN	Oman	longranger222_wgs_27582_APPG7555960_GRCh38_gatk	OMAN3	Oman	MEA	Middle Eastern Ancestry
+appg	APPG7555961	Female	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7555961_GRCh38_gatk	UAE57	EmiratiC	MEA	Middle Eastern Ancestry
+appg	APPG7623331	Male	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7623331_GRCh38_gatk	UAE3	EmiratiB	MEA	Middle Eastern Ancestry
+appg	APPG7623332	Male	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7623332_GRCh38_gatk	UAE10	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7623333	Male	UAE	United Arab Emirates 	longranger222_wgs_27582_APPG7623333_GRCh38_gatk	UAE49	EmiratiA	MEA	Middle Eastern Ancestry
+appg	APPG7623334	Male	IRQ	Iraq	longranger222_wgs_27582_APPG7623334_GRCh38_gatk	IRAQ11	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7623335	Male	IRQ	Iraq	longranger222_wgs_27582_APPG7623335_GRCh38_gatk	IRAQ12	Arab	MEA	Middle Eastern Ancestry
+appg	APPG7623336	Female	JOR	Jordan	longranger222_wgs_APPG7623336_GRCh38_gatk	JORDAN1	Jordan	MEA	Middle Eastern Ancestry
+appg	APPG7623337	Female	SYR	Syria	longranger222_wgs_APPG7623337_GRCh38_gatk	SYRIA3	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623338	Female	SYR	Syria	longranger222_wgs_27751_APPG7623338_GRCh38_gatk	SYRIA4	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623339	Female	SYR	Syria	longranger222_wgs_27751_APPG7623339_GRCh38_gatk	SYRIA5	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623340	Male	SYR	Syria	longranger222_wgs_27751_APPG7623340_GRCh38_gatk	SYRIA6	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623341	Male	SYR	Syria	longranger222_wgs_27751_APPG7623341_GRCh38_gatk	SYRIA7	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623342	Male	SYR	Syria	longranger222_wgs_27751_APPG7623342_GRCh38_gatk	SYRIA8	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623343	Female	SYR	Syria	longranger222_wgs_27751_APPG7623343_GRCh38_gatk	SYRIA9	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623344	Male	SYR	Syria	longranger222_wgs_APPG7623344_GRCh38_gatk	SYRIA10	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623345	Female	SYR	Syria	longranger222_wgs_27726_APPG7623345_GRCh38_gatk	SYRIA11	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623346	Female	JOR	Jordan	longranger222_wgs_APPG7623346_GRCh38_gatk	JORDAN2	Jordan	MEA	Middle Eastern Ancestry
+appg	APPG7623347	Male	JOR	Jordan	longranger222_wgs_27726_APPG7623347_GRCh38_gatk	JORDAN3	Jordan	MEA	Middle Eastern Ancestry
+appg	APPG7623348	Male	YEM	Yemen	longranger222_wgs_27726_APPG7623348_GRCh38_gatk	YEMEN22	Yemen	MEA	Middle Eastern Ancestry
+appg	APPG7623349	Male	SYR	Syria	longranger222_wgs_APPG7623349_GRCh38_gatk	SYRIA12	Syria	MEA	Middle Eastern Ancestry
+appg	APPG7623350	Female	SAU	Saudi Arabia	longranger222_wgs_27726_APPG7623350_GRCh38_gatk	SAUDI10	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7623351	Male	SAU	Saudi Arabia	longranger222_wgs_27726_APPG7623351_GRCh38_gatk	SAUDI11	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7836393	Male	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836393_GRCh38_gatk	SAUDI12	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7836394	Male	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836394_GRCh38_gatk	SAUDI13	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836395	Male	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836395_GRCh38_gatk	SAUDI14	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836396	Female	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836396_GRCh38_gatk	SAUDI15	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836397	Male	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836397_GRCh38_gatk	SAUDI16	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836398	Male	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836398_GRCh38_gatk	SAUDI17	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7836399	Male	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836399_GRCh38_gatk	SAUDI18	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836401	Male	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836401_GRCh38_gatk	SAUDI20	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836402	Male	SAU	Saudi Arabia	longranger222_wgs_28990_APPG7836402_GRCh38_gatk	SAUDI21	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836403	Male	SAU	Saudi Arabia	longranger222_wgs_28927_APPG7836403_GRCh38_gatk	SAUDI22	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7836404	Female	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836404_GRCh38_gatk	SAUDI23	Saudi.o	MEA	Middle Eastern Ancestry
+appg	APPG7836405	Male	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836405_GRCh38_gatk	SAUDI24	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836406	Male	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836406_GRCh38_gatk	SAUDI25	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836407	Male	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836407_GRCh38_gatk	SAUDI26	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7836408	Male	SAU	Saudi Arabia	longranger222_wgs_29106_APPG7836408_GRCh38_gatk	SAUDI28	SaudiA	MEA	Middle Eastern Ancestry
+appg	APPG7836409	Male	IRQ	Iraq	longranger222_wgs_29106_APPG7836409_GRCh38_gatk	IRAQ13	Kurd	MEA	Middle Eastern Ancestry
+appg	APPG7836410	Male	IRQ	Iraq	longranger222_wgs_29106_APPG7836410_GRCh38_gatk	IRAQ14	Kurd	MEA	Middle Eastern Ancestry
+appg	APPG7850840	Female	SAU	Saudi Arabia	longranger222_wgs_29691_APPG7850840_GRCh38_gatk	SAUDI27	SaudiB	MEA	Middle Eastern Ancestry
+appg	APPG7850841	Male	SAU	Saudi Arabia	longranger222_wgs_29691_APPG7850841_GRCh38_gatk	SAUDI29	SaudiB	MEA	Middle Eastern Ancestry
