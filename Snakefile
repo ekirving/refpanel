@@ -49,6 +49,7 @@ rule refpanel:
         expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
 
 
+# the list of data sources that are hosted on the European Nucleotide Archive (ENA) -- excluding GGVP, which has CRAMs
 ENA_SOURCES = [
     source for source in config["source"] if config["source"][source].get("ena_ftp", False) and source != "ggvp"
 ]
@@ -56,11 +57,11 @@ ENA_SOURCES = [
 
 rule download_data:
     input:
-        # download CRAMs for 1000G, HGDP, SGDP, GGVP; gVCFs for 1000G; 10x gVCFs for HGDP and APPG; and FASTQs for everything else
+        # download sample data for all data sources (the starting point varies between sources)
+        expand("data/source/{source}/fastq/download.done",source=ENA_SOURCES),
         expand("data/source/{source}/cram/download.done", source=["1000g", "hgdp", "sgdp", "ggvp", "PRJNA76713"]),
         expand("data/source/{source}/gVCF/download.done", source=["1000g"]),
         expand("data/source/{source}/gVCF/phase10x/download.done", source=["hgdp", "appg"]),
-        expand("data/source/{source}/fastq/download.done", source=ENA_SOURCES),
 
 
 rule align_sources:
