@@ -50,7 +50,7 @@ available samples from:
 * Arabian Peninsula Population Genomic (APPG) study (n=137); \
   [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
-Plus some additional public genomes from:
+Plus additional public genomes from:
 * Schuster et al., 2010 (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
 * Meyer et al., 2012 (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
 * McColl et al., 2018 (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
@@ -60,6 +60,9 @@ The data from these projects is hosted by the
 the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
 ([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)) and the [European Nucleotide Archive (ENA)](
 https://www.ebi.ac.uk/ena/browser/home) ([doi:10.1093/nar/gkq967](https://doi.org/10.1093/nar/gkq967)).
+
+If there is publicly available whole-genome sequencing data that you would like incorporated into `refpanel-v2` please
+raise an issue on GitHub with the details of the publication.
 
 If you wish to build a customised joint-callset (e.g., including non-public samples), please refer to
 the [configuration docs](docs/config.md).
