@@ -75,6 +75,13 @@ source:
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
     ena_ftp: true
 
+  PRJEB7258:
+    # EGDP samples sequenced in Clemente et al. 2014 (n=25)
+    # https://doi.org/10.1016/j.ajhg.2014.09.016
+    samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
+    accessions: ""  # TODO resolve issue with missing ENA accessions
+    ena_ftp: true
+
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
