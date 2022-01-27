@@ -68,6 +68,13 @@ source:
     accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
     ena_ftp: true
 
+  PRJEB16019:
+    # Genomic analysis of Andamanese provides insights into ancient human migration into Asia and adaptation (n=60)
+    # https://doi.org/10.1038/ng.3621
+    samples: data/source/PRJEB16019/PRJEB16019-samples.tsv
+    accessions: data/source/PRJEB16019/PRJEB16019-accessions.tsv
+    ena_ftp: true
+
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
     samples: data/source/cgg-afr/cgg-afr-samples.tsv

@@ -51,10 +51,11 @@ available samples from:
   [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
 Plus additional public genomes from:
-* Schuster et al., 2010 (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
-* Meyer et al., 2012 (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
-* McColl et al., 2018 (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
-* Lorente-Galdos et al., 2019 (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
+* Schuster et al. (2010) *Nature* (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
+* Meyer et al. (2012) *Science* (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
+* Mondal et al. (2016) *Nature Genetics* (n=60); [doi:10.1038/ng.3621](https://doi.org/10.1038/ng.3621)
+* McColl et al. (2018) *Science* (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
+* Lorente-Galdos et al. (2019) *Genome Biology* (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
 
 The data from these projects is hosted by the
 the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
