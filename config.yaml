@@ -42,6 +42,13 @@ source:
     prephased: data/source/appg/appg-10x-gVCFs.tsv
     ena_ftp: true
 
+  egdp:
+    # The Estonian Biocentre Human Genome Diversity Panel (EGDP) (n=379)
+    # https://doi.org/10.1038/nature19792
+    samples: data/source/egdp/egdp-samples.tsv
+    accessions: ""  # TODO resolve issue with missing ENA accessions
+    ena_ftp: true
+
   PRJNA46161:
     # Khoisan and Bantu genomes from southern Africa (n=3)
     # https://doi.org/10.1038/nature08795

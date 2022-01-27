@@ -1,0 +1,380 @@
+source	sample	sex	population	population_name	population_desc	superpopulation	superpopulation_name	latitude	longitude
+egta	CongPy1	male	CNP	Congo pygmy	Congo-pygmies, Congo	AFR	African Ancestry	15.9	0.9
+egta	CongPy3	male	CNP	Congo pygmy	Congo-pygmies, Congo	AFR	African Ancestry	15.9	0.9
+egta	CongPy6	male	CNP	Congo pygmy	Congo-pygmies, Congo	AFR	African Ancestry	15.9	0.9
+egta	Cachi1	female	CCH	Cachi	Cachi, Salta_Cachi, Argentina	AMR	American Ancestry	-66.2	-25.1
+egta	Cachi2	female	CCH	Cachi	Cachi, Salta_Cachi, Argentina	AMR	American Ancestry	-66.2	-25.1
+egta	Cachi3	male	CCH	Cachi	Cachi, Salta_Cachi, Argentina	AMR	American Ancestry	-66.2	-25.1
+egta	Cachi4	male	CCH	Cachi	Cachi, Salta_Cachi, Argentina	AMR	American Ancestry	-66.2	-25.1
+egta	Cachi5	male	CCH	Cachi	Cachi, Salta_Cachi, Argentina	AMR	American Ancestry	-66.2	-25.1
+egta	Colla1	female	CLL	Colla	Colla, Salta_San_Antonio_de_los_Cobres, Argentina	AMR	American Ancestry	-66.3	-24.2
+egta	Colla2	female	CLL	Colla	Colla, Salta_San_Antonio_de_los_Cobres, Argentina	AMR	American Ancestry	-66.3	-24.2
+egta	Colla3	female	CLL	Colla	Colla, Salta_San_Antonio_de_los_Cobres, Argentina	AMR	American Ancestry	-66.3	-24.2
+egta	Colla4	male	CLL	Colla	Colla, Salta_San_Antonio_de_los_Cobres, Argentina	AMR	American Ancestry	-66.3	-24.2
+egta	Wichi1	female	WCH	Wichi	Wichi, Salta_Embarcaci—n, Argentina	AMR	American Ancestry	-64.1	-23.2
+egta	Wichi2	female	WCH	Wichi	Wichi, Salta_Embarcaci—n, Argentina	AMR	American Ancestry	-64.1	-23.2
+egta	Wichi3	male	WCH	Wichi	Wichi, Salta_Embarcaci—n, Argentina	AMR	American Ancestry	-64.1	-23.2
+egta	Wichi4	male	WCH	Wichi	Wichi, Salta_Embarcaci—n, Argentina	AMR	American Ancestry	-64.1	-23.2
+egta	Abkhaz1	female	ABK	Abkhasian	Abkhazians, Abkhazia, Georgia	WEA	West Eurasian Ancestry	40.8	43.2
+egta	Abkhaz5	male	ABK	Abkhasian	Abkhazians, Abkhazia_Gudauta, Georgia	WEA	West Eurasian Ancestry	40.6	43.1
+egta	Abkhaz6	male	ABK	Abkhasian	Abkhazians, Abkhazia_Lykhny, Georgia	WEA	West Eurasian Ancestry	40.6	43.1
+egta	Armen3	male	ARM	Armenian	Armenians, Yerevan, Armenia	WEA	West Eurasian Ancestry	46.4	40.6
+egta	Armen7	male	ARM	Armenian	Armenians, Yerevan, Armenia	WEA	West Eurasian Ancestry	42	39.9
+egta	Armen1	male	ARM	Armenian	Armenians, Vardenis, Armenia	WEA	West Eurasian Ancestry	45.7	40.2
+egta	Armen2	male	ARM	Armenian	Armenians, Yerevan, Armenia	WEA	West Eurasian Ancestry	44.5	40.2
+egta	Armen5	male	ARM	Armenian	Armenians, Vanatur_Hrazdan, Armenia	WEA	West Eurasian Ancestry	44.8	40.5
+egta	Armen4	male	ARM	Armenian	Armenians, Erzrum, Armenia	WEA	West Eurasian Ancestry	41.3	39.9
+egta	Avar12	female	AVR	Avar	Avars, Dagestan_Khunzakh, Russia	WEA	West Eurasian Ancestry	46.7	42.5
+egta	Avar1	male	AVR	Avar	Avars, Dagestan_Shangoda, Russia	WEA	West Eurasian Ancestry	47	42.2
+egta	Avar9	male	AVR	Avar	Avars, Dagestan_Gergebil, Russia	WEA	West Eurasian Ancestry	47.1	42.5
+egta	Azerb14	female	AZR	Azerbaijani	Azerbaijanis, Azerbaijan_Khachmaz, Azerbaijan	WEA	West Eurasian Ancestry	48.8	41.5
+egta	Azerb13	male	AZR	Azerbaijani	Azerbaijanis, Azerbaijan_Agdzhabedi, Azerbaijan	WEA	West Eurasian Ancestry	47.5	40.1
+egta	Azerb24	male	AZR	Azerbaijani	Azerbaijanis, Dagestan, Russia	WEA	West Eurasian Ancestry	48.3	41.8
+egta	Balkar1	female	BLK	Balkar	Balkars, Kabardino_Bakaria_Byllym, Russia	WEA	West Eurasian Ancestry	43	43.5
+egta	Balkar4	female	BLK	Balkar	Balkars, Kabardino_Bakaria_Nalchik, Russia	WEA	West Eurasian Ancestry	43.6	43.5
+egta	Balkar2	male	BLK	Balkar	Balkars, Kabardino_Bakaria_Novaja-Balkarija, Russia	WEA	West Eurasian Ancestry	44.2	43.7
+egta	Cirkas1	female	CRC	Circassian	Circassians, Karachay_Cherkessia_Cherkessk, Russia	WEA	West Eurasian Ancestry	42.1	44.2
+egta	Cirkas2	male	CRC	Circassian	Circassians, Russia	WEA	West Eurasian Ancestry	40	44.7
+egta	Cirkas3	male	CRC	Circassian	Circassians, Russia	WEA	West Eurasian Ancestry	40	44.7
+egta	Georg1	male	GRG	Georgian	Georgians, Abkhazia, Georgia	WEA	West Eurasian Ancestry	41.4	43
+egta	Georg2	male	GRG	Georgian	Georgians, Georgia	WEA	West Eurasian Ancestry	44.7	41.8
+egta	Kabard1	female	KBR	Kabardin	Kabardins, Kabardino_Bakaria_Nalchik, Russia	WEA	West Eurasian Ancestry	43.6	43.5
+egta	Kabard2	female	KBR	Kabardin	Kabardins, Kabardino_Bakaria_Zajukovo, Russia	WEA	West Eurasian Ancestry	43.3	43.6
+egta	Kabard4	male	KBR	Kabardin	Kabardins, Kabardino_Bakaria_Nalchik, Russia	WEA	West Eurasian Ancestry	43.6	43.5
+egta	Kabard3	male	KBR	Kabardin	Kabardins, Russia	WEA	West Eurasian Ancestry	43.4	43.6
+egta	Kumk1	female	KMY	Kumyk	Kumyks, Dagestan_Karabudakhkentsky, Russia	WEA	West Eurasian Ancestry	47.6	42.7
+egta	Kumk3	female	KMY	Kumyk	Kumyks, Dagestan_Khasavyurt, Russia	WEA	West Eurasian Ancestry	46.6	43.3
+egta	Kumk2	male	KMY	Kumyk	Kumyks, Dagestan_Makhachkala, Russia	WEA	West Eurasian Ancestry	47.5	43
+egta	Lezg1	female	LZG	Lezgin	Lezgins, Dagestan_Dzhaba, Russia	WEA	West Eurasian Ancestry	47.8	41.4
+egta	Lezg2	male	LZG	Lezgin	Lezgins, Dagestan_Kujsun, Russia	WEA	West Eurasian Ancestry	48.3	41.6
+egta	Lezg3	male	LZG	Lezgin	Lezgins, Dagestan_Makhachkala, Russia	WEA	West Eurasian Ancestry	47.5	43
+egta	Lezg4	female	LZG	Lezgin	Lezgins, Dagestan_Kabir, Russia	WEA	West Eurasian Ancestry	48	41.6
+egta	NOsset2	male	NRO	North Ossetian	North-Ossetians, North_Ossetia_Chikola_Lesken, Russia	WEA	West Eurasian Ancestry	43.9	43.2
+egta	NOsset6	male	NRO	North Ossetian	North-Ossetians, North_Ossetia_Novyy-Batako, Russia	WEA	West Eurasian Ancestry	44.5	43.2
+egta	Tabas5	female	TBS	Tabasaran	Tabasarans, Dagestan_Jagdyg, Russia	WEA	West Eurasian Ancestry	48	42
+egta	Tabas4	male	TBS	Tabasaran	Tabasarans, Dagestan_Pilig, Russia	WEA	West Eurasian Ancestry	47.9	42
+egta	Tabas17	male	TBS	Tabasaran	Tabasarans, Dagestan_Makhachkala, Russia	WEA	West Eurasian Ancestry	47.5	43
+egta	Ishk1	male	ISH	Ishkasim	Ishkasim, Pamir_Ishkashim, Tajikistan	CAS	Central Asian and Siberian Ancestry	71.7	37
+egta	Ishk2	male	ISH	Ishkasim	Ishkasim, Pamir_Ishkashim, Tajikistan	CAS	Central Asian and Siberian Ancestry	71.7	37
+egta	Kaz1	male	KZK	Kazakh	Kazakhs, Cent-West, Kazakhstan	CAS	Central Asian and Siberian Ancestry	61.5	47.5
+egta	Kaz2	male	KZK	Kazakh	Kazakhs, Tien-Shan, Kazakhstan	CAS	Central Asian and Siberian Ancestry	77	43.6
+egta	Kaz3	male	KZK	Kazakh	Kazakhs, Kazakhstan	CAS	Central Asian and Siberian Ancestry	71.5	51.1
+egta	Kyrgz1	male	KYR	Kyrgyz	Kyrgyz, Ton(g), Kyrgyzstan	CAS	Central Asian and Siberian Ancestry	77	42.2
+egta	Kyrgz2	male	KYR	Kyrgyz	Kyrgyz, Naryn_Province, Kyrgyzstan	CAS	Central Asian and Siberian Ancestry	75.9	41.5
+egta	Kyrgz3	male	KYR	Kyrgyz	Kyrgyz, Naryn_Province, Kyrgyzstan	CAS	Central Asian and Siberian Ancestry	75.9	41.5
+egta	Kyrgz4	male	KYR	Kyrgyz	Kyrgyz, Naryn_Province, Kyrgyzstan	CAS	Central Asian and Siberian Ancestry	75.9	41.5
+egta	KyrgzTJ1	male	KYT	Kyrgyz Tdj	Kyrgyz_Tdj, Alichur, Tajikistan	CAS	Central Asian and Siberian Ancestry	73.3	37.8
+egta	KyrgzTJ2	male	KYT	Kyrgyz Tdj	Kyrgyz_Tdj, Murgab, Tajikistan	CAS	Central Asian and Siberian Ancestry	74	38.2
+egta	KyrgzTJ3	male	KYT	Kyrgyz Tdj	Kyrgyz_Tdj, Murgab, Tajikistan	CAS	Central Asian and Siberian Ancestry	74	38.2
+egta	RVnch1	male	RSV	Rushan Vanch	Rushan-Vanch, Pamir_Rushan-Vanch, Tajikistan	CAS	Central Asian and Siberian Ancestry	71.7	38.5
+egta	RVnch2	male	RSV	Rushan Vanch	Rushan-Vanch, Pamir_Rushan-Vanch, Tajikistan	CAS	Central Asian and Siberian Ancestry	71.7	38.5
+egta	Shugn1	male	SHG	Shugnan	Shugnan, Pamir_Shugnan, Tajikistan	CAS	Central Asian and Siberian Ancestry	72.4	37.5
+egta	Tajik1	male	TJK	Tajik	Tajiks, lowland, Tajikistan	CAS	Central Asian and Siberian Ancestry	68.9	38.4
+egta	TrkUzb1	male	TKM	Turkmen	Turkmens, Shumanay, Uzbekistan	CAS	Central Asian and Siberian Ancestry	58.9	42.6
+egta	TrkUzb2	male	TKM	Turkmen	Turkmens, Shumanay, Uzbekistan	CAS	Central Asian and Siberian Ancestry	58.9	42.6
+egta	TrkUzb3	male	TKM	Turkmen	Turkmens, Xo'jayli, Uzbekistan	CAS	Central Asian and Siberian Ancestry	59.4	42.4
+egta	Uigr4	female	UYG	Uygur	Uygurs, Kazakhstan	CAS	Central Asian and Siberian Ancestry	79.5	43.5
+egta	Uzbk1	female	UZB	Uzbek	Uzbek, Uzbekistan	CAS	Central Asian and Siberian Ancestry	68.2	40.3
+egta	Uzbk2	female	UZB	Uzbek	Uzbek, Uzbekistan	CAS	Central Asian and Siberian Ancestry	68.2	40.3
+egta	Uzbk3	male	UZB	Uzbek	Uzbek, Papsky_district, Uzbekistan	CAS	Central Asian and Siberian Ancestry	70.9	41
+egta	Yaghn1	female	YGH	Yaghnobi	Yaghnobi, Pamir_Yaghnobi, Tajikistan	CAS	Central Asian and Siberian Ancestry	67.6	39.5
+egta	Alban1	male	ALB	Albanian	Albanians, Albania	EUR	European Ancestry	19.8	41.3
+egta	Alban2	male	ALB	Albanian	Albanians, Albania	EUR	European Ancestry	19.8	41.3
+egta	Alban3	male	ALB	Albanian	Albanians, Albania	EUR	European Ancestry	19.8	41.3
+egta	Bashk2	female	BSH	Bashkir	Bashkirs, Bashkortostan_Muradymovo, Russia	EUR	European Ancestry	57.5	53.3
+egta	Bashk3	male	BSH	Bashkir	Bashkirs, Bashkortostan_Akyar, Russia	EUR	European Ancestry	58.2	51.9
+egta	Bashk4	male	BSH	Bashkir	Bashkirs, Bashkortostan_Ufa, Russia	EUR	European Ancestry	56.1	55.3
+egta	Bashk6	female	BSH	Bashkir	Bashkirs, Ibragimovo, Russia	EUR	European Ancestry	56.6	54.2
+egta	Bashk10	female	BSH	Bashkir	Bashkirs, Kildigulovo, Russia	EUR	European Ancestry	57.9	53.3
+egta	BelaR1	male	BLR	Belarusian	Belarusians, Kobryn_Brest, Belarus	EUR	European Ancestry	24.4	52.2
+egta	BelaR2	male	BLR	Belarusian	Belarusians, Zhytkavichy_Homel, Belarus	EUR	European Ancestry	27.9	52.2
+egta	BelaR3	male	BLR	Belarusian	Belarusians, Kobryn_Brest, Belarus	EUR	European Ancestry	24.4	52.2
+egta	BelaR4	female	BLR	Belarusian	Belarusians, Glybokae_Vitebsk, Belarus	EUR	European Ancestry	27.7	55.1
+egta	Chuv2	female	CHV	Chuvashe	Chuvashes, Bashkortostan_Novye-Karmaskaly, Russia	EUR	European Ancestry	54.7	53.7
+egta	Chuv3	female	CHV	Chuvashe	Chuvashes, Bashkortostan_Vasilevka, Russia	EUR	European Ancestry	56.5	53.6
+egta	Chuv1	male	CHV	Chuvashe	Chuvashes, Bashkortostan_Kozhay-Semyonovka, Russia	EUR	European Ancestry	54.7	53.7
+egta	Cosk1	male	CSS	Cossack	Cossacks, Zaporozhie, Ukraine	EUR	European Ancestry	35.2	47.8
+egta	Cosk2	male	CSS	Cossack	Cossacks, Zaporozhie, Ukraine	EUR	European Ancestry	35.2	47.8
+egta	CoskK1	male	CSK	Cossacks Kuban	Cossacks_Kuban, Kuban, Russia	EUR	European Ancestry	38.7	45
+egta	CoskK2	male	CSK	Cossacks Kuban	Cossacks_Kuban, Kuban, Russia	EUR	European Ancestry	39	45
+egta	croat16	female	CRO	Croat	Croats, Lug_Zepce, Bosnia-Herzegovina	EUR	European Ancestry	18.1	44.5
+egta	croat11	male	CRO	Croat	Croats, Mostar, Bosnia-Herzegovina	EUR	European Ancestry	17.8	43.3
+egta	croat13	male	CRO	Croat	Croats, Duge_Grude, Bosnia-Herzegovina	EUR	European Ancestry	17.4	43.4
+egta	croat12	male	CRO	Croat	Croats, Ponijevo_Zepce, Bosnia-Herzegovina	EUR	European Ancestry	18	44.5
+egta	Est6	male	EST	Estonian	Estonians, PŸhalepa vald, Estonia	EUR	European Ancestry	22.8	59
+egta	Est2	male	EST	Estonian	Estonians, R›uge vald, Estonia	EUR	European Ancestry	26.9	57.7
+egta	Est3	female	EST	Estonian	Estonians, Vastseliina vald, Estonia	EUR	European Ancestry	27.3	57.7
+egta	Est4	male	EST	Estonian	Estonians, J›geva vald, Estonia	EUR	European Ancestry	26.4	58.8
+egta	Est5	male	EST	Estonian	Estonians, Kolga-Jaani vald, Estonia	EUR	European Ancestry	25.9	58.5
+egta	Est1	female	EST	Estonian	Estonians, K›lleste vald, Estonia	EUR	European Ancestry	26.8	58.1
+egta	Fin1	female	FIN	Finnish	Finnish, Finland	EUR	European Ancestry	23.4	60.9
+egta	Fin2	female	FIN	Finnish	Finnish, Finland	EUR	European Ancestry	23.4	60.9
+egta	Fin3	male	FIN	Finnish	Finnish, Finland	EUR	European Ancestry	23.4	60.9
+egta	Ger1	female	GRM	German	Germans, Western-Europe, Germany	EUR	European Ancestry	10.1	52.5
+egta	Ger2	female	GRM	German	Germans, Western-Europe, Germany	EUR	European Ancestry	10.1	52.5
+egta	Ger3	male	GRM	German	Germans, Western-Europe, Germany	EUR	European Ancestry	10.1	52.5
+egta	Hun1	female	HNG	Hungarian	Hungarians, Hungary	EUR	European Ancestry	19	47.4
+egta	Hun2	male	HNG	Hungarian	Hungarians, Rakkhiv_district in Ukraine, Ukraine	EUR	European Ancestry	24.3	48
+egta	Ingr1	female	ING	Ingrian	Ingrians, Russia	EUR	European Ancestry	29.6	60.5
+egta	Ingr2	female	ING	Ingrian	Ingrians, Tsalina, Russia	EUR	European Ancestry	34.1	61.9
+egta	Ingr3	female	ING	Ingrian	Ingrians, Russia	EUR	European Ancestry	29.6	60.5
+egta	Karel1	male	KRL	Karelian	Karelians, Karelia_Vidlica, Russia	EUR	European Ancestry	32.4	61.2
+egta	Karel2	male	KRL	Karelian	Karelians, Karelia, Russia	EUR	European Ancestry	32.2	64.2
+egta	Karel3	male	KRL	Karelian	Karelians, Karelia, Russia	EUR	European Ancestry	33	63.1
+egta	Komi1	male	KOM	Komi	Komis, Komi_republic_Troitsko-Pechorsky, Russia	EUR	European Ancestry	58	62.6
+egta	Komi2	male	KOM	Komi	Komis, Russia	EUR	European Ancestry	54.5	64.3
+egta	Kryash5	female	KTT	Kryashen Tatar	Kryashen-Tatars, Tatarstan_Laishevo, Russia	EUR	European Ancestry	49.5	55.4
+egta	Kryash8	female	KTT	Kryashen Tatar	Kryashen-Tatars, Tatarstan_Tomsk, Russia	EUR	European Ancestry	82.2	58.5
+egta	Kryash4	male	KTT	Kryashen Tatar	Kryashen-Tatars, Tatarstan_Eryksa, Russia	EUR	European Ancestry	51.2	55.9
+egta	Lat1	female	LTV	Latvian	Latvians, Latvia	EUR	European Ancestry	24.4	57
+egta	Lat2	male	LTV	Latvian	Latvians, Cesis, Latvia	EUR	European Ancestry	24.5	56.9
+egta	Lat3	male	LTV	Latvian	Latvians, Dobele, Latvia	EUR	European Ancestry	23.3	56.6
+egta	Lit1	female	LTH	Lithuanian	Lithuanians, Lithuania	EUR	European Ancestry	24	55.3
+egta	Lit2	male	LTH	Lithuanian	Lithuanians, Lithuania	EUR	European Ancestry	24	55.3
+egta	Lit3	female	LTH	Lithuanian	Lithuanians, Lithuania	EUR	European Ancestry	23.9	55.4
+egta	Mari1	male	MRI	Mari	Maris, Bashkortostan_Novoakbulatovo, Russia	EUR	European Ancestry	56	55.4
+egta	Mari2	male	MRI	Mari	Maris, Bashkortostan_Novoakbulatovo, Russia	EUR	European Ancestry	56	55.4
+egta	Mari3	male	MRI	Mari	Maris, Bashkortostan_Kameevo, Russia	EUR	European Ancestry	56.1	55.5
+egta	Mari4	female	MRI	Mari	Maris, Iskush, Russia	EUR	European Ancestry	54.9	55.6
+egta	TatarM1	male	MST	Mishar Tatar	Mishar-Tatars, Tatarstan_Cheremshansky, Russia	EUR	European Ancestry	51.4	54.8
+egta	Mold2	female	MLD	Moldavian	Moldavians, Moldavia	EUR	European Ancestry	28.7	47.1
+egta	Mold3	male	MLD	Moldavian	Moldavians, Moldavia	EUR	European Ancestry	28.7	47.1
+egta	Mord1	male	MRD	Mordvin	Mordvins, Mordovia_Torbeyevsky, Russia	EUR	European Ancestry	43.3	54.1
+egta	Mord2	male	MRD	Mordvin	Mordvins, Mordovia_Chamzinsky, Russia	EUR	European Ancestry	45.8	54.4
+egta	Mord3	male	MRD	Mordvin	Mordvins, Mordovia_Batushevo, Russia	EUR	European Ancestry	46.1	54.6
+egta	Pole1	female	POL	Pole	Poles, Poland	EUR	European Ancestry	20.8	52.5
+egta	Pole2	female	POL	Pole	Poles, Poland	EUR	European Ancestry	20.8	52.5
+egta	Pole3	female	POL	Pole	Poles, Poland	EUR	European Ancestry	20.8	52.5
+egta	Pole4	female	POL	Pole	Poles, Wroclaw, Poland	EUR	European Ancestry	17	51.1
+egta	RomBH1	female	ROM	Roma	Roma, Zavidovici, Bosnia-Herzegovina	EUR	European Ancestry	18.1	44.4
+egta	RomBH2	female	ROM	Roma	Roma, Zavidovici, Bosnia-Herzegovina	EUR	European Ancestry	18.1	44.4
+egta	RomBH5	female	ROM	Roma	Roma, Zavidovici, Bosnia-Herzegovina	EUR	European Ancestry	18.1	44.4
+egta	Rus1	female	RSS	Russian	Russians, Russia	EUR	European Ancestry	25.7	58.9
+egta	RusRz1	male	RSC	Russians Central	Russians-Central, Rjazan, Russia	EUR	European Ancestry	39.7	54.6
+egta	RusKU1	female	RSC	Russians Central	Russians-Central, Kostroma_Ural, Russia	EUR	European Ancestry	57.2	56.4
+egta	RusPi1	male	RSN	Russians North	Russians-North, Pinega, Russia	EUR	European Ancestry	43.4	64.7
+egta	RusPi2	male	RSN	Russians North	Russians-North, Pinega, Russia	EUR	European Ancestry	43.4	64.7
+egta	RusPs1	male	RSW	Russians West	Russians-West, Pskov, Russia	EUR	European Ancestry	28.3	57.8
+egta	RusPs2	male	RSW	Russians West	Russians-West, Pskov, Russia	EUR	European Ancestry	28.3	57.8
+egta	Saami4	male	SAM	Saami	Saami, Finnmark, Norway	EUR	European Ancestry	25.2	69.9
+egta	Saami5	male	SAM	Saami	Saami, Finnmark, Norway	EUR	European Ancestry	25.2	69.9
+egta	Saami6	male	SAM	Saami	Saami, Finnmark, Norway	EUR	European Ancestry	25.2	69.9
+egta	Swe1	male	SWD	Swede	Swedes, Sweden	EUR	European Ancestry	18	59.4
+egta	Swe2	male	SWD	Swede	Swedes, Nykšping, Sweden	EUR	European Ancestry	17	58.8
+egta	Tatar1	female	TTR	Tatar	Tatars, Turkestan, Kazakhstan	EUR	European Ancestry	68.2	43.3
+egta	Tatar3	male	TTR	Tatar	Tatars, Tatarstan_Tuymazinskiy, Russia	EUR	European Ancestry	53.8	54.6
+egta	Tatar2	male	TTR	Tatar	Tatars, Almaty, Kazakhstan	EUR	European Ancestry	76.9	43.3
+egta	Udmrd1	female	UDM	Udmurd	Udmurds, Udmurt_republic_Starye-Bygi, Russia	EUR	European Ancestry	53.8	57.2
+egta	Udmrd2	male	UDM	Udmurd	Udmurds, Udmurt_republic_Karsashur, Russia	EUR	European Ancestry	54.1	57.3
+egta	Udmrd3	male	UDM	Udmurd	Udmurds, Russia	EUR	European Ancestry	52.8	57.3
+egta	Udmrd4	male	UDM	Udmurd	Udmurds, Russia	EUR	European Ancestry	52.8	57.3
+egta	UkrnE1	male	UKE	Ukrainians east	Ukrainians_east, Sumi_region, Ukraine	EUR	European Ancestry	34.8	50.9
+egta	UkrnE2	male	UKE	Ukrainians east	Ukrainians_east, Sumi_region, Ukraine	EUR	European Ancestry	34.8	50.9
+egta	UkrnE3	male	UKE	Ukrainians east	Ukrainians_east, Kharkov_region, Ukraine	EUR	European Ancestry	36.2	50
+egta	UkrN1	male	UKN	Ukrainians north	Ukrainians_north, Chernigovskaja, Ukraine	EUR	European Ancestry	31.4	51.5
+egta	UkrnW1	male	UKW	Ukrainians west	Ukrainians_west, Rivnens'ka oblast, Ukraine	EUR	European Ancestry	26.2	50.6
+egta	UkrnW2	male	UKW	Ukrainians west	Ukrainians_west, Zhytomyrs'ka oblast, Ukraine	EUR	European Ancestry	28.7	50.3
+egta	UkrnW3	male	UKW	Ukrainians west	Ukrainians_west, Chernivets'ka oblast, Ukraine	EUR	European Ancestry	25.9	48.3
+egta	Veps1	female	VPS	Vepsa	Vepsas, Vepsskaya_National_Volost, Russia	EUR	European Ancestry	34.8	61.4
+egta	Veps2	male	VPS	Vepsa	Vepsas, Vepsskaya_National_Volost, Russia	EUR	European Ancestry	34.8	61.4
+egta	Veps3	male	VPS	Vepsa	Vepsas, Vepsskaya_National_Volost, Russia	EUR	European Ancestry	34.8	61.4
+egta	Veps4	male	VPS	Vepsa	Vepsas, Drugaya_Reka, Russia	EUR	European Ancestry	35.5	61.3
+egta	Koinb1	male	KNN	Koinanbe	Koinanbe, Papua New Guinea	OCE	Oceanian Ancestry	144.6	-5.5
+egta	Koinb2	male	KNN	Koinanbe	Koinanbe, Papua New Guinea	OCE	Oceanian Ancestry	144.6	-5.5
+egta	Koinb3	male	KNN	Koinanbe	Koinanbe, Papua New Guinea	OCE	Oceanian Ancestry	144.6	-5.5
+egta	Kosip1	male	KSP	Kosipe	Kosipe, Papua New Guinea	OCE	Oceanian Ancestry	147.2	-8.5
+egta	Kosip2	male	KSP	Kosipe	Kosipe, Papua New Guinea	OCE	Oceanian Ancestry	147.2	-8.5
+egta	Kosip3	male	KSP	Kosipe	Kosipe, Papua New Guinea	OCE	Oceanian Ancestry	147.2	-8.5
+egta	Aus1	male	WNG	Wongatha	Wongatha, Australia	OCE	Oceanian Ancestry	132.5	-17.1
+egta	Aus2	male	WNG	Wongatha	Wongatha, Australia	OCE	Oceanian Ancestry	132.5	-17.1
+egta	Altai1	female	ALT	Altaian	Altaians, Altai Republic, Ulagansky, Russia	CAS	Central Asian and Siberian Ancestry	88.3	50.8
+egta	Altai4	male	ALT	Altaian	Altaians, Altai Republic, Ulagansky, Russia	CAS	Central Asian and Siberian Ancestry	88.3	50.8
+egta	Altai3	male	ALT	Altaian	Altaians, Altai Republic, Shebalinsky, Russia	CAS	Central Asian and Siberian Ancestry	85.4	51.3
+egta	Altai2	female	ALT	Altaian	Altaians, Altai Republic, Kaysyn, Russia	CAS	Central Asian and Siberian Ancestry	84.6	51
+egta	Altai5	male	ALT	Altaian	Altaians, Altai Republic, Kaysyn, Russia	CAS	Central Asian and Siberian Ancestry	84.6	51
+egta	Altai6	male	ALT	Altaian	Altaians, Altai Republic, Kaysyn, Russia	CAS	Central Asian and Siberian Ancestry	84.6	51
+egta	Bur6	female	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	104.9	52
+egta	Bur11	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	102.8	53.8
+egta	Bur2	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	108.4	52.9
+egta	Bur383	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur530	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur639	female	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur406	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur561	female	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur640	female	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur318	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur336	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur355	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur361	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur398	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur578	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur350	male	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Bur636	female	BRY	Buryat	Buryats, Buryatia, Russia	CAS	Central Asian and Siberian Ancestry	113	56.3
+egta	Evnk1	female	EVK	Evenk	Evenks, Sakha_Aldansky_District, Russia	CAS	Central Asian and Siberian Ancestry	128.7	58.9
+egta	Evnk5	female	EVK	Evenk	Evenks, Sakha_Aldansky_District, Russia	CAS	Central Asian and Siberian Ancestry	128.7	58.9
+egta	Evnk2	male	EVK	Evenk	Evenks, Sakha_Aldansky_District, Russia	CAS	Central Asian and Siberian Ancestry	128.7	58.9
+egta	Evk40	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Nidym, Russia	CAS	Central Asian and Siberian Ancestry	99.9	64.1
+egta	Evk35	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Nidym, Russia	CAS	Central Asian and Siberian Ancestry	99.9	64.1
+egta	Evk14	male	EVK	Evenk	Evenks, Krasnoyarsk Krai, Essey, Russia	CAS	Central Asian and Siberian Ancestry	102.2	68.5
+egta	Evk16	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Chirinda, Russia	CAS	Central Asian and Siberian Ancestry	100.4	67.5
+egta	Evk55	male	EVK	Evenk	Evenks, Krasnoyarsk Krai, Kislokan, Russia	CAS	Central Asian and Siberian Ancestry	104	63.6
+egta	Evk41	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Kuyumba, Russia	CAS	Central Asian and Siberian Ancestry	97	61
+egta	Evk62	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Baykit, Russia	CAS	Central Asian and Siberian Ancestry	96.4	61.7
+egta	Evk22	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Tura, Russia	CAS	Central Asian and Siberian Ancestry	100.2	64.3
+egta	Evk1	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Kuyumba, Russia	CAS	Central Asian and Siberian Ancestry	97	61
+egta	Evnk3	female	EVK	Evenk	Evenks, Krasnoyarsk Krai, Tutonchany, Russia	CAS	Central Asian and Siberian Ancestry	93.8	64.2
+egta	EvenM1	male	EVM	Evens Magadan	Evens_Magadan, Magadanskaya oblast, Severo-Evensky District, Gizhiga, Russia	CAS	Central Asian and Siberian Ancestry	160.4	62
+egta	Evn31	male	EVM	Evens Magadan	Evens_Magadan, Magadanskaya oblast, Arman', Russia	CAS	Central Asian and Siberian Ancestry	150.1	59.7
+egta	Evn21	male	EVM	Evens Magadan	Evens_Magadan, Magadanskaya oblast, Gadlya, Russia	CAS	Central Asian and Siberian Ancestry	151.3	59.7
+egta	EvenM2	male	EVM	Evens Magadan	Evens_Magadan, Magadanskaya oblast, Severo-Evensky District, Gizhiga, Russia	CAS	Central Asian and Siberian Ancestry	160.4	62
+egta	EvenM3	male	EVM	Evens Magadan	Evens_Magadan, Magadanskaya oblast, Severo-Evensky District, Garmanda, Russia	CAS	Central Asian and Siberian Ancestry	159.1	62.2
+egta	EvenS1	male	EVS	Evens Sakha	Evens_Sakha, Sakha_Sebjan-Kjuel, Russia	CAS	Central Asian and Siberian Ancestry	130	65.3
+egta	EvenS2	male	EVS	Evens Sakha	Evens_Sakha, Sakha_Tomtor, Russia	CAS	Central Asian and Siberian Ancestry	143.2	63.3
+egta	EvenS3	male	EVS	Evens Sakha	Evens_Sakha, Sakha_Khandyga, Russia	CAS	Central Asian and Siberian Ancestry	135.5	62.7
+egta	NenetF1	female	FNN	Forest Nenet	Forest-Nenets, Tarko-Sale, Russia	CAS	Central Asian and Siberian Ancestry	77.8	64.9
+egta	NenetF2	female	FNN	Forest Nenet	Forest-Nenets, Tarko-Sale, Russia	CAS	Central Asian and Siberian Ancestry	77.8	64.9
+egta	NenetF3	male	FNN	Forest Nenet	Forest-Nenets, Tarko-Sale, Russia	CAS	Central Asian and Siberian Ancestry	77.8	64.9
+egta	Ket1	male	KET	Ket	Kets, Kellog, Russia	CAS	Central Asian and Siberian Ancestry	86.3	62.5
+egta	Ket2	male	KET	Ket	Kets, Kellog, Russia	CAS	Central Asian and Siberian Ancestry	86.3	62.5
+egta	Ket3	female	KET	Ket	Kets, Kellog, Russia	CAS	Central Asian and Siberian Ancestry	86.3	62.5
+egta	Khant1	female	KHN	Khanty	Khantys, Lophari, Russia	CAS	Central Asian and Siberian Ancestry	65.8	65
+egta	Khant2	female	KHN	Khanty	Khantys, Russia	CAS	Central Asian and Siberian Ancestry	69.1	61
+egta	Khant3	female	KHN	Khanty	Khantys, Khanty-Mansiysk, Russia	CAS	Central Asian and Siberian Ancestry	69	61
+egta	Mans1	female	MNS	Mansi	Mansis, Khanty-Mansiysk, Russia	CAS	Central Asian and Siberian Ancestry	69	61
+egta	Mans2	female	MNS	Mansi	Mansis, Khanty-Mansiysk, Russia	CAS	Central Asian and Siberian Ancestry	69	61
+egta	Mans3	female	MNS	Mansi	Mansis, Khanty-Mansiysk, Russia	CAS	Central Asian and Siberian Ancestry	69	61
+egta	Mong1	male	MNG	Mongolian	Mongolians, Dundgobi_Saintsagaan, Mongolia	CAS	Central Asian and Siberian Ancestry	106.3	45.7
+egta	Mong2	male	MNG	Mongolian	Mongolians, …mnšgovi, Mongolia	CAS	Central Asian and Siberian Ancestry	104.3	43.5
+egta	Mong3	male	MNG	Mongolian	Mongolians, Khovd, Mongolia	CAS	Central Asian and Siberian Ancestry	91.6	48
+egta	Mong4	male	MNG	Mongolian	Mongolians, Zavkhan, Mongolia	CAS	Central Asian and Siberian Ancestry	96.1	48.2
+egta	Mong5	male	MNG	Mongolian	Mongolians, Arkhangai, Mongolia	CAS	Central Asian and Siberian Ancestry	100.8	47.9
+egta	Mong6	male	MNG	Mongolian	Mongolians, Selenge, Mongolia	CAS	Central Asian and Siberian Ancestry	106.5	50
+egta	Ngan1	female	NGN	Nganasan	Nganasans, Dudinka, Russia	CAS	Central Asian and Siberian Ancestry	86.2	69.4
+egta	Ngan2	female	NGN	Nganasan	Nganasans, Volot_anka, Russia	CAS	Central Asian and Siberian Ancestry	94.6	71
+egta	YakS1	female	SKH	Sakha	Sakha, Sakha republic, Russia	CAS	Central Asian and Siberian Ancestry	119	68.4
+egta	YakS4	female	SKH	Sakha	Sakha, Sakha republic, Russia	CAS	Central Asian and Siberian Ancestry	117.5	64.5
+egta	YakS8	male	SKH	Sakha	Sakha, Sakha republic, Russia	CAS	Central Asian and Siberian Ancestry	132	62.3
+egta	YakK1	female	SKH	Sakha	Sakha, Krasnoyarsk Krai, Chirinda, Russia	CAS	Central Asian and Siberian Ancestry	100.4	67.5
+egta	YakK2	female	SKH	Sakha	Sakha, Krasnoyarsk Krai, Essey, Russia	CAS	Central Asian and Siberian Ancestry	102.2	68.5
+egta	YakK3	male	SKH	Sakha	Sakha, Krasnoyarsk Krai, Essey, Russia	CAS	Central Asian and Siberian Ancestry	102.2	68.5
+egta	YakK4	male	SKH	Sakha	Sakha, Krasnoyarsk Krai, Ekonda, Russia	CAS	Central Asian and Siberian Ancestry	105.3	65.8
+egta	Selkp1	female	SLK	Selkup	Selkups, Tolka, Russia	CAS	Central Asian and Siberian Ancestry	82	64
+egta	Selkp2	female	SLK	Selkup	Selkups, Tolka, Russia	CAS	Central Asian and Siberian Ancestry	82	64
+egta	Selkp3	male	SLK	Selkup	Selkups, Farkovo, Russia	CAS	Central Asian and Siberian Ancestry	87	65.7
+egta	Shor1	male	SHO	Shor	Shor, Kemerovskaya oblast, Tashtagol, Russia	CAS	Central Asian and Siberian Ancestry	87.9	52.8
+egta	Shor2	female	SHO	Shor	Shor, Kemerovskaya oblast, Orton, Russia	CAS	Central Asian and Siberian Ancestry	88.4	53.2
+egta	NenetT4	female	TNN	Tundra Nenet	Tundra-Nenets, Samburg, Russia	CAS	Central Asian and Siberian Ancestry	78.2	67
+egta	NentT2	male	TNN	Tundra Nenet	Tundra-Nenets, Samburg, Russia	CAS	Central Asian and Siberian Ancestry	78.2	67
+egta	NentT1	male	TNN	Tundra Nenet	Tundra-Nenets, Samburg, Russia	CAS	Central Asian and Siberian Ancestry	78.2	67
+egta	Tuva5	female	TVN	Tuvinian	Tuvinians, Tuva_republic_Barun-Khemchiksky, Russia	CAS	Central Asian and Siberian Ancestry	90.5	51.2
+egta	Tuva1	male	TVN	Tuvinian	Tuvinians, Tuva_republic_Ulug-Khemsky, Russia	CAS	Central Asian and Siberian Ancestry	92.8	51.5
+egta	Tuva2	male	TVN	Tuvinian	Tuvinians, Tuva_republic_Bay-Tayginsky, Russia	CAS	Central Asian and Siberian Ancestry	89.5	51.2
+egta	YakM1	male	YKT	Yakut	Yakuts, Magadanskaya oblast, Seymchan, Russia	CAS	Central Asian and Siberian Ancestry	152.4	62.9
+egta	Asur1	male	ASR	Asur	Asur, India	CSA	Central and South Asian Ancestry	85.3	23.7
+egta	Balija1	male	BLJ	Balija	Balija, Ananthpur, India	CSA	Central and South Asian Ancestry	77.6	14.7
+egta	Beng1	female	BEB	Bengali	Bengali, India	CSA	Central and South Asian Ancestry	88	22.8
+egta	Beng2	male	BEB	Bengali	Bengali, India	CSA	Central and South Asian Ancestry	88.3	22.9
+egta	Brahm1	male	BRH	Brahmin	Brahmin, India	CSA	Central and South Asian Ancestry	83.1	25.3
+egta	Brahm2	male	BRH	Brahmin	Brahmin, India	CSA	Central and South Asian Ancestry	82.9	25.7
+egta	NepBr1	male	BRH	Brahmin	Brahmin, Pokhara, Nepal	CSA	Central and South Asian Ancestry	84	28.2
+egta	Bangl1	male	DMP	Dhaka mixed popul	Dhaka-mixed-popul, Dhaka, Bangladesh	CSA	Central and South Asian Ancestry	90.4	23.7
+egta	Bangl2	male	DMP	Dhaka mixed popul	Dhaka-mixed-popul, Dhaka, Bangladesh	CSA	Central and South Asian Ancestry	90.4	23.7
+egta	Bangl3	female	DMP	Dhaka mixed popul	Dhaka-mixed-popul, Dhaka, Bangladesh	CSA	Central and South Asian Ancestry	90.4	23.7
+egta	Gond1	male	GND	Gond	Gond, India	CSA	Central and South Asian Ancestry	79.9	22.2
+egta	Gupta1	male	GPT	Gupta	Gupta, India	CSA	Central and South Asian Ancestry	82.9	25.5
+egta	Ho1	male	HO	Ho	Ho, India	CSA	Central and South Asian Ancestry	84.2	24.1
+egta	Kapu1	male	KAP	Kapu	Kapu, India	CSA	Central and South Asian Ancestry	83.2	17.7
+egta	Kol1	male	KOL	Kol	Kol, India	CSA	Central and South Asian Ancestry	83.2	24.5
+egta	Khsat1	male	KSH	Kshatriya	Kshatriya, Jaunpur, India	CSA	Central and South Asian Ancestry	82.7	25.7
+egta	Kurmi1	male	KRM	Kurmi	Kurmi, India	CSA	Central and South Asian Ancestry	83	25.2
+egta	MPlc1	male	MDP	Madhya Pradesh	Madhya-Pradesh, India	CSA	Central and South Asian Ancestry	77.1	23.3
+egta	Mal1	male	MLY	Malayan	Malayan, India	CSA	Central and South Asian Ancestry	76.7	10.4
+egta	Raj1	female	MRW	Marwadi	Marwadi, Jodhpur, India	CSA	Central and South Asian Ancestry	73	26.3
+egta	OrMc1	male	ORS	Orissa	Orissa, India	CSA	Central and South Asian Ancestry	85.9	20.5
+egta	PuMc1	male	PNJ	Punjab	Punjab, India	CSA	Central and South Asian Ancestry	75.9	17
+egta	Santh1	male	SNT	Santhal	Santhal, India	CSA	Central and South Asian Ancestry	85.7	22.8
+egta	NplTA1	male	TMN	Tamang	Tamang, Dharan, Nepal	CSA	Central and South Asian Ancestry	87.3	26.8
+egta	Thak1	male	THK	Thakur	Thakur, India	CSA	Central and South Asian Ancestry	77.2	27
+egta	Aeta1	male	AET	Aeta	Aeta, Philippines	EAS	East Asian Ancestry	121	17.6
+egta	Aeta2	male	AET	Aeta	Aeta, Philippines	EAS	East Asian Ancestry	121	17.6
+egta	Aeta3	male	AET	Aeta	Aeta, Philippines	EAS	East Asian Ancestry	121	17.6
+egta	Agta2	male	AGT	Agta	Agta, Philippines	EAS	East Asian Ancestry	121.2	17.8
+egta	Agta1	male	AGT	Agta	Agta, Philippines	EAS	East Asian Ancestry	121.2	17.8
+egta	Agta3	male	AGT	Agta	Agta, Philippines	EAS	East Asian Ancestry	121.2	17.8
+egta	Bajo2	male	BAJ	Bajo	Bajo, Kendari_SW_Sulawesi, Indonesia	EAS	East Asian Ancestry	122.6	-4
+egta	Bajo17	male	BAJ	Bajo	Bajo, Kendari_SW_Sulawesi, Indonesia	EAS	East Asian Ancestry	122.6	-4
+egta	Bajo19	male	BAJ	Bajo	Bajo, Kendari_SW_Sulawesi, Indonesia	EAS	East Asian Ancestry	122.6	-4
+egta	Bajo21	male	BAJ	Bajo	Bajo, Kendari_SW_Sulawesi, Indonesia	EAS	East Asian Ancestry	122.6	-4
+egta	Batak1	male	BTK	Batak	Batak, Philippines	EAS	East Asian Ancestry	119.5	10.5
+egta	Batak2	male	BTK	Batak	Batak, Philippines	EAS	East Asian Ancestry	119.5	10.5
+egta	Batak3	male	BTK	Batak	Batak, Philippines	EAS	East Asian Ancestry	119.5	10.5
+egta	Dusun10	female	DSN	Dusun	Dusun, Bebuloh, Brunei	EAS	East Asian Ancestry	114.8	4.7
+egta	Dusun7	male	DSN	Dusun	Dusun, Tutong, Brunei	EAS	East Asian Ancestry	114.6	4.8
+egta	Dusun5	female	DSN	Dusun	Dusun, Tutong, Brunei	EAS	East Asian Ancestry	114.6	4.8
+egta	Dusun14	female	DSN	Dusun	Dusun, Ukong, Tutong, Brunei	EAS	East Asian Ancestry	114.6	4.7
+egta	Dusun12	male	DSN	Dusun	Dusun, Kg Bukit, Tutong, Brunei	EAS	East Asian Ancestry	114.8	4.8
+egta	Dusun11	female	DSN	Dusun	Dusun, Kg Bukit, Tutong, Brunei	EAS	East Asian Ancestry	114.8	4.8
+egta	Dusun8	male	DSN	Dusun	Dusun, Tutong, Brunei	EAS	East Asian Ancestry	114.6	4.8
+egta	Dusun4	female	DSN	Dusun	Dusun, Tutong, Brunei	EAS	East Asian Ancestry	114.6	4.8
+egta	Igorot6	female	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igrt1	male	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igorot5	female	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igorot3	female	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igorot4	female	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igrt2	female	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igrt3	female	IGR	Igorot	Igorot, Mountain Province, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	17.1
+egta	Igrt4	female	IGR	Igorot	Igorot, La Union, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	120.3	16.6
+egta	Lebb1	male	LBB	Lebbo	Lebbo, Merabu_Kelay_Berau, Indonesia	EAS	East Asian Ancestry	117.2	1.7
+egta	Lebb2	male	LBB	Lebbo	Lebbo, Merabu_Kelay_Berau, Indonesia	EAS	East Asian Ancestry	117.2	1.7
+egta	Lebb3	male	LBB	Lebbo	Lebbo, Merabu_Kelay_Berau, Indonesia	EAS	East Asian Ancestry	117.2	1.7
+egta	Lebb4	male	LBB	Lebbo	Lebbo, Merabu_Kelay_Berau, Indonesia	EAS	East Asian Ancestry	117.2	1.7
+egta	Luz2	female	LZN	Luzon	Luzon, Manila, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	121	14.6
+egta	Luz6	female	LZN	Luzon	Luzon, Olongapo City, Zambales, Luzon Island, Philippines, Philippines	EAS	East Asian Ancestry	120.3	14.9
+egta	Murut19	male	MRT	Murut	Murut, Brunei, Brunei	EAS	East Asian Ancestry	114.7	4.5
+egta	Murut13	male	MRT	Murut	Murut, Temburong, Brunei	EAS	East Asian Ancestry	115.1	4.6
+egta	Murut11	female	MRT	Murut	Murut, Temburong, Brunei	EAS	East Asian Ancestry	115.1	4.6
+egta	Murut4	female	MRT	Murut	Murut, Temburong, Brunei	EAS	East Asian Ancestry	115.1	4.6
+egta	Murut3	male	MRT	Murut	Murut, Temburong, Brunei	EAS	East Asian Ancestry	115.1	4.6
+egta	Murut20	female	MRT	Murut	Murut, Brunei, Brunei	EAS	East Asian Ancestry	114.7	4.5
+egta	Murut6	male	MRT	Murut	Murut, Temburong, Brunei	EAS	East Asian Ancestry	115.1	4.6
+egta	Murut5	male	MRT	Murut	Murut, Temburong, Brunei	EAS	East Asian Ancestry	115.1	4.6
+egta	Vizyn1	female	VZY	Vizayan	Vizayan, Surigao City, Philippines, Philippines	EAS	East Asian Ancestry	125.5	9.8
+egta	Vizyn3	female	VZY	Vizayan	Vizayan, Cebu, Philippines, Philippines	EAS	East Asian Ancestry	123.9	10.3
+egta	Burm4	male	BRM	Burmese	Burmese, Dedaye, Ayeyarwady Region, Myanmar, Myanmar	EAS	East Asian Ancestry	95.9	16.4
+egta	Burm12	male	BRM	Burmese	Burmese, Than-Lyin, Myanmar, Myanmar	EAS	East Asian Ancestry	96.2	16.8
+egta	Burm10	male	BRM	Burmese	Burmese, Pyuntaza, Nyanglaybin, Bago Div, Myanmar, Myanmar	EAS	East Asian Ancestry	96.7	17.9
+egta	Burm8	male	BRM	Burmese	Burmese, Ye-U, Sagaing Division, Myanmar, Myanmar	EAS	East Asian Ancestry	95.4	22.8
+egta	Burm3	male	BRM	Burmese	Burmese, Pyinmana, Nay Pyi Taw, Myanmar, Myanmar	EAS	East Asian Ancestry	96.2	19.7
+egta	Burm20	male	BRM	Burmese	Burmese, Yangon, Myanmar, Myanmar	EAS	East Asian Ancestry	96.1	16.8
+egta	Burm14	male	BRM	Burmese	Burmese, Bilin, Mon State, Myanmar, Myanmar	EAS	East Asian Ancestry	97.2	17.2
+egta	Burm15	male	BRM	Burmese	Burmese, Bilin, Mon State, Myanmar, Myanmar	EAS	East Asian Ancestry	97.2	17.2
+egta	VietC1	female	VTC	Vietnamese central	Vietnamese_central, DaNang, Vietnam	EAS	East Asian Ancestry	108.2	16
+egta	VietC2	female	VTC	Vietnamese central	Vietnamese_central, Hue, Vietnam	EAS	East Asian Ancestry	107.6	16.5
+egta	VietN1	male	VTN	Vietnamese north	Vietnamese_north, Hanoi, Vietnam, Vietnam	EAS	East Asian Ancestry	105.9	21
+egta	VietN2	female	VTN	Vietnamese north	Vietnamese_north, Bac Ninh, Vietnam, Vietnam	EAS	East Asian Ancestry	106.1	21.2
+egta	VietN3	female	VTN	Vietnamese north	Vietnamese_north, Hanoi, Vietnam, Vietnam	EAS	East Asian Ancestry	105.9	21
+egta	VietS1	female	VTS	Vietnamese south	Vietnamese_south, Ho Chi Minh City, Vietnam, Vietnam	EAS	East Asian Ancestry	106.6	10.8
+egta	VietS2	male	VTS	Vietnamese south	Vietnamese_south, Tra Vinh, Vietnam, Vietnam	EAS	East Asian Ancestry	106.3	9.8
+egta	VietS3	male	VTS	Vietnamese south	Vietnamese_south, Cantho City, Vietnam, Vietnam	EAS	East Asian Ancestry	105.8	10
+egta	VietS4	female	VTS	Vietnamese south	Vietnamese_south, Ho Chi Minh City, Vietnam, Vietnam	EAS	East Asian Ancestry	106.6	10.8
+egta	VietS5	male	VTS	Vietnamese south	Vietnamese_south, Ho Chi Minh City, Vietnam, Vietnam	EAS	East Asian Ancestry	106.6	10.8
+egta	CArab1	male	NULL	Arabs Israel 	Arabs-Israel-1, Sakhnin, Israel	WEA	West Eurasian Ancestry	35.3	32.9
+egta	CArab2	male	NULL	Arabs Israel 	Arabs-Israel-1, Abu_Snan, Israel	WEA	West Eurasian Ancestry	35.2	33
+egta	CArab3	male	NULL	Arabs Israel 	Arabs-Israel-1, Iqrit, Israel	WEA	West Eurasian Ancestry	35.3	33.1
+egta	MArab1	male	NULL	Arabs Israel 	Arabs-Israel-2, Shefa-'Amr, Israel	WEA	West Eurasian Ancestry	35.2	32.8
+egta	MArab2	male	NULL	Arabs Israel 	Arabs-Israel-2, Tamra, Israel	WEA	West Eurasian Ancestry	35.4	32.6
+egta	Assyr1	male	ASS	Assyrian	Assyrians, Nor_Artages_Armavir_Region, Armenia	WEA	West Eurasian Ancestry	44	40.1
+egta	Assyr3	male	ASS	Assyrian	Assyrians, Nor_Artages_Armavir_Region, Armenia	WEA	West Eurasian Ancestry	44	40.1
+egta	Assyr4	male	ASS	Assyrian	Assyrians, Nor_Artages_Armavir_Region, Armenia	WEA	West Eurasian Ancestry	44	40.1
+egta	ISR36	female	DRZ	Druze	Druze, Daliyat al-Karmel, Israel	WEA	West Eurasian Ancestry	35.1	32.7
+egta	ISR34	male	DRZ	Druze	Druze, Shefa-'Amr, Israel	WEA	West Eurasian Ancestry	35.2	32.8
+egta	ISR35	male	DRZ	Druze	Druze, Mas'ada, Israel	WEA	West Eurasian Ancestry	35.4	32.8
+egta	Iran3	male	IRN	Iranian	Iranians, Iran, Iran	WEA	West Eurasian Ancestry	51.2	35.1
+egta	Iran4	male	IRN	Iranian	Iranians, Iran, Iran	WEA	West Eurasian Ancestry	51.2	35.1
+egta	Iran1	male	IRN	Iranian	Iranians, Kerman, Iran	WEA	West Eurasian Ancestry	57.1	30.4
+egta	Iran2	male	IRN	Iranian	Iranians, Kerman, Iran	WEA	West Eurasian Ancestry	57.1	30.4
+egta	Jord1	male	JRD	Jordanian	Jordanians, Amman, Jordania	WEA	West Eurasian Ancestry	35.9	31.9
+egta	Jord2	male	JRD	Jordanian	Jordanians, Amman, Jordania	WEA	West Eurasian Ancestry	35.9	31.9
+egta	Lebn1	male	LBN	Lebanese	Lebanese, Beirut, Lebanon	WEA	West Eurasian Ancestry	35.6	33.8
+egta	Saudi1	male	SDA	Saudi Arabian	Saudi-Arabians, Riyadh, Saudi_Arabia	WEA	West Eurasian Ancestry	46.7	24.8
+egta	Saudi2	male	SDA	Saudi Arabian	Saudi-Arabians, Riyadh, Saudi_Arabia	WEA	West Eurasian Ancestry	46.7	24.8

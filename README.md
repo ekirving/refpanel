@@ -45,6 +45,8 @@ available samples from:
   [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
 * Simons Genome Diversity Project (SGDP) (n=256; excluding overlap with 1000G); \
   [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
+* Estonian Biocentre Human Genome Diversity Panel (EGDP) (n=379); \
+  [doi:10.1038/nature19792](https://doi.org/10.1038/nature19792)
 * Gambian Genome Variation Project (GGVP) (n=400; excluding overlap with 1000G); \
   [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
 * Arabian Peninsula Population Genomic (APPG) study (n=137); \
