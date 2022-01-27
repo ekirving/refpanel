@@ -69,10 +69,17 @@ source:
     ena_ftp: true
 
   PRJEB16019:
-    # Genomic analysis of Andamanese provides insights into ancient human migration into Asia and adaptation (n=60)
+    # Whole Genome Sequences of Indian Populations (n=60)
     # https://doi.org/10.1038/ng.3621
     samples: data/source/PRJEB16019/PRJEB16019-samples.tsv
     accessions: data/source/PRJEB16019/PRJEB16019-accessions.tsv
+    ena_ftp: true
+
+  PRJNA660888:
+    # Moroccan population (n=3)
+    # https://doi.org/10.1186/s12863-020-00917-4
+    samples: data/source/PRJNA660888/PRJNA660888-samples.tsv
+    accessions: data/source/PRJNA660888/PRJNA660888-accessions.tsv
     ena_ftp: true
 
   cgg-afr:
