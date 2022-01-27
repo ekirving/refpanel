@@ -82,6 +82,13 @@ source:
     accessions: data/source/PRJNA660888/PRJNA660888-accessions.tsv
     ena_ftp: true
 
+  PRJEB29142:
+    # North African populations (n=21)
+    # https://doi.org/10.1016/j.cub.2019.09.050
+    samples: data/source/PRJEB29142/PRJEB29142-samples.tsv
+    accessions: data/source/PRJEB29142/PRJEB29142-accessions.tsv
+    ena_ftp: true
+
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
     samples: data/source/cgg-afr/cgg-afr-samples.tsv

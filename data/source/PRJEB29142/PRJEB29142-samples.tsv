@@ -1,0 +1,22 @@
+sample	sex	population	population_name	superpopulation	superpopulation_name
+ALG01	Male	ALG	Algeria	AFR	African Ancestry
+ALG02	Male	ALG	Algeria	AFR	African Ancestry
+BAS01	Male	BSQ	Basque	EUR	European Ancestry
+BAS02	Male	BSQ	Basque	EUR	European Ancestry
+BMOR01	Male	MBR	Moroccan Berber	AFR	African Ancestry
+BMOR02	Male	MBR	Moroccan Berber	AFR	African Ancestry
+BTUN01	Male	TBR	Tunisian Berber	AFR	African Ancestry
+BTUN02	Male	TBR	Tunisian Berber	AFR	African Ancestry
+BZEN01	Male	ZBR	Zenata Berber	AFR	African Ancestry
+BZEN02	Male	ZBR	Zenata Berber	AFR	African Ancestry
+EGY01	Male	EGY	Egypt	AFR	African Ancestry
+EGY02	Male	EGY	Egypt	AFR	African Ancestry
+IRQ01	Male	IRQ	Iraq	MEA	Middle Eastern Ancestry
+IRQ02	Male	IRQ	Iraq	MEA	Middle Eastern Ancestry
+LIB01	Male	LIB	Libyan	AFR	African Ancestry
+LIB02	Male	LIB	Libyan	AFR	African Ancestry
+MOR01	Male	MOR	Morocco	AFR	African Ancestry
+MOR02	Male	MOR	Morocco	AFR	African Ancestry
+SAH	Male	WSA	Western Saharawi	AFR	African Ancestry
+TUN01	Male	TUN	Tunisia	AFR	African Ancestry
+TUN02	Male	TUN	Tunisia	AFR	African Ancestry

@@ -55,6 +55,7 @@ Plus additional public genomes from:
 * Meyer et al. (2012) *Science* (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
 * Mondal et al. (2016) *Nature Genetics* (n=60); [doi:10.1038/ng.3621](https://doi.org/10.1038/ng.3621)
 * McColl et al. (2018) *Science* (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
+* Serra-Vidal et al. (2019) *Current Biology* (n=25); [doi:10.1016/j.cub.2019.09.050](https://doi.org/10.1016/j.cub.2019.09.050)
 * Lorente-Galdos et al. (2019) *Genome Biology* (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
 * Crooks et al. (2020) *BMC Genetics* (n=3); [doi:10.1186/s12863-020-00917-4](https://doi.org/10.1186/s12863-020-00917-4)
 
