@@ -36,19 +36,19 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,833), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,929), involving all publicly 
 available samples from:
 
-* 1000 Genomes Project (1000G), 30x NYGC version (n=3,202; 2,504 unrelated + 698 related); \
-  [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
-* Human Genome Diversity Project (HGDP) (n=816; excluding overlap with SGDP); \
-  [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
-* Simons Genome Diversity Project (SGDP) (n=256; excluding overlap with 1000G); \
-  [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
-* Gambian Genome Variation Project (GGVP) (n=400; excluding overlap with 1000G); \
-  [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
-* Arabian Peninsula Population Genomic (APPG) study (n=137); \
-  [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
+* **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; 2,504 unrelated + 698 trios); \
+  Byrska-Bishop et al. (2021) *bioRxiv* [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
+* **Human Genome Diversity Project (HGDP)** (n=816; excluding overlap with SGDP); \
+  Bergström et al. (2020) *Science* [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
+* **Simons Genome Diversity Project (SGDP)** (n=256; excluding overlap with 1000G); \
+  Mallick et al. (2016) *Nature* [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
+* **Gambian Genome Variation Project (GGVP)** (n=400; excluding overlap with 1000G); \
+  Band et al. (2019) *Nature Communications* [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
+* **Arabian Peninsula Population Genomic Study (APPG)**  (n=137); \
+  Almarri et al. (2021) *Cell* [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
 Plus additional public genomes from:
 * Schuster et al. (2010) *Nature* (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
@@ -56,7 +56,7 @@ Plus additional public genomes from:
 * Mondal et al. (2016) *Nature Genetics* (n=60); [doi:10.1038/ng.3621](https://doi.org/10.1038/ng.3621)
 * McColl et al. (2018) *Science* (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
 * Gelabert et al. (2019) *BMC Genomics* (n=12); [doi:10.1186/s12864-019-5529-0](https://doi.org/10.1186/s12864-019-5529-0)
-* Serra-Vidal et al. (2019) *Current Biology* (n=25); [doi:10.1016/j.cub.2019.09.050](https://doi.org/10.1016/j.cub.2019.09.050)
+* Serra-Vidal et al. (2019) *Current Biology* (n=21); [doi:10.1016/j.cub.2019.09.050](https://doi.org/10.1016/j.cub.2019.09.050)
 * Lorente-Galdos et al. (2019) *Genome Biology* (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
 * Crooks et al. (2020) *BMC Genetics* (n=3); [doi:10.1186/s12863-020-00917-4](https://doi.org/10.1186/s12863-020-00917-4)
 
@@ -93,15 +93,15 @@ Superpopulation assignments are based on the original 1000G, HGDP and SGDP metad
 
 | Superpopulation                     | Code | Samples |
 |-------------------------------------|------|--------:|
-| African Ancestry                    | AFR  |   1,431 |
+| African Ancestry                    | AFR  |   1,463 |
 | American Ancestry                   | AMR  |     564 |
 | Central Asian and Siberian Ancestry | CAS  |      25 |
 | Central and South Asian Ancestry    | CSA  |     199 |
 | East Asian Ancestry                 | EAS  |     826 |
-| European Ancestry                   | EUR  |     788 |
-| Middle Eastern Ancestry             | MEA  |     297 |
+| European Ancestry                   | EUR  |     790 |
+| Middle Eastern Ancestry             | MEA  |     299 |
 | Oceanian Ancestry                   | OCE  |      38 |
-| South Asian Ancestry                | SAS  |     618 |
+| South Asian Ancestry                | SAS  |     678 |
 | West Eurasian Ancestry              | WEA  |      47 |
 
 ## Joint-calling pipeline

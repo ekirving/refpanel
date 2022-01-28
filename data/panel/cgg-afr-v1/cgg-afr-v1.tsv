@@ -4673,36 +4673,11 @@ ggvp	SC_GMWOF5428877	GWW	Gambian Wolof	AFR	African Ancestry
 ggvp	SC_GMWOF5428879	GWW	Gambian Wolof	AFR	African Ancestry
 ggvp	SC_GMWOF5428882	GWW	Gambian Wolof	AFR	African Ancestry
 ggvp	SC_GMWOF5428906	GWW	Gambian Wolof	AFR	African Ancestry
-appg	APPG7555879	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7555867	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7555897	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7555899	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7555900	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7555901	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7555902	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
-appg	APPG7836393	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836394	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836395	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836403	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836397	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836398	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836399	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836401	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836402	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836396	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836404	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836405	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836406	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836407	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836408	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7836409	IRQ	Iraq	MEA	Middle Eastern Ancestry
-appg	APPG7836410	IRQ	Iraq	MEA	Middle Eastern Ancestry
-appg	APPG7850840	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-appg	APPG7850841	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
 appg	APPG7555863	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555864	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555865	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555866	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555867	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555868	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555869	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555870	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
@@ -4714,6 +4689,7 @@ appg	APPG7555875	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555876	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555877	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555878	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555879	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555880	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555881	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555882	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
@@ -4731,7 +4707,12 @@ appg	APPG7555893	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555894	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555895	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555896	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555897	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555898	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555899	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555900	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555901	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
+appg	APPG7555902	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555903	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555904	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
 appg	APPG7555905	UAE	United Arab Emirates	MEA	Middle Eastern Ancestry
@@ -4810,9 +4791,28 @@ appg	APPG7623348	YEM	Yemen	MEA	Middle Eastern Ancestry
 appg	APPG7623349	SYR	Syria	MEA	Middle Eastern Ancestry
 appg	APPG7623350	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
 appg	APPG7623351	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
-PRJNA46161	NB1	KHO	Khoisan	AFR	African Ancestry
-PRJNA46161	KB1	KHO	Khoisan	AFR	African Ancestry
+appg	APPG7836393	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836394	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836395	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836396	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836397	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836398	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836399	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836401	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836402	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836403	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836404	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836405	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836406	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836407	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836408	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7836409	IRQ	Iraq	MEA	Middle Eastern Ancestry
+appg	APPG7836410	IRQ	Iraq	MEA	Middle Eastern Ancestry
+appg	APPG7850840	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
+appg	APPG7850841	SAU	Saudi Arabia	MEA	Middle Eastern Ancestry
 PRJNA46161	ABT	SAB	South African Bantu	AFR	African Ancestry
+PRJNA46161	KB1	KHO	Khoisan	AFR	African Ancestry
+PRJNA46161	NB1	KHO	Khoisan	AFR	African Ancestry
 PRJNA76713	HGDP00456	MBT	Mbuti	AFR	African Ancestry
 PRJNA76713	HGDP00521	FRN	French	EUR	European Ancestry
 PRJNA76713	HGDP00665	SRD	Sardinian	EUR	European Ancestry
@@ -4821,50 +4821,123 @@ PRJNA76713	HGDP00927	YRI	Yoruba	AFR	African Ancestry
 PRJNA76713	HGDP00998	KRT	Karitiana	AMR	American Ancestry
 PRJNA76713	HGDP01284	MND	Mandenka	AFR	African Ancestry
 PRJNA76713	HGDP01307	DAI	Dai	EAS	East Asian Ancestry
+PRJEB16019	BIR-08	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-11	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-12	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-13	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-14	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-15	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-16	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-18	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BIR-22	BIR	Birhor	SAS	South Asian Ancestry
+PRJEB16019	BR1-1	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-10	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-12	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-13	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-16	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-18	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-3	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-4	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-5	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	BR1-6	UBR	Brahmin	SAS	South Asian Ancestry
+PRJEB16019	IL-01	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-04	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-07	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-08	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-09	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-10	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-11	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-12	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-15	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	IL-16	ILA	Irula	SAS	South Asian Ancestry
+PRJEB16019	PRBB-1	BEN	Bengali	SAS	South Asian Ancestry
+PRJEB16019	PRBB-2	PUN	Punjabi	SAS	South Asian Ancestry
+PRJEB16019	RAI-11	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-12	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-13	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-15	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-2	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-3	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-4	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-5	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-8	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RAI-9	RAJ	Rajput	SAS	South Asian Ancestry
+PRJEB16019	RIA-12	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-14	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-19	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-20	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-23	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-24	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-41	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-42	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-45	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	RIA-63	RIA	Riang	SAS	South Asian Ancestry
+PRJEB16019	VV1-01	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-03	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-04	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-05	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-06	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-07	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-14	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-16	VLR	Vellalar	SAS	South Asian Ancestry
+PRJEB16019	VV1-20	VLR	Vellalar	SAS	South Asian Ancestry
 PRJEB26721	JHF05	JEH	Jehai in West Malaysia	EAS	East Asian Ancestry
 PRJEB26721	JHM06	JEH	Jehai in West Malaysia	EAS	East Asian Ancestry
-PRJEB28198	EastAfricanBantu_A401	EAB	East African Bantu	AFR	African Ancestry
-PRJEB28198	SouthAfricanBantu_A402	SAB	South African Bantu	AFR	African Ancestry
-PRJEB28198	KhomaniSan_A403	KHM	Khomani San	AFR	African Ancestry
-PRJEB28198	WestAfricanBantu_A404	WAB	West African Bantu	AFR	African Ancestry
+PRJEB26599	BBS014	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS015	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS017	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS018	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS019	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS021	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS023	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS025	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS027	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS028	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS038	BBI	Bubi	AFR	African Ancestry
+PRJEB26599	BBS039	BBI	Bubi	AFR	African Ancestry
+PRJEB29142	ALG01	ALG	Algeria	AFR	African Ancestry
+PRJEB29142	ALG02	ALG	Algeria	AFR	African Ancestry
+PRJEB29142	BAS01	BSQ	Basque	EUR	European Ancestry
+PRJEB29142	BAS02	BSQ	Basque	EUR	European Ancestry
+PRJEB29142	BMOR01	MBR	Moroccan Berber	AFR	African Ancestry
+PRJEB29142	BMOR02	MBR	Moroccan Berber	AFR	African Ancestry
+PRJEB29142	BTUN01	TBR	Tunisian Berber	AFR	African Ancestry
+PRJEB29142	BTUN02	TBR	Tunisian Berber	AFR	African Ancestry
+PRJEB29142	BZEN01	ZBR	Zenata Berber	AFR	African Ancestry
+PRJEB29142	BZEN02	ZBR	Zenata Berber	AFR	African Ancestry
+PRJEB29142	EGY01	EGY	Egypt	AFR	African Ancestry
+PRJEB29142	EGY02	EGY	Egypt	AFR	African Ancestry
+PRJEB29142	IRQ01	IRQ	Iraq	MEA	Middle Eastern Ancestry
+PRJEB29142	IRQ02	IRQ	Iraq	MEA	Middle Eastern Ancestry
+PRJEB29142	LIB01	LIB	Libyan	AFR	African Ancestry
+PRJEB29142	LIB02	LIB	Libyan	AFR	African Ancestry
+PRJEB29142	MOR01	MOR	Moroccan	AFR	African Ancestry
+PRJEB29142	MOR02	MOR	Moroccan	AFR	African Ancestry
+PRJEB29142	SAH	WSA	Western Saharawi	AFR	African Ancestry
+PRJEB29142	TUN01	TUN	Tunisia	AFR	African Ancestry
+PRJEB29142	TUN02	TUN	Tunisia	AFR	African Ancestry
 PRJEB28198	BakaPygmy_A405	BAK	Baka Pygmy	AFR	African Ancestry
-PRJEB28198	Saharawi_A406	SAH	Saharawi	AFR	African Ancestry
-PRJEB28198	Libyan_A407	LIB	Libyan	AFR	African Ancestry
-PRJEB28198	Toubou_A408	TOU	Toubou	AFR	African Ancestry
+PRJEB28198	EastAfricanBantu_A401	EAB	East African Bantu	AFR	African Ancestry
+PRJEB28198	KhomaniSan_A403	KHM	Khomani San	AFR	African Ancestry
 PRJEB28198	Laal_A409	LAA	Laal	AFR	African Ancestry
-cgg-afr	CGG2014211	JU2	Juhoansi2	AFR	African Ancestry
-cgg-afr	CGG2014216	JU2	Juhoansi2	AFR	African Ancestry
-cgg-afr	CGG2014226	JU2	Juhoansi2	AFR	African Ancestry
-cgg-afr	CGG2014233	JU2	Juhoansi2	AFR	African Ancestry
-cgg-afr	CGG2014236	JU2	Juhoansi2	AFR	African Ancestry
-cgg-afr	CGG2014304	VKU	VasekeleKung	AFR	African Ancestry
-cgg-afr	CGG2014305	VKU	VasekeleKung	AFR	African Ancestry
-cgg-afr	CGG2014308	VKU	VasekeleKung	AFR	African Ancestry
-cgg-afr	CGG2014313	VKU	VasekeleKung	AFR	African Ancestry
-cgg-afr	CGG2014319	VKU	VasekeleKung	AFR	African Ancestry
-cgg-afr	CGG2014113	XOO	Xoon	AFR	African Ancestry
-cgg-afr	CGG2014115	XOO	Xoon	AFR	African Ancestry
-cgg-afr	CGG2014119	XOO	Xoon	AFR	African Ancestry
-cgg-afr	CGG2014133	XOO	Xoon	AFR	African Ancestry
-cgg-afr	CGG2014127	XON	XoonNoa	AFR	African Ancestry
-cgg-afr	CGG2014141	HAX	HaiomXoms	AFR	African Ancestry
-cgg-afr	CGG2014153	HAX	HaiomXoms	AFR	African Ancestry
-cgg-afr	CGG2014156	HAX	HaiomXoms	AFR	African Ancestry
-cgg-afr	CGG2014159	HAX	HaiomXoms	AFR	African Ancestry
-cgg-afr	CGG2014160	HAX	HaiomXoms	AFR	African Ancestry
-cgg-afr	CGG2013653	XHO	Xhosa	AFR	African Ancestry
-cgg-afr	CGG2013654	XHO	Xhosa	AFR	African Ancestry
-cgg-afr	CGG2013657	XHO	Xhosa	AFR	African Ancestry
+PRJEB28198	Libyan_A407	LIB	Libyan	AFR	African Ancestry
+PRJEB28198	Saharawi_A406	SAH	Saharawi	AFR	African Ancestry
+PRJEB28198	SouthAfricanBantu_A402	SAB	South African Bantu	AFR	African Ancestry
+PRJEB28198	Toubou_A408	TOU	Toubou	AFR	African Ancestry
+PRJEB28198	WestAfricanBantu_A404	WAB	West African Bantu	AFR	African Ancestry
+PRJNA660888	HBMSYBKR_1	MOR	Moroccan	AFR	African Ancestry
+PRJNA660888	MORBER1_1	MOR	Moroccan	AFR	African Ancestry
+PRJNA660888	MORBER2_1	MOR	Moroccan	AFR	African Ancestry
+cgg-afr	CGG2012300	ELM	Elmoloy	AFR	African Ancestry
+cgg-afr	CGG2012301	ELM	Elmoloy	AFR	African Ancestry
+cgg-afr	CGG2012305	ELM	Elmoloy	AFR	African Ancestry
+cgg-afr	CGG2012316	ELM	Elmoloy	AFR	African Ancestry
+cgg-afr	CGG2012333	ELM	Elmoloy	AFR	African Ancestry
 cgg-afr	CGG2012406	THK	Tharaka	AFR	African Ancestry
 cgg-afr	CGG2012408	THK	Tharaka	AFR	African Ancestry
 cgg-afr	CGG2012409	THK	Tharaka	AFR	African Ancestry
 cgg-afr	CGG2012411	THK	Tharaka	AFR	African Ancestry
 cgg-afr	CGG2012412	THK	Tharaka	AFR	African Ancestry
-cgg-afr	CGG2012624	LOW	Lowarengak	AFR	African Ancestry
-cgg-afr	CGG2012633	LOW	Lowarengak	AFR	African Ancestry
-cgg-afr	CGG2012641	LOW	Lowarengak	AFR	African Ancestry
-cgg-afr	CGG2012643	LOW	Lowarengak	AFR	African Ancestry
-cgg-afr	CGG2012644	LOW	Lowarengak	AFR	African Ancestry
 cgg-afr	CGG2012514	BON	Boni	AFR	African Ancestry
 cgg-afr	CGG2012520	BON	Boni	AFR	African Ancestry
 cgg-afr	CGG2012529	BON	Boni	AFR	African Ancestry
@@ -4875,8 +4948,31 @@ cgg-afr	CGG2012558	DAH	Dahalo	AFR	African Ancestry
 cgg-afr	CGG2012559	DAH	Dahalo	AFR	African Ancestry
 cgg-afr	CGG2012561	DAH	Dahalo	AFR	African Ancestry
 cgg-afr	CGG2012574	DAH	Dahalo	AFR	African Ancestry
-cgg-afr	CGG2012300	ELM	Elmoloy	AFR	African Ancestry
-cgg-afr	CGG2012301	ELM	Elmoloy	AFR	African Ancestry
-cgg-afr	CGG2012305	ELM	Elmoloy	AFR	African Ancestry
-cgg-afr	CGG2012316	ELM	Elmoloy	AFR	African Ancestry
-cgg-afr	CGG2012333	ELM	Elmoloy	AFR	African Ancestry
+cgg-afr	CGG2012624	LOW	Lowarengak	AFR	African Ancestry
+cgg-afr	CGG2012633	LOW	Lowarengak	AFR	African Ancestry
+cgg-afr	CGG2012641	LOW	Lowarengak	AFR	African Ancestry
+cgg-afr	CGG2012643	LOW	Lowarengak	AFR	African Ancestry
+cgg-afr	CGG2012644	LOW	Lowarengak	AFR	African Ancestry
+cgg-afr	CGG2013653	XHO	Xhosa	AFR	African Ancestry
+cgg-afr	CGG2013654	XHO	Xhosa	AFR	African Ancestry
+cgg-afr	CGG2013657	XHO	Xhosa	AFR	African Ancestry
+cgg-afr	CGG2014113	XOO	Xoon	AFR	African Ancestry
+cgg-afr	CGG2014115	XOO	Xoon	AFR	African Ancestry
+cgg-afr	CGG2014119	XOO	Xoon	AFR	African Ancestry
+cgg-afr	CGG2014127	XON	XoonNoa	AFR	African Ancestry
+cgg-afr	CGG2014133	XOO	Xoon	AFR	African Ancestry
+cgg-afr	CGG2014141	HAX	HaiomXoms	AFR	African Ancestry
+cgg-afr	CGG2014153	HAX	HaiomXoms	AFR	African Ancestry
+cgg-afr	CGG2014156	HAX	HaiomXoms	AFR	African Ancestry
+cgg-afr	CGG2014159	HAX	HaiomXoms	AFR	African Ancestry
+cgg-afr	CGG2014160	HAX	HaiomXoms	AFR	African Ancestry
+cgg-afr	CGG2014211	JU2	Juhoansi2	AFR	African Ancestry
+cgg-afr	CGG2014216	JU2	Juhoansi2	AFR	African Ancestry
+cgg-afr	CGG2014226	JU2	Juhoansi2	AFR	African Ancestry
+cgg-afr	CGG2014233	JU2	Juhoansi2	AFR	African Ancestry
+cgg-afr	CGG2014236	JU2	Juhoansi2	AFR	African Ancestry
+cgg-afr	CGG2014304	VKU	VasekeleKung	AFR	African Ancestry
+cgg-afr	CGG2014305	VKU	VasekeleKung	AFR	African Ancestry
+cgg-afr	CGG2014308	VKU	VasekeleKung	AFR	African Ancestry
+cgg-afr	CGG2014313	VKU	VasekeleKung	AFR	African Ancestry
+cgg-afr	CGG2014319	VKU	VasekeleKung	AFR	African Ancestry

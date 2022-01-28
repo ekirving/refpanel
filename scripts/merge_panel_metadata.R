@@ -31,7 +31,8 @@ sources <- lapply(names(config$source), function(source) {
   if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
     read_tsv(config$source[[source]]$samples, show_col_types = FALSE) %>%
       mutate(source = source) %>%
-      select(source, sample, population, population_name, superpopulation, superpopulation_name)
+      select(source, sample, population, population_name, superpopulation, superpopulation_name) %>%
+      arrange(sample)
   }
 })
 

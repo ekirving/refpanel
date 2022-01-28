@@ -10,24 +10,28 @@ refpanel: refpanel-v1
 source:
 
   1000g:
-    # 1000 Genomes Project (TGP) (n=3202; inc. 2504 unrelated + 698 related)
+    # 1000 Genomes Project (1000G)
+    # Byrska-Bishop et al. (2021) `bioRxiv` (n=3202)
     # https://doi.org/10.1101/2021.02.06.430068
     samples: data/source/1000g/1000g-samples.tsv
     pedigree: data/source/1000g/1000g-trios.ped
 
   hgdp:
-    # Human Genome Diversity Project (HGDP) (n=816)
+    # Human Genome Diversity Project (HGDP)
+    # Bergström et al. (2020) `Science` (n=816)
     # https://doi.org/10.1126/science.aay5012
     samples: data/source/hgdp/hgdp-samples.tsv
     prephased: data/source/hgdp/hgdp-10x-gVCFs.tsv
 
   sgdp:
-    # Simons Genome Diversity Project (SGDP) (n=252)
+    # Simons Genome Diversity Project (SGDP)
+    # Mallick et al. (2016) `Nature` (n=252)
     # https://doi.org/10.1038/nature18964
     samples: data/source/sgdp/sgdp-samples.tsv
 
   ggvp:
-    # Gambian Genome Variation Project (GGVP) (n=400)
+    # Gambian Genome Variation Project (GGVP)
+    # Band et al. (2019) `Nature Communications` (n=400)
     # https://doi.org/10.1038/s41467-019-13480-z
     samples: data/source/ggvp/ggvp-samples.tsv
     accessions: data/source/ggvp/ggvp-accessions.tsv
@@ -35,7 +39,8 @@ source:
     ena_ftp: true
 
   appg:
-    # Arabian Peninsula Population Genomic (APPG) study (n=137)
+    # Arabian Peninsula Population Genomic (APPG) study
+    # Almarri et al. (2021) `Cell` (n=137)
     # https://doi.org/10.1016/j.cell.2021.07.013
     samples: data/source/appg/appg-samples.tsv
     accessions: data/source/appg/appg-accessions.tsv
@@ -43,57 +48,57 @@ source:
     ena_ftp: true
 
   PRJNA46161:
-    # Khoisan and Bantu genomes from southern Africa (n=3)
+    # Schuster et al. (2010) `Nature` (n=3)
     # https://doi.org/10.1038/nature08795
     samples: data/source/PRJNA46161/PRJNA46161-samples.tsv
     accessions: data/source/PRJNA46161/PRJNA46161-accessions.tsv
     ena_ftp: true
 
   PRJNA76713:
-    # HGDP samples sequenced in Meyer et al. 2012 (n=8)
+    # Meyer et al. (2012) `Science` (n=8)
     # https://doi.org/10.1126/science.1224344
     samples: data/source/PRJNA76713/PRJNA76713-samples.tsv
 
-  PRJEB26721:
-    # Jehai genomes from West Malaysia (n=2)
-    # https://doi.org/10.1126/science.aat3628
-    samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
-    accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
-    ena_ftp: true
-
-  PRJEB28198:
-    # Pan-African genomes (n=9)
-    # https://doi.org/10.1186/s13059-019-1684-5
-    samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
-    accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
-    ena_ftp: true
-
   PRJEB16019:
-    # Whole Genome Sequences of Indian Populations (n=60)
+    # Mondal et al. (2016) `Nature Genetics` (n=60)
     # https://doi.org/10.1038/ng.3621
     samples: data/source/PRJEB16019/PRJEB16019-samples.tsv
     accessions: data/source/PRJEB16019/PRJEB16019-accessions.tsv
     ena_ftp: true
 
-  PRJNA660888:
-    # Moroccan population (n=3)
-    # https://doi.org/10.1186/s12863-020-00917-4
-    samples: data/source/PRJNA660888/PRJNA660888-samples.tsv
-    accessions: data/source/PRJNA660888/PRJNA660888-accessions.tsv
+  PRJEB26721:
+    # McColl et al. (2018) `Science` (n=2)
+    # https://doi.org/10.1126/science.aat3628
+    samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
+    accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
+    ena_ftp: true
+
+  PRJEB26599:
+    # Gelabert et al. (2019) `BMC Genomics` (n=12)
+    # https://doi.org/10.1186/s12864-019-5529-0
+    samples: data/source/PRJEB26599/PRJEB26599-samples.tsv
+    accessions: data/source/PRJEB26599/PRJEB26599-accessions.tsv
     ena_ftp: true
 
   PRJEB29142:
-    # North African populations (n=21)
+    # Serra-Vidal et al. (2019) `Current Biology` (n=21)
     # https://doi.org/10.1016/j.cub.2019.09.050
     samples: data/source/PRJEB29142/PRJEB29142-samples.tsv
     accessions: data/source/PRJEB29142/PRJEB29142-accessions.tsv
     ena_ftp: true
 
-  PRJEB26599:
-    # Bubi of Bioko Island (n=13)
-    # https://doi.org/10.1186/s12864-019-5529-0
-    samples: data/source/PRJEB26599/PRJEB26599-samples.tsv
-    accessions: data/source/PRJEB26599/PRJEB26599-accessions.tsv
+  PRJEB28198:
+    # Lorente-Galdos et al. (2019) `Genome Biology` (n=9
+    # https://doi.org/10.1186/s13059-019-1684-5
+    samples: data/source/PRJEB28198/PRJEB28198-samples.tsv
+    accessions: data/source/PRJEB28198/PRJEB28198-accessions.tsv
+    ena_ftp: true
+
+  PRJNA660888:
+    # Crooks et al. (2020) `BMC Genetics` (n=3)
+    # https://doi.org/10.1186/s12863-020-00917-4
+    samples: data/source/PRJNA660888/PRJNA660888-samples.tsv
+    accessions: data/source/PRJNA660888/PRJNA660888-accessions.tsv
     ena_ftp: true
 
 
