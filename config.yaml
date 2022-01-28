@@ -89,6 +89,14 @@ source:
     accessions: data/source/PRJEB29142/PRJEB29142-accessions.tsv
     ena_ftp: true
 
+  PRJEB26599:
+    # Bubi of Bioko Island (n=13)
+    # https://doi.org/10.1186/s12864-019-5529-0
+    samples: data/source/PRJEB26599/PRJEB26599-samples.tsv
+    accessions: data/source/PRJEB26599/PRJEB26599-accessions.tsv
+    ena_ftp: true
+
+
   cgg-afr:
     # Unpublished African genomes from the CGG (n=48)
     samples: data/source/cgg-afr/cgg-afr-samples.tsv
