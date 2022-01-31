@@ -31,6 +31,9 @@ include: "rules/07-phase-reads.smk"
 include: "rules/08-phase-trios.smk"
 include: "rules/09-phase-stat.smk"
 include: "rules/10-ensembl-vep.smk"
+#
+# rules for evaluating the reference panel
+include: "rules/11-variant-evaluation.smk"
 
 
 # preference download rules, when they are available
