@@ -45,6 +45,7 @@ rule gatk3_variant_eval:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_atom.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_atom.vcf.gz.tbi",
         dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",  # TODO 1000G uses v.151
+        comp="data/evaluation/1000g_nygc/20201028_CCDG_14151_B01_GRM_WGS_2020-08-05_{chr}.recalibrated_variants.vcf.gz",
     output:
         evl="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_atom.vcf.eval",
     log:
@@ -63,4 +64,6 @@ rule gatk3_variant_eval:
         " -R {input.ref}"
         " --eval {input.vcf}"
         " --dbsnp {input.dbsnp}"
+        " --comp {input.comp}"
+        " --known_names '1000G'"
         " --out {output.evl} 2> {log}"

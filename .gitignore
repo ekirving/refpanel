@@ -3,6 +3,7 @@
 .snakemake
 __pycache__
 data/ensembl/vep/
+data/evaluation/
 data/panel/*/*-superpops.tsv
 data/panel/*/*-trios.tsv
 data/panel/*/vcf/

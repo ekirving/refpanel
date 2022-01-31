@@ -14,6 +14,7 @@ configfile: "config.yaml"
 
 # rules to download the data sources
 include: "rules/data/1000g.smk"
+include: "rules/data/1000g_nygc.smk"
 include: "rules/data/hgdp.smk"
 include: "rules/data/sgdp.smk"
 include: "rules/data/ggvp.smk"
