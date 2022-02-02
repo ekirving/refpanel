@@ -31,7 +31,7 @@ rule bcftools_atomize:
         "../envs/htslib-1.14.yaml"
     shell:
         "( bcftools norm --atomize -Oz -o {output.vcf} {input.vcf} && "
-        "  bcftools index --tbi {output.vcf} )2> {log}"
+        "  bcftools index --tbi {output.vcf} ) 2> {log}"
 
 
 rule gatk3_variant_eval:
