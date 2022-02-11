@@ -39,7 +39,7 @@ conda activate refpanel
 This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,929), involving all publicly 
 available samples from:
 
-* **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; 2,504 unrelated + 698 trios); \
+* **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; inc. 2,504 phase 3 samples + 698 additional related samples); \
   Byrska-Bishop et al. (2021) *bioRxiv* [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
 * **Human Genome Diversity Project (HGDP)** (n=816; excluding overlap with SGDP); \
   Bergström et al. (2020) *Science* [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)

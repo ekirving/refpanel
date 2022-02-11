@@ -30,7 +30,7 @@ rule tgp_nygc_vcf_md5:
         r"""grep -P '{wildcards.chr}\b' {input.tsv} | awk '{{ print $3" {params.file}" }}' > {output.md5}"""
 
 
-rule gp_nygc_vcf_download:
+rule tgp_nygc_vcf_download:
     """
     Download the 1000G VCF files
     """
@@ -47,5 +47,5 @@ rule gp_nygc_vcf_download:
     shell:
         r"grep -P '{wildcards.chr}\b' {input.tsv} | awk '{{ print $1 }}' | "
         r"xargs wget --quiet -O {output.vcf} -o /dev/null && "
-        r"""md5sum --status --check {input.md5} && """
+        r"md5sum --status --check {input.md5} && "
         r"bcftools index --tbi {output.vcf}"
