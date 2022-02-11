@@ -36,7 +36,7 @@ rule bcftools_atomize:
 
 rule gatk3_variant_eval:
     """
-    Raw variant calls using HaplotypeCaller on a single sample, within a given region and sex-based ploidy
+    Evaluate a callset with GATK VariantEval, comparing to both dbSNP and the NYGC 30x 1000G callset
 
     https://github.com/broadinstitute/gatk-docs/blob/master/gatk3-tutorials/(howto)_Evaluate_a_callset_with_VariantEval.md
     """
@@ -67,3 +67,44 @@ rule gatk3_variant_eval:
         " --comp {input.comp}"
         " --known_names '1000G'"
         " --out {output.evl} 2> {log}"
+
+
+rule giab_genome_stratifications:
+    """
+    Download the Genome in a Bottle (GIAB) genome stratifications
+    """
+    output:
+        "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-GRCh38-all-stratifications.tsv",
+        "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-GRCh38-CMRG-stratifications.tsv",
+        "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-GRCh38-stratifications-all-except-genome-specific-stratifications.tsv",
+        "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-GRCh38-v4.2.1-stratifications.tsv",
+        "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-stratifications-GRCh38-md5s.txt",
+    shell:
+        "wget "
+        " --mirror"
+        " --quiet"
+        " --no-host-directories"
+        " --cut-dirs=6"
+        " --directory-prefix=data/reference/GRCh38/giab-stratifications/v3.0/"
+        " -o /dev/null"
+        " https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/genome-stratifications/v3.0/GRCh38/"
+
+
+rule giab_na12878_hg001:
+    """
+    Download the Genome in a Bottle (GIAB) truth-set for NA12878 (HG001)
+    """
+    output:
+        "data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.bed",
+        "data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.vcf.gz",
+        "data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.vcf.gz.tbi",
+    shell:
+        "wget "
+        " --mirror"
+        " --quiet"
+        " --no-host-directories"
+        " --cut-dirs=6"
+        " --directory-prefix=data/evaluation/GIAB/NA12878_HG001/"
+        " -o /dev/null"
+        " ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/"
+
