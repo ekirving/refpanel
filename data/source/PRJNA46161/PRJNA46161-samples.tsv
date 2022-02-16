@@ -1,4 +1,0 @@
-sample	sex	population	population_name	superpopulation	superpopulation_name	gatk_flags
-NB1	male	KHO	Khoisan	AFR	African Ancestry	
-KB1	male	KHO	Khoisan	AFR	African Ancestry	
-ABT	male	SAB	South African Bantu	AFR	African Ancestry	--allow_potentially_misencoded_quality_scores

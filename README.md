@@ -36,7 +36,7 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,929), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,926), involving all publicly 
 available samples from:
 
 * **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; inc. 2,504 phase 3 samples + 698 additional related samples); \
@@ -51,7 +51,6 @@ available samples from:
   Almarri et al. (2021) *Cell* [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
 Plus additional public genomes from:
-* Schuster et al. (2010) *Nature* (n=3); [doi:10.1038/nature08795](https://doi.org/10.1038/nature08795) 
 * Meyer et al. (2012) *Science* (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
 * Mondal et al. (2016) *Nature Genetics* (n=60); [doi:10.1038/ng.3621](https://doi.org/10.1038/ng.3621)
 * McColl et al. (2018) *Science* (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
@@ -93,7 +92,7 @@ Superpopulation assignments are based on the original 1000G, HGDP and SGDP metad
 
 | Superpopulation                     | Code | Samples |
 |-------------------------------------|------|--------:|
-| African Ancestry                    | AFR  |   1,463 |
+| African Ancestry                    | AFR  |   1,460 |
 | American Ancestry                   | AMR  |     564 |
 | Central Asian and Siberian Ancestry | CAS  |      25 |
 | Central and South Asian Ancestry    | CSA  |     199 |

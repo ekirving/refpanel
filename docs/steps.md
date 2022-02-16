@@ -21,7 +21,7 @@ To download all the `gVCF` files for 1000G, run:
 To download all the `fastq` files for the other data sources, run:
 
 ```bash
-for source in appg PRJEB26721 PRJEB28198 PRJNA46161; do
+for source in appg PRJEB26721 PRJEB28198; do
   ./refpanel data/source/${source}/fastq/download.done
 done
 ```
