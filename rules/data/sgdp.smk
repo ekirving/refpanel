@@ -32,6 +32,8 @@ rule sgdp_md5:
     params:
         file="data/source/sgdp/cram/{sample}.raw.{ext}",
         col=lambda wildcards: 4 if "crai" in wildcards.ext else 2,
+    benchmark:
+        "benchmarks/sgdp_md5-{sample}-{ext}.tsv"
     shell:
         r"""grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col}" {params.file}" }}' > {output.md5}"""
 
@@ -49,6 +51,8 @@ rule sgdp_download_cram:
         col=lambda wildcards: 3 if "crai" in wildcards.ext else 1,
     resources:
         ftp=1,
+    benchmark:
+        "benchmarks/sgdp_download_cram-{sample}-{ext}.tsv"
     shell:
         r"grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col} }}' | "
         r"xargs wget --quiet -O {output.cram} -o /dev/null && "
@@ -67,6 +71,8 @@ rule sgdp_standardise_sample_names:
     output:
         cram="data/source/sgdp/cram/{sample}.cram",
         crai="data/source/sgdp/cram/{sample}.cram.crai",
+    benchmark:
+        "benchmarks/sgdp_standardise_sample_names-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:

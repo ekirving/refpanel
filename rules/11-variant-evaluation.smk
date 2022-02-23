@@ -27,6 +27,8 @@ rule bcftools_atomize:
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_atom.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_atom.vcf.log",
+    benchmark:
+        "benchmarks/bcftools_atomize-{panel}-{chr}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -53,6 +55,8 @@ rule gatk3_variant_eval:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_variant_eval-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -79,6 +83,8 @@ rule giab_genome_stratifications:
         "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-GRCh38-stratifications-all-except-genome-specific-stratifications.tsv",
         "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-GRCh38-v4.2.1-stratifications.tsv",
         "data/reference/GRCh38/giab-stratifications/v3.0/v3.0-stratifications-GRCh38-md5s.txt",
+    benchmark:
+        "benchmarks/giab_genome_stratifications.tsv"
     shell:
         "wget "
         " --mirror"
@@ -98,6 +104,8 @@ rule giab_na12878_hg001:
         "data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.bed",
         "data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.vcf.gz",
         "data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.vcf.gz.tbi",
+    benchmark:
+        "benchmarks/giab_na12878_hg001.tsv"
     shell:
         "wget "
         " --mirror"
@@ -107,4 +115,3 @@ rule giab_na12878_hg001:
         " --directory-prefix=data/evaluation/GIAB/NA12878_HG001/"
         " -o /dev/null"
         " ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/"
-

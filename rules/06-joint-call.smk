@@ -50,6 +50,8 @@ rule gatk3_genotype_chrom_gvcf:
     resources:
         mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_genotype_chrom_gvcf-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -80,6 +82,8 @@ rule gatk3_split_variants:
         log="data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/gatk3_split_variants-{panel}-{chr}-{type}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -116,6 +120,8 @@ rule gatk3_variant_recalibrator_snp:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_variant_recalibrator_snp-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -171,6 +177,8 @@ rule gatk3_variant_recalibrator_indel:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_variant_recalibrator_indel-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -220,6 +228,8 @@ rule gatk3_apply_recalibration_snp:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_apply_recalibration_snp-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -256,6 +266,8 @@ rule gatk3_apply_recalibration_indel:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_apply_recalibration_indel-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -287,6 +299,8 @@ rule picard_merge_variant_vcfs:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/picard_merge_variant_vcfs-{panel}-{chr}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -312,6 +326,8 @@ rule bcftools_samples_file:
     params:
         col1=lambda wildcards, input: open(input.tsv).readline().split().index("sample") + 1,
         col2=lambda wildcards, input: open(input.tsv).readline().split().index("superpopulation") + 1,
+    benchmark:
+        "benchmarks/bcftools_samples_file-{panel}.tsv"
     shell:
         r"""awk -v FS="\t" 'NR>1 && ${params.col2}!="" {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
@@ -331,6 +347,8 @@ rule bcftools_norm:
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.log",
+    benchmark:
+        "benchmarks/bcftools_norm.tsv-{panel}-{chr}"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -351,6 +369,8 @@ rule bcftools_trio_file:
         ped=lambda wildcards: config["panel"][wildcards.panel].get("pedigree", "/dev/null"),
     output:
         tsv="data/source/{panel}/{panel}-trios.tsv",
+    benchmark:
+        "benchmarks/bcftools_trio_file-{panel}.tsv"
     shell:
         """awk '{{ print $4","$3","$2 }}' {input.ped} > {output.tsv}"""
 
@@ -373,6 +393,8 @@ rule bcftools_annotate:
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi",
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.log",
+    benchmark:
+        "benchmarks/bcftools_annotate-{panel}-{chr}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -411,6 +433,8 @@ rule bcftools_filter_vcf:
         ),
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: max(math.ceil(len(open(input.trios).readlines()) * 0.05), 1),
+    benchmark:
+        "benchmarks/bcftools_filter_vcf-{panel}-{chr}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:

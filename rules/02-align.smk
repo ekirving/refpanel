@@ -45,6 +45,8 @@ rule fastp_trim_adapters_se:
     log:
         log="data/source/{source}/fastq/{accession}_se_trim.log",
     threads: 4
+    benchmark:
+        "benchmarks/fastp_trim_adapters_se-{source}-{accession}.tsv"
     conda:
         "../envs/fastp-0.23.2.yaml"
     shell:
@@ -73,6 +75,8 @@ rule fastp_trim_adapters_pe:
     log:
         log="data/source/{source}/fastq/{accession}_pe_trim.log",
     threads: 4
+    benchmark:
+        "benchmarks/fastp_trim_adapters_pe-{source}-{accession}.tsv"
     conda:
         "../envs/fastp-0.23.2.yaml"
     shell:
@@ -101,6 +105,8 @@ rule bwa_mem_se:
     params:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: max(workflow.cores / 4, 8)
+    benchmark:
+        "benchmarks/bwa_mem_se-{source}-{accession}.tsv"
     conda:
         "../envs/bwa-0.7.15.yaml"
     shell:
@@ -130,6 +136,8 @@ rule bwa_mem_pe:
     params:
         rg=lambda wildcards: read_group(config, wildcards.source, wildcards.accession),
     threads: max(workflow.cores / 4, 8)
+    benchmark:
+        "benchmarks/bwa_mem_pe-{source}-{accession}.tsv"
     conda:
         "../envs/bwa-0.7.15.yaml"
     shell:
@@ -156,6 +164,8 @@ rule picard_fix_mate_info:
         log="data/source/{source}/bam/{accession}_fixedmate.bam.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/picard_fix_mate_info-{source}-{accession}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -202,6 +212,8 @@ rule picard_merge_accessions:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/picard_merge_accessions-{source}-{sample}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -232,6 +244,8 @@ rule picard_sort_bam:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/picard_sort_bam-{source}-{sample}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -264,6 +278,8 @@ rule picard_mark_duplicates:
     resources:
         mem_mb=JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/picard_mark_duplicates-{source}-{sample}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -302,6 +318,8 @@ rule gatk3_base_recalibrator:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/gatk3_base_recalibrator-{source}-{sample}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -338,6 +356,8 @@ rule gatk3_recalibrator_print_reads:
     threads: GATK_NUM_THREADS
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/gatk3_recalibrator_print_reads-{source}-{sample}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -368,6 +388,8 @@ rule samtools_cram:
     output:
         cram=protected("data/source/{source}/cram/{sample}.cram"),
         crai=protected("data/source/{source}/cram/{sample}.cram.crai"),
+    benchmark:
+        "benchmarks/samtools_cram-{source}-{sample}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:

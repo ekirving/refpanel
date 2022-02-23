@@ -32,6 +32,8 @@ rule hgdp_download_cram:
         crai=temp("data/source/{source}/cram/{sample}.raw.cram.crai"),
     resources:
         ftp=1,
+    benchmark:
+        "benchmarks/hgdp_download_cram-{source}-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -56,6 +58,8 @@ rule hgdp_filter_iupac_base_codes:
     output:
         cram=temp("data/source/{source}/cram/{sample}.filtered.cram"),
         crai=temp("data/source/{source}/cram/{sample}.filtered.cram.crai"),
+    benchmark:
+        "benchmarks/hgdp_filter_iupac_base_codes-{source}-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -80,6 +84,8 @@ rule hgdp_standardise_sample_names:
     output:
         cram="data/source/{source}/cram/{sample}.cram",
         crai="data/source/{source}/cram/{sample}.cram.crai",
+    benchmark:
+        "benchmarks/hgdp_standardise_sample_names-{source}-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:

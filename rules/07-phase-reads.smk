@@ -31,6 +31,8 @@ rule bcftools_subset_sample:
     output:
         vcf=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_subset.vcf.gz.tbi"),
+    benchmark:
+        "benchmarks/bcftools_subset_sample-{panel}-{chr}-{source}-{sample}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -55,6 +57,8 @@ rule whatshap_read_based_phasing:
         tbi=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.log",
+    benchmark:
+        "benchmarks/whatshap_read_based_phasing-{panel}-{chr}-{source}-{sample}.tsv"
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
@@ -95,6 +99,8 @@ rule whatshap_linked_read_phasing:
         tbi=temp("data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.log",
+    benchmark:
+        "benchmarks/whatshap_linked_read_phasing-{panel}-{chr}-{source}-{sample}.tsv"
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
@@ -151,10 +157,12 @@ rule bcftools_merge_phased_samples:
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
     params:
         limit=MAX_OPEN_FILES,
-    conda:
-        "../envs/htslib-1.14.yaml"
     resources:
         mem_mb=8 * 1024,
+    benchmark:
+        "benchmarks/bcftools_merge_phased_samples-{panel}-{chr}.tsv"
+    conda:
+        "../envs/htslib-1.14.yaml"
     shell:
         "ulimit -n {params.limit} && "
         "bcftools merge --file-list {input.list} -Oz -o {output.vcf} && "

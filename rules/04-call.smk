@@ -35,6 +35,8 @@ rule gatk3_haplotype_caller:
         log="data/source/{source}/gVCF/{sample}.{sex}.{ploidy}.g.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/gatk3_haplotype_caller-{source}-{sample}-{sex}-{ploidy}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -100,6 +102,8 @@ rule gatk3_combine_ploidy_regions:
         log="data/source/{source}/gVCF/{sample}.g.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/gatk3_combine_ploidy_regions-{source}-{sample}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:

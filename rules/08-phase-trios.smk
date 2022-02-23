@@ -43,6 +43,8 @@ rule pedigree_family:
         ped=lambda wildcards: config["panel"][wildcards.panel]["pedigree"],
     output:
         ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
+    benchmark:
+        "benchmarks/pedigree_family-{panel}-{family}.tsv"
     shell:
         """awk '$1=="{wildcards.family}"' {input.ped} > {output.ped}"""
 
@@ -62,6 +64,8 @@ rule bcftools_subset_family:
         samples=lambda wildcards, input: ",".join(
             set(pd.read_table(input.ped, header=None, sep=" ", usecols=[1, 2, 3]).values.flatten())
         ),
+    benchmark:
+        "benchmarks/bcftools_subset_family-{panel}-{chr}-{family}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -91,6 +95,8 @@ rule whatshap_pedigree_phasing:
         tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.log",
+    benchmark:
+        "benchmarks/whatshap_pedigree_phasing-{panel}-{chr}-{family}.tsv"
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
@@ -145,10 +151,12 @@ rule bcftools_merge_phased_families:
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz.tbi",
     params:
         limit=MAX_OPEN_FILES,
-    conda:
-        "../envs/htslib-1.14.yaml"
     resources:
         mem_mb=8 * 1024,
+    benchmark:
+        "benchmarks/bcftools_merge_phased_families-{panel}-{chr}.tsv"
+    conda:
+        "../envs/htslib-1.14.yaml"
     shell:
         "ulimit -n {params.limit} && "
         "bcftools merge --file-list {input.list} -Oz -o {output.vcf} && "

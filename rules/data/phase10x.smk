@@ -30,6 +30,8 @@ rule phase10x_download_gvcfs:
         tbi=temp("data/source/{source}/gVCF/phase10x/{sample}.phase10x.raw.vcf.gz.tbi"),
     resources:
         ftp=1,
+    benchmark:
+        "benchmarks/phase10x_download_gvcfs-{source}-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -51,6 +53,8 @@ rule phase10x_standardise_sample_names:
         vcf="data/source/{source}/gVCF/phase10x/{sample}.phase10x.vcf.gz",
         tbi="data/source/{source}/gVCF/phase10x/{sample}.phase10x.vcf.gz.tbi",
         sample=temp("data/source/{source}/gVCF/phase10x/{sample}.phase10x.sample"),
+    benchmark:
+        "benchmarks/phase10x_standardise_sample_names-{source}-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:

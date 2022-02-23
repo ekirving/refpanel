@@ -48,6 +48,8 @@ rule ena_fastq_md5:
         idx=lambda wildcards, input: get_column_indexes(
             input.man, ["accession", f"fastq_{wildcards.pair}_md5", f"fastq_{wildcards.pair}"]
         ),
+    benchmark:
+        "benchmarks/ena_fastq_md5-{source}-{accession}-{pair}.tsv"
     shell:
         r"""awk -v FS="\t" '${params.idx[0]}=="{wildcards.accession}" {{ print ${params.idx[1]}, ${params.idx[2]} }}' {input.man} > {output.md5}"""
 
@@ -65,10 +67,12 @@ rule ena_fastq_download:
         idx=lambda wildcards, input: get_column_indexes(input.man, ["accession", f"fastq_{wildcards.pair}_ftp"]),
     resources:
         ftp=1,
-    conda:
-        "../../envs/htslib-1.14.yaml"
     wildcard_constraints:
         source="|".join(ENA_SOURCES),
+    benchmark:
+        "benchmarks/ena_fastq_download-{source}-{accession}-{pair}.tsv"
+    conda:
+        "../../envs/htslib-1.14.yaml"
     shell:
         r"""awk -v FS="\t" '${params.idx[0]}=="{wildcards.accession}" {{ print ${params.idx[1]} }}' {input.man} | """
         "xargs wget --quiet -O {output.fastq} -o /dev/null && "

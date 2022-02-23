@@ -42,6 +42,8 @@ rule ggvp_md5:
     params:
         file="data/source/ggvp/cram/{sample}.raw.{ext}",
         col=lambda wildcards: 4 if "crai" in wildcards.ext else 2,
+    benchmark:
+        "benchmarks/ggvp_md5-{sample}-{ext}.tsv"
     shell:
         r"""grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col}" {params.file}" }}' > {output.md5}"""
 
@@ -59,6 +61,8 @@ rule ggvp_download_cram:
         col=lambda wildcards: 3 if "crai" in wildcards.ext else 1,
     resources:
         ftp=1,
+    benchmark:
+        "benchmarks/ggvp_download_cram-{sample}-{ext}.tsv"
     shell:
         r"grep -P '\t{wildcards.sample}\t' {input.man} | awk '{{ print ${params.col} }}' | "
         r"xargs wget --quiet -O {output.cram} -o /dev/null && "
@@ -80,6 +84,8 @@ rule ggvp_filter_iupac_base_codes:
     output:
         cram=temp("data/source/ggvp/cram/{sample}.filtered.cram"),
         crai=temp("data/source/ggvp/cram/{sample}.filtered.cram.crai"),
+    benchmark:
+        "benchmarks/ggvp_filter_iupac_base_codes-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -104,6 +110,8 @@ rule ggvp_standardise_sample_names:
     output:
         cram="data/source/ggvp/cram/{sample}.cram",
         crai="data/source/ggvp/cram/{sample}.cram.crai",
+    benchmark:
+        "benchmarks/ggvp_standardise_sample_names-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:

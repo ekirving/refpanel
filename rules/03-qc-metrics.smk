@@ -46,6 +46,8 @@ rule picard_collect_multiple_metrics:
         prefix="data/source/{source}/cram/{sample}",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/picard_collect_multiple_metrics-{source}-{sample}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -72,6 +74,8 @@ rule picard_collect_wgs_metrics:
         log="data/source/{source}/cram/{sample}.wgs_metrics.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+    benchmark:
+        "benchmarks/picard_collect_wgs_metrics-{source}-{sample}.tsv"
     conda:
         "../envs/picard-2.5.0.yaml"
     shell:
@@ -91,6 +95,8 @@ rule samtools_idxstats:
         cram="data/source/{source}/cram/{sample}.cram",
     output:
         idx="data/source/{source}/cram/{sample}.cram.idxstats",
+    benchmark:
+        "benchmarks/samtools_idxstats-{source}-{sample}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -105,6 +111,8 @@ rule sample_sex_chr_ratio:
         idx="data/source/{source}/cram/{sample}.cram.idxstats",
     output:
         xyr="data/source/{source}/cram/{sample}.cram.xy_ratio",
+    benchmark:
+        "benchmarks/sample_sex_chr_ratio-{source}-{sample}.tsv"
     shell:
         "awk '"
         ' $1=="chrX" {{ xcov=$3/$2 }}; '

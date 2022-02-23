@@ -25,6 +25,8 @@ rule ensembl_vep_install_cache:
         dir=directory("data/ensembl/vep/"),
     log:
         log="data/ensembl/vep/vep_install_cache.log",
+    benchmark:
+        "benchmarks/ensembl_vep_install_cache.tsv"
     conda:
         "../envs/ensembl-vep-105.0.yaml"
     shell:
@@ -55,6 +57,8 @@ rule ensembl_vep_annotate_vcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased_vep.vcf.log",
     threads: 4
+    benchmark:
+        "benchmarks/ensembl_vep_annotate_vcf-{panel}-{chr}.tsv"
     conda:
         "../envs/ensembl-vep-105.0.yaml"
     shell:

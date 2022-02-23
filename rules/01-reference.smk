@@ -33,6 +33,8 @@ rule reference_grch38:
         "data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
         "data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz",
         "data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
+    benchmark:
+        "benchmarks/reference_grch38.tsv"
     shell:
         "wget "
         " --mirror"
@@ -49,6 +51,8 @@ rule reference_grch38_hapmap:
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         tbi="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz.tbi",
+    benchmark:
+        "benchmarks/reference_grch38_hapmap.tsv"
     shell:
         "wget --quiet -O {output.vcf} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz && "
         "wget --quiet -O {output.tbi} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz.tbi && "
@@ -60,6 +64,8 @@ rule reference_grch38_1000G_omni25:
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         tbi="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz.tbi",
+    benchmark:
+        "benchmarks/reference_grch38_1000G_omni25.tsv"
     shell:
         "wget --quiet -O {output.vcf} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz && "
         "wget --quiet -O {output.tbi} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz.tbi && "
@@ -71,6 +77,8 @@ rule reference_grch38_1000G_phase1_snps:
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
         tbi="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi",
+    benchmark:
+        "benchmarks/reference_grch38_1000G_phase1_snps.tsv"
     shell:
         "wget --quiet -O {output.vcf} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz && "
         "wget --quiet -O {output.tbi} -o /dev/null https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi && "
@@ -89,6 +97,8 @@ rule reference_ncbi_remapper_fix_errors:
     output:
         vcf="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz",
         tbi="data/reference/GRCh38/other_mapping_resources/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels_fixed.vcf.gz.tbi",
+    benchmark:
+        "benchmarks/reference_ncbi_remapper_fix_errors.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
@@ -105,6 +115,8 @@ rule reference_grch38_fai_to_bed:
         fai="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa.fai",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
+    benchmark:
+        "benchmarks/reference_grch38_fai_to_bed.tsv"
     shell:
         r"""awk -v FS="\t" -v OFS="\t" '{{print $1 FS "0" FS ($2-1)}}' {input.fai} > {output.bed}"""
 
@@ -121,6 +133,8 @@ rule reference_grch38_male_haploid_bed:
     params:
         par1=r"\t".join(["chrX", "10000", "2781479"]),
         par2=r"\t".join(["chrX", "155701382", "156030895"]),
+    benchmark:
+        "benchmarks/reference_grch38_male_haploid_bed.tsv"
     conda:
         "../envs/bedtools-2.30.yaml"
     shell:
@@ -138,6 +152,8 @@ rule reference_grch38_male_diploid_bed:
         hap="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.2.bed",
+    benchmark:
+        "benchmarks/reference_grch38_male_diploid_bed.tsv"
     conda:
         "../envs/bedtools-2.30.yaml"
     shell:
@@ -152,6 +168,8 @@ rule reference_grch38_female_haploid_bed:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.F.1.bed",
+    benchmark:
+        "benchmarks/reference_grch38_female_haploid_bed.tsv"
     shell:
         "grep chrM {input.bed} > {output.bed}"
 
@@ -164,6 +182,8 @@ rule reference_grch38_female_diploid_bed:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.F.2.bed",
+    benchmark:
+        "benchmarks/reference_grch38_female_diploid_bed.tsv"
     shell:
         "grep -vP 'chrY|chrM' {input.bed} > {output.bed}"
 
@@ -176,6 +196,8 @@ rule reference_grch38_chrom_bed:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
+    benchmark:
+        "benchmarks/reference_grch38_chrom_bed-{chr}.tsv"
     shell:
         r"grep -P '^{wildcards.chr}\t' {input.bed} > {output.bed}"
 
@@ -188,6 +210,8 @@ rule reference_grch38_chrom_others_bed:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.bed",
     output:
         bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.others.bed",
+    benchmark:
+        "benchmarks/reference_grch38_chrom_others_bed.tsv"
     shell:
         r"grep -vP '^chr(\d+|X|Y|M)\t' {input.bed} > {output.bed}"
 
@@ -198,6 +222,8 @@ rule reference_grch38_whatshap_genetic_map:
     """
     output:
         map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_withX.txt.gz",
+    benchmark:
+        "benchmarks/reference_grch38_whatshap_genetic_map.tsv"
     shell:
         "wget --quiet -O {output.map} -o /dev/null https://storage.googleapis.com/broad-alkesgroup-public/Eagle/downloads/tables/genetic_map_hg38_withX.txt.gz"
 
@@ -217,6 +243,8 @@ rule reference_grch38_whatshap_genetic_map_chrom:
     params:
         # the Eagle format has no 'chr' prefix and uses 23 for chrX
         chr=lambda wildcards: str(wildcards.chr).replace("chr", "").replace("X", "23"),
+    benchmark:
+        "benchmarks/reference_grch38_whatshap_genetic_map_chrom-{chr}.tsv"
     shell:
         "gunzip -c {input.map} | awk 'NR==1 || $1==\"{params.chr}\" {{ print $2,$3,$4 }}' > {output.map}"
 
@@ -233,6 +261,8 @@ rule reference_grch38_shapeit4_genetic_map:
         tar=temp("data/reference/GRCh38/genetic_maps.b38.tar.gz"),
     params:
         path="data/reference/GRCh38/genetic_maps/shapeit4/",
+    benchmark:
+        "benchmarks/reference_grch38_shapeit4_genetic_map.tsv"
     shell:
         "wget --quiet -O {output.tar} -o /dev/null https://github.com/odelaneau/shapeit4/raw/master/maps/genetic_maps.b38.tar.gz && "
         "mkdir -p {params.path} && tar -xzf {output.tar} -C {params.path}"
@@ -244,6 +274,8 @@ rule reference_grch38_assembly_report:
     """
     output:
         txt="data/reference/GRCh38/GCF_000001405.39_GRCh38.p13_assembly_report.txt",
+    benchmark:
+        "benchmarks/reference_grch38_assembly_report.tsv"
     shell:
         "wget --quiet -O {output.txt} -o /dev/null ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_report.txt"
 
@@ -255,6 +287,8 @@ rule reference_dbsnp_b155:
     output:
         vcf=temp("data/reference/GRCh38/dbsnp/GCF_000001405.39.gz"),
         tbi=temp("data/reference/GRCh38/dbsnp/GCF_000001405.39.gz.tbi"),
+    benchmark:
+        "benchmarks/reference_dbsnp_b155.tsv"
     shell:
         "wget --quiet -O {output.vcf} -o /dev/null ftp://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz && "
         "wget --quiet -O {output.tbi} -o /dev/null ftp://ftp.ncbi.nih.gov/snp/archive/b155/VCF/GCF_000001405.39.gz.tbi"
@@ -272,6 +306,8 @@ rule reference_dbsnp_b155_reheader:
         vcf="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
         tbi="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz.tbi",
         txt="data/reference/GRCh38/GCF_000001405.39_GRCh38.p13_assembly_report.chroms",
+    benchmark:
+        "benchmarks/reference_dbsnp_b155_reheader.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:

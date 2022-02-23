@@ -54,6 +54,8 @@ rule gatk3_batch_sample_chrom_gvcfs:
     resources:
         mem_mb=min(28 * 1024, MAX_MEM_MB),  # ~3.71%
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_batch_sample_chrom_gvcfs-{source}-{chr}-{batch}.tsv"
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
@@ -102,6 +104,8 @@ rule gatk3_multisample_chrom_gvcf:
     resources:
         mem_mb=min(50 * 1024, MAX_MEM_MB),  # ~6.67%
         tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_multisample_chrom_gvcf-{source}-{chr}.tsv"
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"

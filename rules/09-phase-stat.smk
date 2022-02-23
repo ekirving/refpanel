@@ -31,6 +31,8 @@ rule shapeit4_phase_vcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
+    benchmark:
+        "benchmarks/shapeit4_phase_vcf.tsv-{panel}-{chr}"
     conda:
         "../envs/shapeit-4.2.2.yaml"
     shell:
@@ -63,6 +65,8 @@ rule shapeit4_phase_trios_vcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
+    benchmark:
+        "benchmarks/shapeit4_phase_trios_vcf-{panel}-{chr}.tsv"
     conda:
         "../envs/shapeit-4.2.2.yaml"
     shell:

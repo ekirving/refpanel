@@ -26,6 +26,8 @@ rule tgp_nygc_vcf_md5:
         md5="data/evaluation/1000g_nygc/20201028_CCDG_14151_B01_GRM_WGS_2020-08-05_{chr}.recalibrated_variants.vcf.gz.md5",
     params:
         file="data/evaluation/1000g_nygc/20201028_CCDG_14151_B01_GRM_WGS_2020-08-05_{chr}.recalibrated_variants.vcf.gz",
+    benchmark:
+        "benchmarks/tgp_nygc_vcf_md5-{chr}.tsv"
     shell:
         r"""grep -P '{wildcards.chr}\b' {input.tsv} | awk '{{ print $3" {params.file}" }}' > {output.md5}"""
 
@@ -42,6 +44,8 @@ rule tgp_nygc_vcf_download:
         tbi="data/evaluation/1000g_nygc/20201028_CCDG_14151_B01_GRM_WGS_2020-08-05_{chr}.recalibrated_variants.vcf.gz.tbi",
     resources:
         ftp=1,
+    benchmark:
+        "benchmarks/tgp_nygc_vcf_download-{chr}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:

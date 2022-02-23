@@ -31,6 +31,8 @@ rule tgp_nygc_cram_md5:
         md5="data/source/1000g/cram/{sample}.cram.md5",
     params:
         file="data/source/1000g/cram/{sample}.cram",
+    benchmark:
+        "benchmarks/tgp_nygc_cram_md5-{sample}.tsv"
     shell:
         r"""awk -v FS="\t" '$6=="{wildcards.sample}" {{ print $2" {params.file}" }}' {input.man} > {output.md5}"""
 
@@ -47,6 +49,8 @@ rule tgp_nygc_download_cram:
         crai="data/source/1000g/cram/{sample}.cram.crai",
     resources:
         ftp=1,
+    benchmark:
+        "benchmarks/tgp_nygc_download_cram-{sample}.tsv"
     conda:
         "../../envs/htslib-1.14.yaml"
     shell:
@@ -85,6 +89,8 @@ rule tgp_nygc_gvcf_md5:
     params:
         rgx=r"{sample}.haplotypeCalls.er.raw.{ext}\s",
         file="data/source/1000g/gVCF/{sample}.g.{ext}",
+    benchmark:
+        "benchmarks/tgp_nygc_gvcf_md5-{sample}-{ext}.tsv"
     shell:
         """grep -P '{params.rgx}' {input.man} | awk '{{ print $3" {params.file}" }}' > {output.md5}"""
 
@@ -101,6 +107,8 @@ rule tgp_nygc_download_gvcf:
         ftp=1,
     params:
         ftp="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated",
+    benchmark:
+        "benchmarks/tgp_nygc_download_gvcf-{sample}-{ext}.tsv"
     shell:
         "wget --quiet -O {output.vcf} -o /dev/null {params.ftp}/{wildcards.sample}.haplotypeCalls.er.raw.{wildcards.ext} && "
         "md5sum --status --check {input.md5}"
@@ -134,5 +142,7 @@ rule tgp_nygc_plink_ped:
         tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
     output:
         ped="data/source/1000g/1000g-trios.ped",
+    benchmark:
+        "benchmarks/tgp_nygc_plink_ped.tsv"
     shell:
         """awk 'NR>1 && $3!=0 && $4!=0' {input.tsv} | grep -Pv 'HG02567' > {output.ped}"""
