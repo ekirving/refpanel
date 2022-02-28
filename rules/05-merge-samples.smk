@@ -72,7 +72,7 @@ rule gatk3_batch_sample_chrom_gvcfs:
         " -o {output.vcf} &> {log}"
 
 
-def gatk3_multisample_chrom_gvcf_input(wildcards):
+def gatk3_source_merge_chrom_gvcf_input(wildcards):
     """Split the samples into batches"""
     source = wildcards.source
     chr = wildcards.chr
@@ -88,12 +88,12 @@ def gatk3_multisample_chrom_gvcf_input(wildcards):
 
 
 # noinspection PyUnresolvedReferences
-rule gatk3_multisample_chrom_gvcf:
+rule gatk3_source_merge_chrom_gvcf:
     """
     Combine all gVCFs batches into one multi-sample gVCF for each chromosome
     """
     input:
-        unpack(gatk3_multisample_chrom_gvcf_input),
+        unpack(gatk3_source_merge_chrom_gvcf_input),
     output:
         vcf=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz"),
         tbi=protected("data/source/{source}/gVCF/merged/{source}_{chr}.g.vcf.gz.tbi"),
@@ -105,7 +105,7 @@ rule gatk3_multisample_chrom_gvcf:
         mem_mb=min(50 * 1024, MAX_MEM_MB),  # ~6.67%
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
-        "benchmarks/gatk3_multisample_chrom_gvcf-{source}-{chr}.tsv"
+        "benchmarks/gatk3_source_merge_chrom_gvcf-{source}-{chr}.tsv"
     conda:
         # a bug in gatk v3.5 causes excessive memory usage when combining large numbers of samples
         "../envs/gatk-3.8.yaml"
