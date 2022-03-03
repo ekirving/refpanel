@@ -52,6 +52,13 @@ source:
     # https://doi.org/10.1126/science.1224344
     samples: data/source/PRJNA76713/PRJNA76713-samples.tsv
 
+  PRJNA288297:
+    # Rodriguez-Flores et al. 2016 `Genome Research` (n=108)
+    # https://doi.org/10.1101/gr.191478.115
+    samples: data/source/PRJNA288297/PRJNA288297-samples.tsv
+    accessions: data/source/PRJNA288297/PRJNA288297-accessions.tsv
+    ena_ftp: true
+
   PRJEB16019:
     # Mondal et al. (2016) `Nature Genetics` (n=60)
     # https://doi.org/10.1038/ng.3621
