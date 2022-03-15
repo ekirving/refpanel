@@ -2,6 +2,7 @@
 .Rproj.user
 .snakemake
 __pycache__
+benchmarks/
 data/ensembl/vep/
 data/evaluation/
 data/panel/*/*-superpops.tsv
