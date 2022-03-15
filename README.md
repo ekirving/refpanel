@@ -36,7 +36,7 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,926), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1` (n=4,789), involving all publicly 
 available samples from:
 
 * **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; inc. 2,504 phase 3 samples + 698 additional related samples); \
@@ -47,8 +47,11 @@ available samples from:
   Mallick et al. (2016) *Nature* [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
 * **Gambian Genome Variation Project (GGVP)** (n=400; excluding overlap with 1000G); \
   Band et al. (2019) *Nature Communications* [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
+<!--
 * **Arabian Peninsula Population Genomic Study (APPG)**  (n=137); \
   Almarri et al. (2021) *Cell* [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
+* Rodriguez-Flores et al. (2016) *Genome Research* (n=108) [doi:10.1101/gr.191478.115](https://doi.org/10.1101/gr.191478.115)
+-->
 
 Plus additional public genomes from:
 * Meyer et al. (2012) *Science* (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
@@ -98,7 +101,7 @@ Superpopulation assignments are based on the original 1000G, HGDP and SGDP metad
 | Central and South Asian Ancestry    | CSA  |     199 |
 | East Asian Ancestry                 | EAS  |     826 |
 | European Ancestry                   | EUR  |     790 |
-| Middle Eastern Ancestry             | MEA  |     299 |
+| Middle Eastern Ancestry             | MEA  |     162 |
 | Oceanian Ancestry                   | OCE  |      38 |
 | South Asian Ancestry                | SAS  |     678 |
 | West Eurasian Ancestry              | WEA  |      47 |

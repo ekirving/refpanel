@@ -117,7 +117,7 @@ panel:
     pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
   refpanel-v1:
-    # reference panel of all the public data sources (n=4,926)
+    # reference panel of all the public data sources (n=4,789)
     samples: data/panel/refpanel-v1/refpanel-v1.tsv
     pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
