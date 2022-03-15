@@ -8,6 +8,8 @@ __license__ = "MIT"
 
 from snakemake.io import expand
 
+from scripts.common import list_sources
+
 
 configfile: "config.yaml"
 
@@ -54,10 +56,11 @@ rule refpanel:
         expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
 
 
+# get the list of data sources in the default reference panel
+SOURCES = list_sources(config, config["refpanel"])
+
 # the list of data sources that are hosted on the European Nucleotide Archive (ENA) -- excluding GGVP, which has CRAMs
-ENA_SOURCES = [
-    source for source in config["source"] if config["source"][source].get("ena_ftp", False) and source != "ggvp"
-]
+ENA_SOURCES = [source for source in SOURCES if config["source"][source].get("ena_ftp", False) and source != "ggvp"]
 
 
 rule download_data:
@@ -72,22 +75,22 @@ rule download_data:
 rule align_sources:
     input:
         # align all samples in all data sources
-        expand("data/source/{source}/cram/align.done", source=config["source"]),
+        expand("data/source/{source}/cram/align.done", source=SOURCES),
 
 
 rule metrics_sources:
     input:
         # calculate alignment metrics for all samples in all data sources
-        expand("data/source/{source}/cram/metrics.done", source=config["source"]),
+        expand("data/source/{source}/cram/metrics.done", source=SOURCES),
 
 
 rule call_sources:
     input:
         # call all samples in all data sources
-        expand("data/source/{source}/gVCF/call.done", source=config["source"]),
+        expand("data/source/{source}/gVCF/call.done", source=SOURCES),
 
 
 rule merge_sources:
     input:
         # merge all samples in each data source
-        expand("data/source/{source}/gVCF/merge.done", source=config["source"]),
+        expand("data/source/{source}/gVCF/merge.done", source=SOURCES),
