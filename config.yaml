@@ -121,8 +121,18 @@ panel:
     samples: data/panel/refpanel-v1/refpanel-v1.tsv
     pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
+  refpanel-v2:
+    # version 2 of the public reference panel (n=5,034)
+    samples: data/panel/refpanel-v2/refpanel-v2.tsv
+    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
+
   cgg-afr-v1:
-    # reference panel of the CGG-AFR samples + all the public samples in refpanel-v1 (n=4,974)
+    # reference panel of the CGG-AFR samples + all the public samples in refpanel-v1 (n=4,837)
+    samples: data/source/cgg-afr/cgg-afr-panel.tsv
+    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
+
+  cgg-afr-v2:
+    # version 2 of the CGG-AFR reference panel (n=5,034)
     samples: data/source/cgg-afr/cgg-afr-panel.tsv
     pedigree: data/panel/refpanel-v1/refpanel-v1.ped
 
