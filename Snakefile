@@ -94,3 +94,15 @@ rule merge_sources:
     input:
         # merge all samples in each data source
         expand("data/source/{source}/gVCF/merge.done", source=SOURCES),
+
+
+rule merge_panel:
+    input:
+        # merge all data sources in the reference panel
+        expand("data/panel/{panel}/gVCF/merge.done", panel=config["refpanel"]),
+
+
+rule call_panel:
+    input:
+        # joint-call all samples in the reference panel
+        expand("data/panel/{panel}/vcf/joint-call.done", panel=config["refpanel"]),
