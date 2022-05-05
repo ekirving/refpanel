@@ -39,7 +39,7 @@ source:
     ena_ftp: true
 
   appg:
-    # Arabian Peninsula Population Genomic (APPG) study
+    # Arabian Peninsula Population Genomic (APPG) study (PRJEB28504)
     # Almarri et al. (2021) `Cell` (n=137)
     # https://doi.org/10.1016/j.cell.2021.07.013
     samples: data/source/appg/appg-samples.tsv
