@@ -317,7 +317,11 @@ rule bcftools_samples_file:
     """
     Make a bcftools samples file for calculating INFO tags at the super population level
 
-    https://m.ensembl.org/Help/Faq?id=532
+    See https://m.ensembl.org/Help/Faq?id=532 for codes
+
+    NB. The +fill-tags plugin does not accept sample codes shorter than 3 chrs long.
+        https://github.com/samtools/bcftools/blob/develop/plugins/fill-tags.c#L174
+        This effects samples I1, I3, K1, K4, M4, R3, R6, Y4, Y8 in SAS from SGDP
     """
     input:
         tsv=lambda wildcards: ancient(config["panel"][wildcards.panel]["samples"]),
@@ -329,7 +333,7 @@ rule bcftools_samples_file:
     benchmark:
         "benchmarks/bcftools_samples_file-{panel}.tsv"
     shell:
-        r"""awk -v FS="\t" 'NR>1 && ${params.col2}!="" {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
+        r"""awk -v FS="\t" 'NR>1 && length(${params.col1})>2 && ${params.col2}!="" {{ print ${params.col1} FS ${params.col2} }}' {input.tsv} > {output.tsv}"""
 
 
 rule bcftools_norm:
