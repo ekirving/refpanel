@@ -10,7 +10,7 @@ import math
 
 from snakemake.io import protected, unpack, temp, expand, touch, ancient
 
-from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR
+from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR, MAX_MEM_MB
 
 """
 Rules to perform joint genotype calling for the IGSR pipeline
@@ -46,7 +46,7 @@ rule gatk3_genotype_chrom_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
-    threads: GATK_NUM_THREADS
+    threads: 12
     resources:
         mem_mb=min(94 * 1024, MAX_MEM_MB),  # ~12.4%
         tmpdir=JAVA_TEMP_DIR,
