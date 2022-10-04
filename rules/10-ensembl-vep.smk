@@ -48,17 +48,19 @@ rule ensembl_vep_annotate_vcf:
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         dir="data/ensembl/vep/",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased_vep.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased_vep.vcf.gz.tbi",
-        htm="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased_vep.html",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased_vep.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased_vep.vcf.gz.tbi",
+        htm="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased_vep.html",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_phased_vep.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased_vep.vcf.log",
     threads: 4
     benchmark:
-        "benchmarks/ensembl_vep_annotate_vcf-{panel}-{chr}.tsv"
+        "benchmarks/ensembl_vep_annotate_vcf-{panel}-{chr}-{whatshap}.tsv"
+    wildcard_constraints:
+        whatshap="whatshap|whatshap_trio"
     conda:
         "../envs/ensembl-vep-105.0.yaml"
     shell:

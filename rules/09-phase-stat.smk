@@ -61,9 +61,9 @@ rule shapeit4_phase_trios_vcf:
         vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz",
         tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.gz",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz",
     log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     benchmark:
         "benchmarks/shapeit4_phase_trios_vcf-{panel}-{chr}.tsv"
@@ -91,7 +91,7 @@ def panel_statistical_phasing_input(wildcards):
     if config["panel"][wildcards.panel].get("pedigree") is None:
         vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz" for chr in chroms]
     else:
-        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trio_phased.vcf.gz" for chr in chroms]
+        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz" for chr in chroms]
 
     return vcf
 
