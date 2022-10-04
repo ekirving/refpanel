@@ -1,0 +1,257 @@
+source	sample	population	population_name	superpopulation	superpopulation_name
+sgdp	abh100	ABK	Abkhasian	WEA	West Eurasian Ancestry
+sgdp	abh107	ABK	Abkhasian	WEA	West Eurasian Ancestry
+sgdp	ALB212	ALB	Albanian	WEA	West Eurasian Ancestry
+sgdp	Ale14	TLN	Tlingit	CAS	Central Asian and Siberian Ancestry
+sgdp	Ale20	ALE	Aleut	CAS	Central Asian and Siberian Ancestry
+sgdp	Ale22	ALE	Aleut	CAS	Central Asian and Siberian Ancestry
+sgdp	Ale32	TLN	Tlingit	CAS	Central Asian and Siberian Ancestry
+sgdp	altai363p	ALT	Altaian	CAS	Central Asian and Siberian Ancestry
+sgdp	armenia293	ARM	Armenian	WEA	West Eurasian Ancestry
+sgdp	Armenian222	ARM	Armenian	WEA	West Eurasian Ancestry
+sgdp	AV-21	CRT	Crete	WEA	West Eurasian Ancestry
+sgdp	Ayodo_430C	LUO	Luo	AFR	African Ancestry
+sgdp	Ayodo_502C	LUO	Luo	AFR	African Ancestry
+sgdp	Ayodo_81S	SML	Somali	AFR	African Ancestry
+sgdp	B11	BRH	Brahmin	SAS	South Asian Ancestry
+sgdp	B17	BRH	Brahmin	SAS	South Asian Ancestry
+sgdp	Bishkek28439	KYR	Kyrgyz	CAS	Central Asian and Siberian Ancestry
+sgdp	Bishkek28440	KYR	Kyrgyz	CAS	Central Asian and Siberian Ancestry
+sgdp	Bu16	BRM	Burmese	EAS	East Asian Ancestry
+sgdp	Bu5	BRM	Burmese	EAS	East Asian Ancestry
+sgdp	BulgarianB4	BLG	Bulgarian	WEA	West Eurasian Ancestry
+sgdp	BulgarianC1	BLG	Bulgarian	WEA	West Eurasian Ancestry
+sgdp	ch113	CHC	Chechen	WEA	West Eurasian Ancestry
+sgdp	CHI-007	THA	Thai	EAS	East Asian Ancestry
+sgdp	CHI-034	THA	Thai	EAS	East Asian Ancestry
+sgdp	DNK05	DNK	Dinka	AFR	African Ancestry
+sgdp	DNK07	DNK	Dinka	AFR	African Ancestry
+sgdp	DNK11	DNK	Dinka	AFR	African Ancestry
+sgdp	Dus16	DSN	Dusun	OCE	Oceanian Ancestry
+sgdp	Dus22	DSN	Dusun	OCE	Oceanian Ancestry
+sgdp	Esk29	ESC	Eskimo Chaplin	CAS	Central Asian and Siberian Ancestry
+sgdp	Est375	EST	Estonian	WEA	West Eurasian Ancestry
+sgdp	Est400	EST	Estonian	WEA	West Eurasian Ancestry
+sgdp	HGDP00019	BRA	Brahui	CSA	Central and South Asian Ancestry
+sgdp	HGDP00027	BRA	Brahui	CSA	Central and South Asian Ancestry
+sgdp	HGDP00058	BLC	Balochi	CSA	Central and South Asian Ancestry
+sgdp	HGDP00090	BLC	Balochi	CSA	Central and South Asian Ancestry
+sgdp	HGDP00124	HZR	Hazara	CSA	Central and South Asian Ancestry
+sgdp	HGDP00125	HZR	Hazara	CSA	Central and South Asian Ancestry
+sgdp	HGDP00157	MKR	Makrani	CSA	Central and South Asian Ancestry
+sgdp	HGDP00160	MKR	Makrani	CSA	Central and South Asian Ancestry
+sgdp	HGDP00195	SND	Sindhi	CSA	Central and South Asian Ancestry
+sgdp	HGDP00208	SND	Sindhi	CSA	Central and South Asian Ancestry
+sgdp	HGDP00216	PTH	Pathan	CSA	Central and South Asian Ancestry
+sgdp	HGDP00232	PTH	Pathan	CSA	Central and South Asian Ancestry
+sgdp	HGDP00286	KLS	Kalash	CSA	Central and South Asian Ancestry
+sgdp	HGDP00328	KLS	Kalash	CSA	Central and South Asian Ancestry
+sgdp	HGDP00338	BRS	Burusho	CSA	Central and South Asian Ancestry
+sgdp	HGDP00428	BRS	Burusho	CSA	Central and South Asian Ancestry
+sgdp	HGDP00449	MBT	Mbuti	AFR	African Ancestry
+sgdp	HGDP00457	BIK	Biaka	AFR	African Ancestry
+sgdp	HGDP00461	BIK	Biaka	AFR	African Ancestry
+sgdp	HGDP00474	MBT	Mbuti	AFR	African Ancestry
+sgdp	HGDP00476	MBT	Mbuti	AFR	African Ancestry
+sgdp	HGDP00526	FRN	French	EUR	European Ancestry
+sgdp	HGDP00530	FRN	French	EUR	European Ancestry
+sgdp	HGDP00533	FRN	French	EUR	European Ancestry
+sgdp	HGDP00540	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00541	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00543	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00545	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00546	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00547	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00548	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00549	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00550	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00551	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00552	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00553	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00554	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00555	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00556	PPN	Papuan	OCE	Oceanian Ancestry
+sgdp	HGDP00569	DRZ	Druze	MEA	Middle Eastern Ancestry
+sgdp	HGDP00597	DRZ	Druze	MEA	Middle Eastern Ancestry
+sgdp	HGDP00616	BDB	Bedouin B	WEA	West Eurasian Ancestry
+sgdp	HGDP00650	BDB	Bedouin B	WEA	West Eurasian Ancestry
+sgdp	HGDP00656	BGN	Bougainville	OCE	Oceanian Ancestry
+sgdp	HGDP00660	BGN	Bougainville	OCE	Oceanian Ancestry
+sgdp	HGDP00702	PPC	Piapoco	AMR	American Ancestry
+sgdp	HGDP00706	PPC	Piapoco	AMR	American Ancestry
+sgdp	HGDP00713	CMB	Cambodian	EAS	East Asian Ancestry
+sgdp	HGDP00717	CMB	Cambodian	EAS	East Asian Ancestry
+sgdp	HGDP00722	PAL	Palestinian	MEA	Middle Eastern Ancestry
+sgdp	HGDP00725	PAL	Palestinian	MEA	Middle Eastern Ancestry
+sgdp	HGDP00737	PAL	Palestinian	MEA	Middle Eastern Ancestry
+sgdp	HGDP00749	JPT	Japanese	EAS	East Asian Ancestry
+sgdp	HGDP00773	JPT	Japanese	EAS	East Asian Ancestry
+sgdp	HGDP00775	HAN	Han	EAS	East Asian Ancestry
+sgdp	HGDP00783	HAN	Han	EAS	East Asian Ancestry
+sgdp	HGDP00785	HAN	Han	EAS	East Asian Ancestry
+sgdp	HGDP00796	ORC	Orcadian	EUR	European Ancestry
+sgdp	HGDP00798	ORC	Orcadian	EUR	European Ancestry
+sgdp	HGDP00846	SUR	Surui	AMR	American Ancestry
+sgdp	HGDP00852	SUR	Surui	AMR	American Ancestry
+sgdp	HGDP00855	MYN	Mayan	AMR	American Ancestry
+sgdp	HGDP00857	MYN	Mayan	AMR	American Ancestry
+sgdp	HGDP00887	RSS	Russian	EUR	European Ancestry
+sgdp	HGDP00903	RSS	Russian	EUR	European Ancestry
+sgdp	HGDP00915	MND	Mandenka	AFR	African Ancestry
+sgdp	HGDP00928	YRI	Yoruba	AFR	African Ancestry
+sgdp	HGDP00932	YRI	Yoruba	AFR	African Ancestry
+sgdp	HGDP00936	YRI	Yoruba	AFR	African Ancestry
+sgdp	HGDP00951	YKT	Yakut	EAS	East Asian Ancestry
+sgdp	HGDP00956	YKT	Yakut	EAS	East Asian Ancestry
+sgdp	HGDP00982	MBT	Mbuti	AFR	African Ancestry
+sgdp	HGDP00987	J|N	Ju|'hoan North	AFR	African Ancestry
+sgdp	HGDP00991	J|N	Ju|'hoan North	AFR	African Ancestry
+sgdp	HGDP01012	KRT	Karitiana	AMR	American Ancestry
+sgdp	HGDP01015	KRT	Karitiana	AMR	American Ancestry
+sgdp	HGDP01018	KRT	Karitiana	AMR	American Ancestry
+sgdp	HGDP01028	BNH	Bantu Herero	AFR	African Ancestry
+sgdp	HGDP01030	BNT	Bantu Tswana	AFR	African Ancestry
+sgdp	HGDP01032	J|N	Ju|'hoan North	AFR	African Ancestry
+sgdp	HGDP01034	BNT	Bantu Tswana	AFR	African Ancestry
+sgdp	HGDP01035	BNH	Bantu Herero	AFR	African Ancestry
+sgdp	HGDP01036	J|N	Ju|'hoan North	AFR	African Ancestry
+sgdp	HGDP01044	PIM	Pima	AMR	American Ancestry
+sgdp	HGDP01047	PIM	Pima	AMR	American Ancestry
+sgdp	HGDP01076	SRD	Sardinian	EUR	European Ancestry
+sgdp	HGDP01078	SRD	Sardinian	EUR	European Ancestry
+sgdp	HGDP01079	SRD	Sardinian	EUR	European Ancestry
+sgdp	HGDP01095	TUJ	Tujia	EAS	East Asian Ancestry
+sgdp	HGDP01098	TUJ	Tujia	EAS	East Asian Ancestry
+sgdp	HGDP01153	BRG	Bergamo	WEA	West Eurasian Ancestry
+sgdp	HGDP01163	TSC	Tuscan	EUR	European Ancestry
+sgdp	HGDP01168	TSC	Tuscan	EUR	European Ancestry
+sgdp	HGDP01172	BRG	Bergamo	WEA	West Eurasian Ancestry
+sgdp	HGDP01179	YI	Yi	EAS	East Asian Ancestry
+sgdp	HGDP01188	YI	Yi	EAS	East Asian Ancestry
+sgdp	HGDP01191	MIA	Miao	EAS	East Asian Ancestry
+sgdp	HGDP01198	MIA	Miao	EAS	East Asian Ancestry
+sgdp	HGDP01199	MND	Mandenka	AFR	African Ancestry
+sgdp	HGDP01203	ORQ	Oroqen	EAS	East Asian Ancestry
+sgdp	HGDP01211	ORQ	Oroqen	EAS	East Asian Ancestry
+sgdp	HGDP01215	DAR	Daur	EAS	East Asian Ancestry
+sgdp	HGDP01223	MGA	Mongola	CAS	Central Asian and Siberian Ancestry
+sgdp	HGDP01228	MGA	Mongola	CAS	Central Asian and Siberian Ancestry
+sgdp	HGDP01240	HZH	Hezhen	EAS	East Asian Ancestry
+sgdp	HGDP01242	HZH	Hezhen	EAS	East Asian Ancestry
+sgdp	HGDP01246	XIB	Xibo	EAS	East Asian Ancestry
+sgdp	HGDP01250	XIB	Xibo	EAS	East Asian Ancestry
+sgdp	HGDP01253	MZB	Mozabite	MEA	Middle Eastern Ancestry
+sgdp	HGDP01274	MZB	Mozabite	MEA	Middle Eastern Ancestry
+sgdp	HGDP01286	MND	Mandenka	AFR	African Ancestry
+sgdp	HGDP01297	UYG	Uygur	CSA	Central and South Asian Ancestry
+sgdp	HGDP01306	UYG	Uygur	CSA	Central and South Asian Ancestry
+sgdp	HGDP01308	DAI	Dai	EAS	East Asian Ancestry
+sgdp	HGDP01312	DAI	Dai	EAS	East Asian Ancestry
+sgdp	HGDP01314	DAI	Dai	EAS	East Asian Ancestry
+sgdp	HGDP01315	DAI	Dai	EAS	East Asian Ancestry
+sgdp	HGDP01320	LAH	Lahu	EAS	East Asian Ancestry
+sgdp	HGDP01323	LAH	Lahu	EAS	East Asian Ancestry
+sgdp	HGDP01333	SHE	She	EAS	East Asian Ancestry
+sgdp	HGDP01335	SHE	She	EAS	East Asian Ancestry
+sgdp	HGDP01338	NAX	Naxi	EAS	East Asian Ancestry
+sgdp	HGDP01344	NAX	Naxi	EAS	East Asian Ancestry
+sgdp	HGDP01345	NAX	Naxi	EAS	East Asian Ancestry
+sgdp	HGDP01350	TU	Tu	EAS	East Asian Ancestry
+sgdp	HGDP01355	TU	Tu	EAS	East Asian Ancestry
+sgdp	HGDP01364	BSQ	Basque	EUR	European Ancestry
+sgdp	HGDP01365	BSQ	Basque	EUR	European Ancestry
+sgdp	HGDP01401	ADY	Adygei	EUR	European Ancestry
+sgdp	HGDP01402	ADY	Adygei	EUR	European Ancestry
+sgdp	HGDP01414	BNK	Bantu Kenya	AFR	African Ancestry
+sgdp	HGDP01417	BNK	Bantu Kenya	AFR	African Ancestry
+sgdp	I1	IRL	Irula	SAS	South Asian Ancestry
+sgdp	I3	IRL	Irula	SAS	South Asian Ancestry
+sgdp	Igor20	IGR	Igorot	OCE	Oceanian Ancestry
+sgdp	Igor21	IGR	Igorot	OCE	Oceanian Ancestry
+sgdp	IHW9118	AST	Australian	OCE	Oceanian Ancestry
+sgdp	IHW9193	AST	Australian	OCE	Oceanian Ancestry
+sgdp	iran11	IRN	Iranian	WEA	West Eurasian Ancestry
+sgdp	iran17	IRN	Iranian	WEA	West Eurasian Ancestry
+sgdp	IraqiJew1771	IRJ	Iraqi Jew	WEA	West Eurasian Ancestry
+sgdp	IraqiJew4291	IRJ	Iraqi Jew	WEA	West Eurasian Ancestry
+sgdp	Jordan214	JRD	Jordanian	WEA	West Eurasian Ancestry
+sgdp	Jordan445	JRD	Jordanian	WEA	West Eurasian Ancestry
+sgdp	Jordan603	JRD	Jordanian	WEA	West Eurasian Ancestry
+sgdp	K1	KAP	Kapu	SAS	South Asian Ancestry
+sgdp	K4	KAP	Kapu	SAS	South Asian Ancestry
+sgdp	Kayseri23827	TRK	Turkish	WEA	West Eurasian Ancestry
+sgdp	Kayseri24424	TRK	Turkish	WEA	West Eurasian Ancestry
+sgdp	KD4	KHD	Khonda Dora	SAS	South Asian Ancestry
+sgdp	Kor82	ITL	Itelman	CAS	Central Asian and Siberian Ancestry
+sgdp	Kusunda02	KSN	Kusunda	SAS	South Asian Ancestry
+sgdp	Kusunda15	KSN	Kusunda	SAS	South Asian Ancestry
+sgdp	lez42	LZG	Lezgin	WEA	West Eurasian Ancestry
+sgdp	lez49	LZG	Lezgin	WEA	West Eurasian Ancestry
+sgdp	M13	MDG	Madiga	SAS	South Asian Ancestry
+sgdp	M4	MDG	Madiga	SAS	South Asian Ancestry
+sgdp	Mansi41	MNS	Mansi	CAS	Central Asian and Siberian Ancestry
+sgdp	Mansi79	MNS	Mansi	CAS	Central Asian and Siberian Ancestry
+sgdp	mg27	GRG	Georgian	WEA	West Eurasian Ancestry
+sgdp	mg31	GRG	Georgian	WEA	West Eurasian Ancestry
+sgdp	mixa0099	MXT	Mixtec	AMR	American Ancestry
+sgdp	mixa0105	MXT	Mixtec	AMR	American Ancestry
+sgdp	mixe0002	MIX	Mixe	AMR	American Ancestry
+sgdp	mixe0007	MIX	Mixe	AMR	American Ancestry
+sgdp	mixe0042	MIX	Mixe	AMR	American Ancestry
+sgdp	ML2	MAL	Mala	SAS	South Asian Ancestry
+sgdp	ML3	MAL	Mala	SAS	South Asian Ancestry
+sgdp	NA00726	KRN	Korean	EAS	East Asian Ancestry
+sgdp	NA11200	QCH	Quechua	AMR	American Ancestry
+sgdp	NA11201	QCH	Quechua	AMR	American Ancestry
+sgdp	NA13604	ATY	Atayal	EAS	East Asian Ancestry
+sgdp	NA13607	AMI	Ami	EAS	East Asian Ancestry
+sgdp	NA13616	AMI	Ami	EAS	East Asian Ancestry
+sgdp	NA15202	HNG	Hungarian	WEA	West Eurasian Ancestry
+sgdp	NA15203	HNG	Hungarian	WEA	West Eurasian Ancestry
+sgdp	NA15728	CZC	Czech	WEA	West Eurasian Ancestry
+sgdp	NA15761	ICL	Icelandic	WEA	West Eurasian Ancestry
+sgdp	NA15763	ICL	Icelandic	WEA	West Eurasian Ancestry
+sgdp	NA17374	GRK	Greek	WEA	West Eurasian Ancestry
+sgdp	NA17377	GRK	Greek	WEA	West Eurasian Ancestry
+sgdp	NA17385	HWN	Hawaiian	OCE	Oceanian Ancestry
+sgdp	NA17386	MAR	Maori	OCE	Oceanian Ancestry
+sgdp	NA19044	LWK	Luhya	AFR	African Ancestry
+sgdp	NA21490	MAS	Masai	AFR	African Ancestry
+sgdp	NA21581	MAS	Masai	AFR	African Ancestry
+sgdp	ND15865	PLS	Polish	WEA	West Eurasian Ancestry
+sgdp	ND19394	KRN	Korean	EAS	East Asian Ancestry
+sgdp	Nesk_22	ESK	Eskimo Naukan	CAS	Central Asian and Siberian Ancestry
+sgdp	Nesk_25	ESK	Eskimo Naukan	CAS	Central Asian and Siberian Ancestry
+sgdp	Nlk1	EVN	Even	CAS	Central Asian and Siberian Ancestry
+sgdp	Nlk18	EVN	Even	CAS	Central Asian and Siberian Ancestry
+sgdp	Nlk3	EVN	Even	CAS	Central Asian and Siberian Ancestry
+sgdp	NOR111	NRW	Norwegian	WEA	West Eurasian Ancestry
+sgdp	NorthOssetia12	NRO	North Ossetian	WEA	West Eurasian Ancestry
+sgdp	NorthOssetia5	NRO	North Ossetian	WEA	West Eurasian Ancestry
+sgdp	Peru60	QCH	Quechua	AMR	American Ancestry
+sgdp	R3	RLL	Relli	SAS	South Asian Ancestry
+sgdp	R6	RLL	Relli	SAS	South Asian Ancestry
+sgdp	SA0342	KHS	Khomani San	AFR	African Ancestry
+sgdp	SA0722	KHS	Khomani San	AFR	African Ancestry
+sgdp	SAH31	SHR	Saharawi	AFR	African Ancestry
+sgdp	SAH41	SHR	Saharawi	AFR	African Ancestry
+sgdp	Sam02	SMR	Samaritan	WEA	West Eurasian Ancestry
+sgdp	Sir19	CHK	Chukchi	CAS	Central Asian and Siberian Ancestry
+sgdp	Sir26	ESS	Eskimo Sireniki	CAS	Central Asian and Siberian Ancestry
+sgdp	Sir40	ESS	Eskimo Sireniki	CAS	Central Asian and Siberian Ancestry
+sgdp	tdj409_shugnan	TJK	Tajik	WEA	West Eurasian Ancestry
+sgdp	tdj430_shugnan	TJK	Tajik	WEA	West Eurasian Ancestry
+sgdp	TGBS21	CHN	Chane	AMR	American Ancestry
+sgdp	Tuba19	TBL	Tubalar	CAS	Central Asian and Siberian Ancestry
+sgdp	Tuba9	TBL	Tubalar	CAS	Central Asian and Siberian Ancestry
+sgdp	TZ-11	CRT	Crete	WEA	West Eurasian Ancestry
+sgdp	Ul31	ULC	Ulchi	CAS	Central Asian and Siberian Ancestry
+sgdp	Ul5	ULC	Ulchi	CAS	Central Asian and Siberian Ancestry
+sgdp	Utsa21	SAM	Saami	WEA	West Eurasian Ancestry
+sgdp	Utsa22	SAM	Saami	WEA	West Eurasian Ancestry
+sgdp	Y4	YDV	Yadava	SAS	South Asian Ancestry
+sgdp	Y8	YDV	Yadava	SAS	South Asian Ancestry
+sgdp	YemeniteJew4695	YMJ	Yemenite Jew	WEA	West Eurasian Ancestry
+sgdp	YemeniteJew5433	YMJ	Yemenite Jew	WEA	West Eurasian Ancestry
+sgdp	zapo0098	ZPT	Zapotec	AMR	American Ancestry
+sgdp	zapo0099	ZPT	Zapotec	AMR	American Ancestry

@@ -1,0 +1,817 @@
+source	sample	population	population_name	superpopulation	superpopulation_name
+hgdp	HGDP00001	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00003	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00005	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00007	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00009	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00011	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00013	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00015	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00017	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00021	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00023	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00025	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00029	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00031	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00033	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00035	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00037	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00039	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00041	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00043	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00045	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00047	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00049	BRA	Brahui	CSA	Central and South Asian Ancestry
+hgdp	HGDP00052	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00054	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00056	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00057	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00060	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00062	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00064	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00066	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00068	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00070	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00072	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00074	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00076	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00078	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00080	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00082	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00086	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00088	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00092	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00094	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00096	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00098	BLC	Balochi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00099	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00100	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00102	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00103	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00104	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00105	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00106	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00108	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00109	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00110	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00115	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00118	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00119	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00120	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00121	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00122	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00127	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00129	HZR	Hazara	CSA	Central and South Asian Ancestry
+hgdp	HGDP00130	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00131	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00133	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00134	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00135	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00136	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00137	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00139	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00140	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00141	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00143	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00144	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00145	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00146	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00148	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00149	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00150	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00151	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00153	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00154	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00155	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00158	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00161	MKR	Makrani	CSA	Central and South Asian Ancestry
+hgdp	HGDP00163	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00165	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00167	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00169	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00171	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00173	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00175	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00177	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00179	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00181	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00183	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00185	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00187	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00189	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00191	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00192	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00197	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00199	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00201	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00205	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00206	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00210	SND	Sindhi	CSA	Central and South Asian Ancestry
+hgdp	HGDP00213	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00214	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00218	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00222	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00224	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00226	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00228	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00230	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00234	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00237	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00239	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00241	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00243	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00244	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00247	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00248	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00251	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00254	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00258	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00259	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00262	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00264	PTH	Pathan	CSA	Central and South Asian Ancestry
+hgdp	HGDP00274	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00277	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00279	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00281	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00285	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00288	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00290	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00298	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00302	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00304	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00307	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00309	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00311	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00313	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00315	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00319	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00321	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00323	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00326	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00330	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00333	KLS	Kalash	CSA	Central and South Asian Ancestry
+hgdp	HGDP00341	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00346	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00351	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00356	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00359	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00364	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00371	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00372	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00376	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00382	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00388	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00392	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00397	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00402	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00407	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00412	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00417	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00423	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00433	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00438	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00444	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00445	BRS	Burusho	CSA	Central and South Asian Ancestry
+hgdp	HGDP00450	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00452	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00453	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00454	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00455	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00458	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00459	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00460	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00462	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00463	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00464	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00465	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00466	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00467	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00468	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00469	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00470	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00471	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00472	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00473	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00475	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00478	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00479	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00490	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00491	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00511	FRN	French	EUR	European Ancestry
+hgdp	HGDP00512	FRN	French	EUR	European Ancestry
+hgdp	HGDP00513	FRN	French	EUR	European Ancestry
+hgdp	HGDP00514	FRN	French	EUR	European Ancestry
+hgdp	HGDP00515	FRN	French	EUR	European Ancestry
+hgdp	HGDP00516	FRN	French	EUR	European Ancestry
+hgdp	HGDP00517	FRN	French	EUR	European Ancestry
+hgdp	HGDP00518	FRN	French	EUR	European Ancestry
+hgdp	HGDP00519	FRN	French	EUR	European Ancestry
+hgdp	HGDP00520	FRN	French	EUR	European Ancestry
+hgdp	HGDP00522	FRN	French	EUR	European Ancestry
+hgdp	HGDP00523	FRN	French	EUR	European Ancestry
+hgdp	HGDP00524	FRN	French	EUR	European Ancestry
+hgdp	HGDP00525	FRN	French	EUR	European Ancestry
+hgdp	HGDP00527	FRN	French	EUR	European Ancestry
+hgdp	HGDP00528	FRN	French	EUR	European Ancestry
+hgdp	HGDP00529	FRN	French	EUR	European Ancestry
+hgdp	HGDP00531	FRN	French	EUR	European Ancestry
+hgdp	HGDP00534	FRN	French	EUR	European Ancestry
+hgdp	HGDP00535	FRN	French	EUR	European Ancestry
+hgdp	HGDP00536	FRN	French	EUR	European Ancestry
+hgdp	HGDP00537	FRN	French	EUR	European Ancestry
+hgdp	HGDP00538	FRN	French	EUR	European Ancestry
+hgdp	HGDP00539	FRN	French	EUR	European Ancestry
+hgdp	HGDP00542	PPS	Papuan Sepik	OCE	Oceanian Ancestry
+hgdp	HGDP00544	PPS	Papuan Sepik	OCE	Oceanian Ancestry
+hgdp	HGDP00557	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00558	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00559	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00560	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00561	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00562	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00563	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00564	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00565	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00566	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00567	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00568	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00571	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00572	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00573	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00574	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00575	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00576	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00577	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00578	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00579	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00580	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00581	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00582	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00583	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00584	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00586	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00587	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00588	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00590	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00591	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00594	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00595	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00598	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00599	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00600	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00601	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00602	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00604	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00606	DRZ	Druze	MEA	Middle Eastern Ancestry
+hgdp	HGDP00607	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00608	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00609	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00610	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00611	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00612	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00613	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00614	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00615	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00618	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00619	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00620	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00621	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00622	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00623	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00624	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00625	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00626	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00627	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00628	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00629	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00630	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00631	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00632	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00634	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00635	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00636	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00637	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00638	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00639	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00640	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00641	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00642	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00643	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00644	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00645	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00646	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00647	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00648	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00649	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00651	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00653	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00654	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00655	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00661	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00662	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00663	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00664	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00666	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00667	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00668	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00669	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00670	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00671	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00672	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00673	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00674	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP00675	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00676	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00677	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00678	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00679	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00680	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00682	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00683	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00684	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00685	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00686	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00687	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00688	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00689	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00690	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00691	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00692	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00693	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00694	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00696	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00697	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00698	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00699	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00700	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00701	BDN	Bedouin	MEA	Middle Eastern Ancestry
+hgdp	HGDP00703	CLM	Colombian	AMR	American Ancestry
+hgdp	HGDP00704	CLM	Colombian	AMR	American Ancestry
+hgdp	HGDP00708	CLM	Colombian	AMR	American Ancestry
+hgdp	HGDP00710	CLM	Colombian	AMR	American Ancestry
+hgdp	HGDP00711	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00712	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00714	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00715	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00716	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00719	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00720	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00721	CMB	Cambodian	EAS	East Asian Ancestry
+hgdp	HGDP00723	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00724	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00726	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00727	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00729	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00730	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00731	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00732	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00733	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00734	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00735	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00736	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00738	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00739	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00740	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00741	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00744	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00745	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00746	PAL	Palestinian	MEA	Middle Eastern Ancestry
+hgdp	HGDP00747	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00748	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00750	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00751	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00752	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00753	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00754	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00755	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00756	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00757	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00758	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00759	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00760	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00761	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00762	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00763	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00764	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00765	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00766	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00767	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00768	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00769	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00771	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00772	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00774	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00776	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00777	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00779	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00780	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00781	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00782	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00784	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00786	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00787	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00788	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00790	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00791	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00794	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00795	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00797	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00799	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00800	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00802	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00803	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00804	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00805	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00806	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00807	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00808	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00810	ORC	Orcadian	EUR	European Ancestry
+hgdp	HGDP00811	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00812	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00813	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00814	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00815	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00817	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00818	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00819	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00820	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00821	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00822	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00823	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP00828	JPT	Japanese	EAS	East Asian Ancestry
+hgdp	HGDP00832	SUR	Surui	AMR	American Ancestry
+hgdp	HGDP00837	SUR	Surui	AMR	American Ancestry
+hgdp	HGDP00838	SUR	Surui	AMR	American Ancestry
+hgdp	HGDP00843	SUR	Surui	AMR	American Ancestry
+hgdp	HGDP00845	SUR	Surui	AMR	American Ancestry
+hgdp	HGDP00849	SUR	Surui	AMR	American Ancestry
+hgdp	HGDP00854	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00856	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00858	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00859	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00860	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00861	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00862	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00863	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00864	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00865	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00868	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00869	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00870	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00871	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00872	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00873	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00875	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00876	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00877	MAY	Maya	AMR	American Ancestry
+hgdp	HGDP00879	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00880	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00881	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00882	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00883	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00884	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00885	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00886	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00888	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00889	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00890	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00891	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00892	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00893	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00894	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00895	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00896	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00897	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00898	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00899	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00900	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00901	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00902	RSS	Russian	EUR	European Ancestry
+hgdp	HGDP00904	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00905	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00906	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00907	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00908	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00909	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00910	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00911	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00912	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00913	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00914	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00916	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00917	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00918	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00919	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP00920	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00924	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00925	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00926	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00929	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00930	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00931	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00933	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00934	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00935	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00937	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00938	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00939	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00940	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00941	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00942	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00943	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00944	YRI	Yoruba	AFR	African Ancestry
+hgdp	HGDP00945	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00946	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00947	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00948	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00949	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00950	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00952	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00953	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00954	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00955	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00957	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00958	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00959	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00960	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00961	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00962	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00963	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00964	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00965	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00966	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00967	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00968	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00969	YKT	Yakut	EAS	East Asian Ancestry
+hgdp	HGDP00970	CLM	Colombian	AMR	American Ancestry
+hgdp	HGDP00971	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00972	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00973	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00974	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00975	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00976	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00977	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP00981	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00983	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00984	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP00985	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00986	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP00992	SAN	San	AFR	African Ancestry
+hgdp	HGDP00993	BSA	Bantu South Africa	AFR	African Ancestry
+hgdp	HGDP00994	BSA	Bantu South Africa	AFR	African Ancestry
+hgdp	HGDP00995	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP00999	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01001	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01006	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01009	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01010	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01013	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01014	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01019	KRT	Karitiana	AMR	American Ancestry
+hgdp	HGDP01021	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP01023	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP01024	HAN	Han	EAS	East Asian Ancestry
+hgdp	HGDP01027	BGN	Bougainville	OCE	Oceanian Ancestry
+hgdp	HGDP01029	SAN	San	AFR	African Ancestry
+hgdp	HGDP01031	BSA	Bantu South Africa	AFR	African Ancestry
+hgdp	HGDP01033	BSA	Bantu South Africa	AFR	African Ancestry
+hgdp	HGDP01037	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01041	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01043	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01050	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01051	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01053	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01055	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01056	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01057	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01058	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01059	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01060	PIM	Pima	AMR	American Ancestry
+hgdp	HGDP01062	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01063	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01064	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01065	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01066	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01067	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01068	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01069	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01070	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01071	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01072	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01073	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01074	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01075	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01077	SRD	Sardinian	EUR	European Ancestry
+hgdp	HGDP01081	MBT	Mbuti	AFR	African Ancestry
+hgdp	HGDP01086	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP01087	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP01090	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP01092	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP01094	BIK	Biaka	AFR	African Ancestry
+hgdp	HGDP01096	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01097	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01099	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01100	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01101	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01102	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01103	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01104	TUJ	Tujia	EAS	East Asian Ancestry
+hgdp	HGDP01149	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01151	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01152	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01155	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01156	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01157	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01161	TSC	Tuscan	EUR	European Ancestry
+hgdp	HGDP01162	TSC	Tuscan	EUR	European Ancestry
+hgdp	HGDP01164	TSC	Tuscan	EUR	European Ancestry
+hgdp	HGDP01166	TSC	Tuscan	EUR	European Ancestry
+hgdp	HGDP01167	TSC	Tuscan	EUR	European Ancestry
+hgdp	HGDP01169	TSC	Tuscan	EUR	European Ancestry
+hgdp	HGDP01171	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01173	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01174	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01177	BRI	Bergamo Italian	EUR	European Ancestry
+hgdp	HGDP01180	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01181	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01182	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01183	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01184	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01185	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01186	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01187	YI	Yi	EAS	East Asian Ancestry
+hgdp	HGDP01189	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01190	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01192	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01193	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01194	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01195	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01196	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01197	MIA	Miao	EAS	East Asian Ancestry
+hgdp	HGDP01200	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP01201	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP01202	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP01204	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01205	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01206	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01207	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01208	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01209	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01212	ORQ	Oroqen	EAS	East Asian Ancestry
+hgdp	HGDP01213	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01214	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01216	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01217	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01218	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01219	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01220	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01221	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01222	DAR	Daur	EAS	East Asian Ancestry
+hgdp	HGDP01224	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01225	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01226	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01227	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01229	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01230	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01231	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01232	MNG	Mongolian	EAS	East Asian Ancestry
+hgdp	HGDP01233	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01234	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01236	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01237	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01238	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01239	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01241	HZH	Hezhen	EAS	East Asian Ancestry
+hgdp	HGDP01243	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01244	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01245	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01247	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01248	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01249	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01251	XIB	Xibo	EAS	East Asian Ancestry
+hgdp	HGDP01254	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01255	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01256	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01257	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01258	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01259	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01260	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01261	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01262	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01263	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01264	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01265	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01266	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01267	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01268	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01269	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01270	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01271	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01272	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01273	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01275	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01276	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01277	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01279	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01280	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01282	MZB	Mozabite	MEA	Middle Eastern Ancestry
+hgdp	HGDP01283	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP01285	MND	Mandenka	AFR	African Ancestry
+hgdp	HGDP01287	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01288	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01289	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01290	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01291	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01292	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01293	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01294	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01295	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01296	NRH	Northern Han	EAS	East Asian Ancestry
+hgdp	HGDP01298	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01299	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01300	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01301	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01302	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01303	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01304	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01305	UYG	Uygur	CSA	Central and South Asian Ancestry
+hgdp	HGDP01309	DAI	Dai	EAS	East Asian Ancestry
+hgdp	HGDP01310	DAI	Dai	EAS	East Asian Ancestry
+hgdp	HGDP01311	DAI	Dai	EAS	East Asian Ancestry
+hgdp	HGDP01313	DAI	Dai	EAS	East Asian Ancestry
+hgdp	HGDP01316	DAI	Dai	EAS	East Asian Ancestry
+hgdp	HGDP01317	LAH	Lahu	EAS	East Asian Ancestry
+hgdp	HGDP01318	LAH	Lahu	EAS	East Asian Ancestry
+hgdp	HGDP01319	LAH	Lahu	EAS	East Asian Ancestry
+hgdp	HGDP01321	LAH	Lahu	EAS	East Asian Ancestry
+hgdp	HGDP01322	LAH	Lahu	EAS	East Asian Ancestry
+hgdp	HGDP01326	LAH	Lahu	EAS	East Asian Ancestry
+hgdp	HGDP01327	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01328	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01329	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01330	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01331	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01332	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01334	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01336	SHE	She	EAS	East Asian Ancestry
+hgdp	HGDP01337	NAX	Naxi	EAS	East Asian Ancestry
+hgdp	HGDP01339	NAX	Naxi	EAS	East Asian Ancestry
+hgdp	HGDP01340	NAX	Naxi	EAS	East Asian Ancestry
+hgdp	HGDP01341	NAX	Naxi	EAS	East Asian Ancestry
+hgdp	HGDP01342	NAX	Naxi	EAS	East Asian Ancestry
+hgdp	HGDP01346	NAX	Naxi	EAS	East Asian Ancestry
+hgdp	HGDP01347	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01348	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01349	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01351	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01352	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01353	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01354	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01356	TU	Tu	EAS	East Asian Ancestry
+hgdp	HGDP01357	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01358	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01359	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01360	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01361	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01362	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01363	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01366	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01367	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01368	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01369	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01370	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01371	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01372	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01373	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01374	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01375	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01376	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01377	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01378	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01379	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01380	BSQ	Basque	EUR	European Ancestry
+hgdp	HGDP01381	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01382	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01383	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01384	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01385	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01386	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01387	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01388	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01396	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01397	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01398	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01399	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01400	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01403	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01404	ADY	Adygei	EUR	European Ancestry
+hgdp	HGDP01405	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01406	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01408	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01411	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01412	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01413	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01415	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01416	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01418	BNK	Bantu Kenya	AFR	African Ancestry
+hgdp	HGDP01419	BNK	Bantu Kenya	AFR	African Ancestry

@@ -114,7 +114,24 @@ panel:
   1000g:
     # reference panel of the 1000G samples
     samples: data/source/1000g/1000g-panel.tsv
-    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
+    pedigree: data/source/1000g/1000g-trios.ped
+
+  hgdp:
+    # reference panel of the hgdp samples
+    samples: data/source/hgdp/hgdp-panel.tsv
+
+  sgdp:
+    # reference panel of the sgdp samples
+    samples: data/source/sgdp/sgdp-panel.tsv
+
+  ggvp:
+    # reference panel of the ggvp samples
+    samples: data/source/ggvp/ggvp-panel.tsv
+    pedigree: data/source/ggvp/ggvp-trios.ped
+
+  appg:
+    # reference panel of the appg samples
+    samples: data/source/appg/appg-panel.tsv
 
   refpanel-v1:
     # reference panel of all the public data sources (n=4,789)
