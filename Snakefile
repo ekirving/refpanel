@@ -29,15 +29,14 @@ include: "rules/02-align.smk"
 include: "rules/03-qc-metrics.smk"
 include: "rules/04-call.smk"
 include: "rules/05-merge-samples.smk"
-include: "rules/06-merge-sources.smk"
-include: "rules/07-joint-call.smk"
-include: "rules/08-phase-reads.smk"
-include: "rules/09-phase-trios.smk"
-include: "rules/10-phase-stat.smk"
-include: "rules/11-ensembl-vep.smk"
+include: "rules/06-joint-call.smk"
+include: "rules/07-phase-reads.smk"
+include: "rules/08-phase-trios.smk"
+include: "rules/09-phase-stat.smk"
+include: "rules/10-ensembl-vep.smk"
 #
 # rules for evaluating the reference panel
-include: "rules/12-variant-evaluation.smk"
+include: "rules/11-variant-evaluation.smk"
 
 
 # preference download rules, when they are available

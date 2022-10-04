@@ -33,9 +33,10 @@ def gatk3_genotype_chrom_gvcf_input(wildcards):
 # noinspection PyUnresolvedReferences
 rule gatk3_genotype_chrom_gvcf:
     """
-    Jointly call genotypes in all samples for a specific chromosome
+    Jointly call genotypes in all samples, across all sources, for a specific chromosome
 
     NB. GATK does not honour the --num_threads flag and will use all available cores
+    NB. Merging sources into a panel gVCF does not produce faster genotype calling
     """
     input:
         unpack(gatk3_genotype_chrom_gvcf_input),
