@@ -5,8 +5,9 @@ genomes, aligned to `GRCh38`.
 
 This pipeline was inspired by the [alignment and SNP calling workflow](
 http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/20190405_NYGC_b38_pipeline_description.pdf)
-used by the New York Genome Center (NYGC) in their recent [1000G 30x paper](
-https://www.biorxiv.org/content/10.1101/2021.02.06.430068); implemented here, with improvements,
+used by the New York Genome Center (NYGC) in their recent paper [High-coverage whole-genome sequencing of the expanded 
+1000 Genomes Project cohort including 602 trios](
+https://doi.org/10.1016/j.cell.2022.08.004); implemented here, with improvements,
 using [snakemake](https://snakemake.readthedocs.io/en/stable/) and
 [conda](https://docs.conda.io/projects/conda/en/latest/) for full reproducibility.
 
@@ -40,7 +41,7 @@ This pipeline comes preconfigured to build a joint-callset, called `refpanel-v1`
 available samples from:
 
 * **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; inc. 2,504 phase 3 samples + 698 additional related samples); \
-  Byrska-Bishop et al. (2021) *bioRxiv* [doi:10.1101/2021.02.06.430068](https://doi.org/10.1101/2021.02.06.430068)
+  Byrska-Bishop et al. (2022) *Cell* [doi:10.1016/j.cell.2022.08.004](https://doi.org/10.1016/j.cell.2022.08.004)
 * **Human Genome Diversity Project (HGDP)** (n=816; excluding overlap with SGDP); \
   Bergström et al. (2020) *Science* [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
 * **Simons Genome Diversity Project (SGDP)** (n=256; excluding overlap with 1000G); \

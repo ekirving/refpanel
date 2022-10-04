@@ -11,8 +11,8 @@ source:
 
   1000g:
     # 1000 Genomes Project (1000G)
-    # Byrska-Bishop et al. (2021) `bioRxiv` (n=3202)
-    # https://doi.org/10.1101/2021.02.06.430068
+    # Byrska-Bishop et al. (2022) `Cell` (n=3202)
+    # https://doi.org/10.1016/j.cell.2022.08.004
     samples: data/source/1000g/1000g-samples.tsv
     pedigree: data/source/1000g/1000g-trios.ped
 
