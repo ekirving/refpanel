@@ -100,7 +100,7 @@ Superpopulation assignments are based on the original 1000G, HGDP and SGDP metad
 | Central and South Asian Ancestry    | CSA  |     199 |
 | East Asian Ancestry                 | EAS  |     826 |
 | European Ancestry                   | EUR  |     790 |
-| Middle Eastern Ancestry             | MEA  |     162 |
+| Middle Eastern Ancestry             | MEA  |     407 |
 | Oceanian Ancestry                   | OCE  |      38 |
 | South Asian Ancestry                | SAS  |     678 |
 | West Eurasian Ancestry              | WEA  |      47 |
