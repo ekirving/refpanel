@@ -49,7 +49,7 @@ rule gatk3_genotype_chrom_gvcf:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
     threads: 12
     resources:
-        mem_mb=min(92 * 1024, MAX_MEM_MB),  # ~12.2%
+        mem_mb=min(90 * 1024, MAX_MEM_MB),  # ~12%
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_genotype_chrom_gvcf-{panel}-{chr}.tsv"
