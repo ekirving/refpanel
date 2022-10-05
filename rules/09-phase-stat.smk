@@ -8,6 +8,8 @@ __license__ = "MIT"
 
 from snakemake.io import touch
 
+from scripts.common import MAX_MEM_MB
+
 
 global workflow
 
@@ -31,6 +33,8 @@ rule shapeit4_phase_vcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
+    resources:
+        mem_mb=int(MAX_MEM_MB * 0.8),
     benchmark:
         "benchmarks/shapeit4_phase_vcf.tsv-{panel}-{chr}"
     conda:
@@ -65,6 +69,8 @@ rule shapeit4_phase_trios_vcf:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
+    resources:
+        mem_mb=int(MAX_MEM_MB * 0.8),
     benchmark:
         "benchmarks/shapeit4_phase_trios_vcf-{panel}-{chr}.tsv"
     conda:
@@ -91,7 +97,9 @@ def panel_statistical_phasing_input(wildcards):
     if config["panel"][wildcards.panel].get("pedigree") is None:
         vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz" for chr in chroms]
     else:
-        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz" for chr in chroms]
+        vcf = [
+            f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz" for chr in chroms
+        ]
 
     return vcf
 
