@@ -373,11 +373,11 @@ rule bcftools_trio_file:
     input:
         ped=lambda wildcards: config["panel"][wildcards.panel].get("pedigree", "/dev/null"),
     output:
-        tsv="data/source/{panel}/{panel}-trios.tsv",
+        csv="data/panel/{panel}/{panel}-trios.csv",
     benchmark:
         "benchmarks/bcftools_trio_file-{panel}.tsv"
     shell:
-        """awk '{{ print $4","$3","$2 }}' {input.ped} > {output.tsv}"""
+        """awk '{{ print $4","$3","$2 }}' {input.ped} > {output.csv}"""
 
 
 rule bcftools_annotate:
@@ -391,7 +391,7 @@ rule bcftools_annotate:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi",
         super="data/panel/{panel}/{panel}-superpops.tsv",
-        trios="data/source/{panel}/{panel}-trios.tsv",
+        trios="data/panel/{panel}/{panel}-trios.csv",
         dbsnp="data/reference/GRCh38/dbsnp/GRCh38.dbSNP155.vcf.gz",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz",
@@ -425,7 +425,7 @@ rule bcftools_filter_vcf:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot.vcf.gz.tbi",
         super="data/panel/{panel}/{panel}-superpops.tsv",
-        trios="data/source/{panel}/{panel}-trios.tsv",
+        trios="data/panel/{panel}/{panel}-trios.csv",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
