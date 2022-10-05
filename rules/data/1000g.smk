@@ -136,7 +136,20 @@ rule tgp_nygc_plink_ped:
     """
     Make a PLINK pedigree file for the 602 trios.
 
+    There are 602 trios in 1000G, but only 576 families (including some quads and multi-generational families)
+
     NB. `HG02567` appears in the pedigree, but was not sequenced as part of the 602 trios in the NYGC callset
+
+    NB. there are 8 individuals (i.e., HG00656, HG00657, NA19238, NA19660, NA19661, NA19678, NA19679, NA20282) who are 
+    present in 2 families each, due to family naming that doesn't take into account some overlapping pedigrees 
+    (see https://www.biorxiv.org/content/10.1101/078600v1.full#app-3)
+
+    So we fix the problematic family codes here:
+    * CHS2 = SH074 + SH089
+    * YRI1 = Y028 + Y117
+    * MXL1 = m004 + m009
+    * MXL2 = m008 + m011
+    * ASW4 = 2467 + 2469
     """
     input:
         tsv="data/source/1000g/20130606_g1k_3202_samples_ped_population.txt",
@@ -145,4 +158,10 @@ rule tgp_nygc_plink_ped:
     benchmark:
         "benchmarks/tgp_nygc_plink_ped.tsv"
     shell:
-        """awk 'NR>1 && $3!=0 && $4!=0' {input.tsv} | grep -Pv 'HG02567' > {output.ped}"""
+        "awk 'NR>1 && $3!=0 && $4!=0' {input.tsv} | "
+        "sed -E 's/SH074|SH089/CHS2/' | "
+        "sed -E 's/Y028|Y117/YRI1/' | "
+        "sed -E 's/m004|m009/MXL1/' | "
+        "sed -E 's/m008|m011/MXL2/' | "
+        "sed -E 's/2467|2469/ASW4/' | "
+        "grep -v 'HG02567' > {output.ped}"
