@@ -4,7 +4,7 @@
 # License:   MIT
 
 # default reference panel
-refpanel: refpanel-v1
+refpanel: refpanel-v2
 
 # data sources, containing samples and individual library accessions
 source:
@@ -141,7 +141,7 @@ panel:
   refpanel-v2:
     # version 2 of the public reference panel (n=5,034)
     samples: data/panel/refpanel-v2/refpanel-v2.tsv
-    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
+    pedigree: data/panel/refpanel-v1/refpanel-v2.ped
 
   cgg-afr-v1:
     # reference panel of the CGG-AFR samples + all the public samples in refpanel-v1 (n=4,837)
@@ -151,7 +151,7 @@ panel:
   cgg-afr-v2:
     # version 2 of the CGG-AFR reference panel (n=5,082)
     samples: data/panel/cgg-afr-v2/cgg-afr-v2.tsv
-    pedigree: data/panel/refpanel-v1/refpanel-v1.ped
+    pedigree: data/panel/refpanel-v1/refpanel-v2.ped
 
 
 # mapping of readgroup tags to accession metadata column names

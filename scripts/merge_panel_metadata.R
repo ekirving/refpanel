@@ -17,7 +17,7 @@ quiet(library(yaml))
 # get the command line arguments
 p <- arg_parser("Merge all the data sources into a single reference panel")
 p <- add_argument(p, "--private", flag = TRUE, help = "Include private data sources")
-p <- add_argument(p, "--output", help = "Output file", default = "data/panel/refpanel-v1/refpanel-v1.tsv")
+p <- add_argument(p, "--output", help = "Output file", default = "data/panel/refpanel-v2/refpanel-v2.tsv")
 
 argv <- parse_args(p)
 

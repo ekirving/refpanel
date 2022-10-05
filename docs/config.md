@@ -40,5 +40,5 @@ To add a new reference `panel` you will need to create one additional `tsv` meta
 
 * `<panel>.tsv` metadata sheet; required columns `(source, sample, population, superpopulation)`
 
-For an example, see [refpanel-v1.tsv](../data/panel/refpanel-v1/refpanel-v1.tsv)
+For an example, see [refpanel-v2.tsv](../data/panel/refpanel-v2/refpanel-v2.tsv)
 
