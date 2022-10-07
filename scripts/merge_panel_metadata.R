@@ -18,11 +18,13 @@ quiet(library(yaml))
 p <- arg_parser("Merge all the data sources into a single reference panel")
 p <- add_argument(p, "--private", flag = TRUE, help = "Include private data sources")
 p <- add_argument(p, "--output", help = "Output file", default = "data/panel/refpanel-v2/refpanel-v2.tsv")
+p <- add_argument(p, "--pedigree", help = "Pedigree file", default = "data/panel/refpanel-v2/refpanel-v2.ped")
 
 argv <- parse_args(p)
 
 # argv$private <- TRUE
 # argv$output <- "data/panel/cgg-afr-v1/cgg-afr-v1.tsv"
+# argv$pedigree <- "data/panel/cgg-afr-v1/cgg-afr-v1.ped"
 
 config <- read_yaml("config.yaml")
 
@@ -66,9 +68,31 @@ dup <- panel %>%
 
 stopifnot(nrow(dup) == 0)
 
-# panel %>% nrow()
-# panel %>% group_by(source) %>% tally()
-# panel %>% group_by(superpopulation, superpopulation_name) %>% tally() %>% select(Superpopulation=superpopulation_name, Code=superpopulation, Samples=n)
+# summarize the metadata
+panel %>% nrow()
+panel %>% group_by(source) %>% tally()
+panel %>% group_by(superpopulation, superpopulation_name) %>% tally() %>% select(Superpopulation=superpopulation_name, Code=superpopulation, Samples=n)
+
+# load all the pedigrees
+pedigrees <- lapply(names(config$source), function(source) {
+  if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
+    if (!is.null(config$source[[source]]$pedigree)) {
+      read_table(config$source[[source]]$pedigree, col_types = cols(), col_names = c("family", "child", "father", "mother", "sex", "population", "superpopulation"))
+    }
+  }
+})
+
+pedigrees <- bind_rows(pedigrees)
+
+# check that each sample only appears in one family
+dup <- pedigrees %>%
+  pivot_longer(cols=c("child", "father", "mother"), names_to="relation", values_to="sample") %>%
+  group_by(sample) %>%
+  summarise(n=n_distinct(family)) %>%
+  filter(n > 1)
+
+stopifnot(nrow(dup) == 0)
 
 # save the metadata
 write_tsv(panel, argv$output, na = "")
+write_delim(pedigrees, argv$pedigree, col_names = FALSE, na = "")
