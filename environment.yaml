@@ -4,4 +4,4 @@ channels:
 dependencies:
   - conda-forge::pandas=1.3.4
   - conda-forge::python=3.9.7
-  - bioconda::snakemake=6.12.3
+  - bioconda::snakemake=7.14.2
