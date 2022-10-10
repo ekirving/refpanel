@@ -66,11 +66,25 @@ source:
     accessions: data/source/PRJEB16019/PRJEB16019-accessions.tsv
     ena_ftp: true
 
+  PRJEB26349:
+    # de Barros Damgaard et al. (2018) `Science` (n=41)
+    # https://doi.org/10.1126/science.aar7711
+    samples: data/source/PRJEB26349/PRJEB26349-samples.tsv
+    accessions: data/source/PRJEB26349/PRJEB26349-accessions.tsv
+    ena_ftp: true
+
   PRJEB26721:
     # McColl et al. (2018) `Science` (n=2)
     # https://doi.org/10.1126/science.aat3628
     samples: data/source/PRJEB26721/PRJEB26721-samples.tsv
     accessions: data/source/PRJEB26721/PRJEB26721-accessions.tsv
+    ena_ftp: true
+
+  PRJNA470966:
+    # Lindo et al. (2018) `Science Advances` (n=25)
+    # https://doi.org/10.1126/sciadv.aau4921
+    samples: data/source/PRJNA470966/PRJNA470966-samples.tsv
+    accessions: data/source/PRJNA470966/PRJNA470966-accessions.tsv
     ena_ftp: true
 
   PRJEB26599:
@@ -151,7 +165,7 @@ panel:
   cgg-afr-v2:
     # version 2 of the CGG-AFR reference panel (n=5,082)
     samples: data/panel/cgg-afr-v2/cgg-afr-v2.tsv
-    pedigree: data/panel/refpanel-v1/refpanel-v2.ped
+    pedigree: data/panel/refpanel-v2/refpanel-v2.ped
 
 
 # mapping of readgroup tags to accession metadata column names

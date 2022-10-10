@@ -23,8 +23,7 @@ p <- add_argument(p, "--pedigree", help = "Pedigree file", default = "data/panel
 argv <- parse_args(p)
 
 # argv$private <- TRUE
-# argv$output <- "data/panel/cgg-afr-v1/cgg-afr-v1.tsv"
-# argv$pedigree <- "data/panel/cgg-afr-v1/cgg-afr-v1.ped"
+# argv$output <- "data/panel/cgg-afr-v2/cgg-afr-v2.tsv"
 
 config <- read_yaml("config.yaml")
 

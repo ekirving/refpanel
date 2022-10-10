@@ -37,7 +37,7 @@ conda activate refpanel
 
 ## Data sources
 
-This pipeline comes preconfigured to build a joint-callset, called `refpanel-v2` (n=5,034), involving all publicly 
+This pipeline comes preconfigured to build a joint-callset, called `refpanel-v2` (n=5,100), involving all publicly 
 available samples from:
 
 * **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; inc. 2,504 phase 3 samples + 698 additional related samples); \
@@ -54,8 +54,10 @@ available samples from:
 Plus additional public genomes from:
 * Meyer et al. (2012) *Science* (n=8); [doi:10.1126/science.1224344](https://doi.org/10.1126/science.1224344)
 * Mondal et al. (2016) *Nature Genetics* (n=60); [doi:10.1038/ng.3621](https://doi.org/10.1038/ng.3621)
-* Rodriguez-Flores et al. (2016) *Genome Research* (n=108) [doi:10.1101/gr.191478.115](https://doi.org/10.1101/gr.191478.115) 
+* Rodriguez-Flores et al. (2016) *Genome Research* (n=108); [doi:10.1101/gr.191478.115](https://doi.org/10.1101/gr.191478.115)
+* de Barros Damgaard et al. (2018) *Science* (n=41); [10.1126/science.aar7711](https://doi.org/10.1126/science.aar7711)
 * McColl et al. (2018) *Science* (n=2); [doi:10.1126/science.aat3628](https://doi.org/10.1126/science.aat3628)
+* Lindo et al. (2018) *Science Advances* (n=25); [10.1126/sciadv.aau4921](https://doi.org/10.1126/sciadv.aau4921)
 * Gelabert et al. (2019) *BMC Genomics* (n=12); [doi:10.1186/s12864-019-5529-0](https://doi.org/10.1186/s12864-019-5529-0)
 * Serra-Vidal et al. (2019) *Current Biology* (n=21); [doi:10.1016/j.cub.2019.09.050](https://doi.org/10.1016/j.cub.2019.09.050)
 * Lorente-Galdos et al. (2019) *Genome Biology* (n=9); [doi:10.1186/s13059-019-1684-5](https://doi.org/10.1186/s13059-019-1684-5)
@@ -95,8 +97,8 @@ Superpopulation assignments are based on the original 1000G, HGDP and SGDP metad
 | Superpopulation                     | Code | Samples |
 |-------------------------------------|------|--------:|
 | African Ancestry                    | AFR  |   1,460 |
-| American Ancestry                   | AMR  |     564 |
-| Central Asian and Siberian Ancestry | CAS  |      25 |
+| American Ancestry                   | AMR  |     589 |
+| Central Asian and Siberian Ancestry | CAS  |      66 |
 | Central and South Asian Ancestry    | CSA  |     199 |
 | East Asian Ancestry                 | EAS  |     826 |
 | European Ancestry                   | EUR  |     790 |
