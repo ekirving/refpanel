@@ -49,9 +49,12 @@ meta <- read_tsv(argv$ena, na = c("", "NA", "unspecified"), col_types = cols(.de
   mutate(library = coalesce(library, sample))
 
 # flip the sample and alias if the sample code contains whitespace
-if (sum(str_count(meta$sample, " ")) > 0 && sum(str_count(meta$alias, " ")) == 0) {
+if (sum(str_count(meta$sample, " "), na.rm = TRUE) > 0 && sum(str_count(meta$alias, " "), na.rm = TRUE) == 0) {
   meta <- rename(meta, alias = sample, sample = alias) %>% relocate(sample, .before = alias)
 }
+
+# handle missing sample names
+meta <- mutate(meta, sample = coalesce(sample, alias))
 
 # handle single-end libraries
 meta_se <- filter(meta, layout == "SINGLE") %>%
