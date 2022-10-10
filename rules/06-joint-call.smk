@@ -47,9 +47,9 @@ rule gatk3_genotype_chrom_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
-    threads: 12
+    threads: 48
     resources:
-        mem_mb=min(90 * 1024, MAX_MEM_MB),  # ~12%
+        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_genotype_chrom_gvcf-{panel}-{chr}.tsv"
@@ -57,7 +57,6 @@ rule gatk3_genotype_chrom_gvcf:
         "../envs/gatk-3.5.yaml"
     shell:
         "gatk3"
-        " -Xms{resources.mem_mb}m"
         " -Xmx{resources.mem_mb}m"
         " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T GenotypeGVCFs"
