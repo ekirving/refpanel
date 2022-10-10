@@ -6,7 +6,7 @@
 # License:   MIT
 
 quiet <- function(x) {
-  suppressMessages(suppressWarnings(x))
+    suppressMessages(suppressWarnings(x))
 }
 quiet(library(argparser))
 quiet(library(dplyr))
@@ -29,66 +29,71 @@ config <- read_yaml("config.yaml")
 
 # load all data sources
 sources <- lapply(names(config$source), function(source) {
-  if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
-    read_tsv(config$source[[source]]$samples, show_col_types = FALSE) %>%
-      mutate(source = source) %>%
-      select(source, sample, population, population_name, superpopulation, superpopulation_name) %>%
-      arrange(sample)
-  }
+    if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
+        read_tsv(config$source[[source]]$samples, show_col_types = FALSE) %>%
+            mutate(source = source) %>%
+            select(source, sample, population, population_name, superpopulation, superpopulation_name) %>%
+            arrange(sample)
+    }
 })
 
 panel <- bind_rows(sources)
 
 # make sure that sample codes are unique
 dup <- panel %>%
-  group_by(sample) %>%
-  tally() %>%
-  filter(n > 1)
+    group_by(sample) %>%
+    tally() %>%
+    filter(n > 1)
 
 stopifnot(nrow(dup) == 0)
 
 # make sure that population codes are consistent
 dup <- panel %>%
-  select(population, population_name) %>%
-  unique() %>%
-  group_by(population) %>%
-  tally() %>%
-  filter(n > 1)
+    select(population, population_name) %>%
+    unique() %>%
+    group_by(population) %>%
+    tally() %>%
+    filter(n > 1)
 
 stopifnot(nrow(dup) == 0)
 
 # check the super-population pairings are consistent
 dup <- panel %>%
-  select(population_name, superpopulation_name) %>%
-  unique() %>%
-  group_by(population_name) %>%
-  tally() %>%
-  filter(n > 1)
+    select(population_name, superpopulation_name) %>%
+    unique() %>%
+    group_by(population_name) %>%
+    tally() %>%
+    filter(n > 1)
 
 stopifnot(nrow(dup) == 0)
 
 # summarize the metadata
 panel %>% nrow()
-panel %>% group_by(source) %>% tally()
-panel %>% group_by(superpopulation, superpopulation_name) %>% tally() %>% select(Superpopulation=superpopulation_name, Code=superpopulation, Samples=n)
+panel %>%
+    group_by(source) %>%
+    tally()
+panel %>%
+    group_by(superpopulation, superpopulation_name) %>%
+    tally() %>%
+    select(Superpopulation = superpopulation_name, Code = superpopulation, Samples = n)
 
 # load all the pedigrees
 pedigrees <- lapply(names(config$source), function(source) {
-  if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
-    if (!is.null(config$source[[source]]$pedigree)) {
-      read_table(config$source[[source]]$pedigree, col_types = cols(), col_names = c("family", "child", "father", "mother", "sex", "population", "superpopulation"))
+    if (is.null(config$source[[source]]$private) || config$source[[source]]$private == argv$private) {
+        if (!is.null(config$source[[source]]$pedigree)) {
+            read_table(config$source[[source]]$pedigree, col_types = cols(), col_names = c("family", "child", "father", "mother", "sex", "population", "superpopulation"))
+        }
     }
-  }
 })
 
 pedigrees <- bind_rows(pedigrees)
 
 # check that each sample only appears in one family
 dup <- pedigrees %>%
-  pivot_longer(cols=c("child", "father", "mother"), names_to="relation", values_to="sample") %>%
-  group_by(sample) %>%
-  summarise(n=n_distinct(family)) %>%
-  filter(n > 1)
+    pivot_longer(cols = c("child", "father", "mother"), names_to = "relation", values_to = "sample") %>%
+    group_by(sample) %>%
+    summarise(n = n_distinct(family)) %>%
+    filter(n > 1)
 
 stopifnot(nrow(dup) == 0)
 

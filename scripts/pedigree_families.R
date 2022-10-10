@@ -6,7 +6,7 @@
 # License:   MIT
 
 quiet <- function(x) {
-  suppressMessages(suppressWarnings(x))
+    suppressMessages(suppressWarnings(x))
 }
 quiet(library(dplyr))
 quiet(library(readr))
@@ -17,11 +17,11 @@ ped <- read_delim("data/source/1000g/20130606_g1k_3202_samples_ped_population.tx
 
 # find individuals in more than one family
 ped %>%
-  select(FamilyID, SampleID, FatherID, MotherID) %>%
-  pivot_longer(!FamilyID, values_to = "SampleID") %>%
-  drop_na() %>%
-  select(FamilyID, SampleID) %>%
-  unique() %>%
-  group_by(SampleID) %>%
-  summarise(n = n_distinct(FamilyID)) %>%
-  filter(n > 1)
+    select(FamilyID, SampleID, FatherID, MotherID) %>%
+    pivot_longer(!FamilyID, values_to = "SampleID") %>%
+    drop_na() %>%
+    select(FamilyID, SampleID) %>%
+    unique() %>%
+    group_by(SampleID) %>%
+    summarise(n = n_distinct(FamilyID)) %>%
+    filter(n > 1)
