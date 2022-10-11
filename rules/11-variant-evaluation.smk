@@ -115,3 +115,74 @@ rule giab_na12878_hg001:
         " --directory-prefix=data/evaluation/GIAB/NA12878_HG001/"
         " -o /dev/null"
         " ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/"
+
+
+rule giab_na12878_hg001_chr:
+    """
+    Extract a specific chromosome from the GIAB truth-set for NA12878
+    """
+    input:
+        vcf="data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.vcf.gz",
+        tbi="data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark.vcf.gz.tbi",
+    output:
+        vcf="data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark_{chr}.vcf.gz",
+        tbi="data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark_{chr}.vcf.gz.tbi",
+    log:
+        log="data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark_{chr}.vcf.log",
+    benchmark:
+        "benchmarks/giab_na12878_hg001-{chr}.tsv"
+    shell:
+        "( bcftools view -Oz -o {output.vcf} {input.vcf} {wildcards.chr} && "
+        "  bcftools index --tbi {output.vcf} "
+        ") 2> {log} "
+
+
+rule refpanel_NA12878_chr:
+    """
+    Extract our called version of NA12878 for compairon
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz.tbi",
+    output:
+        vcf="data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.vcf.gz",
+        tbi="data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.vcf.gz.tbi",
+    log:
+        log="data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.vcf.log",
+    shell:
+        "( bcftools view --samples 'NA12878' -Oz -o {output.vcf} {input.vcf} && "
+        "  bcftools index --tbi {output.vcf} "
+        ") 2> {log} "
+
+
+rule illumina_hap_py:
+    """
+    Compare out callset to GIAB NA12878 using Illumina's Haplotype Comparison Tools (hap.py)
+
+    see https://github.com/Illumina/hap.py/blob/master/doc/happy.md
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        vcf_truth="data/evaluation/GIAB/NA12878_HG001/HG001_GRCh38_1_22_v4.2.1_benchmark_{chr}.vcf.gz",
+        vcf_input="data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.vcf.gz",
+    output:
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.extended.csv",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.metrics.json",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.roc.all.csv",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.roc.Locations.INDEL.csv",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.roc.Locations.INDEL.PASS.csv",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.roc.Locations.SNP.csv",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.roc.Locations.SNP.PASS.csv",
+        "data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878.summary.csv",
+    params:
+        prefix="data/evaluation/GIAB/NA12878_HG001/{panel}/{panel}_{chr}_vqsr_norm_annot_filter_NA12878",
+    benchmark:
+        "benchmarks/illumina_hap_py-{panel}-{chr}.tsv"
+    conda:
+        "../envs/hap.py-0.3.14.yaml"
+    shell:
+        "hap.py"
+        " --reference {input.ref}"
+        " --report-prefix {params.prefix}"
+        " {input.vcf_truth}"
+        " {input.vcf_input}"
