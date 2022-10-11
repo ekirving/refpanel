@@ -47,7 +47,7 @@ rule gatk3_genotype_chrom_gvcf:
         log="data/panel/{panel}/vcf/{panel}_{chr}.vcf.log",
     params:
         gvcfs=lambda wildcards, input: [f"--variant {gvcf}" for gvcf in input.gvcfs],
-    threads: 48
+    threads: max(workflow.cores / 2, 8)
     resources:
         mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
@@ -352,7 +352,7 @@ rule bcftools_norm:
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.log",
     benchmark:
-        "benchmarks/bcftools_norm.tsv-{panel}-{chr}"
+        "benchmarks/bcftools_norm-{panel}-{chr}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:

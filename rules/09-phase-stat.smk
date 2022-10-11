@@ -6,9 +6,9 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import touch
+from snakemake.io import touch, temp
 
-from scripts.common import MAX_MEM_MB
+from scripts.common import MAX_MEM_MB, JAVA_MEMORY_MB
 
 
 global workflow
@@ -29,18 +29,18 @@ rule shapeit4_phase_vcf:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz",
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.tmp.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.tmp.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     resources:
-        mem_mb=int(MAX_MEM_MB * 0.8),
+        mem_mb=int(MAX_MEM_MB / 4) - JAVA_MEMORY_MB,
     benchmark:
-        "benchmarks/shapeit4_phase_vcf.tsv-{panel}-{chr}"
+        "benchmarks/shapeit4_phase_vcf-{panel}-{chr}.tsv"
     conda:
         "../envs/shapeit-4.2.2.yaml"
     shell:
-        # TODO this strips all the annotations from the original VCF
         "shapeit4"
         " --thread {threads}"
         " --input {input.vcf}"
@@ -48,7 +48,8 @@ rule shapeit4_phase_vcf:
         " --region {wildcards.chr}"
         " --sequencing"
         " --output {output.vcf}"
-        " &> {log}"
+        " &> {log} && "
+        "bcftools index --tbi {output.vcf}"
 
 
 rule shapeit4_phase_trios_vcf:
@@ -65,12 +66,13 @@ rule shapeit4_phase_trios_vcf:
         vcf2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz",
         tbi2="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_trios.vcf.gz.tbi",
     output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz",
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.tmp.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.tmp.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.log",
     threads: max(workflow.cores / 4, 8)
     resources:
-        mem_mb=int(MAX_MEM_MB * 0.8),
+        mem_mb=int(MAX_MEM_MB / 4) - JAVA_MEMORY_MB,
     benchmark:
         "benchmarks/shapeit4_phase_trios_vcf-{panel}-{chr}.tsv"
     conda:
@@ -84,7 +86,35 @@ rule shapeit4_phase_trios_vcf:
         " --region {wildcards.chr}"
         " --sequencing"
         " --output {output.vcf}"
-        " &> {log}"
+        " &> {log} && "
+        "bcftools index --tbi {output.vcf}"
+
+
+rule restore_annotations:
+    """
+    Restore the annotations that shapeit4 stripped out
+    """
+    input:
+        vcf_annot="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
+        vcf_input="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased.tmp.vcf.gz",
+    output:
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased.vcf.gz.tbi",
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_{whatshap}_phased.annot.log",
+    benchmark:
+        "benchmarks/restore_annotations-{panel}-{chr}-{whatshap}.tsv"
+    wildcard_constraints:
+        whatshap="whatshap|whatshap_trio",
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools annotate"
+        " --annotations {input.vcf_annot}"
+        " --columns '^INFO/AF'"
+        " --output-type z"
+        " --output {output.vcf} {input.vcf_input} 2> {log} && "
+        "bcftools index --tbi {output.vcf}"
 
 
 def panel_statistical_phasing_input(wildcards):

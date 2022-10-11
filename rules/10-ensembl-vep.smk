@@ -60,7 +60,7 @@ rule ensembl_vep_annotate_vcf:
     benchmark:
         "benchmarks/ensembl_vep_annotate_vcf-{panel}-{chr}-{whatshap}.tsv"
     wildcard_constraints:
-        whatshap="whatshap|whatshap_trio"
+        whatshap="whatshap|whatshap_trio",
     conda:
         "../envs/ensembl-vep-105.0.yaml"
     shell:
