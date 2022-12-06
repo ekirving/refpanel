@@ -68,44 +68,17 @@ rule gatk3_genotype_chrom_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule gatk3_split_variants:
-    """
-    Split variants into SNPs and INDELs to perform the variant recalibration in parallel
-    """
-    input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_{type}.vcf.log",
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-    benchmark:
-        "benchmarks/gatk3_split_variants-{panel}-{chr}-{type}.tsv"
-    conda:
-        "../envs/gatk-3.5.yaml"
-    shell:
-        "gatk3"
-        " -Xmx{resources.mem_mb}m"
-        " -T SelectVariants"
-        " -R {input.ref}"
-        " --variant {input.vcf}"
-        " --selectTypeToInclude {wildcards.type}"
-        " --out {output.vcf} 2> {log}"
-
-
 rule gatk3_variant_recalibrator_snp:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for SNPs
 
     https://gatk.broadinstitute.org/hc/en-us/articles/360035531612?id=1259
+    https://sites.google.com/a/broadinstitute.org/legacy-gatk-forum-discussions/tutorials/2805-howto-Recalibrate-variant-quality-scores-run-VQSR
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi",
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
@@ -157,14 +130,53 @@ rule gatk3_variant_recalibrator_snp:
         " -tranche 90.0 2> {log}"
 
 
+rule gatk3_apply_recalibration_snp:
+    """
+    Apply the VQSR to the SNPs
+    """
+    input:
+        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi",
+        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.recal",
+        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.tranches",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi"),
+    log:
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.log",
+    threads: GATK_NUM_THREADS
+    resources:
+        mem_mb=JAVA_MEMORY_MB,
+        tmpdir=JAVA_TEMP_DIR,
+    benchmark:
+        "benchmarks/gatk3_apply_recalibration_snp-{panel}-{chr}.tsv"
+    conda:
+        "../envs/gatk-3.5.yaml"
+    shell:
+        "gatk3"
+        " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
+        " -T ApplyRecalibration"
+        " -R {input.ref}"
+        " --num_threads {threads}"
+        " -input {input.vcf}"
+        " -mode SNP"
+        " --ts_filter_level 99.80"
+        " -recalFile {input.recal}"
+        " -tranchesFile {input.tranche}"
+        " -o {output.vcf} 2> {log}"
+
+
+
 rule gatk3_variant_recalibrator_indel:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for INDELs
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi",
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
@@ -209,57 +221,19 @@ rule gatk3_variant_recalibrator_indel:
         " --maxGaussians 4 2> {log}"
 
 
-rule gatk3_apply_recalibration_snp:
-    """
-    Apply the VQSR to the SNPs
-    """
-    input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_SNP.vcf.gz.tbi",
-        recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.recal",
-        tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.tranches",
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.log",
-    threads: GATK_NUM_THREADS
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-        tmpdir=JAVA_TEMP_DIR,
-    benchmark:
-        "benchmarks/gatk3_apply_recalibration_snp-{panel}-{chr}.tsv"
-    conda:
-        "../envs/gatk-3.5.yaml"
-    shell:
-        "gatk3"
-        " -Xmx{resources.mem_mb}m"
-        " -Djava.io.tmpdir='{resources.tmpdir}'"
-        " -T ApplyRecalibration"
-        " -R {input.ref}"
-        " --num_threads {threads}"
-        " -input {input.vcf}"
-        " -mode SNP"
-        " --ts_filter_level 99.80"
-        " -recalFile {input.recal}"
-        " -tranchesFile {input.tranche}"
-        " -o {output.vcf} 2> {log}"
-
-
 rule gatk3_apply_recalibration_indel:
     """
     Apply the VQSR to the INDELs
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_INDEL.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi",
         recal="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.recal",
         tranche="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.log",
     threads: GATK_NUM_THREADS
@@ -283,33 +257,6 @@ rule gatk3_apply_recalibration_indel:
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
         " -o {output.vcf} 2> {log}"
-
-
-rule picard_merge_variant_vcfs:
-    """
-    Merge the SNP and INDEL VCF files
-    """
-    input:
-        snp="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz",
-        indel="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_INDEL.vcf.gz",
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-    benchmark:
-        "benchmarks/picard_merge_variant_vcfs-{panel}-{chr}.tsv"
-    conda:
-        "../envs/picard-2.5.0.yaml"
-    shell:
-        "picard"
-        " -Xmx{resources.mem_mb}m"
-        " MergeVcfs"
-        " INPUT={input.snp}"
-        " INPUT={input.indel}"
-        " OUTPUT={output.vcf} 2> {log}"
 
 
 # noinspection PyTypeChecker
@@ -344,8 +291,8 @@ rule bcftools_norm:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz.tbi",
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi"),
