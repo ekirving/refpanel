@@ -1,4 +1,5 @@
 channels:
   - bioconda
 dependencies:
+  - bioconda::bcftools=1.11
   - bioconda::shapeit4=4.2.2
