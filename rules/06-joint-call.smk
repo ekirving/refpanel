@@ -296,8 +296,8 @@ rule gatk3_split_chroms:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz.tbi"),
+        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz.tbi",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
