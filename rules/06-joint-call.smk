@@ -8,6 +8,7 @@ __license__ = "MIT"
 
 import math
 
+from snakemake import workflow
 from snakemake.io import protected, unpack, temp, expand, touch, ancient
 
 from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR, MAX_MEM_MB
@@ -121,9 +122,9 @@ rule gatk3_variant_recalibrator_snp:
         plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_plots.R",
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.log",
-    threads: GATK_NUM_THREADS
+    threads: max(workflow.cores / 2, 8)
     resources:
-        mem_mb=JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_variant_recalibrator_snp-{panel}.tsv"
@@ -177,9 +178,9 @@ rule gatk3_apply_recalibration_snp:
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.log",
-    threads: GATK_NUM_THREADS
+    threads: max(workflow.cores / 2, 8)
     resources:
-        mem_mb=JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_apply_recalibration_snp-{panel}.tsv"
@@ -216,9 +217,9 @@ rule gatk3_variant_recalibrator_indel:
         plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL_plots.R",
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.log",
-    threads: GATK_NUM_THREADS
+    threads: max(workflow.cores / 2, 8)
     resources:
-        mem_mb=JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_variant_recalibrator_indel-{panel}.tsv"
@@ -267,9 +268,9 @@ rule gatk3_apply_recalibration_indel:
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.log",
-    threads: GATK_NUM_THREADS
+    threads: max(workflow.cores / 2, 8)
     resources:
-        mem_mb=JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_apply_recalibration_indel-{panel}.tsv"
