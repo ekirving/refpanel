@@ -299,6 +299,7 @@ rule gatk3_split_chroms:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
         vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz.tbi",
+        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
     output:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
@@ -315,7 +316,7 @@ rule gatk3_split_chroms:
         " -Xmx{resources.mem_mb}m"
         " -T SelectVariants"
         " -R {input.ref}"
-        " --intervals {wildcards.chr}"
+        " -L {input.bed}"
         " --out {output.vcf} 2> {log}"
 
 
