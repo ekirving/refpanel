@@ -11,7 +11,7 @@ import math
 from snakemake import workflow
 from snakemake.io import protected, unpack, temp, expand, touch, ancient
 
-from scripts.common import list_sources, GATK_NUM_THREADS, JAVA_MEMORY_MB, JAVA_TEMP_DIR, MAX_MEM_MB
+from scripts.common import list_sources, JAVA_MEMORY_MB, JAVA_TEMP_DIR, MAX_MEM_MB
 
 """
 Rules to perform joint genotype calling for the IGSR pipeline
@@ -95,7 +95,7 @@ rule picard_merge_chrom_vcfs:
         "picard"
         " -Xmx{resources.mem_mb}m"
         " MergeVcfs"
-        " INPUT={input.vcfs}"
+        " {params.vcfs}"
         " OUTPUT={output.vcf} 2> {log}"
 
 
