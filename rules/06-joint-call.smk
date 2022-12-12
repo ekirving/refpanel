@@ -8,10 +8,11 @@ __license__ = "MIT"
 
 import math
 
-from snakemake import workflow
 from snakemake.io import protected, unpack, temp, expand, touch, ancient
 
 from scripts.common import list_sources, JAVA_MEMORY_MB, JAVA_TEMP_DIR, MAX_MEM_MB
+
+global workflow
 
 """
 Rules to perform joint genotype calling for the IGSR pipeline
