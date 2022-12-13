@@ -111,3 +111,9 @@ rule phase_panel:
     input:
         # phase all samples in the reference panel
         expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
+
+
+rule predict_effects:
+    input:
+        # predict variant effects for all variants in the panel
+        expand("data/panel/{panel}/vcf/vep.done", panel=config["refpanel"]),

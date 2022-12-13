@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-from snakemake.io import directory
+from snakemake.io import directory, touch
 
 global workflow
 
@@ -77,3 +77,33 @@ rule ensembl_vep_annotate_vcf:
         " --stats_file {output.htm}"
         " --output_file {output.vcf} &> {log} && "
         "tabix {output.vcf}"
+
+
+def panel_predict_variant_effects_input(wildcards):
+    """
+    Check if the current panel has a pedigree, or not.
+    """
+    panel = wildcards.panel
+    chroms = [chr for chr in config["chroms"] if chr not in ["chrY", "chrM", "others"]]
+
+    if config["panel"][wildcards.panel].get("pedigree") is None:
+        vcf = [
+            f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased_vep.vcf.gz" for chr in chroms
+        ]
+    else:
+        vcf = [
+            f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased_vep.vcf.gz"
+            for chr in chroms
+        ]
+
+    return vcf
+
+
+rule panel_predict_variant_effects:
+    """
+    Perform variant effect prediction for all variants in the panel. 
+    """
+    input:
+        panel_predict_variant_effects_input,
+    output:
+        touch("data/panel/{panel}/vcf/vep.done"),
