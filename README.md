@@ -41,13 +41,14 @@ This pipeline comes preconfigured to build a joint-callset, called `refpanel-v2`
 available samples from:
 
 * **1000 Genomes Project (1000G)**, 30x NYGC version (n=3,202; inc. 2,504 phase 3 samples + 698 additional related samples); \
+  The 1000 Genomes Project Consortium. (2015) *Nature* [doi:10.1038/nature15393](https://doi.org/10.1038/nature15393) \
   Byrska-Bishop et al. (2022) *Cell* [doi:10.1016/j.cell.2022.08.004](https://doi.org/10.1016/j.cell.2022.08.004)
-* **Human Genome Diversity Project (HGDP)** (n=816; excluding overlap with SGDP); \
-  Bergström et al. (2020) *Science* [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012)
 * **Simons Genome Diversity Project (SGDP)** (n=256; excluding overlap with 1000G); \
   Mallick et al. (2016) *Nature* [doi:10.1038/nature18964](https://doi.org/10.1038/nature18964)
 * **Gambian Genome Variation Project (GGVP)** (n=400; excluding overlap with 1000G); \
   Band et al. (2019) *Nature Communications* [doi:10.1038/s41467-019-13480-z](https://doi.org/10.1038/s41467-019-13480-z)
+* **Human Genome Diversity Project (HGDP)** (n=816; excluding overlap with SGDP); \
+  Bergström et al. (2020) *Science* [doi:10.1126/science.aay5012](https://doi.org/10.1126/science.aay5012) 
 * **Arabian Peninsula Population Genomic Study (APPG)**  (n=137); \
   Almarri et al. (2021) *Cell* [doi:10.1016/j.cell.2021.07.013](https://doi.org/10.1016/j.cell.2021.07.013)
 
@@ -68,8 +69,8 @@ the [International Genome Sample Resource (IGSR) database ](https://www.internat
 ([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)) and the [European Nucleotide Archive (ENA)](
 https://www.ebi.ac.uk/ena/browser/home) ([doi:10.1093/nar/gkq967](https://doi.org/10.1093/nar/gkq967)).
 
-If there is publicly available whole-genome sequencing data that you would like incorporated into `refpanel-v2` please
-raise an issue on GitHub with the details of the publication.
+If there are publicly available whole-genome sequencing data that you would like incorporated into `refpanel-v3` please
+raise an issue on GitHub with the details of the publication and they will be considered for inclusion in future releases.
 
 If you wish to build a customised joint-callset (e.g., including non-public samples), please refer to
 the [configuration docs](docs/config.md).
@@ -150,7 +151,7 @@ To execute the full pipeline, end-to-end, run:
 All output will be automatically written to a log file `refpanel-<YYYY-MM-DD-HHMM.SS>.log`
 
 :warning: **This will take a long time**: Please make sure you run this on a server with as many CPUs, and as much RAM,
-as possible (e.g., this pipeline was developed and run on a cluster of nodes with 96 cores and 755Gb of RAM each).
+as possible (e.g., this pipeline was developed and run on a cluster of nodes, each with 96 cores and 755Gb of RAM each).
 
 The pipeline can also be broken down [into separate steps](docs/steps.md), for distribution across multiple nodes in a
 cluster.
