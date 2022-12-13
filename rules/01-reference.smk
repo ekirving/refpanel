@@ -118,6 +118,7 @@ rule reference_grch38_fai_to_bed:
     benchmark:
         "benchmarks/reference_grch38_fai_to_bed.tsv"
     shell:
+        # TODO this drops the last BP from each bed file (but the error seems to have no practical downstream impact)
         r"""awk -v FS="\t" -v OFS="\t" '{{print $1 FS "0" FS ($2-1)}}' {input.fai} > {output.bed}"""
 
 

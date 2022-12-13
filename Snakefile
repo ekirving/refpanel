@@ -105,3 +105,9 @@ rule call_panel:
     input:
         # joint-call all samples in the reference panel
         expand("data/panel/{panel}/vcf/joint-call.done", panel=config["refpanel"]),
+
+
+rule phase_panel:
+    input:
+        # phase all samples in the reference panel
+        expand("data/panel/{panel}/vcf/phase.done", panel=config["refpanel"]),
