@@ -443,7 +443,7 @@ rule bcftools_filter_vcf:
     params:
         # compose the HWE filter for the super-populations found in this reference panel
         hwe=lambda wildcards, input: " | ".join(
-            [f"HWE_{pop}>1e-10" for pop in set(line.split()[1] for line in open(input.super))]
+            [f"HWE_{pop}>1e-10" for pop in sorted(set(line.split()[1] for line in open(input.super)))]
         ),
         # use the count of trios to convert the Mendelian error count into a fraction
         max_merr=lambda wildcards, input: max(math.ceil(len(open(input.trios).readlines()) * 0.05), 1),

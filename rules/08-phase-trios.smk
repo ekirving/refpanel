@@ -49,7 +49,7 @@ rule bcftools_subset_family:
         tbi=temp("data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz.tbi"),
     params:
         samples=lambda wildcards, input: ",".join(
-            set(pd.read_table(input.ped, header=None, sep=" ", usecols=[1, 2, 3]).values.flatten())
+            sorted(set(pd.read_table(input.ped, header=None, sep=" ", usecols=[1, 2, 3]).values.flatten()))
         ),
     benchmark:
         "benchmarks/bcftools_subset_family-{panel}-{chr}-{family}.tsv"
