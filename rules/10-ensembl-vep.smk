@@ -76,7 +76,7 @@ rule ensembl_vep_annotate_vcf:
         " --fasta {input.ref}"
         " --stats_file {output.htm}"
         " --output_file {output.vcf} &> {log} && "
-        "tabix {output.vcf}"
+        "tabix -p vcf {output.vcf}"
 
 
 def panel_predict_variant_effects_input(wildcards):
