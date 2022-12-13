@@ -317,6 +317,7 @@ rule gatk3_split_chroms:
         " -Xmx{resources.mem_mb}m"
         " -T SelectVariants"
         " -R {input.ref}"
+        " -V {input.vcf}"
         " -L {input.bed}"
         " --out {output.vcf} 2> {log}"
 
