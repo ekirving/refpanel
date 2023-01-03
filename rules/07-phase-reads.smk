@@ -22,7 +22,7 @@ https://whatshap.readthedocs.io/en/latest/guide.html
 
 
 wildcard_constraints:
-    # permit `chrXm1` and `chrXm2`, so we can handle PAR regions
+    # permit `chrXm1` and `chrXm2`, so we can handle the PAR regions of male X chromosomes
     chr="(chr(\d+|X(m[1-2])?|Y|M))|(others)",
 
 
@@ -151,8 +151,8 @@ rule bcftools_concat_male_chrX:
     (see https://github.com/whatshap/whatshap/issues/424)
     """
     input:
-        vcf1="data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}.vcf.gz",
-        tbi1="data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}.vcf.gz.tbi",
+        vcf1="data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}_subset.vcf.gz",
+        tbi1="data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}_subset.vcf.gz.tbi",
         vcf2="data/panel/{panel}/vcf/sample/{panel}_chrXm2_{source}_{sample}_{whatshap}.vcf.gz",
         tbi2="data/panel/{panel}/vcf/sample/{panel}_chrXm2_{source}_{sample}_{whatshap}.vcf.gz.tbi",
     output:
