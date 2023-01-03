@@ -10,7 +10,7 @@ import os
 
 from snakemake.io import temp, unpack, expand, touch
 
-from scripts.common import list_source_samples, MAX_OPEN_FILES
+from scripts.common import list_source_samples, sample_sex, MAX_OPEN_FILES
 
 global workflow
 
@@ -19,6 +19,11 @@ Rules to perform read-based phasing of the joint-called reference panel
 
 https://whatshap.readthedocs.io/en/latest/guide.html 
 """
+
+
+wildcard_constraints:
+    # permit `chrXm1` and `chrXm2`, so we can handle PAR regions
+    chr="(chr(\d+|X(m[1-2])?|Y|M))|(others)",
 
 
 rule bcftools_subset_sample:
@@ -38,6 +43,29 @@ rule bcftools_subset_sample:
     shell:
         "bcftools view --samples '{wildcards.sample}' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
+
+
+rule bcftools_subset_male_chrX:
+    """
+    Subset a male chrX sample from the joint-callset, and split the PAR and haploid regions into separate files
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_chrX_vqsr_norm_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrX_vqsr_norm_annot_filter.vcf.gz.tbi",
+        bed1="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
+        bed2="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.2.bed",
+    output:
+        vcf1=temp("data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}_subset.vcf.gz"),
+        tbi1=temp("data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}_subset.vcf.gz.tbi"),
+        vcf2=temp("data/panel/{panel}/vcf/sample/{panel}_chrXm2_{source}_{sample}_subset.vcf.gz"),
+        tbi2=temp("data/panel/{panel}/vcf/sample/{panel}_chrXm2_{source}_{sample}_subset.vcf.gz.tbi"),
+    benchmark:
+        "benchmarks/bcftools_subset_male_chrX-{panel}-{source}-{sample}.tsv"
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools view --samples '{wildcards.sample}' --regions-file {input.bed1} -Oz -o {output.vcf1} {input.vcf} && bcftools index --tbi {output.vcf1} && "
+        "bcftools view --samples '{wildcards.sample}' --regions-file {input.bed2} -Oz -o {output.vcf2} {input.vcf} && bcftools index --tbi {output.vcf2}"
 
 
 rule whatshap_read_based_phasing:
@@ -115,17 +143,46 @@ rule whatshap_linked_read_phasing:
         "bcftools index --tbi {output.vcf}"
 
 
+rule bcftools_concat_male_chrX:
+    """
+    Concatenate the male PAR and haploid regions of chrX back together
+
+    At present, `whatshap` cannot handle variable ploidy in a contig, so the PAR regions in male chrX have to be subset
+    (see https://github.com/whatshap/whatshap/issues/424)
+    """
+    input:
+        vcf1="data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}.vcf.gz",
+        tbi1="data/panel/{panel}/vcf/sample/{panel}_chrXm1_{source}_{sample}.vcf.gz.tbi",
+        vcf2="data/panel/{panel}/vcf/sample/{panel}_chrXm2_{source}_{sample}_{whatshap}.vcf.gz",
+        tbi2="data/panel/{panel}/vcf/sample/{panel}_chrXm2_{source}_{sample}_{whatshap}.vcf.gz.tbi",
+    output:
+        vcf=temp("data/panel/{panel}/vcf/sample/{panel}_chrXm_{source}_{sample}_{whatshap}.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/sample/{panel}_chrXm_{source}_{sample}_{whatshap}.vcf.gz.tbi"),
+    benchmark:
+        "benchmarks/bcftools_concat_male_chrX-{panel}-{source}-{sample}-{whatshap}.tsv"
+    wildcard_constraints:
+        whatshap="whatshap|whatshap_trio",
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools concat --allow-overlaps  -Oz -o {output.vcf} {input.vcf1} {input.vcf2} && "
+        "bcftools index --tbi {output.vcf}"
+
+
 def bcftools_merge_phased_samples_input(wildcards):
     """
     Return a list of VCF/TBI files for each sample in the reference panel
     """
     panel = wildcards.panel
-    chr = wildcards.chr
 
     vcf = []
     tbi = []
 
     for source, sample, prephased in list_source_samples(config, panel):
+        # handle the PAR region in male chrX
+        sex = sample_sex(config, source, sample)
+        chr = "chrXm" if wildcards.chr == "chrX" and sex == "M" else wildcards.chr
+
         if prephased:
             vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz")
             tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap_10x.vcf.gz.tbi")
@@ -133,7 +190,7 @@ def bcftools_merge_phased_samples_input(wildcards):
             vcf.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz")
             tbi.append(f"data/panel/{panel}/vcf/sample/{panel}_{chr}_{source}_{sample}_whatshap.vcf.gz.tbi")
 
-    file_list = f"data/panel/{panel}/vcf/sample/{panel}_{chr}.list"
+    file_list = f"data/panel/{panel}/vcf/sample/{panel}_{wildcards.chr}.list"
 
     os.makedirs(os.path.dirname(file_list), exist_ok=True)
 
