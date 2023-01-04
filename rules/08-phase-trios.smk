@@ -141,10 +141,10 @@ rule bcftools_concat_family_chrX:
     (see https://github.com/whatshap/whatshap/issues/424)
     """
     input:
-        vcf1=temp("data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_family.vcf.gz"),
-        tbi1=temp("data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_family.vcf.gz.tbi"),
-        vcf2=temp("data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_family.vcf.gz"),
-        tbi2=temp("data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_family.vcf.gz.tbi"),
+        vcf1="data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_family.vcf.gz",
+        tbi1="data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_family.vcf.gz.tbi",
+        vcf2="data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_family.vcf.gz",
+        tbi2="data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_family.vcf.gz.tbi",
     output:
         vcf=temp("data/panel/{panel}/vcf/family/{panel}_chrX_{family}_family.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/family/{panel}_chrX_{family}_family.vcf.gz.tbi"),
