@@ -22,6 +22,11 @@ https://whatshap.readthedocs.io/en/latest/guide.html#phasing-pedigrees
 """
 
 
+wildcard_constraints:
+    # permit `chrXm1` and `chrXm2`, so we can handle the PAR regions of male X chromosomes
+    chr="(chr(\d+|X(m[1-2])?|Y|M))|(others)",
+
+
 rule pedigree_family:
     """
     Extract a specific family from the pedigree.
@@ -38,7 +43,7 @@ rule pedigree_family:
 
 rule bcftools_subset_family:
     """
-    Subset a specific family from the join-callset, so we can efficiently parallelize the pedigree-based phasing
+    Subset a specific family from the joint-callset, so we can efficiently parallelize the pedigree-based phasing
     """
     input:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter.vcf.gz",
@@ -58,6 +63,34 @@ rule bcftools_subset_family:
     shell:
         "bcftools view --samples '{params.samples}' -Oz -o {output.vcf} {input.vcf} && "
         "bcftools index --tbi {output.vcf}"
+
+
+rule bcftools_subset_family_chrX:
+    """
+    Subset chrX for a family from the joint-callset, and split the PAR and non-PAR regions into separate files
+    """
+    input:
+        vcf="data/panel/{panel}/vcf/{panel}_chrX_vqsr_norm_annot_filter.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_chrX_vqsr_norm_annot_filter.vcf.gz.tbi",
+        ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
+        bed1="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.1.bed",
+        bed2="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.M.2.bed",
+    output:
+        vcf1=temp("data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_subset.vcf.gz"),
+        tbi1=temp("data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_subset.vcf.gz.tbi"),
+        vcf2=temp("data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_subset.vcf.gz"),
+        tbi2=temp("data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_subset.vcf.gz.tbi"),
+    params:
+        samples=lambda wildcards, input: ",".join(
+            sorted(set(pd.read_table(input.ped, header=None, sep=" ", usecols=[1, 2, 3]).values.flatten()))
+        ),
+    benchmark:
+        "benchmarks/bcftools_subset_family_chrX-{panel}-{family}.tsv"
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools view --samples '{params.samples}' --regions-file {input.bed1} -Oz -o {output.vcf1} {input.vcf} && bcftools index --tbi {output.vcf1} && "
+        "bcftools view --samples '{params.samples}' --regions-file {input.bed2} -Oz -o {output.vcf2} {input.vcf} && bcftools index --tbi {output.vcf2} && "
 
 
 rule whatshap_pedigree_phasing:
@@ -98,6 +131,34 @@ rule whatshap_pedigree_phasing:
         " --output {output.vcf}"
         " {input.vcf} 2> {log} && "
         "bcftools index --tbi {output.vcf}"
+
+
+rule bcftools_concat_family_chrX:
+    """
+    Concatenate the PAR and non-PAR regions of chrX back together
+
+    At present, `whatshap` cannot handle variable ploidy in a contig, so the PAR regions in chrX have to be subset
+    (see https://github.com/whatshap/whatshap/issues/424)
+    """
+    input:
+        vcf1=temp("data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_family.vcf.gz"),
+        tbi1=temp("data/panel/{panel}/vcf/family/{panel}_chrXm1_{family}_family.vcf.gz.tbi"),
+        vcf2=temp("data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_family.vcf.gz"),
+        tbi2=temp("data/panel/{panel}/vcf/family/{panel}_chrXm2_{family}_family.vcf.gz.tbi"),
+    output:
+        vcf=temp("data/panel/{panel}/vcf/family/{panel}_chrX_{family}_family.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/family/{panel}_chrX_{family}_family.vcf.gz.tbi"),
+    benchmark:
+        "benchmarks/bcftools_concat_family_chrX-{panel}-{family}.tsv"
+    conda:
+        "../envs/htslib-1.14.yaml"
+    shell:
+        "bcftools concat --allow-overlaps  -Oz -o {output.vcf} {input.vcf1} {input.vcf2} && "
+        "bcftools index --tbi {output.vcf}"
+
+
+# use the special case rule for trio phasing of chrX
+ruleorder: bcftools_concat_family_chrX > whatshap_pedigree_phasing
 
 
 def bcftools_merge_phased_families_input(wildcards):
