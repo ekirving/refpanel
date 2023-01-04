@@ -161,7 +161,7 @@ rule bcftools_concat_male_chrX:
     benchmark:
         "benchmarks/bcftools_concat_male_chrX-{panel}-{source}-{sample}-{whatshap}.tsv"
     wildcard_constraints:
-        whatshap="whatshap|whatshap_trio",
+        whatshap="whatshap|whatshap_10x",
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
