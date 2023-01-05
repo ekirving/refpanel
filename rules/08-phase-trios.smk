@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2021, University of Copenhagen"
 __email__ = "evan.irvingpease@gmail.com"
 __license__ = "MIT"
 
-import os
+import os, re
 
 import pandas as pd
 from snakemake.io import temp, unpack, expand, touch
@@ -20,11 +20,6 @@ Rules to perform pedigree phasing of the joint-called reference panel
 
 https://whatshap.readthedocs.io/en/latest/guide.html#phasing-pedigrees
 """
-
-
-wildcard_constraints:
-    # permit `chrXm1` and `chrXm2`, so we can handle the PAR regions of male X chromosomes
-    chr="(chr(\d+|X(m[1-2])?|Y|M))|(others)",
 
 
 rule pedigree_family:
@@ -90,7 +85,7 @@ rule bcftools_subset_family_chrX:
         "../envs/htslib-1.14.yaml"
     shell:
         "bcftools view --samples '{params.samples}' --regions-file {input.bed1} -Oz -o {output.vcf1} {input.vcf} && bcftools index --tbi {output.vcf1} && "
-        "bcftools view --samples '{params.samples}' --regions-file {input.bed2} -Oz -o {output.vcf2} {input.vcf} && bcftools index --tbi {output.vcf2} && "
+        "bcftools view --samples '{params.samples}' --regions-file {input.bed2} -Oz -o {output.vcf2} {input.vcf} && bcftools index --tbi {output.vcf2}"
 
 
 rule whatshap_pedigree_phasing:
@@ -106,7 +101,9 @@ rule whatshap_pedigree_phasing:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        map="data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map",
+        map=lambda wildcards: "data/reference/GRCh38/genetic_maps/whatshap/genetic_map_hg38_{chr}.map".format(
+            chr=re.sub("m[1-2]$", "", wildcards.chr)
+        ),
         ped="data/panel/{panel}/vcf/family/{panel}_{family}.ped",
         vcf="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz",
         tbi="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_subset.vcf.gz.tbi",
@@ -117,12 +114,17 @@ rule whatshap_pedigree_phasing:
         log="data/panel/{panel}/vcf/family/{panel}_{chr}_{family}_family.vcf.log",
     benchmark:
         "benchmarks/whatshap_pedigree_phasing-{panel}-{chr}-{family}.tsv"
+    params:
+        chr=lambda wildcards: re.sub("m[1-2]$", "", wildcards.chr),
+    wildcard_constraints:
+        # permit `chrXm1` and `chrXm2`, so we can handle the PAR regions of male X chromosomes
+        chr="chr(\d+|Xm[1-2])",
     conda:
         "../envs/whatshap-1.2.1.yaml"
     shell:
         "whatshap phase"
         " --reference {input.ref}"
-        " --chromosome {wildcards.chr}"
+        " --chromosome {params.chr}"
         " --genmap {input.map}"
         " --ped {input.ped}"
         " --use-ped-samples"
