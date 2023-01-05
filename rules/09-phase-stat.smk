@@ -124,12 +124,16 @@ def panel_statistical_phasing_input(wildcards):
     panel = wildcards.panel
     chroms = [chr for chr in config["chroms"] if chr not in ["chrY", "chrM", "others"]]
 
-    if config["panel"][wildcards.panel].get("pedigree") is None:
-        vcf = [f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz" for chr in chroms]
-    else:
-        vcf = [
-            f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz" for chr in chroms
-        ]
+    # does this reference panel have a pedigree for trio phasing
+    has_pedigree = config["panel"][wildcards.panel].get("pedigree") is not None
+
+    vcf = []
+    for chr in chroms:
+        # `whatshap` cannot trio phase chrX
+        if has_pedigree and chr != "chrX":
+            vcf.append(f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_trio_phased.vcf.gz")
+        else:
+            vcf.append(f"data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap_phased.vcf.gz")
 
     return vcf
 
