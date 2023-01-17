@@ -9,7 +9,7 @@ __license__ = "MIT"
 import os
 
 import pandas as pd
-from snakemake.io import temp, unpack, expand, touch
+from snakemake.io import temp, unpack, expand, touch, ancient
 
 from scripts.common import list_families
 
@@ -121,7 +121,7 @@ def bcftools_merge_phased_families_input(wildcards):
     with open(file_list, "w") as fout:
         fout.write("\n".join(vcf) + "\n")
 
-    return {"vcfs": vcf, "tbi": tbi, "list": file_list}
+    return {"vcfs": vcf, "tbi": tbi, "list": ancient(file_list)}
 
 
 # noinspection PyUnresolvedReferences

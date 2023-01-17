@@ -8,7 +8,7 @@ __license__ = "MIT"
 
 import os
 
-from snakemake.io import temp, unpack, expand, touch
+from snakemake.io import temp, unpack, expand, touch, ancient
 
 from scripts.common import list_source_samples, sample_sex, MAX_OPEN_FILES
 
@@ -197,7 +197,7 @@ def bcftools_merge_phased_samples_input(wildcards):
     with open(file_list, "w") as fout:
         fout.write("\n".join(vcf) + "\n")
 
-    return {"vcfs": vcf, "tbi": tbi, "list": file_list}
+    return {"vcfs": vcf, "tbi": tbi, "list": ancient(file_list)}
 
 
 # noinspection PyUnresolvedReferences
