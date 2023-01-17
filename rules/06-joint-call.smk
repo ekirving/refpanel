@@ -380,7 +380,7 @@ rule bcftools_trio_file:
     Convert a PLINK pedigree file into bcftools format (i.e., mother1,father1,child1)
     """
     input:
-        ped=lambda wildcards: config["panel"][wildcards.panel].get("pedigree", "/dev/null"),
+        ped=lambda wildcards: ancient(config["panel"][wildcards.panel].get("pedigree", "/dev/null")),
     output:
         csv="data/panel/{panel}/{panel}-trios.csv",
     benchmark:
