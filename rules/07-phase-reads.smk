@@ -10,7 +10,7 @@ import os
 
 from snakemake.io import temp, unpack, expand, touch, ancient
 
-from scripts.common import list_source_samples, sample_sex, MAX_OPEN_FILES
+from scripts.common import list_source_samples, sample_sex, MAX_OPEN_FILES, MAX_MEM_MB
 
 global workflow
 
@@ -89,6 +89,8 @@ rule whatshap_read_based_phasing:
         "benchmarks/whatshap_read_based_phasing-{panel}-{chr}-{source}-{sample}.tsv"
     conda:
         "../envs/whatshap-1.2.1.yaml"
+    resources:
+        mem_mb=min(8 * 1024, MAX_MEM_MB),  # ~1%
     shell:
         "whatshap phase"
         " --reference {input.ref}"

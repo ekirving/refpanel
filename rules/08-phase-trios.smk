@@ -11,7 +11,7 @@ import os
 import pandas as pd
 from snakemake.io import temp, unpack, expand, touch, ancient
 
-from scripts.common import list_families
+from scripts.common import list_families, MAX_MEM_MB
 
 global workflow
 
@@ -86,6 +86,8 @@ rule whatshap_pedigree_phasing:
         "benchmarks/whatshap_pedigree_phasing-{panel}-{chr}-{family}.tsv"
     conda:
         "../envs/whatshap-1.2.1.yaml"
+    resources:
+        mem_mb=min(16 * 1024, MAX_MEM_MB),  # ~2.1%
     shell:
         "whatshap phase"
         " --reference {input.ref}"
