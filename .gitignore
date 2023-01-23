@@ -6,11 +6,11 @@ benchmarks/
 data/ensembl/vep/
 data/evaluation/
 data/panel/*/*-superpops.tsv
-data/panel/*/*-trios.tsv
+data/panel/*/*-trios.*
 data/panel/*/gVCF/
 data/panel/*/vcf/
 data/reference/GRCh38/
-data/source/*/*-trios.tsv
+data/source/*/*-trios.*
 data/source/*/bam/
 data/source/*/cram/
 data/source/*/fastq/
