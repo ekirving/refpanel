@@ -27,7 +27,9 @@ source:
     # Simons Genome Diversity Project (SGDP)
     # Mallick et al. (2016) `Nature` (n=252)
     # https://doi.org/10.1038/nature18964
+    # NOTE 4 samples from SGDP were phased with linked reads in HGDP (HGDP00547, HGDP00549, HGDP00551, HGDP01032)
     samples: data/source/sgdp/sgdp-samples.tsv
+    prephased: data/source/sgdp/sgdp-10x-gVCFs.tsv
 
   ggvp:
     # Gambian Genome Variation Project (GGVP)

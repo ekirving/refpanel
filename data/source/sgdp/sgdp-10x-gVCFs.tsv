@@ -1,0 +1,5 @@
+sample	vcf_ftp	tbi_ftp
+HGDP00547	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP00547.hgdp_wgs.20190516.phase10x.vcf.gz	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP00547.hgdp_wgs.20190516.phase10x.vcf.gz.tbi
+HGDP00549	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP00549.hgdp_wgs.20190516.phase10x.vcf.gz	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP00549.hgdp_wgs.20190516.phase10x.vcf.gz.tbi
+HGDP00551	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP00551.hgdp_wgs.20190516.phase10x.vcf.gz	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP00551.hgdp_wgs.20190516.phase10x.vcf.gz.tbi
+HGDP01032	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP01032.hgdp_wgs.20190516.phase10x.vcf.gz	ftp://ngs.sanger.ac.uk/production/hgdp/hgdp_wgs.20190516/gVCFs.10x/HGDP01032.hgdp_wgs.20190516.phase10x.vcf.gz.tbi
