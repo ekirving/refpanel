@@ -88,6 +88,7 @@ rule picard_merge_chrom_vcfs:
         log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
     resources:
         mem_mb=JAVA_MEMORY_MB,
+        tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/picard_merge_chrom_vcfs-{panel}.tsv"
     conda:
@@ -95,6 +96,7 @@ rule picard_merge_chrom_vcfs:
     shell:
         "picard"
         " -Xmx{resources.mem_mb}m"
+        " -Djava.io.tmpdir='{resources.tmpdir}'"
         " MergeVcfs"
         " {params.vcfs}"
         " OUTPUT={output.vcf} 2> {log}"
