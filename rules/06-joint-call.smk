@@ -70,7 +70,7 @@ rule gatk3_genotype_chrom_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule picard_merge_chrom_vcfs:
+rule bcftools_merge_chrom_vcfs:
     """
     Merge the chromosome level VCF files so we can do VQSR once, to avoid batch effects from chroms with differing sizes
 
@@ -82,24 +82,15 @@ rule picard_merge_chrom_vcfs:
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
-    params:
-        vcfs=lambda wildcards, input: [f"INPUT={vcf}" for vcf in input.vcfs],
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-        tmpdir=JAVA_TEMP_DIR,
     benchmark:
-        "benchmarks/picard_merge_chrom_vcfs-{panel}.tsv"
+        "benchmarks/bcftools_merge_chrom_vcfs-{panel}.tsv"
     conda:
-        "../envs/picard-2.5.0.yaml"
+        "../envs/htslib-1.14.yaml"
     shell:
-        "picard"
-        " -Xmx{resources.mem_mb}m"
-        " -Djava.io.tmpdir='{resources.tmpdir}'"
-        " MergeVcfs"
-        " {params.vcfs}"
-        " OUTPUT={output.vcf} 2> {log}"
+        "( bcftools concat --naive -Oz -o {output.vcf} {input.vcfs} && "
+        "  bcftools index --tbi {output.vcf} ) 2> {log}"
 
 
 rule gatk3_variant_recalibrator_snp:
