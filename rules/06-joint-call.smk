@@ -70,9 +70,9 @@ rule gatk3_genotype_chrom_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule bcftools_merge_chrom_vcfs:
+rule bcftools_concat_chrom_vcfs:
     """
-    Merge the chromosome level VCF files so we can do VQSR once, to avoid batch effects from chroms with differing sizes
+    Concatenate the chromosome level VCF files so we can do VQSR once, to avoid batch effects from short chromosomes
 
     https://sites.google.com/a/broadinstitute.org/legacy-gatk-forum-discussions/methods-and-algorithms/39-variant-quality-score-recalibration-vqsr
     """
