@@ -80,17 +80,17 @@ rule bcftools_concat_chrom_vcfs:
         vcfs=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
         tbis=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi", chr=config["chroms"], allow_missing=True),
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
+        bcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.bcf"),
+        csi=temp("data/panel/{panel}/vcf/{panel}_chrALL.bcf.csi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
+        log="data/panel/{panel}/vcf/{panel}_chrALL.bcf.log",
     benchmark:
-        "benchmarks/bcftools_merge_chrom_vcfs-{panel}.tsv"
+        "benchmarks/bcftools_concat_chrom_vcfs-{panel}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "( bcftools concat --naive -Oz -o {output.vcf} {input.vcfs} && "
-        "  bcftools index --tbi {output.vcf} ) 2> {log}"
+        "( bcftools concat -Oz -o {output.bcf} {input.vcfs} && "
+        "  bcftools index --csi {output.bcf} ) 2> {log}"
 
 
 rule gatk3_variant_recalibrator_snp:
