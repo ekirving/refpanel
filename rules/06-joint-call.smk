@@ -84,15 +84,12 @@ rule bcftools_concat_chrom_vcfs:
         tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
-    resources:
-        tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/bcftools_concat_chrom_vcfs-{panel}.tsv"
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "( export TMPDIR='{resources.tmpdir}' && "
-        "  bcftools concat --naive -Oz -o {output.vcf} {input.vcfs} && "
+        "( bcftools concat -Oz9 -o {output.vcf} {input.vcfs} && "
         "  bcftools index --tbi {output.vcf} ) 2> {log}"
 
 
