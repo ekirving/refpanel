@@ -70,29 +70,6 @@ rule gatk3_genotype_chrom_gvcf:
         " -o {output.vcf} 2> {log}"
 
 
-rule bcftools_concat_chrom_vcfs:
-    """
-    Concatenate the chromosome level VCF files so we can do VQSR once, to avoid batch effects from short chromosomes
-
-    https://sites.google.com/a/broadinstitute.org/legacy-gatk-forum-discussions/methods-and-algorithms/39-variant-quality-score-recalibration-vqsr
-    """
-    input:
-        vcfs=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
-        tbis=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi", chr=config["chroms"], allow_missing=True),
-    output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi"),
-    log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL.vcf.log",
-    benchmark:
-        "benchmarks/bcftools_concat_chrom_vcfs-{panel}.tsv"
-    conda:
-        "../envs/htslib-1.14.yaml"
-    shell:
-        "( bcftools concat -Oz9 -o {output.vcf} {input.vcfs} && "
-        "  bcftools index --tbi {output.vcf} ) 2> {log}"
-
-
 rule gatk3_variant_recalibrator_snp:
     """
     Variant Quality Score Recalibration (VQSR) to assign FILTER status for SNPs
@@ -104,8 +81,8 @@ rule gatk3_variant_recalibrator_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi",
+        vcfs=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
+        tbis=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi", chr=config["chroms"], allow_missing=True),
         hap="data/reference/GRCh38/other_mapping_resources/hapmap_3.3.hg38.vcf.gz",
         omni="data/reference/GRCh38/other_mapping_resources/1000G_omni2.5.hg38.vcf.gz",
         snps="data/reference/GRCh38/other_mapping_resources/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
@@ -116,6 +93,8 @@ rule gatk3_variant_recalibrator_snp:
         plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_plots.R",
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.log",
+    params:
+        vcfs=lambda wildcards, input: [f"-input {vcf}" for vcf in input.vcfs],
     threads: max(workflow.cores / 2, 8)
     resources:
         mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
@@ -131,7 +110,7 @@ rule gatk3_variant_recalibrator_snp:
         " -T VariantRecalibrator"
         " -R {input.ref}"
         " --num_threads {threads}"
-        " -input {input.vcf}"
+        " {params.vcfs}"
         " -mode SNP"
         " -recalFile {output.recal}"
         " -tranchesFile {output.tranche}"
@@ -163,21 +142,22 @@ rule gatk3_apply_recalibration_snp:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi",
+        chr="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
         recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.recal",
         tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.log",
-    threads: max(workflow.cores / 2, 8)
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.log",
+    threads: max(workflow.cores / 4, 8)
     resources:
-        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 4) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
-        "benchmarks/gatk3_apply_recalibration_snp-{panel}.tsv"
+        "benchmarks/gatk3_apply_recalibration_snp-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -186,6 +166,7 @@ rule gatk3_apply_recalibration_snp:
         " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T ApplyRecalibration"
         " -R {input.ref}"
+        " -L {input.chr}"
         " --num_threads {threads}"
         " -input {input.vcf}"
         " -mode SNP"
@@ -201,8 +182,8 @@ rule gatk3_variant_recalibrator_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz.tbi",
+        vcfs=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz", chr=config["chroms"], allow_missing=True),
+        tbis=expand("data/panel/{panel}/vcf/{panel}_{chr}.vcf.gz.tbi", chr=config["chroms"], allow_missing=True),
         mills="data/reference/GRCh38/other_mapping_resources/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz",
         dbsnp="data/reference/GRCh38/other_mapping_resources/ALL_20141222.dbSNP142_human_GRCh38.snps.vcf.gz",
     output:
@@ -211,6 +192,8 @@ rule gatk3_variant_recalibrator_indel:
         plot="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL_plots.R",
     log:
         log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.log",
+    params:
+        vcfs=lambda wildcards, input: [f"-input {vcf}" for vcf in input.vcfs],
     threads: max(workflow.cores / 2, 8)
     resources:
         mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
@@ -226,7 +209,7 @@ rule gatk3_variant_recalibrator_indel:
         " -T VariantRecalibrator"
         " -R {input.ref}"
         " --num_threads {threads}"
-        " -input {input.vcf}"
+        " {params.vcfs}"
         " -mode INDEL"
         " -recalFile {output.recal}"
         " -tranchesFile {output.tranche}"
@@ -253,21 +236,22 @@ rule gatk3_apply_recalibration_indel:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi",
+        chr="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
         recal="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.recal",
         tranche="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_INDEL.tranches",
     output:
-        vcf=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz"),
-        tbi=temp("data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz.tbi"),
+        vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz"),
+        tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz.tbi"),
     log:
-        log="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.log",
-    threads: max(workflow.cores / 2, 8)
+        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.log",
+    threads: max(workflow.cores / 4, 8)
     resources:
-        mem_mb=int(MAX_MEM_MB / 2) - JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 4) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
-        "benchmarks/gatk3_apply_recalibration_indel-{panel}.tsv"
+        "benchmarks/gatk3_apply_recalibration_indel-{panel}-{chr}.tsv"
     conda:
         "../envs/gatk-3.5.yaml"
     shell:
@@ -276,6 +260,7 @@ rule gatk3_apply_recalibration_indel:
         " -Djava.io.tmpdir='{resources.tmpdir}'"
         " -T ApplyRecalibration"
         " -R {input.ref}"
+        " -L {input.chr}"
         " --num_threads {threads}"
         " -input {input.vcf}"
         " -mode INDEL"
@@ -283,36 +268,6 @@ rule gatk3_apply_recalibration_indel:
         " -recalFile {input.recal}"
         " -tranchesFile {input.tranche}"
         " -o {output.vcf} 2> {log}"
-
-
-rule gatk3_split_chroms:
-    """
-    Split the whole-genome VCF back into separate chromosomes for downstream processing
-    """
-    input:
-        ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_chrALL_vqsr_SNP_INDEL.vcf.gz.tbi",
-        bed="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.{chr}.bed",
-    output:
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
-    log:
-        log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.log",
-    resources:
-        mem_mb=JAVA_MEMORY_MB,
-    benchmark:
-        "benchmarks/gatk3_split_chroms-{panel}-{chr}.tsv"
-    conda:
-        "../envs/gatk-3.5.yaml"
-    shell:
-        "gatk3"
-        " -Xmx{resources.mem_mb}m"
-        " -T SelectVariants"
-        " -R {input.ref}"
-        " -V {input.vcf}"
-        " -L {input.bed}"
-        " --out {output.vcf} 2> {log}"
 
 
 rule bcftools_norm:
@@ -323,8 +278,8 @@ rule bcftools_norm:
     """
     input:
         ref="data/reference/GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
-        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz",
-        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr.vcf.gz.tbi",
+        vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz",
+        tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz.tbi",
     output:
         vcf=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz"),
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm.vcf.gz.tbi"),
