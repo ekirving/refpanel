@@ -123,6 +123,13 @@ source:
     accessions: data/source/cgg-afr/cgg-afr-accessions.tsv
     private: true
 
+# TODO: add to refpanel-v3
+#  PRJNA883976:
+#    # add Joseph et al. (2023) `iScience` (n=12)
+#    # https://doi.org/10.1016/j.isci.2023.106034
+#    samples: ''
+#    accessions: ''
+#    ena_ftp: true
 
 # reference panels, aggregations of samples across data sources
 panel:

@@ -67,7 +67,7 @@ rule whatshap_pedigree_phasing:
     This takes a family-level VCF as input, and performs trio phasing of the children.
 
     Raises a "Zero genetic distances encountered" warning due to lack of recombination between some markers in the 
-    genetic map.
+    genetic map. This warning can be safely ignored.
 
     https://whatshap.readthedocs.io/en/latest/guide.html#phasing-pedigrees
     """
@@ -131,7 +131,7 @@ rule bcftools_merge_phased_families:
     """
     Merge the family-level trio phased VCFs back into a single chromosome.
 
-    Produces a scaffold for `shapeit4` containing the 602 phased trios from 1000G.
+    Produces a scaffold for `shapeit4` containing the 602 trios from 1000G and the 133 trios from GGVP. 
     """
     input:
         unpack(bcftools_merge_phased_families_input),

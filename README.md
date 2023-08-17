@@ -134,7 +134,7 @@ In brief, `refpanel` produces a jointly-called and phased callset via the follow
     * _Illumina_ paired-end reads from all projects;
     * _10x Genomics_ linked-read sequencing from HGDP (n=26) and APPG (n=137);
 * [Pedigree phasing](rules/08-phase-trios.smk) with `whatshap` using:
-    * Trios from 1000G (n=602) and GGVP (n=133);
+    * Trios from 1000G (n=602) and GGVP (n=130);
 * [Statistical phasing](rules/09-phase-stat.smk) with `shapeit4` (v4.2.2)
 * [Variant effect prediction](rules/10-ensembl-vep.smk) with `ensembl-vep` (v105.0)
 
