@@ -152,9 +152,9 @@ rule gatk3_apply_recalibration_snp:
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP.vcf.log",
-    threads: max(workflow.cores / 4, 8)
+    threads: 4
     resources:
-        mem_mb=int(MAX_MEM_MB / 4) - JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 6) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_apply_recalibration_snp-{panel}-{chr}.tsv"
@@ -246,9 +246,9 @@ rule gatk3_apply_recalibration_indel:
         tbi=temp("data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.gz.tbi"),
     log:
         log="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_SNP_INDEL.vcf.log",
-    threads: max(workflow.cores / 4, 8)
+    threads: 4
     resources:
-        mem_mb=int(MAX_MEM_MB / 4) - JAVA_MEMORY_MB,
+        mem_mb=int(MAX_MEM_MB / 6) - JAVA_MEMORY_MB,
         tmpdir=JAVA_TEMP_DIR,
     benchmark:
         "benchmarks/gatk3_apply_recalibration_indel-{panel}-{chr}.tsv"
