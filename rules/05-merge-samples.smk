@@ -23,7 +23,7 @@ wildcard_constraints:
 
 
 def gatk3_batch_sample_chrom_gvcfs_input(wildcards):
-    """Split the samples into batches so we don't use too much RAM"""
+    """Split the samples into batches, so we don't use too much RAM"""
     source = wildcards.source
     samples = list_samples(config, source)
     start = (int(wildcards.batch) - 1) * GATK_BATCH_SIZE

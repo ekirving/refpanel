@@ -11,7 +11,7 @@ import os
 import pandas as pd
 from snakemake.io import temp, unpack, expand, touch, ancient
 
-from scripts.common import list_families, MAX_MEM_MB
+from scripts.common import list_families, MAX_MEM_MB, MAX_OPEN_FILES
 
 global workflow
 

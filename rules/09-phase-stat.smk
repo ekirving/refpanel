@@ -23,7 +23,7 @@ https://whatshap.readthedocs.io/en/latest/guide.html
 rule shapeit4_phase_vcf:
     """
     Statistically phase the joint-callset, using the read-based phase sets as input
-    
+
     NOTE: This rule is for reference panels with no trio data.
     """
     input:
@@ -60,7 +60,7 @@ rule shapeit4_phase_trios_vcf:
     input.
 
     See https://github.com/odelaneau/shapeit4/issues/17
-    
+
     NOTE: This rule is for reference panels with both trio data and linked-reads data.
     """
     input:

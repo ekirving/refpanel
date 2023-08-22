@@ -65,7 +65,7 @@ Plus additional public genomes from:
 * Crooks et al. (2020) *BMC Genetics* (n=3); [doi:10.1186/s12863-020-00917-4](https://doi.org/10.1186/s12863-020-00917-4)
 
 The data from these projects is hosted by the
-the [International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
+[International Genome Sample Resource (IGSR) database ](https://www.internationalgenome.org/)
 ([doi:10.1093/nar/gkw829](https://doi.org/10.1093/nar/gkw829)) and the [European Nucleotide Archive (ENA)](
 https://www.ebi.ac.uk/ena/browser/home) ([doi:10.1093/nar/gkq967](https://doi.org/10.1093/nar/gkq967)).
 

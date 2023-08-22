@@ -2,7 +2,7 @@
 
 The disk footprint for the various data sources are:
 
-| Folder                   | Size   |
+| Folder                   |   Size |
 |--------------------------|-------:|
 | data/source/1000g/       | 123 TB |
 | data/source/appg/        |  20 TB |

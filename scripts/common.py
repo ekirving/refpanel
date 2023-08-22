@@ -86,7 +86,7 @@ def sample_sex(config, source, sample):
     try:
         sex = samples.loc[sample].get("sex")[0].upper()
 
-        # sanity check that the metadata is well formed
+        # sanity check that the metadata is well-formed
         assert sex in {"M", "F"}
 
     except (TypeError, IndexError, AssertionError):
