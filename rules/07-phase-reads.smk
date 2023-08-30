@@ -90,7 +90,7 @@ rule whatshap_read_based_phasing:
     conda:
         "../envs/whatshap-1.2.1.yaml"
     resources:
-        mem_mb=min(8 * 1024, MAX_MEM_MB),  # ~1%
+        mem_mb=min(16 * 1024, MAX_MEM_MB),  # max observed of 14 Gb
     shell:
         "whatshap phase"
         " --reference {input.ref}"
@@ -133,6 +133,8 @@ rule whatshap_linked_read_phasing:
         "benchmarks/whatshap_linked_read_phasing-{panel}-{chr}-{source}-{sample}.tsv"
     conda:
         "../envs/whatshap-1.2.1.yaml"
+    resources:
+        mem_mb=min(16 * 1024, MAX_MEM_MB),  # max observed of 14 Gb
     shell:
         "whatshap phase"
         " --reference {input.ref}"

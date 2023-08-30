@@ -87,7 +87,7 @@ rule whatshap_pedigree_phasing:
     conda:
         "../envs/whatshap-1.2.1.yaml"
     resources:
-        mem_mb=min(16 * 1024, MAX_MEM_MB),  # ~2.1%
+        mem_mb=min(32 * 1024, MAX_MEM_MB),  # max observed of 31 Gb
     shell:
         "whatshap phase"
         " --reference {input.ref}"
