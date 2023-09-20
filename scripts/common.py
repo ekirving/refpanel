@@ -30,7 +30,7 @@ GATK_BATCH_SIZE = 200
 JAVA_TEMP_DIR = "./tmp/"
 
 # the hard limit for the maximum open file descriptors
-MAX_OPEN_FILES = 99999
+MAX_OPEN_FILES = 262144
 
 
 def fastq_path(config, source, accession, pair="se"):

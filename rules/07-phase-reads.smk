@@ -217,7 +217,8 @@ rule bcftools_merge_phased_samples:
         vcf="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz",
         tbi="data/panel/{panel}/vcf/{panel}_{chr}_vqsr_norm_annot_filter_whatshap.vcf.gz.tbi",
     params:
-        limit=MAX_OPEN_FILES,
+        prefix="data/panel/{panel}/vcf/sample/{panel}_{chr}-tmp",
+    threads: workflow.cores
     resources:
         mem_mb=8 * 1024,
     benchmark:
@@ -225,9 +226,11 @@ rule bcftools_merge_phased_samples:
     conda:
         "../envs/htslib-1.14.yaml"
     shell:
-        "ulimit -n {params.limit} && "
-        "bcftools merge --file-list {input.list} -Oz -o {output.vcf} && "
-        "bcftools index --tbi {output.vcf}"
+        "split -d --number=l/{threads} {input.list} {params.prefix}- && "
+        "parallel -j {threads} `bcftools merge --file-list {{}} -Ob -o {{}}.bcf` ::: {params.prefix}-* && "
+        "bcftools merge --threads 8 -Oz -o {output.vcf} {params.prefix}-*.bcf && "
+        "bcftools index --tbi {output.vcf} && "
+        "rm {params.prefix}-*"
 
 
 rule panel_read_based_phasing:
