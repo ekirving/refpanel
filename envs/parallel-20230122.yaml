@@ -1,7 +1,9 @@
 channels:
   - bioconda
+  - conda-forge
 dependencies:
   - bioconda::bcftools=1.14
   - bioconda::samtools=1.14
   - bioconda::tabix=1.11
   - conda-forge::openssl=1.1
+  - conda-forge::parallel=20230122

@@ -224,10 +224,10 @@ rule bcftools_merge_phased_samples:
     benchmark:
         "benchmarks/bcftools_merge_phased_samples-{panel}-{chr}.tsv"
     conda:
-        "../envs/htslib-1.14.yaml"
+        "../envs/parallel-20230122.yaml"
     shell:
         "split -d --number=l/{threads} {input.list} {params.prefix}- && "
-        "parallel -j {threads} `bcftools merge --file-list {{}} -Ob -o {{}}.bcf` ::: {params.prefix}-* && "
+        "parallel -j {threads} 'bcftools merge --file-list {{}} -Ob -o {{}}.bcf' ::: {params.prefix}-* && "
         "bcftools merge --threads 8 -Oz -o {output.vcf} {params.prefix}-*.bcf && "
         "bcftools index --tbi {output.vcf} && "
         "rm {params.prefix}-*"
